@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Blocking.unity
+    guid: 962e05001e38f6548910dd3d9ea189a8
   m_configObjects: {}
