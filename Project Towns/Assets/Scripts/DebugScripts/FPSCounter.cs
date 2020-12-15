@@ -1,19 +1,44 @@
 ﻿using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Clase FPSCounter, para llevar el control del rendimiento del juego
+/// </summary>
 public class FPSCounter : MonoBehaviour
 {
-    public TextMeshProUGUI FPSCounterText;
+    // Variables de control
+    [Tooltip("Texto de los FPS")]
+    [SerializeField]
+    private TextMeshProUGUI FPSCounterText = null;
+
+    private const float TIME_FOR_UPDATE = 0.25f;
     private float nextFPSUpdate = 0.0f;
 
-    // Update is called once per frame
+    private int framesCount = 0;
+    private float framesTimesSum = 0f;
+
+    /// <summary>
+    /// Método Update, que se llama cada frame
+    /// </summary>
     void Update()
     {
+        // Suma uno al numero de frames y suma el tiempo que ha tardado en procesarse el anterior
+        framesCount++;
+        framesTimesSum += Time.deltaTime;
+
+        // Si ha pasado el tiempo suficiente para una actualización del contador
         if (Time.time > nextFPSUpdate)
         {
-            nextFPSUpdate = Time.time + 1.0f;
-            int fps = Mathf.RoundToInt(1 / Time.deltaTime);
+            // Prepara la próxima actualización
+            nextFPSUpdate = Time.time + TIME_FOR_UPDATE;
+
+            // Calcula y asigna el número de frames por segundo
+            int fps = Mathf.RoundToInt(1 / (framesTimesSum / framesCount));
             FPSCounterText.text = "FPS: " + fps;
+
+            // Resetea los contadores
+            framesCount = 0;
+            framesTimesSum = 0;
         }
     }
 }
