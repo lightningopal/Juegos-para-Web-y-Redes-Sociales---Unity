@@ -8,7 +8,7 @@ public class CameraRig : MonoBehaviour
     // Variables
     [Tooltip("Player's Transform")]
     [SerializeField]
-    private Transform player;
+    private Transform player = null;
 
     [Tooltip("Lerp Pass")]
     [SerializeField]

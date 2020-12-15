@@ -9,7 +9,7 @@ public class FPSCounter : MonoBehaviour
     // Variables de control
     [Tooltip("Texto de los FPS")]
     [SerializeField]
-    private TextMeshProUGUI FPSCounterText;
+    private TextMeshProUGUI FPSCounterText = null;
 
     private const float TIME_FOR_UPDATE = 0.25f;
     private float nextFPSUpdate = 0.0f;

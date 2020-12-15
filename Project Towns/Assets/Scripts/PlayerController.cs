@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     [Tooltip("Agente NavMesh")]
     [SerializeField]
-    private NavMeshAgent thisAgent;
+    private NavMeshAgent thisAgent = null;
 
     /// <summary>
     /// Método Update, que se llama cada frame
