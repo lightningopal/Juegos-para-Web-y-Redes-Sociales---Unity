@@ -49740,6 +49740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1956527377}
+  lerpPass: 4
 --- !u!4 &1196090886
 Transform:
   m_ObjectHideFlags: 0

@@ -5,15 +5,34 @@
 /// </summary>
 public class CameraRig : MonoBehaviour
 {
+    // Variables
     [Tooltip("Player's Transform")]
-    public Transform player;
+    [SerializeField]
+    private Transform player;
+
+    [Tooltip("Lerp Pass")]
+    [SerializeField]
+    private float lerpPass = 4f;
+
+    // Rotation to go
+    private float desiredRotationY = 0;
 
     /// <summary>
     /// Método Update, que se llama cada frame
     /// </summary>
     void Update()
     {
-        this.transform.position = player.position;   
+        // Seguir al jugador
+        this.transform.position = player.position;
+
+        // Actualizar rotación (si fuera necesario)
+        if (Mathf.Abs(Mathf.Abs(this.transform.rotation.eulerAngles.y) - Mathf.Abs(desiredRotationY)) > (float.Epsilon * lerpPass))
+        {
+            Quaternion targetRotation = Quaternion.Euler(new Vector3(this.transform.rotation.eulerAngles.x, desiredRotationY, this.transform.rotation.eulerAngles.z));
+
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation,
+                targetRotation, lerpPass * Time.deltaTime);
+        }
     }
 
     /// <summary>
@@ -21,7 +40,9 @@ public class CameraRig : MonoBehaviour
     /// </summary>
     public void RotateHorary()
     {
-        this.transform.Rotate(new Vector3(0, 90, 0), Space.World);
+        desiredRotationY += 90;
+        if (desiredRotationY > 271)
+            desiredRotationY = 0;
     }
 
     /// <summary>
@@ -29,6 +50,8 @@ public class CameraRig : MonoBehaviour
     /// </summary>
     public void RotateAntihorary()
     {
-        this.transform.Rotate(new Vector3(0, -90, 0), Space.World);
+        desiredRotationY -= 90;
+        if (desiredRotationY < -1)
+            desiredRotationY = 270;
     }
 }

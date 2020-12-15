@@ -9,7 +9,8 @@ using UnityEngine.EventSystems;
 public class PlayerController : MonoBehaviour
 {
     [Tooltip("Agente NavMesh")]
-    public NavMeshAgent thisAgent;
+    [SerializeField]
+    private NavMeshAgent thisAgent;
 
     /// <summary>
     /// Método Update, que se llama cada frame
@@ -29,7 +30,7 @@ public class PlayerController : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
                 // Comprueba con qué ha chocado el raycast
-                Debug.Log("You selected the: " + hit.transform.name);
+                //Debug.Log("You selected the: " + hit.transform.name);
 
                 // Si es territorio transitable, mueve al agente a esa posición
                 if (hit.transform.CompareTag("Walkable"))
