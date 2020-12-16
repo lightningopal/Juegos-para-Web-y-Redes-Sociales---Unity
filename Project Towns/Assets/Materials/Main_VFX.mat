@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Surprise
+  m_Name: Main_VFX
   m_Shader: {fileID: -6465566751694194690, guid: 58eb84e168eac5c4399828eba4908e2b,
     type: 3}
   m_ShaderKeywords: 
@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_575272F7:
-        m_Texture: {fileID: 2800000, guid: e52757887bdbfd34587eb287619b1d73, type: 3}
+        m_Texture: {fileID: 2800000, guid: 43a62b285f0f44a46b2bd86a1c0a6dd9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
