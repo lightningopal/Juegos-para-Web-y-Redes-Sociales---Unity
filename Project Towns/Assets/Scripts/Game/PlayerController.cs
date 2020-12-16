@@ -8,10 +8,13 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
+    #region Variables
     [Tooltip("Agente NavMesh")]
     [SerializeField]
     private NavMeshAgent thisAgent = null;
+    #endregion
 
+    #region MétodosUnity
     /// <summary>
     /// Método Update, que se llama cada frame
     /// </summary>
@@ -40,7 +43,9 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    #endregion
 
+    #region MétodosClase
     /// <summary>
     /// Método IsPointerOverUIObject, que comprueba si el ratón está sobre un elemento de la UI
     /// </summary>
@@ -53,4 +58,5 @@ public class PlayerController : MonoBehaviour
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         return results.Count > 0;
     }
+    #endregion
 }

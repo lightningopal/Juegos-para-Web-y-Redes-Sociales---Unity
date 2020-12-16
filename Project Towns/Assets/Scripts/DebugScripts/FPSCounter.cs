@@ -6,7 +6,7 @@ using UnityEngine;
 /// </summary>
 public class FPSCounter : MonoBehaviour
 {
-    // Variables de control
+    #region Variables
     [Tooltip("Texto de los FPS")]
     [SerializeField]
     private TextMeshProUGUI FPSCounterText = null;
@@ -16,7 +16,9 @@ public class FPSCounter : MonoBehaviour
 
     private int framesCount = 0;
     private float framesTimesSum = 0f;
+    #endregion
 
+    #region MétodosUnity
     /// <summary>
     /// Método Update, que se llama cada frame
     /// </summary>
@@ -41,4 +43,5 @@ public class FPSCounter : MonoBehaviour
             framesTimesSum = 0;
         }
     }
+    #endregion
 }
