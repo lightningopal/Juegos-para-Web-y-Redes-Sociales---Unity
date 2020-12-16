@@ -5,7 +5,7 @@
 /// </summary>
 public class CameraRig : MonoBehaviour
 {
-    // Variables
+    #region Variables
     [Tooltip("Player's Transform")]
     [SerializeField]
     private Transform player = null;
@@ -16,7 +16,9 @@ public class CameraRig : MonoBehaviour
 
     // Rotation to go
     private float desiredRotationY = 0;
+    #endregion
 
+    #region MétodosUnity
     /// <summary>
     /// Método Update, que se llama cada frame
     /// </summary>
@@ -34,7 +36,9 @@ public class CameraRig : MonoBehaviour
                 targetRotation, lerpPass * Time.deltaTime);
         }
     }
+    #endregion
 
+    #region MétodosClase
     /// <summary>
     /// Método RotateHorary, para girar la cámara en sentido horario
     /// </summary>
@@ -54,4 +58,5 @@ public class CameraRig : MonoBehaviour
         if (desiredRotationY < -1)
             desiredRotationY = 270;
     }
+    #endregion
 }
