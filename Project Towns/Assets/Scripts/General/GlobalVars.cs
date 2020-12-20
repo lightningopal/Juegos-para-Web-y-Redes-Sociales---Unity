@@ -8,15 +8,13 @@ public class GlobalVars : MonoBehaviour
     #region Variables
     [Tooltip("Singleton")]
     [HideInInspector]
-    public static GlobalVars globalVars;
+    public static GlobalVars instance;
 
     public float musicVolume;
     public float fxVolume;
-    public int languageIndex;
+    public float brightnessLvl;
 
-    //public float brightnessLvl;
-    //public bool fullScreen;
-    //public Resolution resolution;
+    public int languageIndex;
     #endregion
 
     #region MétodosUnity
@@ -25,18 +23,25 @@ public class GlobalVars : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        if (globalVars == null)
+        if (instance == null)
         {
-            globalVars = this;
+            instance = this;
             DontDestroyOnLoad(this);
         }
         else
         {
             Destroy(gameObject);
         }
-        ReadOptions();
     }
     #endregion
+
+    /// <summary>
+    /// Método Start, que se llama antes del primer frame
+    /// </summary>
+    void Start()
+    {
+        ReadOptions();
+    }
 
     #region MétodosClase
     /// <summary>
@@ -44,7 +49,20 @@ public class GlobalVars : MonoBehaviour
     /// </summary>
     private void ReadOptions()
     {
+        musicVolume = 0.5f;
+        fxVolume = 0.5f;
 
+        foreach (Audio a in AudioManager.instance.music)
+        {
+            a.source.volume = musicVolume;
+        }
+
+        foreach (Audio a in AudioManager.instance.sounds)
+        {
+            a.source.volume = fxVolume;
+        }
+
+        brightnessLvl = 0f;
     }
     #endregion
 }

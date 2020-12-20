@@ -8,7 +8,6 @@ public class AudioManager : MonoBehaviour
 {
     #region Variables
     [Tooltip("Singleton")]
-    [HideInInspector]
     public static AudioManager instance;
 
     [Tooltip("All music in the game")]
