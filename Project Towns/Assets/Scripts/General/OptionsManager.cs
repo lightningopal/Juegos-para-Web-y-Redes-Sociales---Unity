@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using TMPro;
 
 /// <summary>
 /// Clase OptionsManager, que controla las opciones en cada escena
@@ -43,6 +44,12 @@ public class OptionsManager : MonoBehaviour
     // Nivel brillo
     private float brightnessLvl;
 
+    // Idioma
+    [Tooltip("Dropdown de idiomas")]
+    [SerializeField]
+    private TMP_Dropdown languagesDropdown = null;
+    private int currentLanguageIndex;
+
     // Escena actual
     private Scene actualScene;
     #endregion
@@ -68,6 +75,11 @@ public class OptionsManager : MonoBehaviour
         // Obtener componentes de post proceso
         postProcessVolume.profile.TryGet<ColorAdjustments>(out colorAdjustments);
         colorAdjustments.postExposure.value = brightnessLvl;
+
+        // Idioma
+        currentLanguageIndex = (int)LocalizationSystem.language;
+        languagesDropdown.value = currentLanguageIndex;
+        languagesDropdown.RefreshShownValue();
     }
     #endregion
 
@@ -110,6 +122,17 @@ public class OptionsManager : MonoBehaviour
         GlobalVars.instance.brightnessLvl = brightnessLvl;
 
         colorAdjustments.postExposure.value = brightnessLvl;
+    }
+
+    /// <summary>
+    /// Método SetLanguage, que cambia el idioma
+    /// </summary>
+    /// <param name="resolutionIndex"></param>
+    public void SetLanguage(int languageIndex)
+    {
+        LocalizationSystem.language = LocalizationSystem.GetLanguageByIndex(languageIndex);
+        LocalizationTexts.instance.UpdateTexts();
+        WriteOptions();
     }
 
     /// <summary>

@@ -7,14 +7,13 @@ public class GlobalVars : MonoBehaviour
 {
     #region Variables
     [Tooltip("Singleton")]
-    [HideInInspector]
     public static GlobalVars instance;
 
     public float musicVolume;
     public float fxVolume;
     public float brightnessLvl;
 
-    public int languageIndex;
+    public LocalizationSystem.Language language;
     #endregion
 
     #region MétodosUnity
@@ -33,7 +32,6 @@ public class GlobalVars : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    #endregion
 
     /// <summary>
     /// Método Start, que se llama antes del primer frame
@@ -42,6 +40,7 @@ public class GlobalVars : MonoBehaviour
     {
         ReadOptions();
     }
+    #endregion
 
     #region MétodosClase
     /// <summary>
@@ -63,6 +62,9 @@ public class GlobalVars : MonoBehaviour
         }
 
         brightnessLvl = 0f;
+
+        LocalizationSystem.language = LocalizationSystem.Language.English;
+        LocalizationTexts.instance.UpdateTexts();
     }
     #endregion
 }

@@ -13,7 +13,7 @@ public class LocalizedText : MonoBehaviour
 
     [Tooltip("Clave del texto para localización")]
     [SerializeField]
-    private string key = null;
+    private LocalizedString localizedString = null;
     #endregion
 
     #region MétodosUnity
@@ -23,7 +23,19 @@ public class LocalizedText : MonoBehaviour
     void Start()
     {
         textField = GetComponent<TextMeshProUGUI>();
-        string value = LocalizationSystem.GetLocalizedValue(key);
+        string value = localizedString.value;
+        textField.text = value;
+    }
+    #endregion
+
+    #region MétodosClase
+    /// <summary>
+    /// Método UpdateText, que actualiza el valor del texto
+    /// </summary>
+    public void UpdateText()
+    {
+        textField = GetComponent<TextMeshProUGUI>();
+        string value = localizedString.value;
         textField.text = value;
     }
     #endregion

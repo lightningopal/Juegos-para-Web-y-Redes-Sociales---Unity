@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using System.IO;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -14,11 +15,8 @@ public class CSVLoader
     // Separador de línea
     private readonly char lineSeparator = '\n';
 
-    // Carácter que envuelve
-    private readonly char surround = '"';
-
     // Array de strings de separadores de campo
-    private readonly string[] fieldSeparator = { "\",\"" };
+    private readonly string[] fieldSeparator = { ";" };
     #endregion
 
     #region MétodosClase
@@ -52,18 +50,10 @@ public class CSVLoader
             }
         }
 
-        Regex CSVParser = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
-
         for (int i = 1; i < lines.Length; i++)
         {
             string line = lines[i];
-            string[] fields = CSVParser.Split(line);
-
-            for (int j = 0; j < fields.Length; j++)
-            {
-                fields[j] = fields[j].TrimStart(' ', surround);
-                fields[j] = fields[j].TrimEnd('\r', surround);
-            }
+            string[] fields = line.Split(';');
 
             if (fields.Length > attributeIndex)
             {
@@ -72,7 +62,7 @@ public class CSVLoader
                 if (dictionary.ContainsKey(key))
                     continue;
 
-                var value = fields[attributeIndex];
+                var value = (fields[attributeIndex] != string.Empty) ? fields[attributeIndex] : key;
 
                 dictionary.Add(key, value);
             }
@@ -80,5 +70,68 @@ public class CSVLoader
 
         return dictionary;
     }
+
+#if UNITY_EDITOR
+    /// <summary>
+    /// Método Add, para añadir una nueva clave
+    /// </summary>
+    /// <param name="key">Clave</param>
+    /// <param name="value">Valor en inglés</param>
+    public void Add(string key, string value)
+    {
+        string appended = string.Format("\n{0};{1};", key, value);
+        File.AppendAllText("Assets/Resources/Localization.csv", appended);
+
+        UnityEditor.AssetDatabase.Refresh();
+    }
+
+    /// <summary>
+    /// Método Remove, para borrar una clave
+    /// </summary>
+    /// <param name="key">Clave a borrar</param>
+    public void Remove(string key)
+    {
+        string[] lines = csvFile.text.Split(lineSeparator);
+
+        string[] keys = new string[lines.Length];
+
+        for (int i = 0; i < lines.Length; i++)
+        {
+            string line = lines[i];
+            keys[i] = line.Split(fieldSeparator, System.StringSplitOptions.None)[0];
+        }
+
+        int index = -1;
+
+        for (int i = 0; i < keys.Length; i++)
+        {
+            if (keys[i].Contains(key))
+            {
+                index = i;
+                break;
+            }
+        }
+
+        if (index > -1)
+        {
+            string[] newLines;
+            newLines = lines.Where(w => w != lines[index]).ToArray();
+
+            string replaced = string.Join(lineSeparator.ToString(), newLines);
+            File.WriteAllText("Assets/Resources/Localization.csv", replaced);
+        }
+    }
+
+    /// <summary>
+    /// Método Edit, para editar una clave
+    /// </summary>
+    /// <param name="key">Clave a editar</param>
+    /// <param name="value">Valor</param>
+    public void Edit(string key, string value)
+    {
+        Remove(key);
+        Add(key, value);
+    }
+#endif
     #endregion
 }
