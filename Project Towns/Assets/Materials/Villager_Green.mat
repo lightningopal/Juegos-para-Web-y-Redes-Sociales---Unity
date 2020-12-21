@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Characters
+  m_Name: Villager_Green
   m_Shader: {fileID: -6465566751694194690, guid: 2a844dd2e79845e43957d88bfd965ea1,
     type: 3}
   m_ShaderKeywords: 
@@ -32,5 +32,5 @@ Material:
     - Vector1_61F2BAC4: 0
     - Vector1_86CE14BB: 0
     m_Colors:
-    - Color_9B8ECB0C: {r: 0.34901965, g: 1, b: 0.9113744, a: 0}
-    - Color_BC7AED76: {r: 0.18836774, g: 0.3165595, b: 0.7830189, a: 0}
+    - Color_9B8ECB0C: {r: 0.18396229, g: 1, b: 0.7311876, a: 0}
+    - Color_BC7AED76: {r: 0, g: 0.532, b: 0.17398742, a: 0}
