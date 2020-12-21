@@ -116,6 +116,7 @@ public class LocalizationSystem
         }
     }
 
+#if UNITY_EDITOR
     /// <summary>
     /// Método Add, para añadir una nueva clave
     /// </summary>
@@ -193,5 +194,6 @@ public class LocalizationSystem
 
         return localisedEN;
     }
-    #endregion
+#endif
+#endregion
 }

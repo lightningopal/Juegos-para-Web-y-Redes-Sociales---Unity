@@ -70,11 +70,12 @@ public class OptionsManager : MonoBehaviour
 
         musicSlider.value = musicVolume;
         fxSlider.value = fxVolume;
-        brightnessSlider.value = brightnessLvl;
 
         // Obtener componentes de post proceso
         postProcessVolume.profile.TryGet<ColorAdjustments>(out colorAdjustments);
         colorAdjustments.postExposure.value = brightnessLvl;
+
+        brightnessSlider.value = brightnessLvl;
 
         // Idioma
         currentLanguageIndex = (int)LocalizationSystem.language;
@@ -148,22 +149,13 @@ public class OptionsManager : MonoBehaviour
     /// </summary>
     private void WriteOptions()
     {
-        /*//Path the our text file.
-        string path = "./Dance Kingdom_Data/Resources/options.txt";
+        // PlayerPrefs
+        PlayerPrefs.SetFloat("musicVolume", musicVolume);
+        PlayerPrefs.SetFloat("fxVolume", fxVolume);
+        PlayerPrefs.SetFloat("brightnessLvl", brightnessLvl);
+        PlayerPrefs.SetInt("languageIndex", currentLanguageIndex);
 
-        //Erase all content of the text file.
-        System.IO.File.WriteAllText(path, string.Empty);
-
-        //Writer to write on our text file.
-        StreamWriter writer = new StreamWriter(path, true);
-
-        //We write our options in the text file.
-        writer.WriteLine("musicVolume:" + musicVolume);
-        writer.WriteLine("fxVolume:" + fxVolume);
-        writer.WriteLine("brightnessLvl:" + brightnessLvl);
-        
-        //Close the writer.
-        writer.Close();*/
+        PlayerPrefs.Save();
     }
     #endregion
 }

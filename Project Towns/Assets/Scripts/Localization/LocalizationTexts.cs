@@ -38,7 +38,7 @@ public class LocalizationTexts : MonoBehaviour
             LocalizationSystem.Init();
 
         LocalizedText[] localizedTexts = Resources.FindObjectsOfTypeAll<LocalizedText>();
-        Debug.Log("TextCount: " + localizedTexts.Length);
+
         foreach (LocalizedText localizedText in localizedTexts)
         {
             localizedText.UpdateText();

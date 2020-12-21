@@ -48,8 +48,16 @@ public class GlobalVars : MonoBehaviour
     /// </summary>
     private void ReadOptions()
     {
+        // PlayerPrefs
+        /*musicVolume = PlayerPrefs.GetFloat("musicVolume", 0.5f);
+        fxVolume = PlayerPrefs.GetFloat("fxVolume", 0.5f);
+        brightnessLvl =  PlayerPrefs.GetFloat("brightnessLvl", 0f);
+        int languageIndex = PlayerPrefs.GetInt("languageIndex", 0);*/
+
         musicVolume = 0.5f;
         fxVolume = 0.5f;
+        brightnessLvl = 0f;
+        int languageIndex = 0;
 
         foreach (Audio a in AudioManager.instance.music)
         {
@@ -61,9 +69,7 @@ public class GlobalVars : MonoBehaviour
             a.source.volume = fxVolume;
         }
 
-        brightnessLvl = 0f;
-
-        LocalizationSystem.language = LocalizationSystem.Language.English;
+        LocalizationSystem.language = LocalizationSystem.GetLanguageByIndex(languageIndex);
         LocalizationTexts.instance.UpdateTexts();
     }
     #endregion
