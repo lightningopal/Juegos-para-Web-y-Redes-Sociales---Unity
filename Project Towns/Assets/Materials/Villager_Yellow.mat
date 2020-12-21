@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Villager_Yellow
+  m_Shader: {fileID: -6465566751694194690, guid: 2a844dd2e79845e43957d88bfd965ea1,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_6B91AF2F:
+        m_Texture: {fileID: 2800000, guid: 5b84df3abca23034a9ba0dd410936aac, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C8062369:
+        m_Texture: {fileID: 2800000, guid: 3ac58471b34a11c4795f69622f229b14, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_61F2BAC4: 0
+    - Vector1_86CE14BB: 0
+    m_Colors:
+    - Color_9B8ECB0C: {r: 1, g: 0.7833333, b: 0, a: 0}
+    - Color_BC7AED76: {r: 0.83, g: 0.29019305, b: 0, a: 0}
