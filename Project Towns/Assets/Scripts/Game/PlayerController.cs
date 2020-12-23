@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Si el jugador hace click con el ratón
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             // Si está el ratón sobre la UI, no se lanza Raycast
             if (IsPointerOverUIObject())

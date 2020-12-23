@@ -13,12 +13,12 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI robberiesText = null;
 
     [Header("Imágenes")]
-    [Tooltip("Sprite del fondo de los intentos")]
+    /*[Tooltip("Sprite del fondo de los intentos")]
     [SerializeField]
     private Sprite attemptsBackgroundSprite = null;
     [Tooltip("Sprite del corazón lleno")]
     [SerializeField]
-    private Sprite attemptsFilledHeartSprite = null;
+    private Sprite attemptsFilledHeartSprite = null;*/
     [Tooltip("Sprite del corazón vacío")]
     [SerializeField]
     private Sprite attemptsEmptyHeartSprite = null;
