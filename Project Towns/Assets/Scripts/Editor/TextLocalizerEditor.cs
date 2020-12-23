@@ -92,7 +92,7 @@ public class TextLocalizerSearchWindow : EditorWindow
             if (value == null)
             {
                 EditorGUILayout.BeginHorizontal("box");
-                Texture checkIcon = Resources.Load<Texture>("check");
+                Texture checkIcon = Resources.Load<Texture>("Icons/check");
 
                 GUIContent contentCheck = new GUIContent(checkIcon);
 
@@ -102,7 +102,7 @@ public class TextLocalizerSearchWindow : EditorWindow
                     AssetDatabase.Refresh();
                 }
 
-                Texture closeIcon = Resources.Load<Texture>("close");
+                Texture closeIcon = Resources.Load<Texture>("Icons/close");
 
                 GUIContent contentClose = new GUIContent(closeIcon);
 
@@ -127,7 +127,7 @@ public class TextLocalizerSearchWindow : EditorWindow
                 if (element.Key.ToLower().Contains(value.ToLower()) || element.Value.ToLower().Contains(value.ToLower()))
                 {
                     EditorGUILayout.BeginHorizontal("box");
-                    Texture checkIcon = Resources.Load<Texture>("check");
+                    Texture checkIcon = Resources.Load<Texture>("Icons/check");
 
                     GUIContent contentCheck = new GUIContent(checkIcon);
 
@@ -137,7 +137,7 @@ public class TextLocalizerSearchWindow : EditorWindow
                         AssetDatabase.Refresh();
                     }
 
-                    Texture closeIcon = Resources.Load<Texture>("close");
+                    Texture closeIcon = Resources.Load<Texture>("Icons/close");
 
                     GUIContent contentClose = new GUIContent(closeIcon);
 
