@@ -20,13 +20,22 @@ public class GameManager : MonoBehaviour
 
     [Header("Zonas")]
     [Tooltip("Lista de zonas")]
-    public List<Zone> zones = new List<Zone>();
+    [SerializeField]
+    private List<Zone> zones = new List<Zone>();
+
+    [Header("Aldeanos")]
+    [Tooltip("Objeto padre de los aldeanos")]
+    [SerializeField]
+    private GameObject villagersParent = null;
+    [Tooltip("Lista de putos de spawn aldeanos")]
+    [SerializeField]
+    private List<Transform> villagerPoints = new List<Transform>();
 
     [Header("Valores de la partida")]
     [Tooltip("Contador de robos")]
-    private int robberyCount = 0;
+    private int robberiesLeft;
     [Tooltip("Contador de intentos")]
-    private int attemptsCount = 0;
+    private int attemptsCount;
 
     // Flotantes para el tiempo que se ha tardado
     private float startGameTime, endGameTime;
@@ -77,6 +86,23 @@ public class GameManager : MonoBehaviour
         }
 
         difficulty = Resources.Load<Difficulty>("Difficulties/Difficulty_" + difficulty_index + "_" + difficultyName);
+
+        // Asignar valores de la dificultad
+        robberiesLeft = difficulty.thiefRobberies;
+        attemptsCount = difficulty.catchAttempts;
+
+        // Actualizar UI
+        // Textos
+        UIManager.instance.UpdateRobberiesText(robberiesLeft, difficulty.thiefRobberies);
+
+        // Intentos
+        //UIManager.instance.InitializeAttempts(difficulty.catchAttempts);
+
+        // Spawnear Aldeanos
+        //SpawnVillagers();
+
+        // Despausa la partida (si estuviera en pausa)
+        ResumeGame();
     }
 
     /// <summary>
@@ -89,23 +115,44 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region MétodosClase
+    public void SpawnVillagers()
+    {
+        List<Transform> updatedVillagerPoints = new List<Transform>(villagerPoints);
+        for (int i = 0; i < difficulty.villagers; i++)
+        {
+            // Obtener datos aleatorios
+            int randomNumber = Random.Range(0, updatedVillagerPoints.Count);
+            Transform randomPoint = updatedVillagerPoints[randomNumber];
+            Quaternion randomRotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
+
+            // Instanciar objeto
+            GameObject testGO = new GameObject();
+            Instantiate(testGO, randomPoint.position, randomRotation, villagersParent.transform);
+
+            // Borrar posición de la lista
+            updatedVillagerPoints.RemoveAt(randomNumber);
+        }
+    }
+
     /// <summary>
-    /// Método AddRobbery, que añade un robo al ladrón
+    /// Método AddRobbery, que resta un robo al ladrón
     /// </summary>
     public void AddRobbery()
     {
-        robberyCount++;
-        if (robberyCount == difficulty.thiefRobberies)
+        robberiesLeft--;
+        UIManager.instance.UpdateRobberiesText(robberiesLeft, difficulty.thiefRobberies);
+        if (robberiesLeft == 0)
             EndGame();
     }
 
     /// <summary>
-    /// Método AddAttempt, que añade un intento fallido
+    /// Método AddAttempt, que resta un intento fallido
     /// </summary>
     public void AddAttempt()
     {
-        attemptsCount++;
-        if (attemptsCount == difficulty.catchAttempts)
+        attemptsCount--;
+        UIManager.instance.UpdateAttempts(attemptsCount);
+        if (attemptsCount == 0)
             EndGame();
     }
 
