@@ -594,7 +594,7 @@ ParticleSystem:
     startRotation:
       serializedVersion: 2
       minMaxState: 3
-      scalar: -1.2217305
+      scalar: -1.0471976
       minScalar: -0.5235988
       maxCurve:
         serializedVersion: 2
@@ -1507,7 +1507,7 @@ ParticleSystem:
     frameOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.22222222
       minScalar: 0.9999
       maxCurve:
         serializedVersion: 2
@@ -1611,8 +1611,8 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     speedRange: {x: 0, y: 1}
-    tilesX: 2
-    tilesY: 2
+    tilesX: 3
+    tilesY: 3
     animationType: 0
     rowIndex: 0
     cycles: 1
