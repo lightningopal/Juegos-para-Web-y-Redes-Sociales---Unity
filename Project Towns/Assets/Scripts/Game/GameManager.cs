@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     #region MétodosUnity
     /// <summary>
-    /// Método Awake, that executes on script load
+    /// Método Awake, que se ejecuta cuando carga el script
     /// </summary>
     void Awake()
     {
