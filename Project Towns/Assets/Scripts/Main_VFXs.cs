@@ -7,16 +7,26 @@ using UnityEngine;
 /// </summary>
 public class Main_VFXs : MonoBehaviour
 {
-    public CameraRig camRig;
-    // Start is called before the first frame update
+    #region Variables
+    [Tooltip("Camera Rig")]
+    [SerializeField]
+    private CameraRig camRig;
+    #endregion
+
+    #region Metodos Unity
+    // Método Start, que se llama al iniciar el objeto
     void Start()
     {
         camRig = FindObjectOfType<CameraRig>();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Método Update, que se llama cada frame
+    /// </summary>
     void Update()
     {
         this.transform.rotation = camRig.transform.rotation;
     }
+    #endregion
+
 }
