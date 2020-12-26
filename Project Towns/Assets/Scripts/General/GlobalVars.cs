@@ -54,11 +54,6 @@ public class GlobalVars : MonoBehaviour
         brightnessLvl =  PlayerPrefs.GetFloat("brightnessLvl", 0f);
         int languageIndex = PlayerPrefs.GetInt("languageIndex", 0);
 
-        /*musicVolume = 0.5f;
-        fxVolume = 0.5f;
-        brightnessLvl = 0f;
-        languageIndex = 0;*/
-
         foreach (Audio a in AudioManager.instance.music)
         {
             a.source.volume = musicVolume;
