@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// El script simplemente accede al Rig de la cámara, y copia su rotación
@@ -14,7 +12,9 @@ public class Main_VFXs : MonoBehaviour
     #endregion
 
     #region Metodos Unity
-    // Método Start, que se llama al iniciar el objeto
+    /// <summary>
+    /// Método Start, que se llama antes del primer frame
+    /// </summary>
     void Start()
     {
         camRig = FindObjectOfType<CameraRig>();

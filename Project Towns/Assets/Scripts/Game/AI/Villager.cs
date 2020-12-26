@@ -9,7 +9,7 @@ using UnityEngine.AI;
 public class Villager : MonoBehaviour
 {
     #region Variables
-    [Header("Parámetros")]
+    [Header("Probabilidades")]
     [Tooltip("Probabilidad de que ambos datos sean seguros siendo víctima")]
     public int victimSafeProbability = 50;
     [Tooltip("Probabilidad de que ambos datos sean veraces siendo víctima")]
@@ -19,12 +19,6 @@ public class Villager : MonoBehaviour
     [Tooltip("Probabilidad de que el dato sea veraz siendo testigo")]
     public int witnessVeracityProbability = 50;
 
-    [Header("Información sobre el aldeano")]
-    [Tooltip("Booleano que indica si es víctima")]
-    public bool isVictim = false;
-    [Tooltip("Booleano que indica si es testigo")]
-    public bool isWitness = false;
-
     [Header("Parámetros")]
     [Tooltip("Distancia de visión")]
     [SerializeField]
@@ -32,6 +26,30 @@ public class Villager : MonoBehaviour
     [Tooltip("Ángulo de visión")]
     [SerializeField]
     private float visionAngle = 0;
+
+    [Header("Información sobre el aldeano")]
+    [Tooltip("Booleano que indica si es víctima")]
+    [HideInInspector]
+    public bool isVictim = false;
+    [Tooltip("Booleano que indica si es testigo")]
+    [HideInInspector]
+    public bool isWitness = false;
+
+    [Header("Objetos")]
+    [Tooltip("Items del aldeano")]
+    public VillagerItems items;
+    [Tooltip("Ojos del aldeano")]
+    [SerializeField]
+    private GameObject[] eyes = new GameObject[3];
+    [Tooltip("Padre del sombrero del aldeano")]
+    [SerializeField]
+    private GameObject hatParent = null;
+    [Tooltip("Padre de los cuernos del aldeano")]
+    [SerializeField]
+    private GameObject hornsParent = null;
+    [Tooltip("Padre del objeto del cuello del aldeano")]
+    [SerializeField]
+    private GameObject neckItemParent = null;
 
     // Referencia al ladrón
     private Transform thief;
@@ -52,10 +70,10 @@ public class Villager : MonoBehaviour
     /// </summary>
     void Start()
     {
-        // Color y objetos
-        int randomMaterialNumber = Random.Range(0, 5);
-        this.GetComponentInChildren<SkinnedMeshRenderer>().material = ItemDatabase.instance.characterColors[randomMaterialNumber].itemMaterial;
+        // Aleatorizar aldeano
+        RandomizeVillager();
 
+        // Referencia al ladrón
         thief = FindObjectOfType<PlayerController>().transform;
     }
 
@@ -126,8 +144,67 @@ public class Villager : MonoBehaviour
     #endregion
 
     #region MétodosClase
+
     /// <summary>
-    /// Método HasSeenRobbery,para comprobar si ha visto el robo
+    /// Método RandomizeVillager, que aleatoriza los objetos del aldeano
+    /// </summary>
+    public void RandomizeVillager()
+    {
+        // Color
+        int randomMaterialNumber = Random.Range(0, 5);
+        items.villagerColor = ItemDatabase.instance.characterColors[randomMaterialNumber];
+        this.GetComponentInChildren<SkinnedMeshRenderer>().material = items.villagerColor.itemMaterial;
+
+        // Ojos
+        int randomEyesNumber = Random.Range(1, 4);
+        items.eyesNumber = randomEyesNumber;
+
+        // Desactivamos los ojos en desuso
+        switch (randomEyesNumber)
+        {
+            case 1:
+                eyes[1].SetActive(false);
+                eyes[2].SetActive(false);
+                break;
+            case 2:
+                eyes[0].SetActive(false);
+                break;
+        }
+
+        // Objetos
+        // Sombrero
+        int randomHatNumber = Random.Range(-1, ItemDatabase.instance.hatItems.Count);
+        if (randomHatNumber == -1)
+            items.hatItem = null;
+        else
+        {
+            items.hatItem = ItemDatabase.instance.hatItems[randomHatNumber];
+            Instantiate(items.hatItem.itemGameObject, hatParent.transform);
+        }
+
+        // Cuernos
+        int randomHornsNumber = Random.Range(-1, ItemDatabase.instance.hornItems.Count);
+        if (randomHornsNumber == -1)
+            items.hornItem = null;
+        else
+        {
+            items.hornItem = ItemDatabase.instance.hornItems[randomHornsNumber];
+            Instantiate(items.hornItem.itemGameObject, hornsParent.transform);
+        }
+
+        // Objetos del cuello
+        int randomNeckItemNumber = Random.Range(-1, ItemDatabase.instance.neckItems.Count);
+        if (randomNeckItemNumber == -1)
+            items.neckItem = null;
+        else
+        {
+            items.neckItem = ItemDatabase.instance.neckItems[randomNeckItemNumber];
+            Instantiate(items.neckItem.itemGameObject, neckItemParent.transform);
+        }
+    }
+
+    /// <summary>
+    /// Método HasSeenRobbery, para comprobar si ha visto el robo
     /// </summary>
     /// <returns>Booleano que indica si ha visto el robo</returns>
     private bool HasSeenRobbery()

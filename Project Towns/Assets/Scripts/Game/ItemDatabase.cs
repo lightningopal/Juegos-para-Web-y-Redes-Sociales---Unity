@@ -10,11 +10,16 @@ public class ItemDatabase : MonoBehaviour
     [Tooltip("Singleton")]
     public static ItemDatabase instance;
 
+    [Header("Items")]
     [Tooltip("Colores de los personajes")]
     public MaterialItem[] characterColors = new MaterialItem[5];
 
-    [Tooltip("Objetos de la cabeza")]
-    public List<Item> headItems = new List<Item>();
+    [Tooltip("Sombreros")]
+    public List<Item> hatItems = new List<Item>();
+    [Tooltip("Cuernos")]
+    public List<Item> hornItems = new List<Item>();
+    [Tooltip("Objetos del cuello")]
+    public List<Item> neckItems = new List<Item>();
     #endregion
 
     #region MétodosUnity

@@ -27,9 +27,14 @@ public class GameManager : MonoBehaviour
     [Tooltip("Objeto padre de los aldeanos")]
     [SerializeField]
     private GameObject villagersParent = null;
+    [Tooltip("Prefab del aldeano")]
+    [SerializeField]
+    private GameObject villagerPrefab = null;
     [Tooltip("Lista de putos de spawn aldeanos")]
     [SerializeField]
     private List<Transform> villagerPoints = new List<Transform>();
+    [Tooltip("Lista de aldeanos")]
+    private List<Villager> villagers = new List<Villager>();
 
     [Header("Valores de la partida")]
     [Tooltip("Contador de robos")]
@@ -72,6 +77,7 @@ public class GameManager : MonoBehaviour
     {
         // Obtener la dificultad elegida
         string difficultyName = "";
+        difficulty_index = GlobalVars.instance.difficulty;
         switch (difficulty_index)
         {
             case 0:
@@ -126,12 +132,45 @@ public class GameManager : MonoBehaviour
             Quaternion randomRotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
 
             // Instanciar objeto
-            GameObject testGO = new GameObject();
-            Instantiate(testGO, randomPoint.position, randomRotation, villagersParent.transform);
+            GameObject villagerGameObject = Instantiate(villagerPrefab, randomPoint.position, randomRotation, villagersParent.transform);
+
+            // Obtener componente Villager
+            Villager newVillager = villagerGameObject.GetComponent<Villager>();
+
+            // Comprobamos si ya existe uno igual
+            while (CheckDuplicateVillager(newVillager))
+            {
+                newVillager.RandomizeVillager();
+            }
+
+            // Añadimos al aldeano a la lista
+            villagers.Add(newVillager);
 
             // Borrar posición de la lista
-            updatedVillagerPoints.RemoveAt(randomNumber);
+            updatedVillagerPoints.Remove(randomPoint);
         }
+    }
+
+    /// <summary>
+    /// Método CheckDuplicateVillager, que comprueba si ya hay un aldeano exactamente igual
+    /// </summary>
+    public bool CheckDuplicateVillager(Villager thisVillager)
+    {
+        VillagerItems thisVillagerItems = thisVillager.items;
+        VillagerItems villagerInListItems;
+        foreach (Villager villagerInList in villagers)
+        {
+            villagerInListItems = villagerInList.items;
+            if (thisVillagerItems.villagerColor.itemName == villagerInListItems.villagerColor.itemName &&
+                thisVillagerItems.eyesNumber == villagerInListItems.eyesNumber &&
+                thisVillagerItems.hatItem.itemName == villagerInListItems.hatItem.itemName &&
+                thisVillagerItems.hornItem.itemName == villagerInListItems.hornItem.itemName &&
+                thisVillagerItems.neckItem.itemName == villagerInListItems.neckItem.itemName)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     /// <summary>

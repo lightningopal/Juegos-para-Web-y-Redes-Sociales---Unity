@@ -9,7 +9,7 @@ public class LevelLoader : MonoBehaviour
     #region Variables
     [Tooltip("Lista de escenas")]
     [SerializeField]
-    private List<string> scenes;
+    private List<string> scenes = new List<string>();
     private string sceneToLoad;
 
     [Tooltip("Animator")]
