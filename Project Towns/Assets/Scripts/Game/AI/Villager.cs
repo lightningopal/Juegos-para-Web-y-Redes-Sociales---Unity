@@ -54,7 +54,7 @@ public class Villager : MonoBehaviour
     {
         // Color y objetos
         int randomMaterialNumber = Random.Range(0, 5);
-        this.GetComponent<MeshRenderer>().material = ItemDatabase.instance.characterColors[randomMaterialNumber].itemMaterial;
+        this.GetComponentInChildren<SkinnedMeshRenderer>().material = ItemDatabase.instance.characterColors[randomMaterialNumber].itemMaterial;
 
         thief = FindObjectOfType<PlayerController>().transform;
     }
