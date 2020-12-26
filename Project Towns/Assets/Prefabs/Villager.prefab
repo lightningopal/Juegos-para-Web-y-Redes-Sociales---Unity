@@ -561,6 +561,8 @@ Transform:
   - {fileID: 8048365165936529779}
   - {fileID: 7825897930148623464}
   - {fileID: 4235929671914478017}
+  - {fileID: 9092159062001798135}
+  - {fileID: 9163445689065071161}
   m_Father: {fileID: 6439113836622724625}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -812,6 +814,36 @@ Transform:
   m_Father: {fileID: 2005972459567425043}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7272823912924605116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9163445689065071161}
+  m_Layer: 0
+  m_Name: Necklaze
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9163445689065071161
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7272823912924605116}
+  m_LocalRotation: {x: -0.49119326, y: 0.49119323, z: 0.5086542, w: 0.50865436}
+  m_LocalPosition: {x: 0.18155523, y: 0.54838896, z: 0.00022330042}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2005972459567425043}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7292510264838969504
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,6 +968,36 @@ Transform:
   - {fileID: 6439113836622724625}
   m_Father: {fileID: 4414568781977150272}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8711029858104181261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9092159062001798135}
+  m_Layer: 0
+  m_Name: Horn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9092159062001798135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8711029858104181261}
+  m_LocalRotation: {x: -0.49119323, y: 0.49119315, z: 0.50865424, w: 0.5086544}
+  m_LocalPosition: {x: -0.6534448, y: 0.041931268, z: 0.0044878377}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2005972459567425043}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5824112277902922631
 PrefabInstance:
