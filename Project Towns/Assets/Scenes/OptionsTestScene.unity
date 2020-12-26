@@ -425,20 +425,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1388708114}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1916806541}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1677282215}
+        m_MethodName: LoadCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -591,13 +580,43 @@ PrefabInstance:
     - target: {fileID: 3691359553900180261, guid: 4d951fe08017cfa4a95382440d16d95f,
         type: 3}
       propertyPath: scenes.Array.size
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3691359553900180261, guid: 4d951fe08017cfa4a95382440d16d95f,
+        type: 3}
+      propertyPath: UICanvas.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3691359553900180261, guid: 4d951fe08017cfa4a95382440d16d95f,
         type: 3}
       propertyPath: scenes.Array.data[0]
+      value: OptionsTestScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 3691359553900180261, guid: 4d951fe08017cfa4a95382440d16d95f,
+        type: 3}
+      propertyPath: scenes.Array.data[1]
       value: Blocking
       objectReference: {fileID: 0}
+    - target: {fileID: 3691359553900180261, guid: 4d951fe08017cfa4a95382440d16d95f,
+        type: 3}
+      propertyPath: UICanvas.Array.data[0]
+      value: 
+      objectReference: {fileID: 1388708114}
+    - target: {fileID: 3691359553900180261, guid: 4d951fe08017cfa4a95382440d16d95f,
+        type: 3}
+      propertyPath: UICanvas.Array.data[1]
+      value: 
+      objectReference: {fileID: 1916806541}
+    - target: {fileID: 3691359553900180261, guid: 4d951fe08017cfa4a95382440d16d95f,
+        type: 3}
+      propertyPath: UICanvas.Array.data[2]
+      value: 
+      objectReference: {fileID: 1053764549}
+    - target: {fileID: 3691359553900180261, guid: 4d951fe08017cfa4a95382440d16d95f,
+        type: 3}
+      propertyPath: UICanvas.Array.data[3]
+      value: 
+      objectReference: {fileID: 1570438249}
     - target: {fileID: 3691359553900180263, guid: 4d951fe08017cfa4a95382440d16d95f,
         type: 3}
       propertyPath: m_Name
@@ -2596,24 +2615,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1916806541}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1677282215}
+        m_MethodName: LoadCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1053764549}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2817,7 +2825,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2941,24 +2949,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1053764549}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1677282215}
+        m_MethodName: LoadCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1916806541}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4531,24 +4528,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1570438249}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1677282215}
+        m_MethodName: LoadCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1916806541}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5878,24 +5864,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1916806541}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1677282215}
+        m_MethodName: LoadCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1570438249}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6241,24 +6216,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1916806541}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1677282215}
+        m_MethodName: LoadCanvas
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1388708114}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

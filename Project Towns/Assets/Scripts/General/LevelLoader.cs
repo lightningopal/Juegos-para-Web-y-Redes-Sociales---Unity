@@ -2,15 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelLoader : MonoBehaviour
 {
 
     #region Variables
+
+    private bool changeScene = false;
+
     [Tooltip("Lista de escenas")]
     [SerializeField]
     private List<string> scenes = new List<string>();
     private string sceneToLoad;
+
+    [Tooltip("Lista de Canvas")]
+    [SerializeField]
+    private List<GameObject> UICanvas;
+    private GameObject canvasToLoad;
+    private GameObject currentCanvas;
 
     [Tooltip("Animator")]
     [SerializeField]
@@ -18,12 +28,12 @@ public class LevelLoader : MonoBehaviour
     #endregion
 
     #region Métodos Unity
-    /// <summary>
-    /// Método Update, que se llama cada frame
-    /// </summary>
-    void Update()
+    private void Start()
     {
-        
+        if (UICanvas.Capacity != 0)
+        {
+            currentCanvas = UICanvas[0];
+        }
     }
     #endregion
 
@@ -32,15 +42,49 @@ public class LevelLoader : MonoBehaviour
     /// Método que recibe el id de la escena a cambiar, 
     /// dentro de la lista de escenas posibles.
     /// </summary>
+    /// <param name="id"></param>
     public void LoadScene(int id)
     {
         sceneToLoad = scenes[id];
         animator.SetTrigger("Start");
+        changeScene = true;
     }
 
-    public void OnAnimationComplete()
+    /// <summary>
+    /// Al terminar la transición, se realiza el cambio de escena
+    /// </summary>
+    public void ChangeScene()
     {
-        SceneManager.LoadScene(sceneToLoad);
+        if (changeScene)
+        {
+            SceneManager.LoadScene(sceneToLoad);
+        }
+    }
+
+    /// <summary>
+    /// Método que recibe el id del canvas a cambiar,
+    /// dentro de la lista de canvas posibles.
+    /// </summary>
+    /// <param name="id"></param>
+    public void LoadCanvas(int id)
+    {
+        canvasToLoad = UICanvas[id];
+        animator.SetTrigger("Start");
+        changeScene = false;
+    }
+
+    /// <summary>
+    /// Al terminar la transición, se cambia el canvas actual por el nuevo
+    /// </summary>
+    public void ChangeCanvas()
+    {
+        if (!changeScene)
+        {
+            currentCanvas.SetActive(false);
+            currentCanvas = canvasToLoad;
+            canvasToLoad.SetActive(true);
+            animator.SetTrigger("Restart");
+        }
     }
     #endregion
 }
