@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: -717763917275796830}
   - component: {fileID: -5436639637694714247}
   - component: {fileID: 1309846862514715958}
+  - component: {fileID: 3868801097337146386}
   m_Layer: 0
   m_Name: Villager
   m_TagString: Villager
@@ -416,6 +417,25 @@ CapsuleCollider:
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &3868801097337146386
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3893469932477135354}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9d7f3b1c314424149a03dff66dabf869, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4235929671914478018
 GameObject:
   m_ObjectHideFlags: 0
