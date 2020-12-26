@@ -133,6 +133,7 @@ public class OptionsManager : MonoBehaviour
     {
         LocalizationSystem.language = LocalizationSystem.GetLanguageByIndex(languageIndex);
         LocalizationTexts.instance.UpdateTexts();
+        currentLanguageIndex = languageIndex;
         WriteOptions();
     }
 

@@ -49,15 +49,15 @@ public class GlobalVars : MonoBehaviour
     private void ReadOptions()
     {
         // PlayerPrefs
-        /*musicVolume = PlayerPrefs.GetFloat("musicVolume", 0.5f);
+        musicVolume = PlayerPrefs.GetFloat("musicVolume", 0.5f);
         fxVolume = PlayerPrefs.GetFloat("fxVolume", 0.5f);
         brightnessLvl =  PlayerPrefs.GetFloat("brightnessLvl", 0f);
-        int languageIndex = PlayerPrefs.GetInt("languageIndex", 0);*/
+        int languageIndex = PlayerPrefs.GetInt("languageIndex", 0);
 
-        musicVolume = 0.5f;
+        /*musicVolume = 0.5f;
         fxVolume = 0.5f;
         brightnessLvl = 0f;
-        int languageIndex = 0;
+        languageIndex = 0;*/
 
         foreach (Audio a in AudioManager.instance.music)
         {

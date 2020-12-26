@@ -14,7 +14,7 @@ public class LevelLoader : MonoBehaviour
 
     [Tooltip("Animator")]
     [SerializeField]
-    private Animator animator;
+    private Animator animator = null;
     #endregion
 
     #region Métodos Unity
