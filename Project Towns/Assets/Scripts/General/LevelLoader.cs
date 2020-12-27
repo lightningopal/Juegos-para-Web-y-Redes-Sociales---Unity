@@ -18,13 +18,15 @@ public class LevelLoader : MonoBehaviour
 
     [Tooltip("Lista de Canvas")]
     [SerializeField]
-    private List<GameObject> UICanvas;
+    private List<GameObject> UICanvas = new List<GameObject>();
     private GameObject canvasToLoad;
     private GameObject currentCanvas;
 
     [Tooltip("Animator")]
     [SerializeField]
     private Animator animator = null;
+    [SerializeField]
+    private List<RuntimeAnimatorController> animators = new List<RuntimeAnimatorController>();
     #endregion
 
     #region Métodos Unity
@@ -38,6 +40,20 @@ public class LevelLoader : MonoBehaviour
     #endregion
 
     #region Métodos Clase
+    /// <summary>
+    /// Cambia el animador en tiempo de ejecución, para poder
+    /// realizar distintas transiciones en una misma escena
+    /// (De juego a pause y viceversa, por ejemplo)
+    /// </summary>
+    /// <param name="id"></param>
+    public void ChangeAnimator(int id)
+    {
+        animator.runtimeAnimatorController = animators[id];
+        //canvasToLoad = currentCanvas;
+        //animator.SetTrigger("Start");
+        //changeScene = false;
+    }
+
     /// <summary>
     /// Método que recibe el id de la escena a cambiar, 
     /// dentro de la lista de escenas posibles.
