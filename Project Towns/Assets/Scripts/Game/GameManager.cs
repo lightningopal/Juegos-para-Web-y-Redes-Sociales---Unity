@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
     {
         // Obtener la dificultad elegida
         string difficultyName = "";
-        difficulty_index = GlobalVars.instance.difficulty;
+        //difficulty_index = GlobalVars.instance.difficulty;
         switch (difficulty_index)
         {
             case 0:
