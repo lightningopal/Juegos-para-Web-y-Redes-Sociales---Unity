@@ -95,10 +95,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item1:
+    itemName: 
     itemGameObject: {fileID: 0}
     itemSprite: {fileID: 0}
   item1Sprite: {fileID: 0}
   item2:
+    itemName: 
     itemGameObject: {fileID: 0}
     itemSprite: {fileID: 0}
   item2Sprite: {fileID: 0}
@@ -375,12 +377,19 @@ MonoBehaviour:
   victimVeracityProbability: 50
   witnessSafeProbability: 50
   witnessVeracityProbability: 50
-  isVictim: 0
-  isWitness: 0
   visionDistance: 7
   visionAngle: 120
-  informationGameObject: {fileID: 0}
-  thisAgent: {fileID: 0}
+  isVictim: 0
+  isWitness: 0
+  eyes:
+  - {fileID: 6224262975423233134}
+  - {fileID: 7372401971376107549}
+  - {fileID: 1907286139672284749}
+  hatParent: {fileID: 6915081382592247979}
+  hornsParent: {fileID: 8711029858104181261}
+  neckItemParent: {fileID: 7272823912924605116}
+  informationGameObject: {fileID: 194123831}
+  thisAgent: {fileID: -5436639637694714247}
 --- !u!195 &-5436639637694714247
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -563,6 +572,7 @@ Transform:
   - {fileID: 4235929671914478017}
   - {fileID: 9092159062001798135}
   - {fileID: 9163445689065071161}
+  - {fileID: 1265019740800145056}
   m_Father: {fileID: 6439113836622724625}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -783,6 +793,36 @@ Transform:
   m_Father: {fileID: 2005972459567425043}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6915081382592247979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1265019740800145056}
+  m_Layer: 0
+  m_Name: Hat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1265019740800145056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6915081382592247979}
+  m_LocalRotation: {x: -0.49119323, y: 0.49119315, z: 0.50865424, w: 0.5086544}
+  m_LocalPosition: {x: -0.6534448, y: 0.041931268, z: 0.0044878377}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2005972459567425043}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7257158408316190297
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,7 +1019,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9092159062001798135}
   m_Layer: 0
-  m_Name: Horn
+  m_Name: Horns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

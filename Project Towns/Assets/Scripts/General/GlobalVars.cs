@@ -9,11 +9,19 @@ public class GlobalVars : MonoBehaviour
     [Tooltip("Singleton")]
     public static GlobalVars instance;
 
+    [Header("Opciones")]
+    [Tooltip("Volumen de la música")]
     public float musicVolume;
+    [Tooltip("Volumen de los efectos de sonido")]
     public float fxVolume;
+    [Tooltip("Nivel de brillo")]
     public float brightnessLvl;
-
+    [Tooltip("Idioma")]
     public LocalizationSystem.Language language;
+
+    [Header("Juego")]
+    [Tooltip("Dificultad")]
+    public int difficulty;
     #endregion
 
     #region MétodosUnity
