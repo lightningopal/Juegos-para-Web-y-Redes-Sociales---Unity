@@ -18,9 +18,9 @@ public class LocalizedText : MonoBehaviour
 
     #region MétodosUnity
     /// <summary>
-    /// Método Start, que se llama antes del primer frame
+    /// Método Awake, que se ejecuta cuando carga el script
     /// </summary>
-    void Start()
+    void Awake()
     {
         textField = GetComponent<TextMeshProUGUI>();
         string value = localizedString.value;
