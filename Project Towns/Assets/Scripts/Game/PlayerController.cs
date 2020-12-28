@@ -12,6 +12,11 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Agente NavMesh")]
     [SerializeField]
     private NavMeshAgent thisAgent = null;
+
+    [Tooltip("Efecto movimiento")]
+    [SerializeField]
+    private ParticleSystem effectPrefab = null;
+    private ParticleSystem effectInstance = null;
     #endregion
 
     #region MétodosUnity
@@ -39,6 +44,18 @@ public class PlayerController : MonoBehaviour
                 if (hit.transform.CompareTag("Walkable"))
                 {
                     thisAgent.SetDestination(hit.point);
+                    // Se instancia el efecto
+                    if (effectInstance == null)
+                    {
+                        effectInstance = Instantiate(effectPrefab, hit.point + new Vector3(0,0.1f,0), new Quaternion());
+                    }
+                    else
+                    {
+                        effectInstance.Clear();
+                        effectInstance.gameObject.transform.position = hit.point + new Vector3(0, 0.1f, 0);
+                        effectInstance.Play();
+                    }
+                    
                 }
             }
         }

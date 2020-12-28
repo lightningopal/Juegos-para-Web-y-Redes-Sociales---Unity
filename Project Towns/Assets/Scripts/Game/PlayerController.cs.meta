@@ -3,7 +3,10 @@ guid: 641c36647ea50c0428a82c4f8f908a5e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - thisAgent: {instanceID: 0}
+  - effectPrefab: {fileID: 4965944560750203928, guid: d3f6f0e2887d1ef46a2a4a6712fc4147,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
