@@ -161,12 +161,19 @@ public class OptionsManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Método HighlightOption, que destaca la opción que se esté modificando
+    /// </summary>
+    /// <param name="optionIndex">índice de la opción</param>
     public void HighlightOption(int optionIndex)
     {
         textImageGameObjects[optionIndex].SetActive(true);
         optionsTexts[optionIndex].color = highlightedColor;
     }
 
+    /// <summary>
+    /// Método PlayDownOptions, que pone de vuelta a la normalidad las opciones
+    /// </summary>
     public void PlayDownOptions()
     {
         for (int i = 0; i < textImageGameObjects.Length; i++)
