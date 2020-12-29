@@ -54,10 +54,10 @@ public class CustomButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         buttonText.color = highlightedColor;
 
-        buttonImage.rectTransform.position = new Vector3(buttonImage.rectTransform.position.x + horizontalOffset, buttonImage.rectTransform.position.y + verticalOffset, 0);
+        buttonImage.rectTransform.localPosition = new Vector3(buttonImage.rectTransform.localPosition.x + horizontalOffset, buttonImage.rectTransform.localPosition.y + verticalOffset, 0);
         buttonImage.rectTransform.Rotate(new Vector3(0, 0, 1), rotationAngle);
 
-        buttonText.rectTransform.position = new Vector3(buttonText.rectTransform.position.x - horizontalOffset, buttonText.rectTransform.position.y - verticalOffset, 0);
+        buttonText.rectTransform.localPosition = new Vector3(buttonText.rectTransform.localPosition.x - horizontalOffset, buttonText.rectTransform.localPosition.y - verticalOffset, 0);
         buttonText.rectTransform.Rotate(new Vector3(0, 0, -1), rotationAngle);
 
         mouseOnButton = true;
@@ -73,10 +73,10 @@ public class CustomButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         {
             buttonText.color = normalColor;
 
-            buttonImage.rectTransform.position = new Vector3(buttonImage.rectTransform.position.x - horizontalOffset, buttonImage.rectTransform.position.y - verticalOffset, 0);
+            buttonImage.rectTransform.localPosition = new Vector3(buttonImage.rectTransform.localPosition.x - horizontalOffset, buttonImage.rectTransform.localPosition.y - verticalOffset, 0);
             buttonImage.rectTransform.Rotate(new Vector3(0, 0, -1), rotationAngle);
 
-            buttonText.rectTransform.position = new Vector3(buttonText.rectTransform.position.x + horizontalOffset, buttonText.rectTransform.position.y + verticalOffset, 0);
+            buttonText.rectTransform.localPosition = new Vector3(buttonText.rectTransform.localPosition.x + horizontalOffset, buttonText.rectTransform.localPosition.y + verticalOffset, 0);
             buttonText.rectTransform.Rotate(new Vector3(0, 0, 1), rotationAngle);
         }
         mouseOnButton = false;
@@ -104,10 +104,10 @@ public class CustomButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         {
             buttonText.color = normalColor;
 
-            buttonImage.rectTransform.position = new Vector3(buttonImage.rectTransform.position.x - horizontalOffset, buttonImage.rectTransform.position.y - verticalOffset, 0);
+            buttonImage.rectTransform.localPosition = new Vector3(buttonImage.rectTransform.localPosition.x - horizontalOffset, buttonImage.rectTransform.localPosition.y - verticalOffset, 0);
             buttonImage.rectTransform.Rotate(new Vector3(0, 0, -1), rotationAngle);
 
-            buttonText.rectTransform.position = new Vector3(buttonText.rectTransform.position.x + horizontalOffset, buttonText.rectTransform.position.y + verticalOffset, 0);
+            buttonText.rectTransform.localPosition = new Vector3(buttonText.rectTransform.localPosition.x + horizontalOffset, buttonText.rectTransform.localPosition.y + verticalOffset, 0);
             buttonText.rectTransform.Rotate(new Vector3(0, 0, 1), rotationAngle);
         }
         isClicked = false;

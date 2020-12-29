@@ -1,6 +1,5 @@
 key;en;es;
 GAME_NAME;Marshallow;Marselo;
-PLAY;Play;Jugar;
 BACK;Back;Atrás;
 SAVE;Save;Guardar;
 AUDIO;Audio;Audio;
@@ -10,5 +9,10 @@ SOUNDS;Sounds;Sonidos;
 BRIGHTNESS;Brightness;Brillo;
 LANGUAGE;Language;Idioma;
 REMAINING_ROBBERIES;Remaining robberies;Robos restantes;
+TUTORIAL_UPPERCASE;TUTORIAL;
+OPTIONS_UPPERCASE;OPTIONS;
+OPTIONS;Options;
 CREDITS;Credits;
-OPTIONS;OPTIONS;
+CREDITS_UPPERCASE;CREDITS;
+PLAY;Play;
+PLAY_UPPERCASE;PLAY;
