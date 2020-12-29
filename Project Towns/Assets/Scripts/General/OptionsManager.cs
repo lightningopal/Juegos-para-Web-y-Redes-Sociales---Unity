@@ -45,10 +45,31 @@ public class OptionsManager : MonoBehaviour
     private float brightnessLvl;
 
     // Idioma
-    [Tooltip("Dropdown de idiomas")]
+    [Header("Idioma")]
+    [Tooltip("Imagen selectora de idioma")]
     [SerializeField]
-    private TMP_Dropdown languagesDropdown = null;
+    private Image languageSelectedBackground = null;
+    [Tooltip("Posiciones background")]
+    [SerializeField]
+    private float[] backgroundPositions = new float[2];
+    [Tooltip("Índice de idioma seleccionado")]
     private int currentLanguageIndex;
+
+    [Header("Otros")]
+    [Tooltip("GameObjects de las imágenes de los textos")]
+    [SerializeField]
+    private GameObject[] textImageGameObjects = new GameObject[3];
+    [Tooltip("Textos de las opciones")]
+    [SerializeField]
+    private TextMeshProUGUI[] optionsTexts = new TextMeshProUGUI[3];
+
+    [Header("Colores")]
+    [Tooltip("Color del texto normal")]
+    [SerializeField]
+    private Color normalColor = new Color();
+    [Tooltip("Color del texto seleccionado")]
+    [SerializeField]
+    private Color highlightedColor = new Color(255, 255, 255, 1);
 
     // Escena actual
     private Scene actualScene;
@@ -79,8 +100,7 @@ public class OptionsManager : MonoBehaviour
 
         // Idioma
         currentLanguageIndex = (int)LocalizationSystem.language;
-        languagesDropdown.value = currentLanguageIndex;
-        languagesDropdown.RefreshShownValue();
+        languageSelectedBackground.rectTransform.localPosition = new Vector3(languageSelectedBackground.rectTransform.localPosition.x, backgroundPositions[currentLanguageIndex], 0);
     }
     #endregion
 
@@ -131,10 +151,29 @@ public class OptionsManager : MonoBehaviour
     /// <param name="resolutionIndex"></param>
     public void SetLanguage(int languageIndex)
     {
-        LocalizationSystem.language = LocalizationSystem.GetLanguageByIndex(languageIndex);
-        LocalizationTexts.instance.UpdateTexts();
-        currentLanguageIndex = languageIndex;
-        WriteOptions();
+        if (currentLanguageIndex != languageIndex)
+        {
+            LocalizationSystem.language = LocalizationSystem.GetLanguageByIndex(languageIndex);
+            LocalizationTexts.instance.UpdateTexts();
+            currentLanguageIndex = languageIndex;
+            languageSelectedBackground.rectTransform.localPosition = new Vector3(languageSelectedBackground.rectTransform.localPosition.x, backgroundPositions[currentLanguageIndex], 0);
+            WriteOptions();
+        }
+    }
+
+    public void HighlightOption(int optionIndex)
+    {
+        textImageGameObjects[optionIndex].SetActive(true);
+        optionsTexts[optionIndex].color = highlightedColor;
+    }
+
+    public void PlayDownOptions()
+    {
+        for (int i = 0; i < textImageGameObjects.Length; i++)
+        {
+            textImageGameObjects[i].SetActive(false);
+            optionsTexts[i].color = normalColor;
+        }
     }
 
     /// <summary>
