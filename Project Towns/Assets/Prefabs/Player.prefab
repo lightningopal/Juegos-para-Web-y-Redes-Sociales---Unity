@@ -281,6 +281,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisAgent: {fileID: 2557029410346978614}
+  effectPrefab: {fileID: 4965944560750203928, guid: d3f6f0e2887d1ef46a2a4a6712fc4147,
+    type: 3}
 --- !u!195 &2557029410346978614
 NavMeshAgent:
   m_ObjectHideFlags: 0
