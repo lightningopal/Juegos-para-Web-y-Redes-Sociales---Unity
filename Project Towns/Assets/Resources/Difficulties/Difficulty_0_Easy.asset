@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53de0f6ded770c6408c346dad548afd1, type: 3}
   m_Name: Difficulty_0_Easy
   m_EditorClassIdentifier: 
+  difficultyName: Easy
   villagers: 30
   catchAttempts: 3
   thiefRobberies: 8
