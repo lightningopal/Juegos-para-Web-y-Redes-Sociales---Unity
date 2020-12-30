@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Skybox Gradient
   m_Shader: {fileID: 4800000, guid: bed10e2e5dc8d5e44a950e5206a212a2, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _SCREENSPACE_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -20,9 +20,9 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - _Screenspace: 0
+    - _Screenspace: 1
     - _mult: 1
     - _pwer: 1
     m_Colors:
-    - _Bottom: {r: 0.8509804, g: 0.5967137, b: 0.3960784, a: 0}
+    - _Bottom: {r: 0.9339623, g: 0.47138664, b: 0.7477843, a: 0}
     - _Top: {r: 0.8820755, g: 0.9523284, b: 1, a: 0}
