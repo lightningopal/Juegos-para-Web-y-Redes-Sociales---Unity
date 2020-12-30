@@ -62,6 +62,9 @@ public class OptionsManager : MonoBehaviour
     [Tooltip("Textos de las opciones")]
     [SerializeField]
     private TextMeshProUGUI[] optionsTexts = new TextMeshProUGUI[3];
+    [Tooltip("Level Loader")]
+    [SerializeField]
+    private LevelLoader levelLoader = null;
 
     [Header("Colores")]
     [Tooltip("Color del texto normal")]
@@ -203,6 +206,16 @@ public class OptionsManager : MonoBehaviour
         PlayerPrefs.SetInt("languageIndex", currentLanguageIndex);
 
         PlayerPrefs.Save();
+    }
+
+    /// <summary>
+    /// Método StartGameWithDifficulty, que empieza una nueva partida con la dificultad dada
+    /// </summary>
+    /// <param name="difficulty">Dificultad de la partida</param>
+    public void StartGameWithDifficulty(int difficulty)
+    {
+        GlobalVars.instance.difficulty = difficulty;
+        levelLoader.LoadScene(0);
     }
     #endregion
 }

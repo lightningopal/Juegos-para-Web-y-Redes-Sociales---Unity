@@ -232,7 +232,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 22100000, guid: 4e4ea5ec6f3a5b440a62b640707218c4, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -252,7 +252,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenes: []
+  UICanvas: []
   animator: {fileID: 3691359553900180258}
+  animators: []
 --- !u!1 &6348662544253283734
 GameObject:
   m_ObjectHideFlags: 0

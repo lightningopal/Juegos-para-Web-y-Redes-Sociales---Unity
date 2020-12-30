@@ -8,6 +8,8 @@ public class Difficulty : ScriptableObject
 {
     #region Variables
     [Header("Parámetros de la dificultad")]
+    [Tooltip("Índice de la dificultad")]
+    public int difficultyIndex = 0;
     [Tooltip("Número de aldeanos")]
     public int villagers = 40;
     [Tooltip("Intentos de cazada")]
