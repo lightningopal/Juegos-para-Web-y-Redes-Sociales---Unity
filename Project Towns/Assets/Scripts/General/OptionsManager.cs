@@ -51,7 +51,7 @@ public class OptionsManager : MonoBehaviour
     private Image languageSelectedBackground = null;
     [Tooltip("Posiciones background")]
     [SerializeField]
-    private float[] backgroundPositions = new float[2];
+    private Vector2[] backgroundPositions = new Vector2[2];
     [Tooltip("Índice de idioma seleccionado")]
     private int currentLanguageIndex;
 
@@ -103,7 +103,11 @@ public class OptionsManager : MonoBehaviour
 
         // Idioma
         currentLanguageIndex = (int)LocalizationSystem.language;
-        languageSelectedBackground.rectTransform.localPosition = new Vector3(languageSelectedBackground.rectTransform.localPosition.x, backgroundPositions[currentLanguageIndex], 0);
+        //languageSelectedBackground.rectTransform.localPosition = new Vector3(languageSelectedBackground.rectTransform.localPosition.x, backgroundPositions[currentLanguageIndex], 0);
+        // Se mueven los puntos de anclaje (que son independientes del tamaño de la pantalla, van de 0 a 1) y se centra la imagen
+        languageSelectedBackground.rectTransform.anchorMin = new Vector2(languageSelectedBackground.rectTransform.anchorMin.x, backgroundPositions[currentLanguageIndex][0]);
+        languageSelectedBackground.rectTransform.anchorMax = new Vector2(languageSelectedBackground.rectTransform.anchorMax.x, backgroundPositions[currentLanguageIndex][1]);
+        languageSelectedBackground.rectTransform.anchoredPosition = new Vector2(0, 0);
     }
     #endregion
 
@@ -159,7 +163,11 @@ public class OptionsManager : MonoBehaviour
             LocalizationSystem.language = LocalizationSystem.GetLanguageByIndex(languageIndex);
             LocalizationTexts.instance.UpdateTexts();
             currentLanguageIndex = languageIndex;
-            languageSelectedBackground.rectTransform.localPosition = new Vector3(languageSelectedBackground.rectTransform.localPosition.x, backgroundPositions[currentLanguageIndex], 0);
+            //languageSelectedBackground.rectTransform.localPosition = new Vector3(languageSelectedBackground.rectTransform.localPosition.x, backgroundPositions[currentLanguageIndex], 0);
+            // Se mueven los puntos de anclaje (que son independientes del tamaño de la pantalla, van de 0 a 1) y se centra la imagen
+            languageSelectedBackground.rectTransform.anchorMin = new Vector2(languageSelectedBackground.rectTransform.anchorMin.x, backgroundPositions[currentLanguageIndex][0]);
+            languageSelectedBackground.rectTransform.anchorMax = new Vector2(languageSelectedBackground.rectTransform.anchorMax.x, backgroundPositions[currentLanguageIndex][1]);
+            languageSelectedBackground.rectTransform.anchoredPosition = new Vector2(0,0);
             WriteOptions();
         }
     }
