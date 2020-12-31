@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Clase LocalizationTexts, que contiene a los textos localizados
@@ -42,6 +43,11 @@ public class LocalizationTexts : MonoBehaviour
         foreach (LocalizedText localizedText in localizedTexts)
         {
             localizedText.UpdateText();
+        }
+
+        if (SceneManager.GetActiveScene().name.Contains("Level"))
+        {
+            GameManager.instance.UpdateRobberiesTranslate();
         }
     }
     #endregion

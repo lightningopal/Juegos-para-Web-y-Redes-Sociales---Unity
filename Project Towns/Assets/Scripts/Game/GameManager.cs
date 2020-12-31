@@ -79,8 +79,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // Obtener la dificultad elegida
+        difficulty_index = GlobalVars.instance.difficulty;
         string difficultyName = "";
-        //difficulty_index = GlobalVars.instance.difficulty;
+
         switch (difficulty_index)
         {
             case 0:
@@ -108,7 +109,7 @@ public class GameManager : MonoBehaviour
         UIManager.instance.InitializeAttempts(difficulty);
 
         // Spawnear Aldeanos
-        //SpawnVillagers();
+        SpawnVillagers();
 
         // Despausa la partida (si estuviera en pausa)
         ResumeGame();
@@ -144,10 +145,10 @@ public class GameManager : MonoBehaviour
             Villager newVillager = villagerGameObject.GetComponent<Villager>();
 
             // Comprobamos si ya existe uno igual
-            while (CheckDuplicateVillager(newVillager))
+            /*while (CheckDuplicateVillager(newVillager))
             {
                 newVillager.RandomizeVillager();
-            }
+            }*/
 
             // Añadimos al aldeano a la lista
             villagers.Add(newVillager);
@@ -167,14 +168,9 @@ public class GameManager : MonoBehaviour
         foreach (Villager villagerInList in villagers)
         {
             villagerInListItems = villagerInList.items;
-            if (thisVillagerItems.villagerColor.itemName == villagerInListItems.villagerColor.itemName &&
-                thisVillagerItems.eyesNumber == villagerInListItems.eyesNumber &&
-                thisVillagerItems.hatItem.itemName == villagerInListItems.hatItem.itemName &&
-                thisVillagerItems.hornItem.itemName == villagerInListItems.hornItem.itemName &&
-                thisVillagerItems.neckItem.itemName == villagerInListItems.neckItem.itemName)
-            {
+
+            if (thisVillagerItems.ToString().Equals(villagerInListItems.ToString()))
                 return true;
-            }
         }
         return false;
     }
@@ -256,6 +252,15 @@ public class GameManager : MonoBehaviour
 
         // Mostrar pantalla final
         levelLoader.LoadCanvas(3);
+    }
+
+    /// <summary>
+    /// Método UpdateRobberiesTranslate, que actualiza traducido el texto de los robos
+    /// </summary>
+    public void UpdateRobberiesTranslate()
+    {
+        if (UIManager.instance != null && difficulty != null)
+            UIManager.instance.UpdateRobberiesText(thiefRobberies, difficulty.thiefRobberies);
     }
     #endregion
 }
