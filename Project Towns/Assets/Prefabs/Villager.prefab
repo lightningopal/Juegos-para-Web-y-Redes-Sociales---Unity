@@ -408,7 +408,7 @@ MonoBehaviour:
   hornsParent: {fileID: 8711029858104181261}
   neckItemParent: {fileID: 7272823912924605116}
   informationGameObject: {fileID: 194123831}
-  thisAgent: {fileID: -5436639637694714247}
+  _thisAgent: {fileID: -5436639637694714247}
 --- !u!195 &-5436639637694714247
 NavMeshAgent:
   m_ObjectHideFlags: 0
