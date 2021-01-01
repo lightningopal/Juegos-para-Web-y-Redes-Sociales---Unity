@@ -92,6 +92,7 @@ public class Villager : MonoBehaviour
     /// </summary>
     void Update()
     {
+        //topNode.Evaluate();
         /*if (HasSeenRobbery())
         {
             thisAgent.SetDestination(thief.position);
@@ -221,6 +222,14 @@ public class Villager : MonoBehaviour
         /*VictimNode newVictimNode = new VictimNode(this);
 
         topNode = new Selector(new List<Node>() { newSelector });*/
+
+        /*
+         * Esto funciona, si es víctima pasa a quedarse quieto
+        VictimNode victim = new VictimNode(this);
+        StayStillNode stayStill = new StayStillNode(this);
+
+        topNode = new Sequence(new List<Node>() { victim, stayStill });
+        */
     }
 
     /// <summary>
