@@ -21,7 +21,7 @@ public class GlobalVars : MonoBehaviour
 
     [Header("Juego")]
     [Tooltip("Dificultad")]
-    public int difficulty;
+    public int difficulty = 0;
     #endregion
 
     #region MétodosUnity

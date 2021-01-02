@@ -6,10 +6,6 @@
 public class MenuManager : MonoBehaviour
 {
     #region Variables
-    [Tooltip("LevelLoader")]
-    [SerializeField]
-    private LevelLoader levelLoader = null;
-
     [Header("Créditos")]
     [Tooltip("Imágenes del paralaje")]
     [SerializeField]
@@ -78,16 +74,6 @@ public class MenuManager : MonoBehaviour
     public void StartCredits()
     {
         creditsText.localPosition = creditsTextPosition;
-    }
-
-    /// <summary>
-    /// Método StartGameWithDifficulty, que empieza una nueva partida con la dificultad dada
-    /// </summary>
-    /// <param name="difficulty">Dificultad de la partida</param>
-    public void StartGameWithDifficulty(int difficulty)
-    {
-        GlobalVars.instance.difficulty = difficulty;
-        levelLoader.LoadScene(0);
     }
     #endregion
 }

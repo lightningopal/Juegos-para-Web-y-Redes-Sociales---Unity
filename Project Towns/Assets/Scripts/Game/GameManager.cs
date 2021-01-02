@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Valores de la partida")]
     [Tooltip("Contador de robos")]
-    private int robberiesLeft;
+    private int thiefRobberies;
     [Tooltip("Contador de intentos")]
     private int attemptsCount;
 
@@ -49,6 +49,9 @@ public class GameManager : MonoBehaviour
     [Tooltip("Partida en pausa")]
     [HideInInspector]
     public bool gamePaused = false;
+    [Tooltip("Level Loader")]
+    [SerializeField]
+    private LevelLoader levelLoader = null;
 
     #endregion
 
@@ -76,8 +79,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // Obtener la dificultad elegida
+        difficulty_index = GlobalVars.instance.difficulty;
         string difficultyName = "";
-        //difficulty_index = GlobalVars.instance.difficulty;
+
         switch (difficulty_index)
         {
             case 0:
@@ -94,21 +98,24 @@ public class GameManager : MonoBehaviour
         difficulty = Resources.Load<Difficulty>("Difficulties/Difficulty_" + difficulty_index + "_" + difficultyName);
 
         // Asignar valores de la dificultad
-        robberiesLeft = difficulty.thiefRobberies;
+        thiefRobberies = 0;
         attemptsCount = difficulty.catchAttempts;
 
         // Actualizar UI
         // Textos
-        UIManager.instance.UpdateRobberiesText(robberiesLeft, difficulty.thiefRobberies);
+        UIManager.instance.UpdateRobberiesText(thiefRobberies, difficulty.thiefRobberies);
 
         // Intentos
-        //UIManager.instance.InitializeAttempts(difficulty.catchAttempts);
+        UIManager.instance.InitializeAttempts(difficulty);
 
         // Spawnear Aldeanos
-        //SpawnVillagers();
+        SpawnVillagers();
 
         // Despausa la partida (si estuviera en pausa)
         ResumeGame();
+
+        // Calcula el tiempo de inicio
+        startGameTime = Time.time;
     }
 
     /// <summary>
@@ -138,10 +145,10 @@ public class GameManager : MonoBehaviour
             Villager newVillager = villagerGameObject.GetComponent<Villager>();
 
             // Comprobamos si ya existe uno igual
-            while (CheckDuplicateVillager(newVillager))
+            /*while (CheckDuplicateVillager(newVillager))
             {
                 newVillager.RandomizeVillager();
-            }
+            }*/
 
             // Añadimos al aldeano a la lista
             villagers.Add(newVillager);
@@ -161,14 +168,9 @@ public class GameManager : MonoBehaviour
         foreach (Villager villagerInList in villagers)
         {
             villagerInListItems = villagerInList.items;
-            if (thisVillagerItems.villagerColor.itemName == villagerInListItems.villagerColor.itemName &&
-                thisVillagerItems.eyesNumber == villagerInListItems.eyesNumber &&
-                thisVillagerItems.hatItem.itemName == villagerInListItems.hatItem.itemName &&
-                thisVillagerItems.hornItem.itemName == villagerInListItems.hornItem.itemName &&
-                thisVillagerItems.neckItem.itemName == villagerInListItems.neckItem.itemName)
-            {
+
+            if (thisVillagerItems.ToString().Equals(villagerInListItems.ToString()))
                 return true;
-            }
         }
         return false;
     }
@@ -178,9 +180,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void AddRobbery()
     {
-        robberiesLeft--;
-        UIManager.instance.UpdateRobberiesText(robberiesLeft, difficulty.thiefRobberies);
-        if (robberiesLeft == 0)
+        thiefRobberies++;
+        UIManager.instance.UpdateRobberiesText(thiefRobberies, difficulty.thiefRobberies);
+        if (thiefRobberies == difficulty.thiefRobberies)
             EndGame();
     }
 
@@ -218,10 +220,14 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void EndGameAsWin()
     {
+        // Calculamos el tiempo final
+        endGameTime = Time.time;
+
+        // Actualizar UI por victoria
+        UIManager.instance.UpdateEndGameScreen(true, endGameTime - startGameTime);
+
         // Acabar la partida
         EndGame();
-
-        // Cosas de victoria
     }
 
     /// <summary>
@@ -229,10 +235,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void EndGameAsLose()
     {
+        // Actualizar UI por derrota
+        UIManager.instance.UpdateEndGameScreen(false, 0);
+
         // Acabar la partida
         EndGame();
-
-        // Cosas de derrota
     }
 
     /// <summary>
@@ -244,6 +251,16 @@ public class GameManager : MonoBehaviour
         PauseGame();
 
         // Mostrar pantalla final
+        levelLoader.LoadCanvas(3);
+    }
+
+    /// <summary>
+    /// Método UpdateRobberiesTranslate, que actualiza traducido el texto de los robos
+    /// </summary>
+    public void UpdateRobberiesTranslate()
+    {
+        if (UIManager.instance != null && difficulty != null)
+            UIManager.instance.UpdateRobberiesText(thiefRobberies, difficulty.thiefRobberies);
     }
     #endregion
 }

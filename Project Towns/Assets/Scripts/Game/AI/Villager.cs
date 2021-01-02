@@ -60,7 +60,14 @@ public class Villager : MonoBehaviour
     private GameObject informationGameObject = null;
     [Tooltip("Agente NavMesh")]
     [SerializeField]
-    private NavMeshAgent thisAgent = null;
+    private NavMeshAgent _thisAgent = null;
+    public NavMeshAgent thisAgent
+    {
+        get { return _thisAgent; }
+    }
+
+    [Tooltip("Árbol de comportamiento")]
+    private Node topNode;
 
     #endregion
 
@@ -75,6 +82,9 @@ public class Villager : MonoBehaviour
 
         // Referencia al ladrón
         thief = FindObjectOfType<PlayerController>().transform;
+
+        // Crear Árbol
+        //CreateBehaviourTree();
     }
 
     /// <summary>
@@ -82,6 +92,7 @@ public class Villager : MonoBehaviour
     /// </summary>
     void Update()
     {
+        //topNode.Evaluate();
         /*if (HasSeenRobbery())
         {
             thisAgent.SetDestination(thief.position);
@@ -201,6 +212,24 @@ public class Villager : MonoBehaviour
             items.neckItem = ItemDatabase.instance.neckItems[randomNeckItemNumber];
             Instantiate(items.neckItem.itemGameObject, neckItemParent.transform);
         }
+    }
+
+    /// <summary>
+    /// Método CreateBehaviourTree, que crea el árbol de comportamiento
+    /// </summary>
+    public void CreateBehaviourTree()
+    {
+        /*VictimNode newVictimNode = new VictimNode(this);
+
+        topNode = new Selector(new List<Node>() { newSelector });*/
+
+        /*
+         * Esto funciona, si es víctima pasa a quedarse quieto
+        VictimNode victim = new VictimNode(this);
+        StayStillNode stayStill = new StayStillNode(this);
+
+        topNode = new Sequence(new List<Node>() { victim, stayStill });
+        */
     }
 
     /// <summary>

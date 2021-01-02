@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1cb7e9e120078f43bce4f0b1be547a7, type: 3}
   m_Name: AmbientOcclusion
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a79b01ea5641d4aa6daa2e23605641, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -87,10 +87,10 @@ MonoBehaviour:
     value: 10.17
   threshold:
     overrideState: 1
-    value: 1
+    value: 0.9
   softKnee:
-    overrideState: 1
-    value: 0.454
+    overrideState: 0
+    value: 0
   clamp:
     overrideState: 0
     value: 65717.06
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556797029e73b2347956b6579e77e05b, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -206,7 +206,7 @@ MonoBehaviour:
     value: -14
   saturation:
     overrideState: 1
-    value: -5
+    value: -10
   brightness:
     overrideState: 0
     value: 0
@@ -215,7 +215,7 @@ MonoBehaviour:
     value: 0.2
   contrast:
     overrideState: 1
-    value: 0
+    value: -1
   mixerRedOutRedIn:
     overrideState: 0
     value: 100
@@ -245,13 +245,13 @@ MonoBehaviour:
     value: 100
   lift:
     overrideState: 1
-    value: {x: 1, y: 0.9718451, z: 0.99052393, w: 0}
+    value: {x: 1, y: 1, z: 1, w: 0}
   gamma:
     overrideState: 1
-    value: {x: 0.7790388, y: 0.89601076, z: 1, w: 0}
+    value: {x: 0.5826856, y: 0.6616121, z: 1, w: -0.21276593}
   gain:
     overrideState: 1
-    value: {x: 0.7237189, y: 0.6725881, z: 1, w: 0}
+    value: {x: 1, y: 0.94299877, z: 0.30704004, w: 0.05802707}
   masterCurve:
     overrideState: 0
     value:

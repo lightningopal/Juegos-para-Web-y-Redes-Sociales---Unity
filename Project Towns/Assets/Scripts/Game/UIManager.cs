@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UIManager : MonoBehaviour
@@ -12,20 +13,38 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI robberiesText = null;
 
-    [Header("Imágenes")]
-    /*[Tooltip("Sprite del fondo de los intentos")]
+    [Header("Background Corazones")]
+    [Tooltip("RectTransform del fondo de los intentos")]
     [SerializeField]
-    private Sprite attemptsBackgroundSprite = null;
-    [Tooltip("Sprite del corazón lleno")]
+    private RectTransform attemptsBackground = null;
+    [Tooltip("Lista de tamaños del background")]
     [SerializeField]
-    private Sprite attemptsFilledHeartSprite = null;*/
+    private float[] backgroundWidths = new float[3];
+
+    [Header("Corazones")]
     [Tooltip("Sprite del corazón vacío")]
     [SerializeField]
     private Sprite attemptsEmptyHeartSprite = null;
-
     [Tooltip("GameObjects de los corazones")]
     [SerializeField]
     private GameObject[] attemptsHearts = new GameObject[3];
+
+    [Header("EndGame")]
+    [Tooltip("Imagen de Marshallow")]
+    [SerializeField]
+    private Image marshallowImage = null;
+    [Tooltip("Sprite de Marshallow al ganar")]
+    [SerializeField]
+    private Sprite winMarshallowSprite = null;
+    [Tooltip("Sprite de Marshallow al perder")]
+    [SerializeField]
+    private Sprite loseMarshallowSprite = null;
+    [Tooltip("Texto del endgame")]
+    [SerializeField]
+    private TextMeshProUGUI endGameText = null;
+    [Tooltip("Texto del tiempo")]
+    [SerializeField]
+    private TextMeshProUGUI timeText = null;
     #endregion
 
     #region MétodosUnity
@@ -71,7 +90,7 @@ public class UIManager : MonoBehaviour
     /// <param name="maxRobberies">Máximo de robos</param>
     public void UpdateRobberiesText(int robberiesLeft, int maxRobberies)
     {
-        robberiesText.text = LocalizationSystem.GetLocalizedValue("REMAINING_ROBBERIES") +
+        robberiesText.text = LocalizationSystem.GetLocalizedValue("THIEF_ROBBERIES") +
             ": " + robberiesLeft + "/" + maxRobberies;
     }
 
@@ -79,13 +98,17 @@ public class UIManager : MonoBehaviour
     /// Método InitializeAttempts, que dibuja los intentos al empezar
     /// </summary>
     /// <param name="attempts"></param>
-    public void InitializeAttempts(int attempts)
+    public void InitializeAttempts(Difficulty difficulty)
     {
         // Desactivamos los corazones innecesarios
-        for (int i = attempts; i < attemptsHearts.Length; i++)
+        for (int i = difficulty.catchAttempts; i < attemptsHearts.Length; i++)
         {
             attemptsHearts[i].SetActive(false);
         }
+
+        // Reescalamos el background de los corazones
+        attemptsBackground.sizeDelta = new Vector2(backgroundWidths[difficulty.difficultyIndex], attemptsBackground.rect.height);
+
     }
 
     /// <summary>
@@ -96,6 +119,43 @@ public class UIManager : MonoBehaviour
     {
         // Cambiamos el sprite del último corazón
         attemptsHearts[attempts].GetComponent<SpriteRenderer>().sprite = attemptsEmptyHeartSprite;
+    }
+
+    /// <summary>
+    /// Método UpdateEndGameScreen, que actualiza la UI de la pantalla final
+    /// </summary>
+    /// <param name="hasWin">Booleano que indica si ha ganado o perdido</param>
+    /// <param name="totalTime">Tiempo total de la partida</param>
+    public void UpdateEndGameScreen(bool hasWin, float totalTime)
+    {
+        // Si ha ganado
+        if (hasWin)
+        {
+            // Texto de arriba
+            endGameText.text = LocalizationSystem.GetLocalizedValue("ENDGAME_WIN");
+
+            // Sprite Marshallow
+            marshallowImage.sprite = winMarshallowSprite;
+
+            // Texto del tiempo
+            int seconds = (int)(totalTime % 60);
+            int minutes = (int)((totalTime / 60) % 60);
+            string timerString = string.Format("{0:0}:{1:00}", minutes, seconds);
+
+            timeText.text = LocalizationSystem.GetLocalizedValue("TIME") + ": " + timerString;
+        }
+        // Si ha perdido
+        else
+        {
+            // Texto de arriba
+            endGameText.text = LocalizationSystem.GetLocalizedValue("ENDGAME_LOSE");
+
+            // Sprite Marshallow
+            marshallowImage.sprite = loseMarshallowSprite;
+
+            // Texto del tiempo
+            timeText.gameObject.SetActive(false);
+        }
     }
 
     // Esto me tengo que esperar a tener claro como sería la UI

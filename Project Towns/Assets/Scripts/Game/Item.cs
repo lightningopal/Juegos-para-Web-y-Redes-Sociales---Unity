@@ -37,4 +37,21 @@ public struct VillagerItems
     public Item hatItem;
     public Item hornItem;
     public Item neckItem;
+
+    public override string ToString()
+    {
+        string hatItemString = "NO", hornItemString = "NO", neckItemString = "NO";
+
+        if (hatItem != null)
+            hatItemString = hatItem.itemName;
+
+        if (hornItem != null)
+            hornItemString = hornItem.itemName;
+
+        if (neckItem != null)
+            neckItemString = neckItem.itemName;
+
+        return villagerColor.itemName + " - " + eyesNumber + " - " + hatItemString + " - " +
+            hornItemString + " - " + neckItemString;
+    }
 }

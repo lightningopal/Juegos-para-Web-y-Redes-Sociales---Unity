@@ -232,7 +232,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 22100000, guid: 4e4ea5ec6f3a5b440a62b640707218c4, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -251,8 +251,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a96f8f6eb4d9b694c982f914de9293d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circle: {fileID: 0}
+  useCircle: 0
+  numLayers: 0
   scenes: []
+  UICanvas: []
   animator: {fileID: 3691359553900180258}
+  animators: []
 --- !u!1 &6348662544253283734
 GameObject:
   m_ObjectHideFlags: 0
