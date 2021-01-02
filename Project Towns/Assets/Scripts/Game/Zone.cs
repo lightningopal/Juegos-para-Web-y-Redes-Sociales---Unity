@@ -7,14 +7,20 @@
 public class Zone
 {
     #region Variables
-    // Nombre de la zona
+    [Tooltip("Nombre de la zona")]
     public string zoneName;
 
-    // GameObject que define la zona
+    [Tooltip("GameObject que define la zona")]
     public GameObject zoneFloor;
 
-    // Punto de entrada a la zona
+    [Tooltip("Punto de entrada a la zona")]
     public Transform enterPoint;
+
+    [Tooltip("Número máximo de aldeanos en la zona")]
+    public int maxVillagers;
+
+    [Tooltip("Número de aldeanos en la zona")]
+    public int villagerCount;
     #endregion
 
     #region Constructores
@@ -23,11 +29,12 @@ public class Zone
 
     }
 
-    public Zone(string zoneName_, GameObject zoneFloor_, Transform enterPoint_)
+    public Zone(string zoneName_, GameObject zoneFloor_, Transform enterPoint_, int maxVillagers_)
     {
         zoneName = zoneName_;
         zoneFloor = zoneFloor_;
         enterPoint = enterPoint_;
+        maxVillagers = maxVillagers_;
     }
     #endregion
 }

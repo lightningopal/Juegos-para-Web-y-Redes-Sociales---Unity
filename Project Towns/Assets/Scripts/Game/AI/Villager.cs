@@ -26,6 +26,9 @@ public class Villager : MonoBehaviour
     [Tooltip("Ángulo de visión")]
     [SerializeField]
     private float visionAngle = 0;
+    [Tooltip("Distancia para el marshall")]
+    [SerializeField]
+    private float marshallRange = 3.0f;
 
     [Header("Información sobre el aldeano")]
     [Tooltip("Booleano que indica si es víctima")]
@@ -37,6 +40,36 @@ public class Villager : MonoBehaviour
     [Tooltip("Booleano que indica si ha dado información")]
     [HideInInspector]
     public bool hasGivenInformation = false;
+
+    [Header("Zonas")]
+    [Tooltip("Zona actual")]
+    [HideInInspector]
+    public Zone actualZone = null;
+    [Tooltip("Zona destino")]
+    [HideInInspector]
+    public Zone destinationZone = null;
+    [Tooltip("Tiempo para cambiar de zona")]
+    [HideInInspector]
+    public float timeToNextZone = 0.0f;
+    [Tooltip("Tiempo que se lleva en una zona")]
+    public float timeToChangeZone = 30.0f;
+    [Tooltip("Distancia mínima para llegar al destino")]
+    public float MINIMUM_DESTINY_DISTANCE = 0.5f;
+
+    [Header("Velocidades")]
+    [Tooltip("Probabilidad de que el aldeano vaya corriendo hacia la zona elegida")]
+    public float SPEED_RUN_PROBABILITY = 30.0f;
+    [Tooltip("Velocidad del aldeano andando")]
+    public float WALKING_SPEED = 4.0f;
+    [Tooltip("Velocidad del aldeano corriendo")]
+    public float RUNNING_SPEED = 7.0f;
+
+    [Header("Movimiento en zona")]
+    [Tooltip("Radio del wander")]
+    public float WANDER_RADIUS = 2.0f;
+    [Tooltip("Tiempo para el siguiente wander")]
+    [HideInInspector]
+    public float wanderNextTime = 0.0f;
 
     [Header("Objetos")]
     [Tooltip("Items del aldeano")]
@@ -54,8 +87,11 @@ public class Villager : MonoBehaviour
     [SerializeField]
     private GameObject neckItemParent = null;
 
-    // Referencia al ladrón
-    private Transform thief;
+    [Header("Referencias a otros personajes")]
+    [Tooltip("Referencia al jugador")]
+    private Transform playerTransform;
+    [Tooltip("Referencia al ladrón")]
+    private Transform thiefTransform;
 
     [Header("Otros")]
     [Tooltip("GameObject que contiene la información")]
@@ -63,8 +99,9 @@ public class Villager : MonoBehaviour
     private GameObject informationGameObject = null;
     [Tooltip("Agente NavMesh")]
     public NavMeshAgent thisAgent;
-
-    
+    [Tooltip("Animator")]
+    [SerializeField]
+    private Animator thisAnimator = null;
 
     [Tooltip("Árbol de comportamiento")]
     private Node topNode;
@@ -81,10 +118,13 @@ public class Villager : MonoBehaviour
         RandomizeVillager();
 
         // Referencia al ladrón
-        thief = FindObjectOfType<PlayerController>().transform;
+        //thief = FindObjectOfType<PlayerController>().transform;
+
+        // Referencia al jugador
+        playerTransform = FindObjectOfType<PlayerController>().transform;
 
         // Crear Árbol
-        //CreateBehaviourTree();
+        CreateBehaviourTree();
     }
 
     /// <summary>
@@ -92,7 +132,9 @@ public class Villager : MonoBehaviour
     /// </summary>
     void Update()
     {
-        //topNode.Evaluate();
+        // Ejecutar el árbol de decisión
+        topNode.Evaluate();
+
         /*if (HasSeenRobbery())
         {
             thisAgent.SetDestination(thief.position);
@@ -104,7 +146,7 @@ public class Villager : MonoBehaviour
     /// Método OnTriggerEnter, que se llama al entrar en un trigger
     /// </summary>
     /// <param name="other">Trigger en el que entra</param>
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("thief"))
         {
@@ -131,7 +173,7 @@ public class Villager : MonoBehaviour
                 HideInformation();
             }
         }
-    }
+    }*/
     #endregion
 
     /// <summary>
@@ -144,9 +186,9 @@ public class Villager : MonoBehaviour
 
         Gizmos.color = Color.gray;
 
-        if (thief != null)
+        if (thiefTransform != null)
             Gizmos.DrawLine(transform.position, transform.position +
-                (thief.position - transform.position).normalized * visionDistance);
+                (thiefTransform.position - transform.position).normalized * visionDistance);
 
         Gizmos.color = Color.green;
         Gizmos.DrawLine(transform.position, transform.position + (Quaternion.AngleAxis(visionAngle / 2, Vector3.up) * (transform.forward)).normalized * visionDistance);
@@ -219,17 +261,56 @@ public class Villager : MonoBehaviour
     /// </summary>
     public void CreateBehaviourTree()
     {
-        /*VictimNode newVictimNode = new VictimNode(this);
+        // Cuarta rama
+        MoveToDestinationNode moveToDestinationNode = new MoveToDestinationNode();
 
-        topNode = new Selector(new List<Node>() { newSelector });*/
+        WanderNode wanderNode = new WanderNode(this);
+        EnoughSpaceNode enoughSpaceNode = new EnoughSpaceNode(this);
+        Sequence sequence6 = new Sequence(new List<Node>() { enoughSpaceNode, wanderNode });
 
-        /*
-         * Esto funciona, si es víctima pasa a quedarse quieto
-        VictimNode victim = new VictimNode(this);
-        StayStillNode stayStill = new StayStillNode(this);
+        ChooseDestinationNode chooseDestinationNode = new ChooseDestinationNode(this);
+        Selector selector2 = new Selector(new List<Node>() { sequence6, chooseDestinationNode });
 
-        topNode = new Sequence(new List<Node>() { victim, stayStill });
-        */
+        InDestinationNode inDestinationNode = new InDestinationNode(this, MINIMUM_DESTINY_DISTANCE);
+        Sequence sequence5 = new Sequence(new List<Node>() { inDestinationNode, selector2 });
+
+        Selector moveSelector = new Selector(new List<Node>() { sequence5, moveToDestinationNode });
+
+        // Tercera rama
+        HasDestinationNode hasDestinationNode = new HasDestinationNode(this);
+        Inverter destinationInvertedNode = new Inverter(hasDestinationNode);
+        Sequence chooseDestinationSequence = new Sequence(new List<Node>() { destinationInvertedNode, chooseDestinationNode });
+
+        // Segunda rama
+        ZoneTimerNode zoneTimerNode = new ZoneTimerNode(this);
+        InZoneNode inZoneNode = new InZoneNode(this);
+        Sequence wanderZoneSequence = new Sequence(new List<Node>() { inZoneNode, zoneTimerNode, wanderNode });
+
+        // Primera rama
+        StayStillNode stayStillNode = new StayStillNode(thisAgent, thisAnimator);
+        GiveInformationNode giveInformationNode = new GiveInformationNode(this);
+        RangeNode marshallInRange = new RangeNode(marshallRange, playerTransform, this.transform);
+        Sequence sequence2 = new Sequence(new List<Node>() { marshallInRange, giveInformationNode, stayStillNode });
+
+        HideInformationNode hideInformationNode = new HideInformationNode(this);
+        Inverter marshallRangeInvertedNode = new Inverter(marshallInRange);
+        HasGivenInformatioNode hasGivenInformatioNode = new HasGivenInformatioNode(this);
+        Sequence sequence7 = new Sequence(new List<Node>() { hasGivenInformatioNode, marshallRangeInvertedNode, hideInformationNode });
+
+        Selector selector3 = new Selector(new List<Node>() { sequence7, sequence2 });
+
+        WitnessNode witnessNode = new WitnessNode(this);
+        Sequence sequence4 = new Sequence(new List<Node>() { witnessNode, selector3 });
+
+        Selector selector1 = new Selector(new List<Node>() { sequence7, sequence2, stayStillNode });
+
+        VictimNode victimNode = new VictimNode(this);
+        Sequence sequence1 = new Sequence(new List<Node>() { victimNode, selector1 });
+
+        Selector staySelector = new Selector(new List<Node>() { sequence1, sequence4 });
+
+        // Nodo padre del árbol
+        topNode = new Selector(new List<Node>() { staySelector, wanderZoneSequence, chooseDestinationSequence, moveSelector });
     }
 
     /// <summary>
@@ -240,14 +321,14 @@ public class Villager : MonoBehaviour
     {
         // Si el ladrón no está en el ángulo, no lo ve
         if (Vector3.Angle(transform.forward.normalized,
-            (thief.position - transform.position).normalized) > visionAngle / 2)
+            (thiefTransform.position - transform.position).normalized) > visionAngle / 2)
         {
             return false;
         }  
 
         // Lanzamos rayos para saber si lo ve
         RaycastHit[] hits = Physics.RaycastAll(transform.position,
-            (thief.position - transform.position).normalized, visionDistance);
+            (thiefTransform.position - transform.position).normalized, visionDistance);
 
         // Ordenamos los choques
         System.Array.Sort(hits, delegate (RaycastHit x, RaycastHit y) {
@@ -292,9 +373,6 @@ public class Villager : MonoBehaviour
         int randomNumber = Random.Range(0, 100);
 
         // Sigo mañana
-        // ESTO NO VA AQUI -> AREA MASK NODES
-        // thisAgent.areaMask = NavMesh.GetAreaFromName("Zone");
-        // thisAgent.areaMask = NavMesh.AllAreas;
     }
 
     /// <summary>
