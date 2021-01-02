@@ -10,6 +10,21 @@ public class LevelLoader : MonoBehaviour
     #region Variables
 
     private bool changeScene = false;
+    
+    [Tooltip("Círculo de transición")]
+    [SerializeField]
+    private GameObject circle;
+    [SerializeField]
+    private bool useCircle = false;
+
+    [Tooltip("Barras UI")]
+    [SerializeField]
+    private GameObject bars;
+    private bool showBars = false;
+
+    [Tooltip("Número de capas de animación")]
+    [SerializeField]
+    private int numLayers;
 
     [Tooltip("Lista de escenas")]
     [SerializeField]
@@ -62,7 +77,7 @@ public class LevelLoader : MonoBehaviour
     public void LoadScene(int id)
     {
         sceneToLoad = scenes[id];
-        animator.SetTrigger("Start");
+        animator.SetTrigger("Leave");
         changeScene = true;
     }
 
@@ -78,6 +93,31 @@ public class LevelLoader : MonoBehaviour
     }
 
     /// <summary>
+    /// Activa o desactiva el círculo para las transiciones
+    /// </summary>
+    /// <param name="useCircle"></param>
+    public void UseCircle(bool useCircle)
+    {
+        this.useCircle = useCircle;
+        if (this.useCircle)
+        {
+            for (int i = 0; i < numLayers; i++)
+            {
+                animator.SetLayerWeight(i, 0);
+            }
+
+            circle.SetActive(true);
+        }
+        else
+        {
+            for (int i = 0; i < numLayers; i++)
+            {
+                animator.SetLayerWeight(i, 1);
+            }
+            circle.SetActive(false);
+        }
+    }
+    /// <summary>
     /// Método que recibe el id del canvas a cambiar,
     /// dentro de la lista de canvas posibles.
     /// </summary>
@@ -85,7 +125,7 @@ public class LevelLoader : MonoBehaviour
     public void LoadCanvas(int id)
     {
         canvasToLoad = UICanvas[id];
-        animator.SetTrigger("Start");
+        animator.SetTrigger("Leave");
         changeScene = false;
     }
 
@@ -99,7 +139,32 @@ public class LevelLoader : MonoBehaviour
             currentCanvas.SetActive(false);
             currentCanvas = canvasToLoad;
             canvasToLoad.SetActive(true);
-            animator.SetTrigger("Restart");
+            animator.SetTrigger("Enter");
+        }
+    }
+
+    /// <summary>
+    /// Determina si hay que mostrar
+    /// o esconder las barras en la escena de juego
+    /// </summary>
+    /// <param name="showBars"></param>
+    public void ShowBars(bool showBars)
+    {
+        this.showBars = showBars;
+    }
+
+    /// <summary>
+    /// Activa o desactiva las barras en la escena de juego
+    /// Se llama tras la animación del círculo
+    /// </summary>
+    public void CheckBars()
+    {
+        if (showBars)
+        {
+            bars.SetActive(true);
+        }else
+        {
+            bars.SetActive(false);
         }
     }
     #endregion

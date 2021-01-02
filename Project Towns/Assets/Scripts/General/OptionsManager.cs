@@ -223,7 +223,8 @@ public class OptionsManager : MonoBehaviour
     public void StartGameWithDifficulty(int difficulty)
     {
         GlobalVars.instance.difficulty = difficulty;
-        levelLoader.LoadScene(0);
+        levelLoader.UseCircle(true);
+        levelLoader.LoadScene(1);
     }
     #endregion
 }

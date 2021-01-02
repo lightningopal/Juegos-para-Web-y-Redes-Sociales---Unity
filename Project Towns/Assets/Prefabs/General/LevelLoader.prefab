@@ -251,6 +251,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a96f8f6eb4d9b694c982f914de9293d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circle: {fileID: 0}
+  useCircle: 0
+  numLayers: 0
   scenes: []
   UICanvas: []
   animator: {fileID: 3691359553900180258}
