@@ -13,13 +13,13 @@ public class LevelLoader : MonoBehaviour
     
     [Tooltip("Círculo de transición")]
     [SerializeField]
-    private GameObject circle;
+    private GameObject circle = null;
     [SerializeField]
     private bool useCircle = false;
 
     [Tooltip("Barras UI")]
     [SerializeField]
-    private GameObject bars;
+    private GameObject bars = null;
     private bool showBars = false;
 
     [Tooltip("Número de capas de animación")]

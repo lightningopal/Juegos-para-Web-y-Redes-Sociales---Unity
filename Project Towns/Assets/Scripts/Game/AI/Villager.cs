@@ -34,6 +34,9 @@ public class Villager : MonoBehaviour
     [Tooltip("Booleano que indica si es testigo")]
     [HideInInspector]
     public bool isWitness = false;
+    [Tooltip("Booleano que indica si ha dado información")]
+    [HideInInspector]
+    public bool hasGivenInformation = false;
 
     [Header("Objetos")]
     [Tooltip("Items del aldeano")]
@@ -59,12 +62,9 @@ public class Villager : MonoBehaviour
     [SerializeField]
     private GameObject informationGameObject = null;
     [Tooltip("Agente NavMesh")]
-    [SerializeField]
-    private NavMeshAgent _thisAgent = null;
-    public NavMeshAgent thisAgent
-    {
-        get { return _thisAgent; }
-    }
+    public NavMeshAgent thisAgent;
+
+    
 
     [Tooltip("Árbol de comportamiento")]
     private Node topNode;
@@ -297,19 +297,27 @@ public class Villager : MonoBehaviour
     /// <summary>
     /// Método ShowInformation, que muestra la información sobre los objetos
     /// </summary>
-    private void ShowInformation()
+    public void ShowInformation()
     {
         if (!informationGameObject.activeSelf)
+        {
             informationGameObject.SetActive(true);
+            hasGivenInformation = true;
+        }
     }
 
     /// <summary>
     /// Método HideInformation, que esconde la información sobre los objetos
     /// </summary>
-    private void HideInformation()
+    public void HideInformation()
     {
         if (informationGameObject.activeSelf)
+        {
+            hasGivenInformation = false;
             informationGameObject.SetActive(false);
+            isVictim = false;
+            isWitness = false;
+        }
     }
     #endregion
 }
