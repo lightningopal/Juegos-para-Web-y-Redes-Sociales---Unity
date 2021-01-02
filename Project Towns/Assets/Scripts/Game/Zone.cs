@@ -12,6 +12,9 @@ public class Zone
 
     // GameObject que define la zona
     public GameObject zoneFloor;
+
+    // Punto de entrada a la zona
+    public Transform enterPoint;
     #endregion
 
     #region Constructores
@@ -20,10 +23,11 @@ public class Zone
 
     }
 
-    public Zone(string zoneName_, GameObject zoneFloor_)
+    public Zone(string zoneName_, GameObject zoneFloor_, Transform enterPoint_)
     {
         zoneName = zoneName_;
         zoneFloor = zoneFloor_;
+        enterPoint = enterPoint_;
     }
     #endregion
 }
