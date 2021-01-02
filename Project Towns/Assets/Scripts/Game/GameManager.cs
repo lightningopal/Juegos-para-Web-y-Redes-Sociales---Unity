@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     [Header("Zonas")]
     [Tooltip("Lista de zonas")]
     [SerializeField]
-    private List<Zone> zones = new List<Zone>();
+    public List<Zone> zones = new List<Zone>();
 
     [Header("Aldeanos")]
     [Tooltip("Objeto padre de los aldeanos")]

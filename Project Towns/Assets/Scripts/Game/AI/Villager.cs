@@ -292,6 +292,9 @@ public class Villager : MonoBehaviour
         int randomNumber = Random.Range(0, 100);
 
         // Sigo mañana
+        // ESTO NO VA AQUI -> AREA MASK NODES
+        // thisAgent.areaMask = NavMesh.GetAreaFromName("Zone");
+        // thisAgent.areaMask = NavMesh.AllAreas;
     }
 
     /// <summary>
