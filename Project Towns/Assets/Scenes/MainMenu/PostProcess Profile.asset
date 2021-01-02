@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Value: 0
   contrast:
     m_OverrideState: 1
-    m_Value: -7
+    m_Value: -5.4
     min: -100
     max: 100
   colorFilter:
@@ -34,8 +34,8 @@ MonoBehaviour:
     min: -180
     max: 180
   saturation:
-    m_OverrideState: 0
-    m_Value: 13
+    m_OverrideState: 1
+    m_Value: 5
     min: -100
     max: 100
 --- !u!114 &-2680614314886616000
@@ -63,7 +63,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.199
+    m_Value: 0.236
     min: 0
     max: 1
   smoothness:
@@ -91,6 +91,7 @@ MonoBehaviour:
   - {fileID: 731827955003938014}
   - {fileID: 8399920060116439110}
   - {fileID: -2680614314886616000}
+  - {fileID: 2095077708945692261}
 --- !u!114 &731827955003938014
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -113,7 +114,54 @@ MonoBehaviour:
     m_Value: {x: 1, y: 1, z: 1, w: 0.15473886}
   gain:
     m_OverrideState: 0
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 1, y: 0.9226521, z: 0.90145224, w: 0}
+--- !u!114 &2095077708945692261
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b2db86121404754db890f4c8dfe81b2, type: 3}
+  m_Name: Bloom
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  threshold:
+    m_OverrideState: 1
+    m_Value: 0.9
+    min: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.92
+    min: 0
+  scatter:
+    m_OverrideState: 1
+    m_Value: 0.18
+    min: 0
+    max: 1
+  clamp:
+    m_OverrideState: 0
+    m_Value: 65472
+    min: 0
+  tint:
+    m_OverrideState: 1
+    m_Value: {r: 0.58431375, g: 0.29411766, b: 0, a: 1}
+    hdr: 0
+    showAlpha: 0
+    showEyeDropper: 1
+  highQualityFiltering:
+    m_OverrideState: 0
+    m_Value: 0
+  dirtTexture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+  dirtIntensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
 --- !u!114 &8399920060116439110
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -133,23 +181,23 @@ MonoBehaviour:
     m_Value: {x: 0.19613603, y: 0.035825193, z: 1, w: -0.09671173}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 0.62807786, y: 0.4933647, z: 1, w: 0.15473886}
+    m_Value: {x: 0.66496164, y: 0.5360408, z: 1, w: 0.15473886}
   highlights:
     m_OverrideState: 0
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 1, y: 0.46107092, z: 0.09884387, w: 0}
   shadowsStart:
     m_OverrideState: 0
     m_Value: 0
     min: 0
   shadowsEnd:
     m_OverrideState: 0
-    m_Value: 0.3
+    m_Value: 0.42
     min: 0
   highlightsStart:
     m_OverrideState: 0
-    m_Value: 0.55
+    m_Value: 0
     min: 0
   highlightsEnd:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 0
     min: 0
