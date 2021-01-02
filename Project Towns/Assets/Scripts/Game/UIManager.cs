@@ -107,8 +107,8 @@ public class UIManager : MonoBehaviour
         }
 
         // Reescalamos el background de los corazones
-        attemptsBackground.sizeDelta = new Vector2(backgroundWidths[difficulty.difficultyIndex], attemptsBackground.rect.height);
-
+        //attemptsBackground.sizeDelta = new Vector2(backgroundWidths[difficulty.difficultyIndex], attemptsBackground.rect.height);
+        attemptsBackground.localScale = new Vector3(backgroundWidths[difficulty.difficultyIndex], 1.0f, 1.0f);
     }
 
     /// <summary>
