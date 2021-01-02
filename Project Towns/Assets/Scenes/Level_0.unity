@@ -32332,21 +32332,33 @@ MonoBehaviour:
   - zoneName: Park
     zoneFloor: {fileID: 534979408}
     enterPoint: {fileID: 1788400646}
+    maxVillagers: 15
+    villagerCount: 0
   - zoneName: Houses
     zoneFloor: {fileID: 534979406}
     enterPoint: {fileID: 1969194042}
+    maxVillagers: 12
+    villagerCount: 0
   - zoneName: Market
     zoneFloor: {fileID: 534979417}
     enterPoint: {fileID: 654129465}
+    maxVillagers: 8
+    villagerCount: 0
   - zoneName: Townhall
     zoneFloor: {fileID: 534979418}
     enterPoint: {fileID: 1316975123}
+    maxVillagers: 8
+    villagerCount: 0
   - zoneName: Forge
     zoneFloor: {fileID: 534979419}
     enterPoint: {fileID: 595481804}
+    maxVillagers: 5
+    villagerCount: 0
   - zoneName: Plaza
     zoneFloor: {fileID: 534979407}
     enterPoint: {fileID: 1138960663}
+    maxVillagers: 12
+    villagerCount: 0
   villagersParent: {fileID: 1245310761}
   villagerPrefab: {fileID: 3893469932477135354, guid: 25ad0b89ee841f543b727ceb9ac4be8d,
     type: 3}
