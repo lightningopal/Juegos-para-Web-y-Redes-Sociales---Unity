@@ -145,7 +145,7 @@ public class LevelLoader : MonoBehaviour
 
     /// <summary>
     /// Determina si hay que mostrar
-    /// o esconder las barras en la escena de juego
+    /// o esconder las barras
     /// </summary>
     /// <param name="showBars"></param>
     public void ShowBars(bool showBars)
@@ -154,7 +154,7 @@ public class LevelLoader : MonoBehaviour
     }
 
     /// <summary>
-    /// Activa o desactiva las barras en la escena de juego
+    /// Activa o desactiva las barras de la interfaz
     /// Se llama tras la animación del círculo
     /// </summary>
     public void CheckBars()
