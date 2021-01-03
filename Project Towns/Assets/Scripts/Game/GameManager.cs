@@ -144,6 +144,7 @@ public class GameManager : MonoBehaviour
             // Obtener componente Villager
             Villager newVillager = villagerGameObject.GetComponent<Villager>();
 
+            // DESCOMENTAR
             // Comprobamos si ya existe uno igual
             /*while (CheckDuplicateVillager(newVillager))
             {

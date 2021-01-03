@@ -1,4 +1,5 @@
-﻿public class InDestinationNode : Node
+﻿using UnityEngine;
+public class InDestinationNode : Node
 {
     private Villager villager;
     private float minDistance;
@@ -11,7 +12,13 @@
 
     public override NodeState Evaluate()
     {
-        _nodeState = (villager.thisAgent.remainingDistance <= minDistance) ? NodeState.SUCCESS : NodeState.FAILURE;
+        float distanceToDestination = float.PositiveInfinity;
+        if (villager.destinationZone != null)
+        {
+            distanceToDestination = Vector3.Distance(villager.transform.position, villager.destinationZone.enterPoint.position);
+        }
+         
+        _nodeState = (distanceToDestination <= minDistance) ? NodeState.SUCCESS : NodeState.FAILURE;
         return _nodeState;
     }
 }

@@ -10,8 +10,17 @@ public class InZoneNode : Node
 
     public override NodeState Evaluate()
     {
-        Debug.Log("IN ZONE NODE");
-        _nodeState = (villager.actualZone.zoneName != "") ? NodeState.SUCCESS : NodeState.FAILURE;
+        _nodeState = NodeState.FAILURE;
+        
+        if (villager.actualZone != null)
+        {
+            if (villager.actualZone.zoneName != "")
+            {
+                _nodeState = NodeState.SUCCESS;
+            }
+        }
+        Debug.Log("In Zone Node: " + _nodeState);
+
         return _nodeState;
     }
 }

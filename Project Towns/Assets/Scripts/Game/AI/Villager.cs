@@ -132,12 +132,13 @@ public class Villager : MonoBehaviour
             {
                 distanceToNearestZone = distanceToZone;
                 destinationZone = z;
+                thisAgent.SetDestination(z.enterPoint.position);
                 Debug.Log("Nueva zona: " + z.zoneName);
             }
         }
 
         // Comprobar si colisiona con la zona
-        Collider[] overlapingColliders = Physics.OverlapSphere(this.transform.position, 2);
+        Collider[] overlapingColliders = Physics.OverlapSphere(this.transform.position, 1f);
         foreach (Collider c in overlapingColliders)
         {
             if (c.gameObject.CompareTag("Zone"))

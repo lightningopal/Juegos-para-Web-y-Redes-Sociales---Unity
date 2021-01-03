@@ -396,7 +396,7 @@ MonoBehaviour:
     maxVillagers: 0
     villagerCount: 0
   timeToNextZone: 0
-  timeToChangeZone: 30
+  timeToChangeZone: 10
   MINIMUM_DESTINY_DISTANCE: 0.5
   SPEED_RUN_PROBABILITY: 30
   WALKING_SPEED: 2
