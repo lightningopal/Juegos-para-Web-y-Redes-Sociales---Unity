@@ -11,6 +11,7 @@ public class WanderNode : Node
 
     public override NodeState Evaluate()
     {
+        Debug.Log("WanderNode");
         // Si ha pasado el tiempo suficiente, hace el siguiente wander
         if (villager.thisAgent.remainingDistance <= villager.MINIMUM_DESTINY_DISTANCE)
         {

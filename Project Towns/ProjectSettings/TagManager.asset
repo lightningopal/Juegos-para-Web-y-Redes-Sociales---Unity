@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Walkable
   - Villager
+  - Zone
   layers:
   - Default
   - TransparentFX

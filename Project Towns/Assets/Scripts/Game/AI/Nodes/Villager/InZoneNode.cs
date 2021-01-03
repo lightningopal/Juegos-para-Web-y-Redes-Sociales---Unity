@@ -1,4 +1,5 @@
-﻿public class InZoneNode : Node
+﻿using UnityEngine;
+public class InZoneNode : Node
 {
     private Villager villager;
 
@@ -9,7 +10,8 @@
 
     public override NodeState Evaluate()
     {
-        _nodeState = (villager.actualZone != null) ? NodeState.SUCCESS : NodeState.FAILURE;
+        Debug.Log("IN ZONE NODE");
+        _nodeState = (villager.actualZone.zoneName != "") ? NodeState.SUCCESS : NodeState.FAILURE;
         return _nodeState;
     }
 }

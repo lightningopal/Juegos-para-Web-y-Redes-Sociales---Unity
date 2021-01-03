@@ -11,16 +11,24 @@ public class EnoughSpaceNode : Node
 
     public override NodeState Evaluate()
     {
-        // Establecer el tiempo para esa zona
-        villager.timeToNextZone = Time.time + villager.timeToChangeZone; 
+        // Si hay hueco
+        if (villager.destinationZone.villagerCount < villager.destinationZone.maxVillagers)
+        {
+            // Establecer el tiempo para esa zona
+            Debug.Log("EnoughSpaceNode");
+            villager.timeToNextZone = Time.time + villager.timeToChangeZone;
 
-        // Establecer el destino
-        villager.actualZone = villager.destinationZone;
+            // Establecer el destino
+            villager.actualZone = villager.destinationZone;
 
-        // Se establece la máscara de zona
-        villager.thisAgent.areaMask = NavMesh.GetAreaFromName("Zone");
+            // Se establece la máscara de zona
+            villager.thisAgent.areaMask = (int)Mathf.Pow(2, NavMesh.GetAreaFromName("Zone"));
 
-        _nodeState = (villager.destinationZone.villagerCount < villager.destinationZone.maxVillagers) ? NodeState.SUCCESS : NodeState.FAILURE;
+            _nodeState = NodeState.SUCCESS;
+        }
+        else
+            _nodeState = NodeState.FAILURE;
+
         return _nodeState;
     }
 }

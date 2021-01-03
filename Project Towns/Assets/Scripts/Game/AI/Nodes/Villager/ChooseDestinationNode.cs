@@ -11,6 +11,7 @@ public class ChooseDestinationNode : Node
 
     public override NodeState Evaluate()
     {
+        Debug.Log("ChooseDestinationNode");
         // Se elige una nueva zona
         int randomZoneNumber = Random.Range(0, GameManager.instance.zones.Count);
         Zone newZone;

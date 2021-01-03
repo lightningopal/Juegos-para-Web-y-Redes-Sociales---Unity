@@ -32,24 +32,24 @@ public class Villager : MonoBehaviour
 
     [Header("Información sobre el aldeano")]
     [Tooltip("Booleano que indica si es víctima")]
-    [HideInInspector]
+    ////[HideInInspector]
     public bool isVictim = false;
     [Tooltip("Booleano que indica si es testigo")]
-    [HideInInspector]
+    //[HideInInspector]
     public bool isWitness = false;
     [Tooltip("Booleano que indica si ha dado información")]
-    [HideInInspector]
+    //[HideInInspector]
     public bool hasGivenInformation = false;
 
     [Header("Zonas")]
     [Tooltip("Zona actual")]
-    [HideInInspector]
+    //[HideInInspector]
     public Zone actualZone = null;
     [Tooltip("Zona destino")]
-    [HideInInspector]
+    //[HideInInspector]
     public Zone destinationZone = null;
     [Tooltip("Tiempo para cambiar de zona")]
-    [HideInInspector]
+    //[HideInInspector]
     public float timeToNextZone = 0.0f;
     [Tooltip("Tiempo que se lleva en una zona")]
     public float timeToChangeZone = 30.0f;
@@ -68,7 +68,7 @@ public class Villager : MonoBehaviour
     [Tooltip("Radio del wander")]
     public float WANDER_RADIUS = 2.0f;
     [Tooltip("Tiempo para el siguiente wander")]
-    [HideInInspector]
+    //[HideInInspector]
     public float wanderNextTime = 0.0f;
 
     [Header("Objetos")]
@@ -123,8 +123,36 @@ public class Villager : MonoBehaviour
         // Referencia al jugador
         playerTransform = FindObjectOfType<PlayerController>().transform;
 
+        // Elegir destino más cercano
+        float distanceToNearestZone = float.PositiveInfinity;
+        foreach (Zone z in GameManager.instance.zones)
+        {
+            float distanceToZone = Vector3.Distance(z.enterPoint.position, this.transform.position);
+            if (distanceToZone < distanceToNearestZone)
+            {
+                distanceToNearestZone = distanceToZone;
+                destinationZone = z;
+                Debug.Log("Nueva zona: " + z.zoneName);
+            }
+        }
+
+        // Comprobar si colisiona con la zona
+        Collider[] overlapingColliders = Physics.OverlapSphere(this.transform.position, 2);
+        foreach (Collider c in overlapingColliders)
+        {
+            if (c.gameObject.CompareTag("Zone"))
+            {
+                Debug.Log("Está en zona: " + c.gameObject.name);
+                actualZone = destinationZone;
+                thisAgent.areaMask = (int)Mathf.Pow(2, NavMesh.GetAreaFromName("Zone"));
+            }
+        }
+
         // Crear Árbol
         CreateBehaviourTree();
+
+        // Establecer tiempo para cambiar de zona
+        timeToNextZone = Time.time + timeToChangeZone;
     }
 
     /// <summary>
@@ -140,41 +168,6 @@ public class Villager : MonoBehaviour
             thisAgent.SetDestination(thief.position);
         }*/
     }
-
-    #region Colliders
-    /// <summary>
-    /// Método OnTriggerEnter, que se llama al entrar en un trigger
-    /// </summary>
-    /// <param name="other">Trigger en el que entra</param>
-    /*private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("thief"))
-        {
-            if (isWitness || isVictim)
-            {
-                ShowInformation();
-            }
-        }
-    }
-
-    /// <summary>
-    /// Método OnTriggerExit, que se llama al sair de un trigger
-    /// </summary>
-    /// <param name="other">Trigger del que sale</param>
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("thief"))
-        {
-            if (isWitness || isVictim)
-            {
-                isWitness = false;
-                isVictim = false;
-
-                HideInformation();
-            }
-        }
-    }*/
-    #endregion
 
     /// <summary>
     /// Método OnDrawGizmosSelected, que dibuja gizmos en la escena al seleccionar el personaje

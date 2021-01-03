@@ -11,7 +11,7 @@ public class ZoneTimerNode : Node
 
     public override NodeState Evaluate()
     {
-        _nodeState = (villager.timeToNextZone <= Time.time) ? NodeState.SUCCESS : NodeState.FAILURE;
+        _nodeState = (villager.timeToNextZone >= Time.time) ? NodeState.SUCCESS : NodeState.FAILURE;
         return _nodeState;
     }
 }

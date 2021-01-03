@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
                 //Debug.Log("You selected the: " + hit.transform.name);
 
                 // Si es territorio transitable, mueve al agente a esa posición
-                if (hit.transform.CompareTag("Walkable"))
+                if (hit.transform.CompareTag("Walkable") || hit.transform.CompareTag("Zone"))
                 {
                     thisAgent.SetDestination(hit.point);
                     // Se instancia el efecto
