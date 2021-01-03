@@ -11,7 +11,7 @@ public class ChooseDestinationNode : Node
 
     public override NodeState Evaluate()
     {
-        Debug.Log("ChooseDestinationNode");
+        //Debug.Log("ChooseDestinationNode");
         // Se elige una nueva zona
         int randomZoneNumber;
         Zone newZone;
@@ -21,6 +21,10 @@ public class ChooseDestinationNode : Node
             randomZoneNumber = Random.Range(0, GameManager.instance.zones.Count);
             newZone = GameManager.instance.zones[randomZoneNumber];
         } while (newZone.zoneName == villager.actualZone.zoneName);
+
+        // Sale de la zona actual
+        villager.actualZone.villagerCount--;
+        villager.actualZone = null;
 
         // Se establece la máscara para todas las áreas
         villager.thisAgent.areaMask = NavMesh.AllAreas;

@@ -14,7 +14,7 @@ public class StayStillNode : Node
 
     public override NodeState Evaluate()
     {
-        Debug.Log("StayStillNode");
+        //Debug.Log("StayStillNode");
         // Quedarse quieto
         if (agent.hasPath)
             agent.ResetPath();

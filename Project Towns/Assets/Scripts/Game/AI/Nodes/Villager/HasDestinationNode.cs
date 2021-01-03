@@ -24,7 +24,7 @@ public class HasDestinationNode : Node
                 }
             }
         }
-        Debug.Log("Has Destination Node: " + _nodeState);
+        //Debug.Log("Has Destination Node: " + _nodeState);
 
         return _nodeState;
     }
