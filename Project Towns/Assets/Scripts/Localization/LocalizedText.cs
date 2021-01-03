@@ -38,5 +38,16 @@ public class LocalizedText : MonoBehaviour
         string value = localizedString.value;
         textField.text = value;
     }
+
+    /// <summary>
+    /// Método ChangeText, permite cambiar el valor del texto
+    /// </summary>
+    public void ChangeText(string key)
+    {
+        localizedString = key;
+        textField = GetComponent<TextMeshProUGUI>();
+        string value = localizedString.value;
+        textField.text = value;
+    }
     #endregion
 }
