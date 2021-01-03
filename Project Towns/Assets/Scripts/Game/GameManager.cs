@@ -30,11 +30,14 @@ public class GameManager : MonoBehaviour
     [Tooltip("Prefab del aldeano")]
     [SerializeField]
     private GameObject villagerPrefab = null;
+    [Tooltip("Prefab del ladrón")]
+    [SerializeField]
+    private GameObject thiefPrefab = null;
     [Tooltip("Lista de putos de spawn aldeanos")]
     [SerializeField]
     private List<Transform> villagerPoints = new List<Transform>();
     [Tooltip("Lista de aldeanos")]
-    private List<Villager> villagers = new List<Villager>();
+    private List<NPC> NPCs = new List<NPC>();
 
     [Header("Valores de la partida")]
     [Tooltip("Contador de robos")]
@@ -131,12 +134,32 @@ public class GameManager : MonoBehaviour
     public void SpawnVillagers()
     {
         List<Transform> updatedVillagerPoints = new List<Transform>(villagerPoints);
-        for (int i = 0; i < difficulty.villagers; i++)
+
+        /// Generar Ladrón
+        // Obtener datos aleatorios
+        int randomNumber = Random.Range(0, updatedVillagerPoints.Count);
+        Transform randomPoint = updatedVillagerPoints[randomNumber];
+        Quaternion randomRotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
+
+        /*// Instanciar objeto
+        GameObject thiefGameObject = Instantiate(thiefPrefab, randomPoint.position, randomRotation, villagersParent.transform);
+
+        // Obtener componente Villager
+        Thief newThief = thiefGameObject.GetComponent<Thief>();
+
+        // Añadimos al aldeano a la lista
+        NPCs.Add(newThief);
+
+        // Borrar posición de la lista
+        updatedVillagerPoints.Remove(randomPoint);*/
+
+        /// Generar aldeanos
+        for (int i = 0; i < (difficulty.villagers - 1); i++)
         {
             // Obtener datos aleatorios
-            int randomNumber = Random.Range(0, updatedVillagerPoints.Count);
-            Transform randomPoint = updatedVillagerPoints[randomNumber];
-            Quaternion randomRotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
+            randomNumber = Random.Range(0, updatedVillagerPoints.Count);
+            randomPoint = updatedVillagerPoints[randomNumber];
+            randomRotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
 
             // Instanciar objeto
             GameObject villagerGameObject = Instantiate(villagerPrefab, randomPoint.position, randomRotation, villagersParent.transform);
@@ -144,15 +167,14 @@ public class GameManager : MonoBehaviour
             // Obtener componente Villager
             Villager newVillager = villagerGameObject.GetComponent<Villager>();
 
-            // DESCOMENTAR
             // Comprobamos si ya existe uno igual
-            /*while (CheckDuplicateVillager(newVillager))
+            while (CheckDuplicateVillager(newVillager))
             {
-                newVillager.RandomizeVillager();
-            }*/
+                newVillager.RandomizeNPC();
+            }
 
             // Añadimos al aldeano a la lista
-            villagers.Add(newVillager);
+            NPCs.Add(newVillager);
 
             // Borrar posición de la lista
             updatedVillagerPoints.Remove(randomPoint);
@@ -166,7 +188,7 @@ public class GameManager : MonoBehaviour
     {
         VillagerItems thisVillagerItems = thisVillager.items;
         VillagerItems villagerInListItems;
-        foreach (Villager villagerInList in villagers)
+        foreach (Villager villagerInList in NPCs)
         {
             villagerInListItems = villagerInList.items;
 
