@@ -11,7 +11,7 @@ public class EnoughSpaceNode : Node
 
     public override NodeState Evaluate()
     {
-        Debug.Log("EnoughSpaceNode");
+        //Debug.Log("EnoughSpaceNode");
         // Si hay hueco
         if (villager.destinationZone.villagerCount < villager.destinationZone.maxVillagers)
         {
@@ -20,8 +20,11 @@ public class EnoughSpaceNode : Node
 
             // Establecer la zona
             villager.actualZone = villager.destinationZone;
+            villager.actualZone.villagerCount++;
             villager.destinationZone = null;
 
+            // Establecer la velocidad
+            villager.thisAgent.speed = villager.WALKING_SPEED;
 
             // Se establece la máscara de zona
             villager.thisAgent.areaMask = (int)Mathf.Pow(2, NavMesh.GetAreaFromName("Zone"));

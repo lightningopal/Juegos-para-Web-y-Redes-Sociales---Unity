@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Difficulty_0_Easy
   m_EditorClassIdentifier: 
   difficultyIndex: 0
-  villagers: 1
+  villagers: 30
   catchAttempts: 3
   thiefRobberies: 8
   clothings: 8
