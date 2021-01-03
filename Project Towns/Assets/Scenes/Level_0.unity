@@ -32346,6 +32346,8 @@ MonoBehaviour:
   villagersParent: {fileID: 1245310761}
   villagerPrefab: {fileID: 3893469932477135354, guid: 25ad0b89ee841f543b727ceb9ac4be8d,
     type: 3}
+  thiefPrefab: {fileID: 3893469932477135354, guid: 69e2613ddb227154e98a1341f4e4a8bc,
+    type: 3}
   villagerPoints:
   - {fileID: 1808572385}
   - {fileID: 1298714589}
@@ -56458,7 +56460,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.8086296}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 210.99997}
+  m_AnchoredPosition: {x: 0, y: 211}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1767973622
