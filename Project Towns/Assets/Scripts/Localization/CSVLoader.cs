@@ -62,6 +62,8 @@ public class CSVLoader
                 if (dictionary.ContainsKey(key))
                     continue;
 
+                fields[attributeIndex] = fields[attributeIndex].TrimEnd('\r', '\n');
+
                 var value = (fields[attributeIndex] != string.Empty) ? fields[attributeIndex] : key;
 
                 dictionary.Add(key, value);
