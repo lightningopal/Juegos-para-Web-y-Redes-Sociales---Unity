@@ -32346,6 +32346,7 @@ MonoBehaviour:
   villagersParent: {fileID: 1245310761}
   villagerPrefab: {fileID: 3893469932477135354, guid: 25ad0b89ee841f543b727ceb9ac4be8d,
     type: 3}
+  thiefPrefab: {fileID: 0}
   villagerPoints:
   - {fileID: 1808572385}
   - {fileID: 1298714589}
@@ -58832,8 +58833,8 @@ RectTransform:
   m_Father: {fileID: 1927036817}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.050333332, y: 0.15950304}
-  m_AnchorMax: {x: 0.33164582, y: 0.2685322}
+  m_AnchorMin: {x: 0.054, y: 0.15950304}
+  m_AnchorMax: {x: 0.47129166, y: 0.28359258}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -58920,7 +58921,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -0.5150455, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

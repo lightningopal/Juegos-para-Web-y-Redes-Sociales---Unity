@@ -147,6 +147,12 @@ public class GameManager : MonoBehaviour
         // Obtener componente Villager
         Thief newThief = thiefGameObject.GetComponent<Thief>();
 
+        // Se aleatoriza
+        newThief.RandomizeNPC();
+
+        // Instanciamos sus objetos
+        newThief.PutItems();
+
         // Añadimos al aldeano a la lista
         NPCs.Add(newThief);
 
@@ -167,11 +173,14 @@ public class GameManager : MonoBehaviour
             // Obtener componente Villager
             Villager newVillager = villagerGameObject.GetComponent<Villager>();
 
-            // Comprobamos si ya existe uno igual
-            while (CheckDuplicateVillager(newVillager))
+            // Aleatorizamos el aldeano y comprobamos si ya existe uno igual
+            do
             {
                 newVillager.RandomizeNPC();
-            }
+            } while (CheckDuplicateVillager(newVillager));
+
+            // Instanciamos sus objetos
+            newVillager.PutItems();
 
             // Añadimos al aldeano a la lista
             NPCs.Add(newVillager);

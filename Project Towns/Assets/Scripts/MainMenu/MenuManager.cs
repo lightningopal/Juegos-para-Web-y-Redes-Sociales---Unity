@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 /// <summary>
 /// Clase MenuManager, que controla el menú del juego
@@ -27,6 +29,13 @@ public class MenuManager : MonoBehaviour
     [Tooltip("Posición en Y del ratón")]
     private float mousePosY;
 
+    [Header("Pantalla inicio")]
+    [Tooltip("Texto de la pantalla de inicio")]
+    public TextMeshProUGUI startText;
+    [Tooltip("Imagen del icono")]
+    public Image iconImage;
+    [Tooltip("Sprites del icono")]
+    public Sprite[] iconSprites = new Sprite[2];
     #endregion
 
     #region MétodosUnity
@@ -43,6 +52,18 @@ public class MenuManager : MonoBehaviour
         //AudioManager.instance.ManageAudio("MainTheme", "music", "play");
 
         creditsTextPosition = creditsText.localPosition;
+
+        // Texto inicio
+        if (Application.isMobilePlatform)
+        {
+            iconImage.sprite = iconSprites[1];
+            startText.text = LocalizationSystem.GetLocalizedValue("START_MOBILE");
+        }
+        else
+        {
+            iconImage.sprite = iconSprites[0];
+            startText.text = LocalizationSystem.GetLocalizedValue("START_DESKTOP");
+        }
     }
 
     /// <summary>
