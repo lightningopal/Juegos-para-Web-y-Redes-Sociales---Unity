@@ -137,16 +137,40 @@ public class Villager : MonoBehaviour
             }
         }
 
-        // Comprobar si colisiona con la zona
+        // Comprobar si colisiona con la zona, que significaría que está en la zona
+        bool inZone = false;
         Collider[] overlapingColliders = Physics.OverlapSphere(this.transform.position, 1f);
         foreach (Collider c in overlapingColliders)
         {
             if (c.gameObject.CompareTag("Zone"))
             {
                 Debug.Log("Está en zona: " + c.gameObject.name);
+                inZone = true;
                 actualZone = destinationZone;
+                actualZone.villagerCount++;
+                destinationZone = null;
                 thisAgent.areaMask = (int)Mathf.Pow(2, NavMesh.GetAreaFromName("Zone"));
             }
+        }
+
+        // Si no está en ninguna zona, elige un destino aleatorio
+        if (!inZone)
+        {
+            // Se elige una nueva zona
+            int randomZoneNumber = Random.Range(0, GameManager.instance.zones.Count);
+            Zone newZone = GameManager.instance.zones[randomZoneNumber];
+
+            // Se establece el destino
+            destinationZone = newZone;
+            thisAgent.SetDestination(newZone.enterPoint.position);
+
+            // Se elige si va andando o corriendo
+            int randomSpeedProbability = Random.Range(0, 100);
+
+            if (randomSpeedProbability < SPEED_RUN_PROBABILITY)
+                thisAgent.speed = RUNNING_SPEED;
+            else
+                thisAgent.speed = WALKING_SPEED;
         }
 
         // Crear Árbol
@@ -263,10 +287,10 @@ public class Villager : MonoBehaviour
         Sequence sequence6 = new Sequence(new List<Node>() { enoughSpaceNode, wanderNode });
 
         ChooseDestinationNode chooseDestinationNode = new ChooseDestinationNode(this);
-        Selector selector2 = new Selector(new List<Node>() { sequence6, chooseDestinationNode });
+        Selector selector3 = new Selector(new List<Node>() { sequence6, chooseDestinationNode });
 
         InDestinationNode inDestinationNode = new InDestinationNode(this, MINIMUM_DESTINY_DISTANCE);
-        Sequence sequence5 = new Sequence(new List<Node>() { inDestinationNode, selector2 });
+        Sequence sequence5 = new Sequence(new List<Node>() { inDestinationNode, selector3 });
 
         Selector moveSelector = new Selector(new List<Node>() { sequence5, moveToDestinationNode });
 
@@ -284,19 +308,19 @@ public class Villager : MonoBehaviour
         StayStillNode stayStillNode = new StayStillNode(thisAgent, thisAnimator);
         GiveInformationNode giveInformationNode = new GiveInformationNode(this);
         RangeNode marshallInRange = new RangeNode(marshallRange, playerTransform, this.transform);
-        Sequence sequence2 = new Sequence(new List<Node>() { marshallInRange, giveInformationNode, stayStillNode });
+        Sequence sequence3 = new Sequence(new List<Node>() { marshallInRange, giveInformationNode, stayStillNode });
 
         HideInformationNode hideInformationNode = new HideInformationNode(this);
         Inverter marshallRangeInvertedNode = new Inverter(marshallInRange);
         HasGivenInformatioNode hasGivenInformatioNode = new HasGivenInformatioNode(this);
-        Sequence sequence7 = new Sequence(new List<Node>() { hasGivenInformatioNode, marshallRangeInvertedNode, hideInformationNode });
+        Sequence sequence2 = new Sequence(new List<Node>() { hasGivenInformatioNode, marshallRangeInvertedNode, hideInformationNode });
 
-        Selector selector3 = new Selector(new List<Node>() { sequence7, sequence2 });
+        Selector selector2 = new Selector(new List<Node>() { sequence2, sequence3 });
 
         WitnessNode witnessNode = new WitnessNode(this);
-        Sequence sequence4 = new Sequence(new List<Node>() { witnessNode, selector3 });
+        Sequence sequence4 = new Sequence(new List<Node>() { witnessNode, selector2 });
 
-        Selector selector1 = new Selector(new List<Node>() { sequence7, sequence2, stayStillNode });
+        Selector selector1 = new Selector(new List<Node>() { sequence2, sequence3, stayStillNode });
 
         VictimNode victimNode = new VictimNode(this);
         Sequence sequence1 = new Sequence(new List<Node>() { victimNode, selector1 });
