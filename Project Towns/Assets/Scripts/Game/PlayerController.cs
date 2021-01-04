@@ -64,14 +64,21 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // Si está lo suficientemente cerca de un robo
+        // Si está lo suficientemente cerca de un robo, lo desactiva
+        List<Robbery> closeRobberies = new List<Robbery>();
         foreach (Robbery r in GameManager.instance.robberies)
         {
             if (Vector3.Distance(this.transform.position, r.robberyPosition) < QUIT_STEAL_ICON_RANGE)
             {
-                UIManager.instance.HideRobberyIcon(r);
+                closeRobberies.Add(r);
             }
         }
+
+        foreach(Robbery r in closeRobberies)
+        {
+            UIManager.instance.HideRobberyIcon(r);
+        }
+
         
     }
     #endregion

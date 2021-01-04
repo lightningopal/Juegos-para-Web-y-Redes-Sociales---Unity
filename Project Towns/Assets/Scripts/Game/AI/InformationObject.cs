@@ -16,14 +16,14 @@ public class InformationObject : MonoBehaviour
     public Item item2;
     [Tooltip("SpriteRenderer del segundo item")]
     public SpriteRenderer item2Sprite;
-    [Tooltip("Booleano que indica si son dos items")]
-    public bool areTwoItems = false;
+    [Tooltip("Booleano que indica si un objeto es dudoso")]
+    public bool doubtfulInformation;
     [Tooltip("Posicion del item1 cuando está solo")]
     [SerializeField]
     private float item1PositionWhenOnly = 0;
     [Tooltip("Posicion del item1 cuando son 2")]
     [SerializeField]
-    private float item1PositionWhenTwo = 1;
+    private float item1PositionWhenTwo = 30;
 
     [Header("Backgrounds")]
     [Tooltip("SpriteRenderer del background")]
@@ -31,10 +31,10 @@ public class InformationObject : MonoBehaviour
     private SpriteRenderer backgroundImage = null;
     [Tooltip("Background para un item")]
     [SerializeField]
-    private Sprite backgroundOneItem = null;
+    private Sprite[] backgroundsOneItem = new Sprite[2];
     [Tooltip("Background para dos items")]
     [SerializeField]
-    private Sprite backgroundTwoItems = null;
+    private Sprite[] backgroundsTwoItems = new Sprite[2];
 
     //Camara principal
     private Camera mainCamera;
@@ -64,16 +64,21 @@ public class InformationObject : MonoBehaviour
     /// </summary>
     public void CalculateInformation()
     {
-        if (areTwoItems)
+        item1Sprite.sprite = item1.itemSprite;
+        // Si son dos objetos
+        if (item2 != null)
         {
-            backgroundImage.sprite = backgroundTwoItems;
-            item1Sprite.transform.position = new Vector3(0, item1PositionWhenTwo, 0);
+            item2Sprite.sprite = item2.itemSprite;
+
+            backgroundImage.sprite = (!doubtfulInformation) ? backgroundsTwoItems[0] : backgroundsTwoItems[1];
+            item1Sprite.transform.localPosition = new Vector3(item1Sprite.transform.localPosition.x, item1PositionWhenTwo, 0);
             item2Sprite.gameObject.SetActive(true);
         }
+        // Si es un objeto
         else
         {
-            backgroundImage.sprite = backgroundOneItem;
-            item1Sprite.transform.position = new Vector3(0, item1PositionWhenOnly, 0);
+            backgroundImage.sprite = (!doubtfulInformation) ? backgroundsOneItem[0] : backgroundsOneItem[1];
+            item1Sprite.transform.localPosition = new Vector3(item1Sprite.transform.localPosition.x, item1PositionWhenOnly, 0);
             item2Sprite.gameObject.SetActive(false);
         }
     }
