@@ -27,13 +27,23 @@ public class MaterialItem : Item
 }
 
 /// <summary>
+/// Clase EyesItem, que hereda de Item y contiene la información del número de ojos
+/// </summary>
+[System.Serializable]
+public class EyesItem : Item
+{
+    [Tooltip("Número de ojos")]
+    public int eyesNumber;
+}
+
+/// <summary>
 /// Estructura VillagerItems, para almacenar los items de los aldeanos
 /// </summary>
 [System.Serializable]
 public struct NPCItems
 {
     public MaterialItem villagerColor;
-    public int eyesNumber;
+    public EyesItem eyes;
     public Item hatItem;
     public Item hornItem;
     public Item neckItem;
@@ -51,7 +61,7 @@ public struct NPCItems
         if (neckItem != null)
             neckItemString = neckItem.itemName;
 
-        return villagerColor.itemName + " - " + eyesNumber + " - " + hatItemString + " - " +
+        return villagerColor.itemName + " - " + eyes.eyesNumber + " - " + hatItemString + " - " +
             hornItemString + " - " + neckItemString;
     }
 }

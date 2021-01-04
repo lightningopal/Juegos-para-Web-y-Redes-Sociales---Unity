@@ -15,7 +15,7 @@ public class VillagersCloseNode : Node
         List<Villager> villagersInRange = new List<Villager>();
 
         // Por cada aldeano, se calcula si está en rango
-        foreach (Villager villager in GameManager.instance.NPCs)
+        foreach (Villager villager in GameManager.instance.villagers)
         {
             if (Vector3.Distance(thief.transform.position, villager.transform.position) < thief.CLOSE_VILLAGERS_RANGE)
             {

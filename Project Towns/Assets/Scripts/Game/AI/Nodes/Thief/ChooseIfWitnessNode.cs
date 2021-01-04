@@ -17,6 +17,7 @@ public class ChooseIfWitnessNode : Node
         {
             _nodeState = NodeState.SUCCESS;
             thief.isWitness = true;
+            thief.CalculateFakeItem();
         }
             
         return _nodeState;

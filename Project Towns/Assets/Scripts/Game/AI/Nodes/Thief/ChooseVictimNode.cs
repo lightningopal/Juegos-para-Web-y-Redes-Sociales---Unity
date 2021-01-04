@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+
 public class ChooseVictimNode : Node
 {
     private Thief thief;
@@ -18,6 +20,16 @@ public class ChooseVictimNode : Node
             Villager victim = thief.villagersInRange[randomVictimNumber];
             thief.victim = victim;
         }
+
+        // Se le permite ir a cualquier zona
+        thief.thisAgent.areaMask = NavMesh.AllAreas;
+
+        // Se establece la velocidad de robo
+        thief.thisAgent.speed = thief.STEALING_SPEED;
+
+        // Se establecen sus zonas a null
+        thief.actualZone = null;
+        thief.destinationZone = null;
 
         _nodeState = NodeState.SUCCESS;
         return _nodeState;

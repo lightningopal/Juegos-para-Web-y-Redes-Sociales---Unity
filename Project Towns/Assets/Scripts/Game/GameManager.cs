@@ -36,16 +36,18 @@ public class GameManager : MonoBehaviour
     [Tooltip("Lista de putos de spawn aldeanos")]
     [SerializeField]
     private List<Transform> villagerPoints = new List<Transform>();
-    [Tooltip("Lista de NPCs")]
-    public List<NPC> NPCs = new List<NPC>();
+    [Tooltip("Lista de aldeanos")]
+    public List<Villager> villagers = new List<Villager>();
+    [Tooltip("Ladrón")]
+    private Thief thief = null;
 
     [Header("Valores de la partida")]
     [Tooltip("Contador de robos")]
     private int thiefRobberies;
     [Tooltip("Contador de intentos")]
     private int attemptsCount;
-    /*[Tooltip("Robos")]
-    public List<Steal> steals = new List<Steal>();*/
+    [Tooltip("Robos")]
+    public List<Robbery> robberies = new List<Robbery>();
 
     // Flotantes para el tiempo que se ha tardado
     private float startGameTime, endGameTime;
@@ -155,8 +157,8 @@ public class GameManager : MonoBehaviour
         // Instanciamos sus objetos
         newThief.PutItems();
 
-        // Añadimos al aldeano a la lista
-        NPCs.Add(newThief);
+        // Asignar a la referencia
+        thief = newThief;
 
         // Borrar posición de la lista
         updatedVillagerPoints.Remove(randomPoint);
@@ -185,7 +187,7 @@ public class GameManager : MonoBehaviour
             newVillager.PutItems();
 
             // Añadimos al aldeano a la lista
-            NPCs.Add(newVillager);
+            villagers.Add(newVillager);
 
             // Borrar posición de la lista
             updatedVillagerPoints.Remove(randomPoint);
@@ -199,10 +201,17 @@ public class GameManager : MonoBehaviour
     {
         NPCItems thisVillagerItems = thisVillager.items;
         NPCItems villagerInListItems;
-        foreach (NPC villagerInList in NPCs)
-        {
-            villagerInListItems = villagerInList.items;
 
+        // Comprobar si es igual que el ladrón
+        villagerInListItems = thief.items;
+        if (thisVillagerItems.ToString().Equals(villagerInListItems.ToString()))
+            return true;
+
+        foreach (Villager villagerInList in villagers)
+        {
+            // Comprobar si es igual que otro que ya existe
+            villagerInListItems = villagerInList.items;
+            
             if (thisVillagerItems.ToString().Equals(villagerInListItems.ToString()))
                 return true;
         }

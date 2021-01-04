@@ -17,6 +17,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private ParticleSystem effectPrefab = null;
     private ParticleSystem effectInstance = null;
+
+    [Tooltip("Rango para llegar al robo")]
+    [SerializeField]
+    private float QUIT_STEAL_ICON_RANGE = 1.0f;
     #endregion
 
     #region MétodosUnity
@@ -61,13 +65,13 @@ public class PlayerController : MonoBehaviour
         }
 
         // Si está lo suficientemente cerca de un robo
-        /*foreach (Steal s in GameManager.instances.steals)
+        foreach (Robbery r in GameManager.instance.robberies)
         {
-            if (Vector3.Distance(this.transform.position, s.transform.position) < QUIT_STEAL_ICON_RANGE)
+            if (Vector3.Distance(this.transform.position, r.robberyPosition) < QUIT_STEAL_ICON_RANGE)
             {
-                UIManager.instance.HideRobberyIcon(s);
+                UIManager.instance.HideRobberyIcon(r);
             }
-        }*/
+        }
         
     }
     #endregion

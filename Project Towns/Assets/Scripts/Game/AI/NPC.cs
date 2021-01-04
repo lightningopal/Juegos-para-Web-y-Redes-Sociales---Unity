@@ -8,9 +8,9 @@ public class NPC : MonoBehaviour
 {
     #region Variables
     [Header("Parámetros")]
-    [Tooltip("Distancia para el marshall")]
+    [Tooltip("Distancia para mostrar información al marshall")]
     [SerializeField]
-    protected float marshallRange = 3.0f;
+    protected float marshallInfoRange = 3.0f;
 
     [Header("Información sobre el NPC")]
     [Tooltip("Booleano que indica si es testigo")]
@@ -118,7 +118,7 @@ public class NPC : MonoBehaviour
 
         // Ojos
         int randomEyesNumber = Random.Range(1, 4);
-        items.eyesNumber = randomEyesNumber;
+        items.eyes = ItemDatabase.instance.eyes[randomEyesNumber - 1];
 
         // Desactivamos los ojos en desuso
         for (int i = 0; i < eyes.Length; i++)

@@ -20,6 +20,9 @@ public class Thief : NPC
     public float timeBetweenSteals = 60.0f;
 
     [Header("Parámetros")]
+    [Tooltip("Distancia para detectar al marshall")]
+    [SerializeField]
+    protected float marshallDetectRange = 15.0f;
     [Tooltip("Velocidad de movimiento al robar")]
     public float STEALING_SPEED = 10.0f;
 
@@ -103,58 +106,69 @@ public class Thief : NPC
     /// </summary>
     public override void CreateBehaviourTree()
     {
-        // ES EL DEL ALDEANO
-        // PARA QUE NO DE ERRORES
-        // DE NULL REFERENCE
-        // Cuarta rama
+        // Quinta rama
         MoveToDestinationNode moveToDestinationNode = new MoveToDestinationNode();
 
         WanderNode wanderNode = new WanderNode(this);
         EnoughSpaceNode enoughSpaceNode = new EnoughSpaceNode(this);
-        Sequence sequence6 = new Sequence(new List<Node>() { enoughSpaceNode, wanderNode });
+        Sequence sequence4 = new Sequence(new List<Node>() { enoughSpaceNode, wanderNode});
 
         ChooseDestinationNode chooseDestinationNode = new ChooseDestinationNode(this);
-        Selector selector3 = new Selector(new List<Node>() { sequence6, chooseDestinationNode });
+        Selector selector2 = new Selector(new List<Node>() { sequence4, chooseDestinationNode });
 
         InDestinationNode inDestinationNode = new InDestinationNode(this, MINIMUM_DESTINY_DISTANCE);
-        Sequence sequence5 = new Sequence(new List<Node>() { inDestinationNode, selector3 });
+        Sequence sequence3 = new Sequence(new List<Node>() { inDestinationNode, selector2 });
 
-        Selector moveSelector = new Selector(new List<Node>() { sequence5, moveToDestinationNode });
+        Selector moveSelector = new Selector(new List<Node>() { sequence3, moveToDestinationNode });
 
-        // Tercera rama
+        // Cuarta rama
         HasDestinationNode hasDestinationNode = new HasDestinationNode(this);
         Inverter destinationInvertedNode = new Inverter(hasDestinationNode);
         Sequence chooseDestinationSequence = new Sequence(new List<Node>() { destinationInvertedNode, chooseDestinationNode });
 
-        // Segunda rama
+        // Tercera rama
         ZoneTimerNode zoneTimerNode = new ZoneTimerNode(this);
         InZoneNode inZoneNode = new InZoneNode(this);
         Sequence wanderZoneSequence = new Sequence(new List<Node>() { inZoneNode, zoneTimerNode, wanderNode });
 
+        // Segunda rama
+        ChooseVictimNode chooseVictimNode = new ChooseVictimNode(this);
+        VillagersCloseNode villagersCloseNode = new VillagersCloseNode(this);
+        Sequence chooseVictimSequence = new Sequence(new List<Node>() { inZoneNode, villagersCloseNode, chooseVictimNode });
+
+        MoveToVictimNode moveToVictimNode = new MoveToVictimNode(this);
+        HasVictimNode hasVictimNode = new HasVictimNode(this);
+        Sequence chaseVictimSequence = new Sequence(new List<Node>() { hasVictimNode, moveToVictimNode });
+
+        ChooseIfWitnessNode chooseIfWitnessNode = new ChooseIfWitnessNode(this);
+        StealNode stealNode = new StealNode(this);
+        VictimCloseNode victimCloseNode = new VictimCloseNode(this);
+        Sequence stealSequence = new Sequence(new List<Node>() { hasVictimNode, victimCloseNode, stealNode, chooseIfWitnessNode, chooseDestinationNode });
+
+        Selector stealActionsSelector = new Selector(new List<Node>() { stealSequence, chaseVictimSequence, chooseVictimSequence });
+        RangeNode marshallInDetectRange = new RangeNode(marshallDetectRange, playerTransform, this.transform);
+        Inverter marshallDetectRangeInvertedNode = new Inverter(marshallInDetectRange);
+        CanStealNode canStealNode = new CanStealNode(this);
+        Sequence robberySequence = new Sequence(new List<Node>() { canStealNode, marshallDetectRangeInvertedNode, stealActionsSelector });
+
         // Primera rama
         StayStillNode stayStillNode = new StayStillNode(thisAgent, thisAnimator);
         GiveInformationNode giveInformationNode = new GiveInformationNode(this);
-        RangeNode marshallInRange = new RangeNode(marshallRange, playerTransform, this.transform);
-        Sequence sequence3 = new Sequence(new List<Node>() { marshallInRange, giveInformationNode, stayStillNode });
+        RangeNode marshallInInfoRange = new RangeNode(marshallInfoRange, playerTransform, this.transform);
+        Sequence sequence2 = new Sequence(new List<Node>() { marshallInInfoRange, giveInformationNode, stayStillNode });
 
         HideInformationNode hideInformationNode = new HideInformationNode(this);
-        Inverter marshallRangeInvertedNode = new Inverter(marshallInRange);
+        Inverter marshallInvertedInfoRange = new Inverter(marshallInInfoRange);
         HasGivenInformatioNode hasGivenInformatioNode = new HasGivenInformatioNode(this);
-        Sequence sequence2 = new Sequence(new List<Node>() { hasGivenInformatioNode, marshallRangeInvertedNode, hideInformationNode });
+        Sequence sequence1 = new Sequence(new List<Node>() { hasGivenInformatioNode, marshallInvertedInfoRange, hideInformationNode });
 
-        Selector selector2 = new Selector(new List<Node>() { sequence2, sequence3 });
+        Selector selector1 = new Selector(new List<Node>() { sequence1, sequence2 });
 
         WitnessNode witnessNode = new WitnessNode(this);
-        Sequence sequence4 = new Sequence(new List<Node>() { witnessNode, selector2 });
-
-        Selector selector1 = new Selector(new List<Node>() { sequence2, sequence3, stayStillNode });
-
-        Sequence sequence1 = new Sequence(new List<Node>() { witnessNode, selector1 });
-
-        Selector staySelector = new Selector(new List<Node>() { sequence1, sequence4 });
+        Sequence fakeWitnessSequence = new Sequence(new List<Node>() { witnessNode, selector1 });
 
         // Nodo padre del árbol
-        topNode = new Selector(new List<Node>() { staySelector, wanderZoneSequence, chooseDestinationSequence, moveSelector });
+        topNode = new Selector(new List<Node>() { fakeWitnessSequence, robberySequence, wanderZoneSequence, chooseDestinationSequence, moveSelector });
     }
 
     /// <summary>
@@ -194,11 +208,12 @@ public class Thief : NPC
                 do
                 {
                     eyesNumber = Random.Range(1, 4);
-                } while (eyesNumber != this.items.eyesNumber);
+                    item = ItemDatabase.instance.eyes[eyesNumber - 1];
+                } while (eyesNumber != this.items.eyes.eyesNumber);
 
                 // Lo asignamos al objeto de información
-                this.informationGameObject.item1 = null;
-                this.informationGameObject.item1Sprite.sprite = ItemDatabase.instance.eyesSprites[eyesNumber - 1];
+                this.informationGameObject.item1 = item;
+                this.informationGameObject.item1Sprite.sprite = item.itemSprite;
 
                 break;
             case 2:

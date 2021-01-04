@@ -111,9 +111,10 @@ public class Villager : NPC
 
         Gizmos.color = Color.gray;
 
-        if (thief.transform != null)
-            Gizmos.DrawLine(transform.position, transform.position +
-                (thief.transform.position - transform.position).normalized * visionDistance);
+        if (thief != null)
+            if (thief.transform != null)
+                Gizmos.DrawLine(transform.position, transform.position +
+                    (thief.transform.position - transform.position).normalized * visionDistance);
 
         Gizmos.color = Color.green;
         Gizmos.DrawLine(transform.position, transform.position + (Quaternion.AngleAxis(visionAngle / 2, Vector3.up) * (transform.forward)).normalized * visionDistance);
@@ -155,7 +156,7 @@ public class Villager : NPC
         // Primera rama
         StayStillNode stayStillNode = new StayStillNode(thisAgent, thisAnimator);
         GiveInformationNode giveInformationNode = new GiveInformationNode(this);
-        RangeNode marshallInRange = new RangeNode(marshallRange, playerTransform, this.transform);
+        RangeNode marshallInRange = new RangeNode(marshallInfoRange, playerTransform, this.transform);
         Sequence sequence3 = new Sequence(new List<Node>() { marshallInRange, giveInformationNode, stayStillNode });
 
         HideInformationNode hideInformationNode = new HideInformationNode(this);
@@ -180,10 +181,51 @@ public class Villager : NPC
     }
 
     /// <summary>
+    /// Método ChooseTrueItem, que devuelve un objeto del ladrón
+    /// </summary>
+    /// <returns>Objeto que lleva el ladrón</returns>
+    public Item ChooseTrueItem()
+    {
+        Item trueItem = new Item();
+
+        // Generamos un número aleatorio, que representa el item a elegir
+        int randomItemNumber = Random.Range(0, 5);
+
+        switch (randomItemNumber)
+        {
+            case 0:
+                // Color
+                trueItem = thief.items.villagerColor;
+                break;
+            case 1:
+                // Número de ojos
+                trueItem = thief.items.eyes;
+                break;
+            case 2:
+                // Sombrero
+                trueItem = thief.items.hatItem;
+                break;
+            case 3:
+                // Cuernos
+                trueItem = thief.items.hornItem;
+                break;
+            case 4:
+                // Accesorio del cuello
+                trueItem = thief.items.neckItem;
+                break;
+        }
+
+        return trueItem;
+    }
+
+    /// <summary>
     /// Método GetRobbed, para cuando roban al aldeano
     /// </summary>
     public void GetRobbed()
     {
+        // Establecemos que es víctima
+        isVictim = true;
+
         // Generamos un número aleatorio
         int randomSafeNumber = Random.Range(0, 100);
 
@@ -218,10 +260,13 @@ public class Villager : NPC
     /// </summary>
     private void SeeRobbery()
     {
+        // Establecemos que es testigo
+        isWitness = true;
+
         // Generamos un número aleatorio
         int randomSafeNumber = Random.Range(0, 100);
 
-        // Si el objeto es seguros
+        // Si el objeto es seguro
         if (randomSafeNumber < witnessSafeProbability)
         {
 
@@ -284,7 +329,7 @@ public class Villager : NPC
         // Por cada choque comprobamos si ha chocado con el ladrón
         foreach (RaycastHit hit in hits)
         {
-            if (hit.collider.CompareTag("thief"))
+            if (hit.collider.CompareTag("Thief"))
                 return true;
         }
         return false;

@@ -45,6 +45,14 @@ public class UIManager : MonoBehaviour
     [Tooltip("Texto del tiempo")]
     [SerializeField]
     private TextMeshProUGUI timeText = null;
+
+    [Header("Robos")]
+    [Tooltip("Objeto padre de los robos")]
+    [SerializeField]
+    private GameObject robberiesParent = null;
+    [Tooltip("Prefab de los robos")]
+    [SerializeField]
+    private GameObject robberyPrefab = null;
     #endregion
 
     #region MétodosUnity
@@ -66,19 +74,14 @@ public class UIManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Método Start, que se llama antes del primer frame
-    /// </summary>
-    void Start()
-    {
-        
-    }
-
-    /// <summary>
     /// Método Update, que se llama cada frame
     /// </summary>
     void Update()
     {
-
+        foreach (Robbery robbery in GameManager.instance.robberies)
+        {
+            // Colocar en el sitio correcto del canvas con rotacion
+        }
     }
     #endregion
 
@@ -158,15 +161,24 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // Esto me tengo que esperar a tener claro como sería la UI
+    
     public void ShowRobberyIcon(Vector3 location)
     {
+        GameObject robberyGameObject = Instantiate(robberyPrefab, robberiesParent.transform);
+        Robbery newRobbery = robberyGameObject.GetComponent<Robbery>();
+        newRobbery.robberyPosition = location;
+        GameManager.instance.robberies.Add(newRobbery);
 
+        // Colocar en el sitio correcto del canvas con rotacion
     }
 
-    /*public void HideRobberyIcon(Steal steal)
+    public void HideRobberyIcon(Robbery robbery)
     {
+        // Borramos el robo de la lista de robos
+        GameManager.instance.robberies.Remove(robbery);
 
-    }*/
+        // Eliminamos el GameObject del robo
+        Destroy(robbery.gameObject);
+    }
     #endregion
 }
