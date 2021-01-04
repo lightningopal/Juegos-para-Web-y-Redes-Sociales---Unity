@@ -44,6 +44,7 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     void Start()
     {
+        Time.timeScale = 1;
         foreach (Audio a in AudioManager.instance.music)
         {
             AudioManager.instance.ManageAudio(a.name, "music", "stop");
