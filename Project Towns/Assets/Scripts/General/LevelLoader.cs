@@ -10,7 +10,9 @@ public class LevelLoader : MonoBehaviour
     #region Variables
 
     private bool changeScene = false;
-    
+
+    AsyncOperation loader;
+
     [Tooltip("Círculo de transición")]
     [SerializeField]
     private GameObject circle = null;
@@ -64,9 +66,6 @@ public class LevelLoader : MonoBehaviour
     public void ChangeAnimator(int id)
     {
         animator.runtimeAnimatorController = animators[id];
-        //canvasToLoad = currentCanvas;
-        //animator.SetTrigger("Start");
-        //changeScene = false;
     }
 
     /// <summary>
@@ -77,6 +76,8 @@ public class LevelLoader : MonoBehaviour
     public void LoadScene(int id)
     {
         sceneToLoad = scenes[id];
+        //loader = SceneManager.LoadSceneAsync(sceneToLoad);
+        //loader.allowSceneActivation = false;
         animator.SetTrigger("Leave");
         changeScene = true;
     }
@@ -88,7 +89,9 @@ public class LevelLoader : MonoBehaviour
     {
         if (changeScene)
         {
-            SceneManager.LoadScene(sceneToLoad);
+            loader = SceneManager.LoadSceneAsync(sceneToLoad);
+            //loader.allowSceneActivation = true;
+            //SceneManager.LoadScene(sceneToLoad);
         }
     }
 
