@@ -60,22 +60,20 @@ public class InformationObject : MonoBehaviour
 
     #region MétodosClase
     /// <summary>
-    /// Método ShowInformation, que muestra la información de los objetos
+    /// Método Calculate Information, que muestra la información de los objetos
     /// </summary>
-    public void ShowInformation()
+    public void CalculateInformation()
     {
         if (areTwoItems)
         {
-            this.GetComponent<SpriteRenderer>().sprite = backgroundTwoItems;
-            item1Sprite.transform.position = new Vector3(
-                item1Sprite.transform.position.x, item1PositionWhenTwo, item1Sprite.transform.position.z);
+            backgroundImage.sprite = backgroundTwoItems;
+            item1Sprite.transform.position = new Vector3(0, item1PositionWhenTwo, 0);
             item2Sprite.gameObject.SetActive(true);
         }
         else
         {
-            this.GetComponent<SpriteRenderer>().sprite = backgroundOneItem;
-            item1Sprite.transform.position = new Vector3(
-                item1Sprite.transform.position.x, item1PositionWhenOnly, item1Sprite.transform.position.z);
+            backgroundImage.sprite = backgroundOneItem;
+            item1Sprite.transform.position = new Vector3(0, item1PositionWhenOnly, 0);
             item2Sprite.gameObject.SetActive(false);
         }
     }

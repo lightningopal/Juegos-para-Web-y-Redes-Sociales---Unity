@@ -219,19 +219,143 @@ public class Villager : NPC
     }
 
     /// <summary>
+    /// Método ChooseFakeItem, que devuelve un item falso del ladrón
+    /// </summary>
+    /// <returns>Item falso</returns>
+    public Item ChooseFakeItem()
+    {
+        Item fakeItem = new Item();
+
+        // Generamos un número aleatorio, que representa el item que da falso
+        int randomNumber = Random.Range(0, 5);
+
+        bool isSameItem = false;
+
+        // Obtenemos el objeto falso
+        switch (randomNumber)
+        {
+            case 0:
+                // Color
+                // Calculamos el color falso
+                do
+                {
+                    int randomItemNumber = Random.Range(0, ItemDatabase.instance.characterColors.Length);
+                    fakeItem = ItemDatabase.instance.characterColors[randomItemNumber];
+                } while (fakeItem.itemName == thief.items.villagerColor.itemName);
+
+                break;
+            case 1:
+                // Número de ojos
+                // Calculamos el número falso de ojos
+                int eyesNumber;
+                do
+                {
+                    eyesNumber = Random.Range(1, 4);
+                    fakeItem = ItemDatabase.instance.eyes[eyesNumber - 1];
+                } while (eyesNumber == thief.items.eyes.eyesNumber);
+
+                break;
+            case 2:
+                // Sombrero
+                // Calculamos el sombrero falso
+                do
+                {
+                    int randomItemNumber = Random.Range(-1, ItemDatabase.instance.hatItems.Count);
+                    if (randomItemNumber != -1)
+                    {
+                        fakeItem = ItemDatabase.instance.hatItems[randomItemNumber];
+                        if (thief.items.hatItem != null)
+                            if (fakeItem.itemName == thief.items.hatItem.itemName)
+                                isSameItem = true;
+                    }
+                    else
+                    {
+                        fakeItem = null;
+                        if (thief.items.hatItem == null)
+                            isSameItem = true;
+                        else
+                            fakeItem = ItemDatabase.instance.noItems[0];
+                            
+                    }
+                } while (isSameItem);
+
+                break;
+            case 3:
+                // Cuernos
+                // Calculamos los cuernos falsos
+                do
+                {
+                    int randomItemNumber = Random.Range(-1, ItemDatabase.instance.hornItems.Count);
+                    if (randomItemNumber != -1)
+                    {
+                        fakeItem = ItemDatabase.instance.hornItems[randomItemNumber];
+                        if (thief.items.hornItem != null)
+                            if (fakeItem.itemName == thief.items.hornItem.itemName)
+                                isSameItem = true;
+                    }
+                    else
+                    {
+                        fakeItem = null;
+                        if (thief.items.hornItem == null)
+                            isSameItem = true;
+                        else
+                            fakeItem = ItemDatabase.instance.noItems[1];
+                    }
+                } while (isSameItem);
+
+                break;
+            case 4:
+                // Accesorio de cuello
+                // Calculamos el accesorio de cuello falso
+                do
+                {
+                    int randomItemNumber = Random.Range(-1, ItemDatabase.instance.neckItems.Count);
+                    if (randomItemNumber != -1)
+                    {
+                        fakeItem = ItemDatabase.instance.neckItems[randomItemNumber];
+                        if (thief.items.neckItem != null)
+                            if (fakeItem.itemName == thief.items.neckItem.itemName)
+                                isSameItem = true;
+                    }
+                    else
+                    {
+                        fakeItem = null;
+                        if (thief.items.neckItem == null)
+                            isSameItem = true;
+                        else
+                            fakeItem = ItemDatabase.instance.noItems[2];
+                    }
+                } while (isSameItem);
+
+                break;
+        }
+
+        return fakeItem;
+    }
+
+    /// <summary>
     /// Método GetRobbed, para cuando roban al aldeano
     /// </summary>
     public void GetRobbed()
     {
         // Establecemos que es víctima
         isVictim = true;
+        informationGameObject.areTwoItems = true;
 
         // Generamos un número aleatorio
         int randomSafeNumber = Random.Range(0, 100);
 
+        // Elegimos el objeto seguro
+        informationGameObject.item1 = ChooseTrueItem();
+
         // Si ambos objetos son seguros
         if (randomSafeNumber < victimSafeProbability)
         {
+            // Comprobamos que el segundo no sea el mismo que el primero
+            do
+            {
+                informationGameObject.item1 = ChooseTrueItem();
+            } while (informationGameObject.item1.itemName != informationGameObject.item2.itemName);
 
         }
         // Si un objeto es seguro y el otro no
@@ -243,16 +367,30 @@ public class Villager : NPC
             // Si el objeto no seguro es verdadero
             if (randomVeracityNumber < victimVeracityProbability)
             {
-
+                // Comprobamos que el segundo no sea el mismo que el primero
+                do
+                {
+                    informationGameObject.item1 = ChooseTrueItem();
+                } while (informationGameObject.item1.itemName != informationGameObject.item2.itemName);
             }
             // Si el objeto no seguro es falso
             else
             {
+                informationGameObject.item2 = ChooseFakeItem();
 
+                Item randomItem1 = informationGameObject.item1;
+                Item randomItem2 = informationGameObject.item2;
+
+                Item[] randomItems = { randomItem1, randomItem2 };
+
+                int randomFirstItem = Random.Range(0, 2);
+                informationGameObject.item1 = randomItems[randomFirstItem];
+                informationGameObject.item2 = (randomFirstItem == 0) ? randomItems[1] : randomItems[0];
             }
         }
 
-        // Sigo mañana (de verdad)
+        // Calculamos información
+        informationGameObject.CalculateInformation();
     }
 
     /// <summary>
@@ -262,6 +400,8 @@ public class Villager : NPC
     {
         // Establecemos que es testigo
         isWitness = true;
+        informationGameObject.areTwoItems = false;
+        informationGameObject.item2 = null;
 
         // Generamos un número aleatorio
         int randomSafeNumber = Random.Range(0, 100);
@@ -269,7 +409,7 @@ public class Villager : NPC
         // Si el objeto es seguro
         if (randomSafeNumber < witnessSafeProbability)
         {
-
+            informationGameObject.item1 = ChooseTrueItem();
         }
         // Si el objeto no es seguro
         else
@@ -280,16 +420,17 @@ public class Villager : NPC
             // Si el objeto es verdadero
             if (randomVeracityNumber < witnessVeracityProbability)
             {
-
+                informationGameObject.item1 = ChooseTrueItem();
             }
             // Si el objeto es falso
             else
             {
-
+                informationGameObject.item1 = ChooseFakeItem();
             }
         }
 
-        // Sigo mañana (de verdad)
+        // Calculamos información
+        informationGameObject.CalculateInformation();
     }
 
     /// <summary>

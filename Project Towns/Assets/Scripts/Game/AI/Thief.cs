@@ -194,7 +194,7 @@ public class Thief : NPC
                 {
                     int randomItemNumber = Random.Range(0, ItemDatabase.instance.characterColors.Length);
                     materialItem = ItemDatabase.instance.characterColors[randomItemNumber];
-                } while (materialItem.itemName != this.items.villagerColor.itemName);
+                } while (materialItem.itemName == this.items.villagerColor.itemName);
 
                 // Lo asignamos al objeto de información
                 this.informationGameObject.item1 = materialItem;
@@ -209,7 +209,7 @@ public class Thief : NPC
                 {
                     eyesNumber = Random.Range(1, 4);
                     item = ItemDatabase.instance.eyes[eyesNumber - 1];
-                } while (eyesNumber != this.items.eyes.eyesNumber);
+                } while (eyesNumber == this.items.eyes.eyesNumber);
 
                 // Lo asignamos al objeto de información
                 this.informationGameObject.item1 = item;
@@ -241,15 +241,10 @@ public class Thief : NPC
 
                 // Lo asignamos al objeto de información
                 if (fakeIsNoItem)
-                {
-                    this.informationGameObject.item1 = null;
-                    this.informationGameObject.item1Sprite.sprite = ItemDatabase.instance.noItemSprites[0];
-                }
+                    this.informationGameObject.item1 = ItemDatabase.instance.noItems[0];
                 else
-                {
                     this.informationGameObject.item1 = item;
-                    this.informationGameObject.item1Sprite.sprite = item.itemSprite;
-                }
+                this.informationGameObject.item1Sprite.sprite = item.itemSprite;
 
                 break;
             case 3:
@@ -277,15 +272,10 @@ public class Thief : NPC
 
                 // Lo asignamos al objeto de información
                 if (fakeIsNoItem)
-                {
-                    this.informationGameObject.item1 = null;
-                    this.informationGameObject.item1Sprite.sprite = ItemDatabase.instance.noItemSprites[1];
-                }
+                    this.informationGameObject.item1 = ItemDatabase.instance.noItems[1];
                 else
-                {
                     this.informationGameObject.item1 = item;
-                    this.informationGameObject.item1Sprite.sprite = item.itemSprite;
-                }
+                this.informationGameObject.item1Sprite.sprite = item.itemSprite;
 
                 break;
             case 4:
@@ -313,15 +303,10 @@ public class Thief : NPC
 
                 // Lo asignamos al objeto de información
                 if (fakeIsNoItem)
-                {
-                    this.informationGameObject.item1 = null;
-                    this.informationGameObject.item1Sprite.sprite = ItemDatabase.instance.noItemSprites[2];
-                }
+                    this.informationGameObject.item1 = ItemDatabase.instance.noItems[2];
                 else
-                {
                     this.informationGameObject.item1 = item;
-                    this.informationGameObject.item1Sprite.sprite = item.itemSprite;
-                }
+                this.informationGameObject.item1Sprite.sprite = item.itemSprite;
 
                 break;
         }

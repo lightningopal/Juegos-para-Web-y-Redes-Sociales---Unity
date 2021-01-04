@@ -32469,7 +32469,7 @@ MonoBehaviour:
   - {fileID: 2118345822}
   - {fileID: 1808086577}
   - {fileID: 603605773}
-  NPCs: []
+  villagers: []
   robberies: []
   gamePaused: 0
   levelLoader: {fileID: 378263453}
@@ -34334,14 +34334,16 @@ MonoBehaviour:
     itemGameObject: {fileID: 919132149155446097, guid: e1ffeb01d307be8438fb9b11bdcd4048,
       type: 3}
     itemSprite: {fileID: 21300000, guid: 76147d7694055924f9654d6c06c8dbc7, type: 3}
-  eyesSprites:
-  - {fileID: 21300000, guid: c051e1f6b0adf064d8aba3eeec6fc76a, type: 3}
-  - {fileID: 21300000, guid: a6664d40ecbf3594299d291a3739c61e, type: 3}
-  - {fileID: 21300000, guid: 92792b27aff4c2749a8f8d0da28f18da, type: 3}
-  noItemSprites:
-  - {fileID: 21300000, guid: 71792b1e17a9baf47aadf2269a66286c, type: 3}
-  - {fileID: 21300000, guid: 42cfb41ee6a16dc48aee621c797a5639, type: 3}
-  - {fileID: 21300000, guid: 7773851e147fc4b4b8fb1dfd240bf87c, type: 3}
+  noItems:
+  - itemName: NoHatItem
+    itemGameObject: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: 71792b1e17a9baf47aadf2269a66286c, type: 3}
+  - itemName: NoHornsItem
+    itemGameObject: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: 42cfb41ee6a16dc48aee621c797a5639, type: 3}
+  - itemName: NoNeckItem
+    itemGameObject: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: 7773851e147fc4b4b8fb1dfd240bf87c, type: 3}
 --- !u!4 &662612288
 Transform:
   m_ObjectHideFlags: 0

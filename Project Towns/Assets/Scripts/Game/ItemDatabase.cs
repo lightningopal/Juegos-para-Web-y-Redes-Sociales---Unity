@@ -23,8 +23,8 @@ public class ItemDatabase : MonoBehaviour
     public List<Item> neckItems = new List<Item>();
 
     [Header("Otros")]
-    [Tooltip("Sprites de no tener objeto")]
-    public Sprite[] noItemSprites = new Sprite[3];
+    [Tooltip("Objetos de no tener objeto")]
+    public List<Item> noItems = new List<Item>(); 
     #endregion
 
     #region MétodosUnity

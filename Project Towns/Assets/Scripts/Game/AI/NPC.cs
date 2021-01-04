@@ -147,16 +147,22 @@ public class NPC : MonoBehaviour
         int randomHatNumber = Random.Range(-1, ItemDatabase.instance.hatItems.Count);
         if (randomHatNumber != -1)
             items.hatItem = ItemDatabase.instance.hatItems[randomHatNumber];
+        else
+            items.hatItem = ItemDatabase.instance.noItems[0];
 
         // Cuernos
         int randomHornsNumber = Random.Range(-1, ItemDatabase.instance.hornItems.Count);
         if (randomHornsNumber != -1)
             items.hornItem = ItemDatabase.instance.hornItems[randomHornsNumber];
+        else
+            items.hatItem = ItemDatabase.instance.noItems[1];
 
         // Objetos del cuello
         int randomNeckItemNumber = Random.Range(-1, ItemDatabase.instance.neckItems.Count);
         if (randomNeckItemNumber != -1)
             items.neckItem = ItemDatabase.instance.neckItems[randomNeckItemNumber];
+        else
+            items.hatItem = ItemDatabase.instance.noItems[2];
     }
 
     /// <summary>
@@ -165,13 +171,16 @@ public class NPC : MonoBehaviour
     public void PutItems()
     {
         if (items.hatItem != null)
-            Instantiate(items.hatItem.itemGameObject, hatParent.transform);
+            if (items.hatItem.itemName != ItemDatabase.instance.noItems[0].itemName)
+                Instantiate(items.hatItem.itemGameObject, hatParent.transform);
 
         if (items.hornItem != null)
-            Instantiate(items.hornItem.itemGameObject, hornsParent.transform);
+            if (items.hornItem.itemName != ItemDatabase.instance.noItems[1].itemName)
+                Instantiate(items.hornItem.itemGameObject, hornsParent.transform);
 
         if (items.neckItem != null)
-            Instantiate(items.neckItem.itemGameObject, neckItemParent.transform);
+            if (items.neckItem.itemName != ItemDatabase.instance.noItems[2].itemName)
+                Instantiate(items.neckItem.itemGameObject, neckItemParent.transform);
     }
 
     /// <summary>
