@@ -23,11 +23,11 @@ public class ChooseDestinationNode : Node
                 randomZoneNumber = Random.Range(0, GameManager.instance.zones.Count);
                 newZone = GameManager.instance.zones[randomZoneNumber];
             } while (newZone.zoneName == npc.actualZone.zoneName);
-        }
 
-        // Sale de la zona actual
-        npc.actualZone.villagerCount--;
-        npc.actualZone = null;
+            npc.actualZone.villagerCount--;
+            npc.actualZone = null;
+        }
+        
 
         // Se establece la máscara para todas las áreas
         npc.thisAgent.areaMask = NavMesh.AllAreas;

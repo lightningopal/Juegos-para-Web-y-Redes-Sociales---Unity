@@ -26,11 +26,6 @@ public class Villager : NPC
     [SerializeField]
     private float visionAngle = 0;
 
-    [Header("Información sobre el aldeano")]
-    [Tooltip("Booleano que indica si es víctima")]
-    ////[HideInInspector]
-    public bool isVictim = false;
-
     [Header("Referencias a otros personajes")]
     [Tooltip("Referencia al ladrón")]
     private Thief thief;
@@ -260,6 +255,7 @@ public class Villager : NPC
                 // Calculamos el sombrero falso
                 do
                 {
+                    isSameItem = false;
                     int randomItemNumber = Random.Range(-1, ItemDatabase.instance.hatItems.Count);
                     if (randomItemNumber != -1)
                     {
@@ -270,12 +266,11 @@ public class Villager : NPC
                     }
                     else
                     {
-                        fakeItem = null;
-                        if (thief.items.hatItem == null)
+                        fakeItem = ItemDatabase.instance.noItems[0];
+                        if (thief.items.hatItem.itemName == fakeItem.itemName)
                             isSameItem = true;
                         else
                             fakeItem = ItemDatabase.instance.noItems[0];
-                            
                     }
                 } while (isSameItem);
 
@@ -285,6 +280,7 @@ public class Villager : NPC
                 // Calculamos los cuernos falsos
                 do
                 {
+                    isSameItem = false;
                     int randomItemNumber = Random.Range(-1, ItemDatabase.instance.hornItems.Count);
                     if (randomItemNumber != -1)
                     {
@@ -295,8 +291,8 @@ public class Villager : NPC
                     }
                     else
                     {
-                        fakeItem = null;
-                        if (thief.items.hornItem == null)
+                        fakeItem = ItemDatabase.instance.noItems[1];
+                        if (thief.items.hornItem.itemName == fakeItem.itemName)
                             isSameItem = true;
                         else
                             fakeItem = ItemDatabase.instance.noItems[1];
@@ -309,6 +305,7 @@ public class Villager : NPC
                 // Calculamos el accesorio de cuello falso
                 do
                 {
+                    isSameItem = false;
                     int randomItemNumber = Random.Range(-1, ItemDatabase.instance.neckItems.Count);
                     if (randomItemNumber != -1)
                     {
@@ -319,8 +316,9 @@ public class Villager : NPC
                     }
                     else
                     {
-                        fakeItem = null;
-                        if (thief.items.neckItem == null)
+                        fakeItem = ItemDatabase.instance.noItems[2];
+                        if (thief.items.neckItem.itemName == fakeItem.itemName)
+                            if (thief.items.neckItem == null)
                             isSameItem = true;
                         else
                             fakeItem = ItemDatabase.instance.noItems[2];
@@ -340,7 +338,6 @@ public class Villager : NPC
     {
         // Establecemos que es víctima
         isVictim = true;
-        informationGameObject.areTwoItems = true;
 
         // Generamos un número aleatorio
         int randomSafeNumber = Random.Range(0, 100);
@@ -351,16 +348,20 @@ public class Villager : NPC
         // Si ambos objetos son seguros
         if (randomSafeNumber < victimSafeProbability)
         {
+            informationGameObject.doubtfulInformation = false;
+
             // Comprobamos que el segundo no sea el mismo que el primero
             do
             {
-                informationGameObject.item1 = ChooseTrueItem();
-            } while (informationGameObject.item1.itemName != informationGameObject.item2.itemName);
+                informationGameObject.item2 = ChooseTrueItem();
+            } while (informationGameObject.item1.itemName == informationGameObject.item2.itemName);
 
         }
         // Si un objeto es seguro y el otro no
         else
         {
+            informationGameObject.doubtfulInformation = true;
+
             // Generamos un número aleatorio
             int randomVeracityNumber = Random.Range(0, 100);
 
@@ -370,8 +371,8 @@ public class Villager : NPC
                 // Comprobamos que el segundo no sea el mismo que el primero
                 do
                 {
-                    informationGameObject.item1 = ChooseTrueItem();
-                } while (informationGameObject.item1.itemName != informationGameObject.item2.itemName);
+                    informationGameObject.item2 = ChooseTrueItem();
+                } while (informationGameObject.item1.itemName == informationGameObject.item2.itemName);
             }
             // Si el objeto no seguro es falso
             else
@@ -400,7 +401,6 @@ public class Villager : NPC
     {
         // Establecemos que es testigo
         isWitness = true;
-        informationGameObject.areTwoItems = false;
         informationGameObject.item2 = null;
 
         // Generamos un número aleatorio
@@ -409,11 +409,15 @@ public class Villager : NPC
         // Si el objeto es seguro
         if (randomSafeNumber < witnessSafeProbability)
         {
+            informationGameObject.doubtfulInformation = false;
+
             informationGameObject.item1 = ChooseTrueItem();
         }
         // Si el objeto no es seguro
         else
         {
+            informationGameObject.doubtfulInformation = true;
+
             // Generamos un número aleatorio
             int randomVeracityNumber = Random.Range(0, 100);
 
@@ -438,10 +442,13 @@ public class Villager : NPC
     /// </summary>
     public void CheckSawRobbery()
     {
-        // Si lo ha visto, llama al método ver robo
-        if (HasSeenRobbery())
+        // Si no es víctima y lo ha visto, llama al método ver robo
+        if (!isVictim)
         {
-            SeeRobbery();
+            if (HasSeenRobbery())
+            {
+                SeeRobbery();
+            }
         }
     }
 
@@ -474,18 +481,6 @@ public class Villager : NPC
                 return true;
         }
         return false;
-    }
-
-    /// <summary>
-    /// Método HideInformation, que esconde la información sobre los objetos
-    /// </summary>
-    public new void HideInformation()
-    {
-        base.HideInformation();
-        if (informationGameObject.gameObject.activeSelf)
-        {
-            isVictim = false;
-        }
     }
     #endregion
 }

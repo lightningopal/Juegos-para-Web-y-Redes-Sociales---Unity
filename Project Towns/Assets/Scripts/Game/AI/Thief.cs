@@ -176,6 +176,9 @@ public class Thief : NPC
     /// </summary>
     public void CalculateFakeItem()
     {
+        // Ponemos el item2 a null
+        informationGameObject.item2 = null;
+
         // Generamos un número aleatorio, que representa el item que finge saber
         int randomNumber = Random.Range(0, 5);
 
@@ -221,6 +224,7 @@ public class Thief : NPC
                 // Calculamos el sombrero falso
                 do
                 {
+                    isSameItem = false;
                     int randomItemNumber = Random.Range(-1, ItemDatabase.instance.hatItems.Count);
                     if (randomItemNumber != -1)
                     {
@@ -231,8 +235,8 @@ public class Thief : NPC
                     }
                     else
                     {
-                        item = null;
-                        if (this.items.hatItem == null)
+                        item = ItemDatabase.instance.noItems[0];
+                        if (this.items.hatItem.itemName == item.itemName)
                             isSameItem = true;
                         else
                             fakeIsNoItem = true;
@@ -252,6 +256,7 @@ public class Thief : NPC
                 // Calculamos los cuernos falsos
                 do
                 {
+                    isSameItem = false;
                     int randomItemNumber = Random.Range(-1, ItemDatabase.instance.hornItems.Count);
                     if (randomItemNumber != -1)
                     {
@@ -262,8 +267,8 @@ public class Thief : NPC
                     }
                     else
                     {
-                        item = null;
-                        if (this.items.hornItem == null)
+                        item = ItemDatabase.instance.noItems[1];
+                        if (this.items.hornItem.itemName == item.itemName)
                             isSameItem = true;
                         else
                             fakeIsNoItem = true;
@@ -283,6 +288,7 @@ public class Thief : NPC
                 // Calculamos el accesorio de cuello falso
                 do
                 {
+                    isSameItem = false;
                     int randomItemNumber = Random.Range(-1, ItemDatabase.instance.neckItems.Count);
                     if (randomItemNumber != -1)
                     {
@@ -293,8 +299,8 @@ public class Thief : NPC
                     }
                     else
                     {
-                        item = null;
-                        if (this.items.neckItem == null)
+                        item = ItemDatabase.instance.noItems[2];
+                        if (this.items.neckItem.itemName == item.itemName)
                             isSameItem = true;
                         else
                             fakeIsNoItem = true;
@@ -307,6 +313,9 @@ public class Thief : NPC
                 else
                     this.informationGameObject.item1 = item;
                 this.informationGameObject.item1Sprite.sprite = item.itemSprite;
+
+                informationGameObject.doubtfulInformation = true;
+                //informationGameObject.CalculateInformation();
 
                 break;
         }

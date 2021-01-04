@@ -16,6 +16,9 @@ public class NPC : MonoBehaviour
     [Tooltip("Booleano que indica si es testigo")]
     //[HideInInspector]
     public bool isWitness = false;
+    [Tooltip("Booleano que indica si es víctima")]
+    ////[HideInInspector]
+    public bool isVictim = false;
     [Tooltip("Booleano que indica si ha dado información")]
     //[HideInInspector]
     public bool hasGivenInformation = false;
@@ -155,14 +158,14 @@ public class NPC : MonoBehaviour
         if (randomHornsNumber != -1)
             items.hornItem = ItemDatabase.instance.hornItems[randomHornsNumber];
         else
-            items.hatItem = ItemDatabase.instance.noItems[1];
+            items.hornItem = ItemDatabase.instance.noItems[1];
 
         // Objetos del cuello
         int randomNeckItemNumber = Random.Range(-1, ItemDatabase.instance.neckItems.Count);
         if (randomNeckItemNumber != -1)
             items.neckItem = ItemDatabase.instance.neckItems[randomNeckItemNumber];
         else
-            items.hatItem = ItemDatabase.instance.noItems[2];
+            items.neckItem = ItemDatabase.instance.noItems[2];
     }
 
     /// <summary>
@@ -173,6 +176,7 @@ public class NPC : MonoBehaviour
         if (items.hatItem != null)
             if (items.hatItem.itemName != ItemDatabase.instance.noItems[0].itemName)
                 Instantiate(items.hatItem.itemGameObject, hatParent.transform);
+                
 
         if (items.hornItem != null)
             if (items.hornItem.itemName != ItemDatabase.instance.noItems[1].itemName)
@@ -213,6 +217,7 @@ public class NPC : MonoBehaviour
             hasGivenInformation = false;
             informationGameObject.gameObject.SetActive(false);
             isWitness = false;
+            isVictim = false;
         }
     }
     #endregion
