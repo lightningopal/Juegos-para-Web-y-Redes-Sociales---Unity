@@ -33,7 +33,7 @@ public class Villager : NPC
 
     [Header("Referencias a otros personajes")]
     [Tooltip("Referencia al ladrón")]
-    private Transform thiefTransform;
+    private Thief thief;
     #endregion
 
     #region MétodosUnity
@@ -46,7 +46,7 @@ public class Villager : NPC
         base.Start();
 
         // Referencia al ladrón
-        thiefTransform = FindObjectOfType<Thief>().transform;
+        thief = FindObjectOfType<Thief>();
 
         // Calcular destino más cercano
         float distanceToNearestZone = float.PositiveInfinity;
@@ -111,9 +111,9 @@ public class Villager : NPC
 
         Gizmos.color = Color.gray;
 
-        if (thiefTransform != null)
+        if (thief.transform != null)
             Gizmos.DrawLine(transform.position, transform.position +
-                (thiefTransform.position - transform.position).normalized * visionDistance);
+                (thief.transform.position - transform.position).normalized * visionDistance);
 
         Gizmos.color = Color.green;
         Gizmos.DrawLine(transform.position, transform.position + (Quaternion.AngleAxis(visionAngle / 2, Vector3.up) * (transform.forward)).normalized * visionDistance);
@@ -267,14 +267,14 @@ public class Villager : NPC
     {
         // Si el ladrón no está en el ángulo, no lo ve
         if (Vector3.Angle(transform.forward.normalized,
-            (thiefTransform.position - transform.position).normalized) > visionAngle / 2)
+            (thief.transform.position - transform.position).normalized) > visionAngle / 2)
         {
             return false;
         }  
 
         // Lanzamos rayos para saber si lo ve
         RaycastHit[] hits = Physics.RaycastAll(transform.position,
-            (thiefTransform.position - transform.position).normalized, visionDistance);
+            (thief.transform.position - transform.position).normalized, visionDistance);
 
         // Ordenamos los choques
         System.Array.Sort(hits, delegate (RaycastHit x, RaycastHit y) {

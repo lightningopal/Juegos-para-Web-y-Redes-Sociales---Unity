@@ -26,9 +26,9 @@ public class InformationObject : MonoBehaviour
     private float item1PositionWhenTwo = 1;
 
     [Header("Backgrounds")]
-    [Tooltip("Imagen del background")]
+    [Tooltip("SpriteRenderer del background")]
     [SerializeField]
-    private Image backgroundImage = null;
+    private SpriteRenderer backgroundImage = null;
     [Tooltip("Background para un item")]
     [SerializeField]
     private Sprite backgroundOneItem = null;
