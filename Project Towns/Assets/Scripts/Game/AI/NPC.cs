@@ -80,9 +80,6 @@ public class NPC : MonoBehaviour
     /// </summary>
     protected virtual void Start()
     {
-        // Aleatorizar NPC
-        RandomizeNPC();
-
         // Referencia al jugador
         playerTransform = FindObjectOfType<PlayerController>().transform;
 
@@ -117,6 +114,11 @@ public class NPC : MonoBehaviour
         items.eyesNumber = randomEyesNumber;
 
         // Desactivamos los ojos en desuso
+        for (int i = 0; i < eyes.Length; i++)
+        {
+            eyes[i].SetActive(true);
+        }
+
         switch (randomEyesNumber)
         {
             case 1:
@@ -129,35 +131,40 @@ public class NPC : MonoBehaviour
         }
 
         // Objetos
+        // Si ya tiene uno, lo borramos
+        items.hatItem = null;
+        items.hornItem = null;
+        items.neckItem = null;
+
         // Sombrero
         int randomHatNumber = Random.Range(-1, ItemDatabase.instance.hatItems.Count);
-        if (randomHatNumber == -1)
-            items.hatItem = null;
-        else
-        {
+        if (randomHatNumber != -1)
             items.hatItem = ItemDatabase.instance.hatItems[randomHatNumber];
-            Instantiate(items.hatItem.itemGameObject, hatParent.transform);
-        }
 
         // Cuernos
         int randomHornsNumber = Random.Range(-1, ItemDatabase.instance.hornItems.Count);
-        if (randomHornsNumber == -1)
-            items.hornItem = null;
-        else
-        {
+        if (randomHornsNumber != -1)
             items.hornItem = ItemDatabase.instance.hornItems[randomHornsNumber];
-            Instantiate(items.hornItem.itemGameObject, hornsParent.transform);
-        }
 
         // Objetos del cuello
         int randomNeckItemNumber = Random.Range(-1, ItemDatabase.instance.neckItems.Count);
-        if (randomNeckItemNumber == -1)
-            items.neckItem = null;
-        else
-        {
+        if (randomNeckItemNumber != -1)
             items.neckItem = ItemDatabase.instance.neckItems[randomNeckItemNumber];
+    }
+
+    /// <summary>
+    /// Método PutItems, que instancia los objetos del NPC
+    /// </summary>
+    public void PutItems()
+    {
+        if (items.hatItem != null)
+            Instantiate(items.hatItem.itemGameObject, hatParent.transform);
+
+        if (items.hornItem != null)
+            Instantiate(items.hornItem.itemGameObject, hornsParent.transform);
+
+        if (items.neckItem != null)
             Instantiate(items.neckItem.itemGameObject, neckItemParent.transform);
-        }
     }
 
     /// <summary>

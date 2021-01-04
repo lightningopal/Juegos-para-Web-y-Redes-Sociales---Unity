@@ -14,13 +14,16 @@ public class ChooseDestinationNode : Node
         //Debug.Log("ChooseDestinationNode");
         // Se elige una nueva zona
         int randomZoneNumber;
-        Zone newZone;
+        Zone newZone = GameManager.instance.zones[0]; ;
 
-        do
+        if (villager.actualZone != null)
         {
-            randomZoneNumber = Random.Range(0, GameManager.instance.zones.Count);
-            newZone = GameManager.instance.zones[randomZoneNumber];
-        } while (newZone.zoneName == villager.actualZone.zoneName);
+            do
+            {
+                randomZoneNumber = Random.Range(0, GameManager.instance.zones.Count);
+                newZone = GameManager.instance.zones[randomZoneNumber];
+            } while (newZone.zoneName == villager.actualZone.zoneName);
+        }
 
         // Sale de la zona actual
         villager.actualZone.villagerCount--;

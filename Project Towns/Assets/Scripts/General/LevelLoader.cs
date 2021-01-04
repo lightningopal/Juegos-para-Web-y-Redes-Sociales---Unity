@@ -24,7 +24,7 @@ public class LevelLoader : MonoBehaviour
 
     [Tooltip("Número de capas de animación")]
     [SerializeField]
-    private int numLayers;
+    private int numLayers = 0;
 
     [Tooltip("Lista de escenas")]
     [SerializeField]
