@@ -59,6 +59,16 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
+        // Si está lo suficientemente cerca de un robo
+        /*foreach (Steal s in GameManager.instances.steals)
+        {
+            if (Vector3.Distance(this.transform.position, s.transform.position) < QUIT_STEAL_ICON_RANGE)
+            {
+                UIManager.instance.HideRobberyIcon(s);
+            }
+        }*/
+        
     }
     #endregion
 

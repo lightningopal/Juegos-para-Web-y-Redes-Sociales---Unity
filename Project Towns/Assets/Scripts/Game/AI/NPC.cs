@@ -29,12 +29,19 @@ public class NPC : MonoBehaviour
     public Zone destinationZone = null;
     [Tooltip("Distancia mínima para llegar al destino")]
     public float MINIMUM_DESTINY_DISTANCE = 0.5f;
+    [Tooltip("Tiempo para cambiar de zona")]
+    //[HideInInspector]
+    public float timeToNextZone = 0.0f;
+    [Tooltip("Tiempo que se lleva en una zona")]
+    public float timeToChangeZone = 30.0f;
 
     [Header("Velocidades")]
+    [Tooltip("Probabilidad de que el aldeano vaya corriendo hacia la zona elegida")]
+    public float SPEED_RUN_PROBABILITY = 30.0f;
     [Tooltip("Velocidad del NPC andando")]
-    public float WALKING_SPEED = 4.0f;
+    public float WALKING_SPEED = 2.0f;
     [Tooltip("Velocidad del NPC corriendo")]
-    public float RUNNING_SPEED = 7.0f;
+    public float RUNNING_SPEED = 4.0f;
 
     [Header("Movimiento en zona")]
     [Tooltip("Radio del wander")]
@@ -42,7 +49,7 @@ public class NPC : MonoBehaviour
 
     [Header("Objetos")]
     [Tooltip("Items del NPC")]
-    public VillagerItems items;
+    public NPCItems items;
     [Tooltip("Ojos del NPC")]
     [SerializeField]
     protected GameObject[] eyes = new GameObject[3];
@@ -63,7 +70,7 @@ public class NPC : MonoBehaviour
     [Header("Otros")]
     [Tooltip("GameObject que contiene la información")]
     [SerializeField]
-    protected GameObject informationGameObject = null;
+    protected InformationObject informationGameObject = null;
     [Tooltip("Agente NavMesh")]
     public NavMeshAgent thisAgent;
     [Tooltip("Animator")]
@@ -180,9 +187,9 @@ public class NPC : MonoBehaviour
     /// </summary>
     public void ShowInformation()
     {
-        if (!informationGameObject.activeSelf)
+        if (!informationGameObject.gameObject.activeSelf)
         {
-            informationGameObject.SetActive(true);
+            informationGameObject.gameObject.SetActive(true);
             hasGivenInformation = true;
         }
     }
@@ -192,10 +199,10 @@ public class NPC : MonoBehaviour
     /// </summary>
     public void HideInformation()
     {
-        if (informationGameObject.activeSelf)
+        if (informationGameObject.gameObject.activeSelf)
         {
             hasGivenInformation = false;
-            informationGameObject.SetActive(false);
+            informationGameObject.gameObject.SetActive(false);
             isWitness = false;
         }
     }

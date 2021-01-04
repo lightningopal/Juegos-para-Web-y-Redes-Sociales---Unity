@@ -36,14 +36,16 @@ public class GameManager : MonoBehaviour
     [Tooltip("Lista de putos de spawn aldeanos")]
     [SerializeField]
     private List<Transform> villagerPoints = new List<Transform>();
-    [Tooltip("Lista de aldeanos")]
-    private List<NPC> NPCs = new List<NPC>();
+    [Tooltip("Lista de NPCs")]
+    public List<NPC> NPCs = new List<NPC>();
 
     [Header("Valores de la partida")]
     [Tooltip("Contador de robos")]
     private int thiefRobberies;
     [Tooltip("Contador de intentos")]
     private int attemptsCount;
+    /*[Tooltip("Robos")]
+    public List<Steal> steals = new List<Steal>();*/
 
     // Flotantes para el tiempo que se ha tardado
     private float startGameTime, endGameTime;
@@ -141,7 +143,7 @@ public class GameManager : MonoBehaviour
         Transform randomPoint = updatedVillagerPoints[randomNumber];
         Quaternion randomRotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
 
-        /*// Instanciar objeto
+        // Instanciar objeto
         GameObject thiefGameObject = Instantiate(thiefPrefab, randomPoint.position, randomRotation, villagersParent.transform);
 
         // Obtener componente Villager
@@ -157,7 +159,7 @@ public class GameManager : MonoBehaviour
         NPCs.Add(newThief);
 
         // Borrar posición de la lista
-        updatedVillagerPoints.Remove(randomPoint);*/
+        updatedVillagerPoints.Remove(randomPoint);
 
         /// Generar aldeanos
         for (int i = 0; i < (difficulty.villagers - 1); i++)
@@ -195,9 +197,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public bool CheckDuplicateVillager(Villager thisVillager)
     {
-        VillagerItems thisVillagerItems = thisVillager.items;
-        VillagerItems villagerInListItems;
-        foreach (Villager villagerInList in NPCs)
+        NPCItems thisVillagerItems = thisVillager.items;
+        NPCItems villagerInListItems;
+        foreach (NPC villagerInList in NPCs)
         {
             villagerInListItems = villagerInList.items;
 
@@ -215,7 +217,7 @@ public class GameManager : MonoBehaviour
         thiefRobberies++;
         UIManager.instance.UpdateRobberiesText(thiefRobberies, difficulty.thiefRobberies);
         if (thiefRobberies == difficulty.thiefRobberies)
-            EndGame();
+            EndGameAsLose();
     }
 
     /// <summary>
@@ -226,7 +228,7 @@ public class GameManager : MonoBehaviour
         attemptsCount--;
         UIManager.instance.UpdateAttempts(attemptsCount);
         if (attemptsCount == 0)
-            EndGame();
+            EndGameAsLose();
     }
 
     /// <summary>

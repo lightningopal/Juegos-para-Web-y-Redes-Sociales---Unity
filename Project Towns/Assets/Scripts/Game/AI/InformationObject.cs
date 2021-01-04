@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Clase InformationObject, que se utiliza para mostrar información de los objetos
@@ -25,10 +26,13 @@ public class InformationObject : MonoBehaviour
     private float item1PositionWhenTwo = 1;
 
     [Header("Backgrounds")]
-    [Tooltip("Background for only one item")]
+    [Tooltip("Imagen del background")]
+    [SerializeField]
+    private Image backgroundImage = null;
+    [Tooltip("Background para un item")]
     [SerializeField]
     private Sprite backgroundOneItem = null;
-    [Tooltip("Background for two items")]
+    [Tooltip("Background para dos items")]
     [SerializeField]
     private Sprite backgroundTwoItems = null;
 

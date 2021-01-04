@@ -31,18 +31,6 @@ public class Villager : NPC
     ////[HideInInspector]
     public bool isVictim = false;
 
-    [Header("Zonas")]
-    [Tooltip("Tiempo para cambiar de zona")]
-    //[HideInInspector]
-    public float timeToNextZone = 0.0f;
-    [Tooltip("Tiempo que se lleva en una zona")]
-    public float timeToChangeZone = 30.0f;
-    
-
-    [Header("Velocidades")]
-    [Tooltip("Probabilidad de que el aldeano vaya corriendo hacia la zona elegida")]
-    public float SPEED_RUN_PROBABILITY = 30.0f;
-
     [Header("Referencias a otros personajes")]
     [Tooltip("Referencia al ladrón")]
     private Transform thiefTransform;
@@ -58,9 +46,9 @@ public class Villager : NPC
         base.Start();
 
         // Referencia al ladrón
-        //thiefTransform = FindObjectOfType<Thief>().transform;
+        thiefTransform = FindObjectOfType<Thief>().transform;
 
-        // Elegir destino más cercano
+        // Calcular destino más cercano
         float distanceToNearestZone = float.PositiveInfinity;
         foreach (Zone z in GameManager.instance.zones)
         {
@@ -194,12 +182,35 @@ public class Villager : NPC
     /// <summary>
     /// Método GetRobbed, para cuando roban al aldeano
     /// </summary>
-    private void GetRobbed()
+    public void GetRobbed()
     {
         // Generamos un número aleatorio
-        int randomNumber = Random.Range(0, 100);
+        int randomSafeNumber = Random.Range(0, 100);
 
-        // Sigo mañana
+        // Si ambos objetos son seguros
+        if (randomSafeNumber < victimSafeProbability)
+        {
+
+        }
+        // Si un objeto es seguro y el otro no
+        else
+        {
+            // Generamos un número aleatorio
+            int randomVeracityNumber = Random.Range(0, 100);
+
+            // Si el objeto no seguro es verdadero
+            if (randomVeracityNumber < victimVeracityProbability)
+            {
+
+            }
+            // Si el objeto no seguro es falso
+            else
+            {
+
+            }
+        }
+
+        // Sigo mañana (de verdad)
     }
 
     /// <summary>
@@ -208,9 +219,32 @@ public class Villager : NPC
     private void SeeRobbery()
     {
         // Generamos un número aleatorio
-        int randomNumber = Random.Range(0, 100);
+        int randomSafeNumber = Random.Range(0, 100);
 
-        // Sigo mañana
+        // Si el objeto es seguros
+        if (randomSafeNumber < witnessSafeProbability)
+        {
+
+        }
+        // Si el objeto no es seguro
+        else
+        {
+            // Generamos un número aleatorio
+            int randomVeracityNumber = Random.Range(0, 100);
+
+            // Si el objeto es verdadero
+            if (randomVeracityNumber < witnessVeracityProbability)
+            {
+
+            }
+            // Si el objeto es falso
+            else
+            {
+
+            }
+        }
+
+        // Sigo mañana (de verdad)
     }
 
     /// <summary>
@@ -257,24 +291,12 @@ public class Villager : NPC
     }
 
     /// <summary>
-    /// Método ShowInformation, que muestra la información sobre los objetos
-    /// </summary>
-    public new void ShowInformation()
-    {
-        if (!informationGameObject.activeSelf)
-        {
-            informationGameObject.SetActive(true);
-            hasGivenInformation = true;
-        }
-    }
-
-    /// <summary>
     /// Método HideInformation, que esconde la información sobre los objetos
     /// </summary>
     public new void HideInformation()
     {
         base.HideInformation();
-        if (informationGameObject.activeSelf)
+        if (informationGameObject.gameObject.activeSelf)
         {
             isVictim = false;
         }

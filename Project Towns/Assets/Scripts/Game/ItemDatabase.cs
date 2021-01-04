@@ -13,13 +13,18 @@ public class ItemDatabase : MonoBehaviour
     [Header("Items")]
     [Tooltip("Colores de los personajes")]
     public MaterialItem[] characterColors = new MaterialItem[5];
-
     [Tooltip("Sombreros")]
     public List<Item> hatItems = new List<Item>();
     [Tooltip("Cuernos")]
     public List<Item> hornItems = new List<Item>();
     [Tooltip("Objetos del cuello")]
     public List<Item> neckItems = new List<Item>();
+
+    [Header("Otros")]
+    [Tooltip("Sprites de los ojos")]
+    public Sprite[] eyesSprites = new Sprite[3];
+    [Tooltip("Sprites de no tener objeto")]
+    public Sprite[] noItemSprites = new Sprite[3];
     #endregion
 
     #region MétodosUnity

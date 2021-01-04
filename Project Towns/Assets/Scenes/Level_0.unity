@@ -32346,7 +32346,8 @@ MonoBehaviour:
   villagersParent: {fileID: 1245310761}
   villagerPrefab: {fileID: 3893469932477135354, guid: 25ad0b89ee841f543b727ceb9ac4be8d,
     type: 3}
-  thiefPrefab: {fileID: 0}
+  thiefPrefab: {fileID: 3893469932477135354, guid: 69e2613ddb227154e98a1341f4e4a8bc,
+    type: 3}
   villagerPoints:
   - {fileID: 1808572385}
   - {fileID: 1298714589}
@@ -32428,6 +32429,7 @@ MonoBehaviour:
   - {fileID: 2118345822}
   - {fileID: 1808086577}
   - {fileID: 603605773}
+  NPCs: []
   gamePaused: 0
   levelLoader: {fileID: 378263453}
 --- !u!4 &575320327
@@ -34217,67 +34219,75 @@ MonoBehaviour:
   characterColors:
   - itemName: ColorBlue
     itemGameObject: {fileID: 0}
-    itemSprite: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: ec3a4494fdc6c8b47a1194bfe6b40bcf, type: 3}
     itemMaterial: {fileID: 2100000, guid: fd948f35c934a394b850f6326ad43814, type: 2}
   - itemName: ColorGreen
     itemGameObject: {fileID: 0}
-    itemSprite: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: 1267cf286aa7fcd4a8c4c475fd90d12d, type: 3}
     itemMaterial: {fileID: 2100000, guid: adbc0d985db08e743a6b3e4ade02cc0d, type: 2}
   - itemName: ColorPink
     itemGameObject: {fileID: 0}
-    itemSprite: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: 8f1c0de7b78c5974091422d59f346c3a, type: 3}
     itemMaterial: {fileID: 2100000, guid: 748a8aed5fd1d574c9f63d93738ebca0, type: 2}
   - itemName: ColorPurple
     itemGameObject: {fileID: 0}
-    itemSprite: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: 28d2b2c4ee18b7f4f8bba21230351c24, type: 3}
     itemMaterial: {fileID: 2100000, guid: 2d657bf42b03e864cb27ca77cbe87929, type: 2}
   - itemName: ColorYellow
     itemGameObject: {fileID: 0}
-    itemSprite: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: 7994c7ddc83577c489a76eaa0314b622, type: 3}
     itemMaterial: {fileID: 2100000, guid: bef76c3c40fc82246baca46eb22a421b, type: 2}
   hatItems:
   - itemName: PartyHat
     itemGameObject: {fileID: 919132149155446097, guid: 72f13e674ee82fb408249203e29902ce,
       type: 3}
-    itemSprite: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: f3e7365a4cb187f4c8f5b04aca81b92c, type: 3}
   - itemName: ChildHat
     itemGameObject: {fileID: 919132149155446097, guid: a6898c3a1b4cca04b9e91ca4b8a56b8b,
       type: 3}
-    itemSprite: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: 108ff3cc710375b4abcba21d10914719, type: 3}
   - itemName: RacoonHat
     itemGameObject: {fileID: 919132149155446097, guid: c294b0170dd85d5488d3cb6b5cd3fc54,
       type: 3}
-    itemSprite: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: f701cc6ef1fe6744aa75b026e1b34dfc, type: 3}
   - itemName: SnowHat
     itemGameObject: {fileID: 919132149155446097, guid: 5ed93fdd4f520ba45b90f00df3823095,
       type: 3}
-    itemSprite: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: f04c1719e32c1a74aa2abba914ab049f, type: 3}
   hornItems:
   - itemName: DeerHorns
     itemGameObject: {fileID: 919132149155446097, guid: ca23148421dfd764aa16010d027daadd,
       type: 3}
-    itemSprite: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: 3fa0d8425ab7d594b93fc3749ab72160, type: 3}
   - itemName: GoatHorns
     itemGameObject: {fileID: 919132149155446097, guid: b9c6673491ca8904d9ac5b0246f229db,
       type: 3}
-    itemSprite: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: ed79988f4bab1f04b863fee809569f83, type: 3}
   - itemName: UnicornHorn
     itemGameObject: {fileID: 919132149155446097, guid: 83165b889aeb1a44192a2473d85e3be0,
       type: 3}
-    itemSprite: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: b2deac854f7b6734481a980fe8f6bdd6, type: 3}
   neckItems:
   - itemName: BowTie
     itemGameObject: {fileID: 919132149155446097, guid: 6ab3a21dd133719479eda3dfcfbe76f6,
       type: 3}
-    itemSprite: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: 8351d2153fd4b6b49b7f0d5a3649798e, type: 3}
   - itemName: Tie
     itemGameObject: {fileID: 919132149155446097, guid: 33493dfa57c3e4f4e925aebc4371dba7,
       type: 3}
-    itemSprite: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: 457d04a5394ff924a8fa641b6da6b348, type: 3}
   - itemName: Flowers
     itemGameObject: {fileID: 919132149155446097, guid: e1ffeb01d307be8438fb9b11bdcd4048,
       type: 3}
-    itemSprite: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: 76147d7694055924f9654d6c06c8dbc7, type: 3}
+  eyesSprites:
+  - {fileID: 21300000, guid: c051e1f6b0adf064d8aba3eeec6fc76a, type: 3}
+  - {fileID: 21300000, guid: a6664d40ecbf3594299d291a3739c61e, type: 3}
+  - {fileID: 21300000, guid: 92792b27aff4c2749a8f8d0da28f18da, type: 3}
+  noItemSprites:
+  - {fileID: 21300000, guid: 71792b1e17a9baf47aadf2269a66286c, type: 3}
+  - {fileID: 21300000, guid: 42cfb41ee6a16dc48aee621c797a5639, type: 3}
+  - {fileID: 21300000, guid: 7773851e147fc4b4b8fb1dfd240bf87c, type: 3}
 --- !u!4 &662612288
 Transform:
   m_ObjectHideFlags: 0

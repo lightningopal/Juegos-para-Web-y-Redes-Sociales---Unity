@@ -1,18 +1,315 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
+/// <summary>
+/// Clase Thief, que controla al ladrón
+/// </summary>
 public class Thief : NPC
 {
-    // Start is called before the first frame update
-    void Start()
+    #region Variables
+    [Header("Probabilidades")]
+    [Tooltip("Probabilidad de que se haga pasar por víctima")]
+    public int fakeVictimProbability = 50;
+
+    [Header("Tiempos")]
+    [Tooltip("Tiempo para el siguiente robo")]
+    public float timeNextSteal = 0.0f;
+    [Tooltip("Tiempo entre robos (segundos)")]
+    //[HideInInspector]
+    public float timeBetweenSteals = 60.0f;
+
+    [Header("Parámetros")]
+    [Tooltip("Velocidad de movimiento al robar")]
+    public float STEALING_SPEED = 10.0f;
+
+    [Header("Robos")]
+    [Tooltip("Distancia mínima para robar")]
+    public float MINIMUM_STEAL_DISTANCE = 0.5f;
+    [Tooltip("Rango para saber si hay aldeanos cerca")]
+    public float CLOSE_VILLAGERS_RANGE = 30f;
+    [Tooltip("Referencia a la víctima")]
+    public Villager victim = null;
+    [Tooltip("Aldeanos cerca")]
+    public List<Villager> villagersInRange = new List<Villager>();
+    #endregion
+
+    #region MétodosUnity
+    /// <summary>
+    /// Método Start, que se llama antes del primer frame
+    /// </summary>
+    protected override void Start()
     {
-        
+        // Inicializar NPC
+        base.Start();
+
+        // Calcular destino más cercano
+        float distanceToNearestZone = float.PositiveInfinity;
+        foreach (Zone z in GameManager.instance.zones)
+        {
+            float distanceToZone = Vector3.Distance(z.enterPoint.position, this.transform.position);
+            if (distanceToZone < distanceToNearestZone)
+            {
+                distanceToNearestZone = distanceToZone;
+                destinationZone = z;
+                thisAgent.SetDestination(z.enterPoint.position);
+            }
+        }
+
+        // Comprobar si colisiona con la zona, que significaría que está en la zona
+        bool inZone = false;
+        Collider[] overlapingColliders = Physics.OverlapSphere(this.transform.position, 1f);
+        foreach (Collider c in overlapingColliders)
+        {
+            if (c.gameObject.CompareTag("Zone"))
+            {
+                inZone = true;
+                actualZone = destinationZone;
+                actualZone.villagerCount++;
+                destinationZone = null;
+                thisAgent.speed = WALKING_SPEED;
+                thisAgent.areaMask = (int)Mathf.Pow(2, NavMesh.GetAreaFromName("Zone"));
+            }
+        }
+
+        // Si no está en ninguna zona, elige un destino aleatorio
+        if (!inZone)
+        {
+            // Se elige una nueva zona
+            int randomZoneNumber = Random.Range(0, GameManager.instance.zones.Count);
+            Zone newZone = GameManager.instance.zones[randomZoneNumber];
+
+            // Se establece el destino
+            destinationZone = newZone;
+            thisAgent.SetDestination(newZone.enterPoint.position);
+
+            // Se elige si va andando o corriendo
+            int randomSpeedProbability = Random.Range(0, 100);
+
+            if (randomSpeedProbability < SPEED_RUN_PROBABILITY)
+                thisAgent.speed = RUNNING_SPEED;
+            else
+                thisAgent.speed = WALKING_SPEED;
+        }
+
+        // Establecer tiempo para cambiar de zona
+        timeToNextZone = Time.time + timeToChangeZone;
+    }
+    #endregion
+
+    #region MétodosClase
+    /// <summary>
+    /// Método CreateBehaviourTree, que crea el árbol de comportamiento
+    /// </summary>
+    public override void CreateBehaviourTree()
+    {
+        // ES EL DEL ALDEANO
+        // PARA QUE NO DE ERRORES
+        // DE NULL REFERENCE
+        // Cuarta rama
+        MoveToDestinationNode moveToDestinationNode = new MoveToDestinationNode();
+
+        WanderNode wanderNode = new WanderNode(this);
+        EnoughSpaceNode enoughSpaceNode = new EnoughSpaceNode(this);
+        Sequence sequence6 = new Sequence(new List<Node>() { enoughSpaceNode, wanderNode });
+
+        ChooseDestinationNode chooseDestinationNode = new ChooseDestinationNode(this);
+        Selector selector3 = new Selector(new List<Node>() { sequence6, chooseDestinationNode });
+
+        InDestinationNode inDestinationNode = new InDestinationNode(this, MINIMUM_DESTINY_DISTANCE);
+        Sequence sequence5 = new Sequence(new List<Node>() { inDestinationNode, selector3 });
+
+        Selector moveSelector = new Selector(new List<Node>() { sequence5, moveToDestinationNode });
+
+        // Tercera rama
+        HasDestinationNode hasDestinationNode = new HasDestinationNode(this);
+        Inverter destinationInvertedNode = new Inverter(hasDestinationNode);
+        Sequence chooseDestinationSequence = new Sequence(new List<Node>() { destinationInvertedNode, chooseDestinationNode });
+
+        // Segunda rama
+        ZoneTimerNode zoneTimerNode = new ZoneTimerNode(this);
+        InZoneNode inZoneNode = new InZoneNode(this);
+        Sequence wanderZoneSequence = new Sequence(new List<Node>() { inZoneNode, zoneTimerNode, wanderNode });
+
+        // Primera rama
+        StayStillNode stayStillNode = new StayStillNode(thisAgent, thisAnimator);
+        GiveInformationNode giveInformationNode = new GiveInformationNode(this);
+        RangeNode marshallInRange = new RangeNode(marshallRange, playerTransform, this.transform);
+        Sequence sequence3 = new Sequence(new List<Node>() { marshallInRange, giveInformationNode, stayStillNode });
+
+        HideInformationNode hideInformationNode = new HideInformationNode(this);
+        Inverter marshallRangeInvertedNode = new Inverter(marshallInRange);
+        HasGivenInformatioNode hasGivenInformatioNode = new HasGivenInformatioNode(this);
+        Sequence sequence2 = new Sequence(new List<Node>() { hasGivenInformatioNode, marshallRangeInvertedNode, hideInformationNode });
+
+        Selector selector2 = new Selector(new List<Node>() { sequence2, sequence3 });
+
+        WitnessNode witnessNode = new WitnessNode(this);
+        Sequence sequence4 = new Sequence(new List<Node>() { witnessNode, selector2 });
+
+        Selector selector1 = new Selector(new List<Node>() { sequence2, sequence3, stayStillNode });
+
+        Sequence sequence1 = new Sequence(new List<Node>() { witnessNode, selector1 });
+
+        Selector staySelector = new Selector(new List<Node>() { sequence1, sequence4 });
+
+        // Nodo padre del árbol
+        topNode = new Selector(new List<Node>() { staySelector, wanderZoneSequence, chooseDestinationSequence, moveSelector });
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Método CalculateFakeItem, que se llama cuando comete un robo
+    /// </summary>
+    public void CalculateFakeItem()
     {
-        
+        // Generamos un número aleatorio, que representa el item que finge saber
+        int randomNumber = Random.Range(0, 5);
+
+        Item item;
+        bool isSameItem = false;
+        bool fakeIsNoItem = false;
+
+        // Obtenemos el objeto falso
+        switch (randomNumber)
+        {
+            case 0:
+                // Color
+                // Calculamos el color falso
+                MaterialItem materialItem;
+                do
+                {
+                    int randomItemNumber = Random.Range(0, ItemDatabase.instance.characterColors.Length);
+                    materialItem = ItemDatabase.instance.characterColors[randomItemNumber];
+                } while (materialItem.itemName != this.items.villagerColor.itemName);
+
+                // Lo asignamos al objeto de información
+                this.informationGameObject.item1 = materialItem;
+                this.informationGameObject.item1Sprite.sprite = materialItem.itemSprite;
+
+                break;
+            case 1:
+                // Número de ojos
+                // Calculamos el número falso de ojos
+                int eyesNumber;
+                do
+                {
+                    eyesNumber = Random.Range(1, 4);
+                } while (eyesNumber != this.items.eyesNumber);
+
+                // Lo asignamos al objeto de información
+                this.informationGameObject.item1 = null;
+                this.informationGameObject.item1Sprite.sprite = ItemDatabase.instance.eyesSprites[eyesNumber - 1];
+
+                break;
+            case 2:
+                // Sombrero
+                // Calculamos el sombrero falso
+                do
+                {
+                    int randomItemNumber = Random.Range(-1, ItemDatabase.instance.hatItems.Count);
+                    if (randomItemNumber != -1)
+                    {
+                        item = ItemDatabase.instance.hatItems[randomItemNumber];
+                        if (this.items.hatItem != null)
+                            if (item.itemName == this.items.hatItem.itemName)
+                                isSameItem = true;
+                    }
+                    else
+                    {
+                        item = null;
+                        if (this.items.hatItem == null)
+                            isSameItem = true;
+                        else
+                            fakeIsNoItem = true;
+                    }
+                } while (isSameItem);
+
+                // Lo asignamos al objeto de información
+                if (fakeIsNoItem)
+                {
+                    this.informationGameObject.item1 = null;
+                    this.informationGameObject.item1Sprite.sprite = ItemDatabase.instance.noItemSprites[0];
+                }
+                else
+                {
+                    this.informationGameObject.item1 = item;
+                    this.informationGameObject.item1Sprite.sprite = item.itemSprite;
+                }
+
+                break;
+            case 3:
+                // Cuernos
+                // Calculamos los cuernos falsos
+                do
+                {
+                    int randomItemNumber = Random.Range(-1, ItemDatabase.instance.hornItems.Count);
+                    if (randomItemNumber != -1)
+                    {
+                        item = ItemDatabase.instance.hornItems[randomItemNumber];
+                        if (this.items.hornItem != null)
+                            if (item.itemName == this.items.hornItem.itemName)
+                                isSameItem = true;
+                    }
+                    else
+                    {
+                        item = null;
+                        if (this.items.hornItem == null)
+                            isSameItem = true;
+                        else
+                            fakeIsNoItem = true;
+                    }
+                } while (isSameItem);
+
+                // Lo asignamos al objeto de información
+                if (fakeIsNoItem)
+                {
+                    this.informationGameObject.item1 = null;
+                    this.informationGameObject.item1Sprite.sprite = ItemDatabase.instance.noItemSprites[1];
+                }
+                else
+                {
+                    this.informationGameObject.item1 = item;
+                    this.informationGameObject.item1Sprite.sprite = item.itemSprite;
+                }
+
+                break;
+            case 4:
+                // Accesorio de cuello
+                // Calculamos el accesorio de cuello falso
+                do
+                {
+                    int randomItemNumber = Random.Range(-1, ItemDatabase.instance.neckItems.Count);
+                    if (randomItemNumber != -1)
+                    {
+                        item = ItemDatabase.instance.neckItems[randomItemNumber];
+                        if (this.items.neckItem != null)
+                            if (item.itemName == this.items.neckItem.itemName)
+                                isSameItem = true;
+                    }
+                    else
+                    {
+                        item = null;
+                        if (this.items.neckItem == null)
+                            isSameItem = true;
+                        else
+                            fakeIsNoItem = true;
+                    }
+                } while (isSameItem);
+
+                // Lo asignamos al objeto de información
+                if (fakeIsNoItem)
+                {
+                    this.informationGameObject.item1 = null;
+                    this.informationGameObject.item1Sprite.sprite = ItemDatabase.instance.noItemSprites[2];
+                }
+                else
+                {
+                    this.informationGameObject.item1 = item;
+                    this.informationGameObject.item1Sprite.sprite = item.itemSprite;
+                }
+
+                break;
+        }
     }
+    #endregion
 }

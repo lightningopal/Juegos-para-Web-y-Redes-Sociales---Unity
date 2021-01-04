@@ -159,14 +159,14 @@ public class UIManager : MonoBehaviour
     }
 
     // Esto me tengo que esperar a tener claro como sería la UI
-    public void ShowRobberyIcon()
+    public void ShowRobberyIcon(Vector3 location)
     {
 
     }
 
-    public void HideRobberyIcon()
+    /*public void HideRobberyIcon(Steal steal)
     {
 
-    }
+    }*/
     #endregion
 }

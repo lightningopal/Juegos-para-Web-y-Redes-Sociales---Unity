@@ -30,7 +30,7 @@ public class MaterialItem : Item
 /// Estructura VillagerItems, para almacenar los items de los aldeanos
 /// </summary>
 [System.Serializable]
-public struct VillagerItems
+public struct NPCItems
 {
     public MaterialItem villagerColor;
     public int eyesNumber;

@@ -1,15 +1,15 @@
 ﻿public class GiveInformationNode : Node
 {
-    private Villager villager;
+    private NPC npc;
 
-    public GiveInformationNode(Villager villager_)
+    public GiveInformationNode(NPC npc_)
     {
-        this.villager = villager_;
+        this.npc = npc_;
     }
 
     public override NodeState Evaluate()
     {
-        villager.ShowInformation();
+        npc.ShowInformation();
         _nodeState = NodeState.SUCCESS;
         return _nodeState;
     }

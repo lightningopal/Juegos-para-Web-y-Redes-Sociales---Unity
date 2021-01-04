@@ -1,15 +1,15 @@
 ﻿public class HideInformationNode : Node
 {
-    private Villager villager;
+    private NPC npc;
 
-    public HideInformationNode(Villager villager_)
+    public HideInformationNode(NPC npc_)
     {
-        this.villager = villager_;
+        this.npc = npc_;
     }
 
     public override NodeState Evaluate()
     {
-        villager.HideInformation();
+        npc.HideInformation();
         _nodeState = NodeState.SUCCESS;
         return _nodeState;
     }
