@@ -89,3 +89,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   robberyPosition: {x: 0, y: 0, z: 0}
   robberyIconImage: {fileID: 8721920868030467750}
+  robberyRectTransform: {fileID: 8721920868030467749}
+  padding: 50

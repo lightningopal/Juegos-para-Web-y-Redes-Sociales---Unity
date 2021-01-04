@@ -78,10 +78,11 @@ public class UIManager : MonoBehaviour
     /// </summary>
     void Update()
     {
-        foreach (Robbery robbery in GameManager.instance.robberies)
+        /*foreach (Robbery robbery in GameManager.instance.robberies)
         {
             // Colocar en el sitio correcto del canvas con rotacion
-        }
+            Vector3.Distance(player);
+        }*/
     }
     #endregion
 
