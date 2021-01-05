@@ -20,14 +20,14 @@ public class CustomDetentionButton : MonoBehaviour
     [SerializeField]
     private RectTransform canvasRT = null;
     [Tooltip("Cámara principal")]
-    private Camera mainCamera;
+    [SerializeField]
+    private Camera mainCamera = null;
 
     /// <summary>
     /// Método Start, que se llama antes del primer frame
     /// </summary>
     void Start()
     {
-        mainCamera = Camera.main;
         offsetY = canvasRT.sizeDelta.y / padding;
     }
 
@@ -36,14 +36,19 @@ public class CustomDetentionButton : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (this.gameObject.activeSelf)
-        {
-            // (0,0)-(1,1)
-            Vector3 viewportPosition = mainCamera.WorldToViewportPoint(targetTransform.position);
+        CalculatePosition();
+    }
 
-            Vector2 screenPoint = new Vector2((viewportPosition.x - 0.5f) * canvasRT.sizeDelta.x, (viewportPosition.y - 0.5f) * canvasRT.sizeDelta.y);
+    /// <summary>
+    /// Método CalculatePosition
+    /// </summary>
+    public void CalculatePosition()
+    {
+        // (0,0)-(1,1)
+        Vector3 viewportPosition = mainCamera.WorldToViewportPoint(targetTransform.position);
 
-            rectTransform.localPosition = new Vector3(screenPoint.x, screenPoint.y + offsetY, 0);
-        }
+        Vector2 screenPoint = new Vector2((viewportPosition.x - 0.5f) * canvasRT.sizeDelta.x, (viewportPosition.y - 0.5f) * canvasRT.sizeDelta.y);
+
+        rectTransform.localPosition = new Vector3(screenPoint.x, screenPoint.y + offsetY, 0);
     }
 }

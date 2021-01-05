@@ -63,6 +63,13 @@ public class PlayerController : MonoBehaviour
                 // Si es un aldeano
                 if (hit.transform.CompareTag("Villager"))
                 {
+                    // Si ya tenia uno, lo quitamos
+                    if (calledNPC != null)
+                    {
+                        calledNPC.hasBeenCalledByMarshall = false;
+                        calledNPC = null;
+                    }
+
                     calledNPCIsThief = false;
                     calledNPC = hit.transform.gameObject.GetComponent<Villager>();
                     calledNPC.hasBeenCalledByMarshall = true;
@@ -71,6 +78,13 @@ public class PlayerController : MonoBehaviour
                 // Si es el ladrón
                 else if (hit.transform.CompareTag("Thief"))
                 {
+                    // Si ya tenia uno, lo quitamos
+                    if (calledNPC != null)
+                    {
+                        calledNPC.hasBeenCalledByMarshall = false;
+                        calledNPC = null;
+                    }
+
                     calledNPCIsThief = true;
                     calledNPC = hit.transform.gameObject.GetComponent<Thief>();
                     calledNPC.hasBeenCalledByMarshall = true;
@@ -98,7 +112,6 @@ public class PlayerController : MonoBehaviour
                         effectInstance.gameObject.transform.position = hit.point + new Vector3(0, 0.1f, 0);
                         effectInstance.Play();
                     }
-                    
                 }
             }
         }
