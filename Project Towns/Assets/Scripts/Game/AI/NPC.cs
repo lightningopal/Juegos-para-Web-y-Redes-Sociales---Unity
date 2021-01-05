@@ -22,6 +22,9 @@ public class NPC : MonoBehaviour
     [Tooltip("Booleano que indica si ha dado información")]
     //[HideInInspector]
     public bool hasGivenInformation = false;
+    [Tooltip("Booleano que indica si ha sido llamado por el marshall")]
+    //[HideInInspector]
+    public bool hasBeenCalledByMarshall = false;
 
     [Header("Zonas")]
     [Tooltip("Zona actual")]

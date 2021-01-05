@@ -59,6 +59,9 @@ public class GameManager : MonoBehaviour
     [Tooltip("Level Loader")]
     [SerializeField]
     private LevelLoader levelLoader = null;
+    [Tooltip("Botón de detención")]
+    [SerializeField]
+    private CustomDetentionButton detentionButton = null;
 
     #endregion
 
@@ -238,6 +241,18 @@ public class GameManager : MonoBehaviour
         UIManager.instance.UpdateAttempts(attemptsCount);
         if (attemptsCount == 0)
             EndGameAsLose();
+    }
+
+    public void ShowDetentionButton(Transform targetTransform_)
+    {
+        detentionButton.targetTransform = targetTransform_;
+        detentionButton.gameObject.SetActive(true);
+    }
+
+    public void HideDetentionButton()
+    {
+        detentionButton.targetTransform = null;
+        detentionButton.gameObject.SetActive(false);
     }
 
     /// <summary>
