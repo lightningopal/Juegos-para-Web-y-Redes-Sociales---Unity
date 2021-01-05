@@ -14,6 +14,8 @@ public class Robbery : MonoBehaviour
     private Transform playerTransform;
     [Tooltip("Referencia a la cámara")]
     private Camera mainCamera = null;
+
+    [Tooltip("Canvas RT")]
     private RectTransform canvasRT;
     [Tooltip("Separación del borde")]
     [SerializeField]
@@ -28,6 +30,8 @@ public class Robbery : MonoBehaviour
 
     private void Update()
     {
+
+        /// Posición
         Vector3 viewportPosition = mainCamera.WorldToViewportPoint(robberyPosition);
 
         // Se pasa de (0,0) - (1,1) a (-ancho/2, -alto/2) - (ancho/2, alto/2)
@@ -48,7 +52,7 @@ public class Robbery : MonoBehaviour
 
         robberyRectTransform.anchoredPosition = new Vector2(dirX, dirY);
 
-        // ROTACIÓN //
+        /// Rotación
         // Se pasa de (-ancho/2, -alto/2) - (ancho/2, alto/2) a (-1,-1) - (1,1)
         float rotX = dirX / (canvasRT.sizeDelta.x / 2 - padding);
         float rotY = dirY / (canvasRT.sizeDelta.y / 2 - padding);
@@ -56,6 +60,5 @@ public class Robbery : MonoBehaviour
         Vector3 normalizedRot = new Vector3(rotX, rotY, 0.0f).normalized;
         float angle = Mathf.Atan2(normalizedRot.x, normalizedRot.y) * Mathf.Rad2Deg;
         robberyRectTransform.localRotation = Quaternion.AngleAxis(angle+180, -Vector3.forward);
-
     }
 }

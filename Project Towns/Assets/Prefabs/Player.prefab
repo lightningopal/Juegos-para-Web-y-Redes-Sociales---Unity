@@ -195,7 +195,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2663560106692061912}
   - component: {fileID: 2557029410346978615}
-  - component: {fileID: 2557029410346978613}
   - component: {fileID: 2557029410346978618}
   - component: {fileID: 2557029410346978609}
   - component: {fileID: 2557029410346978614}
@@ -236,19 +235,6 @@ CapsuleCollider:
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &2557029410346978613
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3439920407488524386}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 3
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &2557029410346978618
 Animator:
   serializedVersion: 3
@@ -281,8 +267,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisAgent: {fileID: 2557029410346978614}
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   effectPrefab: {fileID: 4965944560750203928, guid: d3f6f0e2887d1ef46a2a4a6712fc4147,
     type: 3}
+  QUIT_STEAL_ICON_RANGE: 10
+  DETENTION_RANGE: 2
 --- !u!195 &2557029410346978614
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -294,7 +285,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 8
-  m_Acceleration: 8
+  m_Acceleration: 12
   avoidancePriority: 50
   m_AngularSpeed: 5000
   m_StoppingDistance: 0

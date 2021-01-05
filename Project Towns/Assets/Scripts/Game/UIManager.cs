@@ -122,7 +122,7 @@ public class UIManager : MonoBehaviour
     public void UpdateAttempts(int attempts)
     {
         // Cambiamos el sprite del último corazón
-        attemptsHearts[attempts].GetComponent<SpriteRenderer>().sprite = attemptsEmptyHeartSprite;
+        attemptsHearts[attempts].GetComponent<Image>().sprite = attemptsEmptyHeartSprite;
     }
 
     /// <summary>
@@ -162,7 +162,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    
     public void ShowRobberyIcon(Vector3 location)
     {
         GameObject robberyGameObject = Instantiate(robberyPrefab, robberiesParent.transform);

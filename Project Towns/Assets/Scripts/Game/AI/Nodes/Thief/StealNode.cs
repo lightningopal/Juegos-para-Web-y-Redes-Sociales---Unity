@@ -10,9 +10,8 @@ public class StealNode : Node
 
     public override NodeState Evaluate()
     {
-        // Robamos al aldeano y lo quitamos de víctima
+        // Robamos al aldeano
         thief.victim.GetRobbed();
-        thief.victim = null;
 
         // Avisamos a los aldeanos por si hubiera testigos
         foreach (Villager villager in GameManager.instance.villagers)
@@ -30,7 +29,10 @@ public class StealNode : Node
         GameManager.instance.AddRobbery();
 
         // Mostramos el robo en la UI
-        UIManager.instance.ShowRobberyIcon(thief.transform.position);
+        UIManager.instance.ShowRobberyIcon(thief.victim.transform.position);
+
+        // Borramos la víctima
+        thief.victim = null;
 
         _nodeState = NodeState.SUCCESS;
         return _nodeState;

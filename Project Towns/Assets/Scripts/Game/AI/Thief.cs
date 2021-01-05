@@ -106,8 +106,8 @@ public class Thief : NPC
     /// </summary>
     public override void CreateBehaviourTree()
     {
-        // Quinta rama
-        MoveToDestinationNode moveToDestinationNode = new MoveToDestinationNode();
+        // Sexta rama
+        MoveToDestinationNode moveToDestinationNode = new MoveToDestinationNode(this);
 
         WanderNode wanderNode = new WanderNode(this);
         EnoughSpaceNode enoughSpaceNode = new EnoughSpaceNode(this);
@@ -121,17 +121,17 @@ public class Thief : NPC
 
         Selector moveSelector = new Selector(new List<Node>() { sequence3, moveToDestinationNode });
 
-        // Cuarta rama
+        // Quinta rama
         HasDestinationNode hasDestinationNode = new HasDestinationNode(this);
         Inverter destinationInvertedNode = new Inverter(hasDestinationNode);
         Sequence chooseDestinationSequence = new Sequence(new List<Node>() { destinationInvertedNode, chooseDestinationNode });
 
-        // Tercera rama
+        // Cuarta rama
         ZoneTimerNode zoneTimerNode = new ZoneTimerNode(this);
         InZoneNode inZoneNode = new InZoneNode(this);
         Sequence wanderZoneSequence = new Sequence(new List<Node>() { inZoneNode, zoneTimerNode, wanderNode });
 
-        // Segunda rama
+        // Tercera rama
         ChooseVictimNode chooseVictimNode = new ChooseVictimNode(this);
         VillagersCloseNode villagersCloseNode = new VillagersCloseNode(this);
         Sequence chooseVictimSequence = new Sequence(new List<Node>() { inZoneNode, villagersCloseNode, chooseVictimNode });
@@ -151,7 +151,7 @@ public class Thief : NPC
         CanStealNode canStealNode = new CanStealNode(this);
         Sequence robberySequence = new Sequence(new List<Node>() { canStealNode, marshallDetectRangeInvertedNode, stealActionsSelector });
 
-        // Primera rama
+        // Segunda rama
         StayStillNode stayStillNode = new StayStillNode(thisAgent, thisAnimator);
         GiveInformationNode giveInformationNode = new GiveInformationNode(this);
         RangeNode marshallInInfoRange = new RangeNode(marshallInfoRange, playerTransform, this.transform);
@@ -167,8 +167,12 @@ public class Thief : NPC
         WitnessNode witnessNode = new WitnessNode(this);
         Sequence fakeWitnessSequence = new Sequence(new List<Node>() { witnessNode, selector1 });
 
+        // Primera rama
+        MarshallCalledMeNode marshallCalledMeNode = new MarshallCalledMeNode(this);
+        Sequence detentionSequence = new Sequence(new List<Node>() { marshallCalledMeNode, stayStillNode });
+
         // Nodo padre del árbol
-        topNode = new Selector(new List<Node>() { fakeWitnessSequence, robberySequence, wanderZoneSequence, chooseDestinationSequence, moveSelector });
+        topNode = new Selector(new List<Node>() { detentionSequence, fakeWitnessSequence, robberySequence, wanderZoneSequence, chooseDestinationSequence, moveSelector });
     }
 
     /// <summary>

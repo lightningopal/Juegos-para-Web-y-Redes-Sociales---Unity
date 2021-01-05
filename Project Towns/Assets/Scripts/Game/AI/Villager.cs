@@ -123,8 +123,8 @@ public class Villager : NPC
     /// </summary>
     public override void CreateBehaviourTree()
     {
-        // Cuarta rama
-        MoveToDestinationNode moveToDestinationNode = new MoveToDestinationNode();
+        // Quinta rama
+        MoveToDestinationNode moveToDestinationNode = new MoveToDestinationNode(this);
 
         WanderNode wanderNode = new WanderNode(this);
         EnoughSpaceNode enoughSpaceNode = new EnoughSpaceNode(this);
@@ -138,17 +138,17 @@ public class Villager : NPC
 
         Selector moveSelector = new Selector(new List<Node>() { sequence5, moveToDestinationNode });
 
-        // Tercera rama
+        // Cuarta rama
         HasDestinationNode hasDestinationNode = new HasDestinationNode(this);
         Inverter destinationInvertedNode = new Inverter(hasDestinationNode);
         Sequence chooseDestinationSequence = new Sequence(new List<Node>() { destinationInvertedNode, chooseDestinationNode });
 
-        // Segunda rama
+        // Tercera rama
         ZoneTimerNode zoneTimerNode = new ZoneTimerNode(this);
         InZoneNode inZoneNode = new InZoneNode(this);
         Sequence wanderZoneSequence = new Sequence(new List<Node>() { inZoneNode, zoneTimerNode, wanderNode });
 
-        // Primera rama
+        // Segunda rama
         StayStillNode stayStillNode = new StayStillNode(thisAgent, thisAnimator);
         GiveInformationNode giveInformationNode = new GiveInformationNode(this);
         RangeNode marshallInRange = new RangeNode(marshallInfoRange, playerTransform, this.transform);
@@ -171,8 +171,12 @@ public class Villager : NPC
 
         Selector staySelector = new Selector(new List<Node>() { sequence1, sequence4 });
 
+        // Primera rama
+        MarshallCalledMeNode marshallCalledMeNode = new MarshallCalledMeNode(this);
+        Sequence detentionSequence = new Sequence(new List<Node>() { marshallCalledMeNode, stayStillNode });
+
         // Nodo padre del árbol
-        topNode = new Selector(new List<Node>() { staySelector, wanderZoneSequence, chooseDestinationSequence, moveSelector });
+        topNode = new Selector(new List<Node>() { detentionSequence, staySelector, wanderZoneSequence, chooseDestinationSequence, moveSelector });
     }
 
     /// <summary>
