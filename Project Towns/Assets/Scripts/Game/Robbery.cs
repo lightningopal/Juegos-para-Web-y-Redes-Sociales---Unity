@@ -20,12 +20,16 @@ public class Robbery : MonoBehaviour
     [Tooltip("Separación del borde")]
     [SerializeField]
     private float padding = 60.0f;
+    private float paddingX;
+    private float paddingY;
 
     private void Start()
     {
         playerTransform = FindObjectOfType<PlayerController>().transform;
         mainCamera = Camera.main;
         canvasRT = this.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject.GetComponent<RectTransform>();
+        paddingX = canvasRT.sizeDelta.x / padding;
+        paddingY = canvasRT.sizeDelta.y / padding;
     }
 
     private void Update()
@@ -47,15 +51,15 @@ public class Robbery : MonoBehaviour
         }
         
         // Se ajusta la imagen entre el mínimo/máximo del ancho y alto del canvas
-        float dirX = Mathf.Clamp(WorldObject_ScreenPosition.x, -canvasRT.sizeDelta.x/2 + padding, canvasRT.sizeDelta.x/2 - padding);
-        float dirY = Mathf.Clamp(WorldObject_ScreenPosition.y, -canvasRT.sizeDelta.y/2 + padding, canvasRT.sizeDelta.y/2 - padding);
+        float dirX = Mathf.Clamp(WorldObject_ScreenPosition.x, -canvasRT.sizeDelta.x/2 + paddingX, canvasRT.sizeDelta.x/2 - paddingX);
+        float dirY = Mathf.Clamp(WorldObject_ScreenPosition.y, -canvasRT.sizeDelta.y/2 + paddingY, canvasRT.sizeDelta.y/2 - paddingY);
 
         robberyRectTransform.anchoredPosition = new Vector2(dirX, dirY);
 
         /// Rotación
         // Se pasa de (-ancho/2, -alto/2) - (ancho/2, alto/2) a (-1,-1) - (1,1)
-        float rotX = dirX / (canvasRT.sizeDelta.x / 2 - padding);
-        float rotY = dirY / (canvasRT.sizeDelta.y / 2 - padding);
+        float rotX = dirX / (canvasRT.sizeDelta.x / 2 - paddingX);
+        float rotY = dirY / (canvasRT.sizeDelta.y / 2 - paddingY);
         // Se calcula el ángulo de rotación
         Vector3 normalizedRot = new Vector3(rotX, rotY, 0.0f).normalized;
         float angle = Mathf.Atan2(normalizedRot.x, normalizedRot.y) * Mathf.Rad2Deg;

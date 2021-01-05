@@ -11,7 +11,8 @@ public class CustomDetentionButton : MonoBehaviour
     public Transform targetTransform;
 
     [Tooltip("Padding")]
-    public float padding = 50.0f;
+    public float padding = 10.0f;
+    private float offsetY;
     [Tooltip("Propio RectTransform")]
     [SerializeField]
     private RectTransform rectTransform = null;
@@ -27,6 +28,7 @@ public class CustomDetentionButton : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
+        offsetY = canvasRT.sizeDelta.y / padding;
     }
 
     /// <summary>
@@ -36,12 +38,12 @@ public class CustomDetentionButton : MonoBehaviour
     {
         if (this.gameObject.activeSelf)
         {
-            Vector3 screenPoint = mainCamera.WorldToScreenPoint(targetTransform.position);
+            // (0,0)-(1,1)
+            Vector3 viewportPosition = mainCamera.WorldToViewportPoint(targetTransform.position);
 
-            float pointX = Mathf.Clamp(screenPoint.x, -canvasRT.sizeDelta.x / 2 + padding, canvasRT.sizeDelta.x / 2 - padding);
-            float pointY = Mathf.Clamp(screenPoint.y, -canvasRT.sizeDelta.y / 2 + padding, canvasRT.sizeDelta.y / 2 - padding);
+            Vector2 screenPoint = new Vector2((viewportPosition.x - 0.5f) * canvasRT.sizeDelta.x, (viewportPosition.y - 0.5f) * canvasRT.sizeDelta.y);
 
-            rectTransform.localPosition = new Vector3(pointX,pointY, 0);
+            rectTransform.localPosition = new Vector3(screenPoint.x, screenPoint.y + offsetY, 0);
         }
     }
 }
