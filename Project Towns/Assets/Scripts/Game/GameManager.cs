@@ -247,6 +247,7 @@ public class GameManager : MonoBehaviour
     {
         detentionButton.targetTransform = targetTransform_;
         detentionButton.gameObject.SetActive(true);
+        detentionButton.CalculatePosition();
     }
 
     public void HideDetentionButton()

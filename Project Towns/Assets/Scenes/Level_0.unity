@@ -5364,6 +5364,7 @@ MonoBehaviour:
   padding: 10
   rectTransform: {fileID: 240121348}
   canvasRT: {fileID: 378263452}
+  mainCamera: {fileID: 963194227}
 --- !u!1 &246490484
 GameObject:
   m_ObjectHideFlags: 0
@@ -52407,7 +52408,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5.0000305, y: 0}
+  m_AnchoredPosition: {x: -5.000122, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1521023487

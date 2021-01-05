@@ -23,6 +23,9 @@ public class Robbery : MonoBehaviour
     private float paddingX;
     private float paddingY;
 
+    /// <summary>
+    /// Método Start, que se llama antes del primer frame
+    /// </summary>
     private void Start()
     {
         playerTransform = FindObjectOfType<PlayerController>().transform;
@@ -32,9 +35,11 @@ public class Robbery : MonoBehaviour
         paddingY = canvasRT.sizeDelta.y / padding;
     }
 
+    /// <summary>
+    /// Método Update, que se llama cada frame
+    /// </summary>
     private void Update()
     {
-
         /// Posición
         Vector3 viewportPosition = mainCamera.WorldToViewportPoint(robberyPosition);
 
@@ -43,16 +48,17 @@ public class Robbery : MonoBehaviour
             ((viewportPosition.x * canvasRT.sizeDelta.x) - (canvasRT.sizeDelta.x * 0.5f)),
             ((viewportPosition.y * canvasRT.sizeDelta.y) - (canvasRT.sizeDelta.y * 0.5f))
          );
+
         // Si el punto está detrás de la cámara, se invierten las componentes X e Y
         if (viewportPosition.z < 0)
         {
             WorldObject_ScreenPosition.x = -WorldObject_ScreenPosition.x;
             WorldObject_ScreenPosition.y = -WorldObject_ScreenPosition.y;
         }
-        
+
         // Se ajusta la imagen entre el mínimo/máximo del ancho y alto del canvas
-        float dirX = Mathf.Clamp(WorldObject_ScreenPosition.x, -canvasRT.sizeDelta.x/2 + paddingX, canvasRT.sizeDelta.x/2 - paddingX);
-        float dirY = Mathf.Clamp(WorldObject_ScreenPosition.y, -canvasRT.sizeDelta.y/2 + paddingY, canvasRT.sizeDelta.y/2 - paddingY);
+        float dirX = Mathf.Clamp(WorldObject_ScreenPosition.x, -canvasRT.sizeDelta.x / 2 + paddingX, canvasRT.sizeDelta.x / 2 - paddingX);
+        float dirY = Mathf.Clamp(WorldObject_ScreenPosition.y, -canvasRT.sizeDelta.y / 2 + paddingY, canvasRT.sizeDelta.y / 2 - paddingY);
 
         robberyRectTransform.anchoredPosition = new Vector2(dirX, dirY);
 
@@ -63,6 +69,6 @@ public class Robbery : MonoBehaviour
         // Se calcula el ángulo de rotación
         Vector3 normalizedRot = new Vector3(rotX, rotY, 0.0f).normalized;
         float angle = Mathf.Atan2(normalizedRot.x, normalizedRot.y) * Mathf.Rad2Deg;
-        robberyRectTransform.localRotation = Quaternion.AngleAxis(angle+180, -Vector3.forward);
+        robberyRectTransform.localRotation = Quaternion.AngleAxis(angle + 180, -Vector3.forward);
     }
 }

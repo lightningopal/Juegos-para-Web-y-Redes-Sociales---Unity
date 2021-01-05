@@ -167,9 +167,8 @@ public class UIManager : MonoBehaviour
         GameObject robberyGameObject = Instantiate(robberyPrefab, robberiesParent.transform);
         Robbery newRobbery = robberyGameObject.GetComponent<Robbery>();
         newRobbery.robberyPosition = location;
+        newRobbery.robberyRectTransform.anchoredPosition = new Vector2(100000, 100000);
         GameManager.instance.robberies.Add(newRobbery);
-
-        // Colocar en el sitio correcto del canvas con rotacion
     }
 
     public void HideRobberyIcon(Robbery robbery)
