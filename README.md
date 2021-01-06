@@ -25,34 +25,33 @@ Marshallow: Pilferage in YolkTown.
 ### **1.2. Concepto del juego**
 
 
-### **1.3. Características principales**
+### **1.3. Historia introductoria**
+
+
+### **1.4. Características principales**
 
   * **Re-jugable:** 
   * **Entretenido:**  
   * **Responsive:** 
   * **Familiar o grupal:** 
 
-### **1.4. Género**
+### **1.5. Género**
 
 **Puzles-Investigación:**  
 
-### **1.5. Antecedentes**
+### **1.6. Antecedentes**
 
 
 
-### **1.6. Propósito y público objetivo**
+### **1.7. Propósito y público objetivo**
 
 
 
-### **1.7. Estilo visual**
+### **1.8. Estilo visual**
  
 
 
-### **1.8. Alcance del proyecto**
-
-
-
-### **1.9. Historia introductoria**
+### **1.9. Alcance del proyecto**
 
 
 
