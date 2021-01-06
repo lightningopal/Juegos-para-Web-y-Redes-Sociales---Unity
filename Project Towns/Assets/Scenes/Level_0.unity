@@ -32888,6 +32888,20 @@ MonoBehaviour:
   - {fileID: 1808086577}
   - {fileID: 603605773}
   villagers: []
+  victimVFX: {fileID: 5859738900185575628, guid: d32b82ff9835c47489dc52d19656806b,
+    type: 3}
+  witnessVFX: {fileID: 6259476074752155277, guid: 274a4fb06a084bc44ad74089dc2b90b2,
+    type: 3}
+  angerVFX: {fileID: 1634141897449424232, guid: ba80b5937c67e5e458749b04167802e6,
+    type: 3}
+  nervousVFX: {fileID: 5859738900185575628, guid: 9f14877eab25f8249b14e7a83df4dda4,
+    type: 3}
+  surpriseVFX: {fileID: 2931319351549781684, guid: a1fb374054f27b64982c1c11de3ead1c,
+    type: 3}
+  victoryVFX: {fileID: 4866623644566647956, guid: 3484648c6f5244a4da2601473b955f1d,
+    type: 3}
+  defeatVFX: {fileID: 4866623644566647956, guid: daf12b3bb083d0c42b26b9a06018ffd8,
+    type: 3}
   robberies: []
   gamePaused: 0
   levelLoader: {fileID: 378263453}

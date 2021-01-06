@@ -41,6 +41,15 @@ public class GameManager : MonoBehaviour
     [Tooltip("Ladrón")]
     private Thief thief = null;
 
+    [Header("VFX")]
+    public GameObject victimVFX = null;
+    public GameObject witnessVFX = null;
+    public GameObject angerVFX = null;
+    public GameObject nervousVFX = null;
+    public GameObject surpriseVFX = null;
+    public GameObject victoryVFX = null;
+    public GameObject defeatVFX = null;
+
     [Header("Valores de la partida")]
     [Tooltip("Contador de robos")]
     private int thiefRobberies;

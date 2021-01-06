@@ -19,12 +19,7 @@ public class StayStillNode : Node
         if (agent.hasPath)
             agent.ResetPath();
 
-        // Si se encuentra en idle, no hace nada
-        if (!villagerAnimator.GetBool("idle")){
-            villagerAnimator.SetBool("run", false);
-            villagerAnimator.SetBool("walk", false);
-            villagerAnimator.SetBool("idle", true);
-        }
+        villagerAnimator.SetTrigger("idle");
 
         return NodeState.SUCCESS;
     }
