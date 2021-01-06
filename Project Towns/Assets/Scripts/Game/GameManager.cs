@@ -320,6 +320,8 @@ public class GameManager : MonoBehaviour
 
         // Mostrar pantalla final
         levelLoader.LoadCanvas(3);
+        levelLoader.UseCircle(true);
+        levelLoader.ShowBars(true);
     }
 
     /// <summary>

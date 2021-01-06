@@ -194,6 +194,14 @@ public class Thief : NPC
     /// </summary>
     public void CalculateFakeItem()
     {
+        // Instanciamos el efecto que avisa al jugador
+        if (infoVFX != null)
+        {
+            // Para que no se repitan
+            Destroy(infoVFX);
+        }
+        infoVFX = Instantiate(GameManager.instance.witnessVFX, transform);
+     
         // Ponemos el item2 a null
         informationGameObject.item2 = null;
 

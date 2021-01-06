@@ -35,7 +35,10 @@ public class NPC : MonoBehaviour
     [Tooltip("Booleano que indica si ha sido llamado por el marshall")]
     [HideInInspector]
     public bool hasBeenCalledByMarshall = false;
-    
+    [Tooltip("Referencia al efecto de Víctima o de Testigo")]
+    [HideInInspector]
+    public GameObject infoVFX = null;
+
     [Header("Zonas")]
     [Tooltip("Zona actual")]
     [HideInInspector]
@@ -223,6 +226,11 @@ public class NPC : MonoBehaviour
     {
         if (!informationGameObject.gameObject.activeSelf)
         {
+            // Se destruye el efecto que avisa al jugador
+            if (infoVFX != null)
+            {
+                Destroy(infoVFX);
+            }
             informationGameObject.gameObject.SetActive(true);
             hasGivenInformation = true;
         }

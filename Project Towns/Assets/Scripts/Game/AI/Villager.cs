@@ -354,6 +354,14 @@ public class Villager : NPC
         // Establecemos que es víctima
         isVictim = true;
 
+        // Instanciamos el efecto que avisa al jugador
+        if (infoVFX != null)
+        {
+            // Para que no se repitan
+            Destroy(infoVFX);
+        }
+        infoVFX = Instantiate(GameManager.instance.victimVFX, transform);
+
         // Generamos un número aleatorio
         int randomSafeNumber = Random.Range(0, 100);
 
@@ -417,6 +425,14 @@ public class Villager : NPC
         // Establecemos que es testigo
         isWitness = true;
         informationGameObject.item2 = null;
+
+        // Instanciamos el efecto que avisa al jugador
+        if (infoVFX != null)
+        {
+            // Para que no se generen varios
+            Destroy(infoVFX);
+        }
+        infoVFX = Instantiate(GameManager.instance.witnessVFX, transform);
 
         // Generamos un número aleatorio
         int randomSafeNumber = Random.Range(0, 100);

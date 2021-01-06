@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
                 // Si es un aldeano
                 if (hit.transform.CompareTag("Villager"))
                 {
+
                     // Si ya tenia uno, lo quitamos
                     if (calledNPC != null)
                     {
@@ -105,6 +106,12 @@ public class PlayerController : MonoBehaviour
                     calledNPC = hit.transform.gameObject.GetComponent<Villager>();
                     calledNPC.hasBeenCalledByMarshall = true;
                     GameManager.instance.ShowDetentionButton(calledNPC.transform);
+
+                    // Efecto de sorpresa
+                    GameObject surpriseVFX = Instantiate(GameManager.instance.surpriseVFX, calledNPC.transform);
+                    ParticleSystem partS = surpriseVFX.GetComponent<ParticleSystem>();
+                    float totalDuration = partS.main.duration + partS.main.startLifetime.constant;
+                    Destroy(surpriseVFX, totalDuration);
                 }
                 // Si es el ladrón
                 else if (hit.transform.CompareTag("Thief"))
@@ -120,6 +127,12 @@ public class PlayerController : MonoBehaviour
                     calledNPC = hit.transform.gameObject.GetComponent<Thief>();
                     calledNPC.hasBeenCalledByMarshall = true;
                     GameManager.instance.ShowDetentionButton(calledNPC.transform);
+                    
+                    // Efecto de sorpresa
+                    GameObject surpriseVFX = Instantiate(GameManager.instance.surpriseVFX, calledNPC.transform);
+                    ParticleSystem partS = surpriseVFX.GetComponent<ParticleSystem>();
+                    float totalDuration = partS.main.duration + partS.main.startLifetime.constant;
+                    Destroy(surpriseVFX, totalDuration);
                 }
                 // Si es territorio transitable, mueve al agente a esa posición
                 else if(hit.transform.CompareTag("Walkable") || hit.transform.CompareTag("Zone"))
@@ -185,14 +198,24 @@ public class PlayerController : MonoBehaviour
         // Si acertó
         if (calledNPCIsThief)
         {
-            // FALTA: Mostrar icono de sudor al Thief
+            // Efecto
+            GameObject nervousVFX = Instantiate(GameManager.instance.nervousVFX, calledNPC.transform);
+            
             GameManager.instance.HideDetentionButton();
+            // Esperar un poco antes de terminar
+            // para que se vea el efecto y el sonido
             GameManager.instance.EndGameAsWin();
         }
         // Si falló
         else
         {
-            // FALTA: Mostrar icono de enfado al Villager
+            // Efecto
+            GameObject angerVFX = Instantiate(GameManager.instance.angerVFX, calledNPC.transform);
+            // Se destruye cuando acaba el efecto
+            ParticleSystem partS = angerVFX.GetComponent<ParticleSystem>();
+            float totalDuration = partS.main.duration + partS.main.startLifetime.constant;
+            Destroy(angerVFX, totalDuration);
+
             calledNPC.hasBeenCalledByMarshall = false;
             calledNPC = null;
             GameManager.instance.HideDetentionButton();

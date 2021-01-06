@@ -141,6 +141,9 @@ public class UIManager : MonoBehaviour
             // Sprite Marshallow
             marshallowImage.sprite = winMarshallowSprite;
 
+            // Efecto de victoria
+            GameObject victoryVFX = Instantiate(GameManager.instance.victoryVFX, marshallowImage.transform.parent.transform);
+
             // Texto del tiempo
             int seconds = (int)(totalTime % 60);
             int minutes = (int)((totalTime / 60) % 60);
@@ -156,6 +159,9 @@ public class UIManager : MonoBehaviour
 
             // Sprite Marshallow
             marshallowImage.sprite = loseMarshallowSprite;
+
+            // Efecto de derrota
+            GameObject defeatVFX = Instantiate(GameManager.instance.defeatVFX, marshallowImage.transform.parent.transform);
 
             // Texto del tiempo
             timeText.gameObject.SetActive(false);
