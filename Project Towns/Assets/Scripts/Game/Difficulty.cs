@@ -16,8 +16,9 @@ public class Difficulty : ScriptableObject
     public int catchAttempts = 3;
     [Tooltip("Máximo robos del ladrón")]
     public int thiefRobberies = 5;
-    [Tooltip("Tipos de prenda")]
-    public int clothings = 8;
+    /*[Tooltip("Tipos de prenda")]
+    [HideInInspector]
+    public int clothings = 8;*/
 
     [Header("Aldeano")]
     [Tooltip("Probabilidad de que ambos datos sean seguros siendo víctima (2 verdad SIN ?)")]
