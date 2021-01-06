@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
-public class ChooseDestinationNode : Node
+public class VillagerChooseDestinationNode : Node
 {
-    private NPC npc;
+    private Villager villager;
 
-    public ChooseDestinationNode(NPC npc_)
+    public VillagerChooseDestinationNode(Villager villager_)
     {
-        this.npc = npc_;
+        this.villager = villager_;
     }
 
     public override NodeState Evaluate()
@@ -16,33 +16,33 @@ public class ChooseDestinationNode : Node
         int randomZoneNumber;
         Zone newZone = GameManager.instance.zones[0]; ;
 
-        if (npc.actualZone != null)
+        if (villager.actualZone != null)
         {
             do
             {
                 randomZoneNumber = Random.Range(0, GameManager.instance.zones.Count);
                 newZone = GameManager.instance.zones[randomZoneNumber];
-            } while (newZone.zoneName == npc.actualZone.zoneName);
+            } while (newZone.zoneName == villager.actualZone.zoneName);
 
-            npc.actualZone.villagerCount--;
-            npc.actualZone = null;
+            villager.actualZone.villagerCount--;
+            villager.actualZone = null;
         }
-        
+
 
         // Se establece la máscara para todas las áreas
-        npc.thisAgent.areaMask = NavMesh.AllAreas;
+        villager.thisAgent.areaMask = NavMesh.AllAreas;
 
         // Se establece el destino
-        npc.destinationZone = newZone;
-        npc.thisAgent.SetDestination(newZone.enterPoint.position);
+        villager.destinationZone = newZone;
+        villager.thisAgent.SetDestination(newZone.enterPoint.position);
 
         // Se elige si va andando o corriendo
         int randomSpeedProbability = Random.Range(0, 100);
         
-        if (randomSpeedProbability < npc.SPEED_RUN_PROBABILITY)
-            npc.thisAgent.speed = npc.RUNNING_SPEED;
+        if (randomSpeedProbability < villager.SPEED_RUN_PROBABILITY)
+            villager.thisAgent.speed = villager.RUNNING_SPEED;
         else
-            npc.thisAgent.speed = npc.WALKING_SPEED;
+            villager.thisAgent.speed = villager.WALKING_SPEED;
 
         // Devolvemos SUCCESS
         _nodeState = NodeState.SUCCESS;

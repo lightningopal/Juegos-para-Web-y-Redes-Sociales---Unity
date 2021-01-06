@@ -461,8 +461,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   marshallInfoRange: 5
+  MINIMUM_DESTINY_DISTANCE: 0.5
+  timeToChangeZone: 10
+  WALKING_SPEED: 2
+  RUNNING_SPEED: 4
+  WANDER_RADIUS: 8
   isWitness: 0
+  isVictim: 0
   hasGivenInformation: 0
+  hasBeenCalledByMarshall: 0
   actualZone:
     zoneName: 
     zoneFloor: {fileID: 0}
@@ -475,13 +482,19 @@ MonoBehaviour:
     enterPoint: {fileID: 0}
     maxVillagers: 0
     villagerCount: 0
-  MINIMUM_DESTINY_DISTANCE: 0.5
   timeToNextZone: 0
-  timeToChangeZone: 30
   SPEED_RUN_PROBABILITY: 30
-  WALKING_SPEED: 2
-  RUNNING_SPEED: 4
-  WANDER_RADIUS: 2
+  navMesh_angularSpeed: 5000
+  navMesh_acceleration: 12
+  navMesh_stoppingDistance: 0.2
+  navMesh_autoBraking: 0
+  eyes:
+  - {fileID: 6224262975423233134}
+  - {fileID: 7372401971376107549}
+  - {fileID: 1907286139672284749}
+  hatParent: {fileID: 6915081382592247979}
+  hornsParent: {fileID: 8711029858104181261}
+  neckItemParent: {fileID: 7272823912924605116}
   items:
     villagerColor:
       itemName: 
@@ -505,25 +518,24 @@ MonoBehaviour:
       itemName: 
       itemGameObject: {fileID: 0}
       itemSprite: {fileID: 0}
-  eyes:
-  - {fileID: 6224262975423233134}
-  - {fileID: 7372401971376107549}
-  - {fileID: 1907286139672284749}
-  hatParent: {fileID: 6915081382592247979}
-  hornsParent: {fileID: 8711029858104181261}
-  neckItemParent: {fileID: 7272823912924605116}
   informationGameObject: {fileID: 194123833}
   thisAgent: {fileID: -5436639637694714247}
   thisAnimator: {fileID: 3868801097337146386}
-  fakeVictimProbability: 50
+  fakeWitnessProbability: 50
   timeNextSteal: 0
   timeBetweenSteals: 60
-  marshallDetectRange: 15
+  marshallDetectRange: 20
   STEALING_SPEED: 10
   MINIMUM_STEAL_DISTANCE: 2
   CLOSE_VILLAGERS_RANGE: 10
   victim: {fileID: 0}
   villagersInRange: []
+  previousZone:
+    zoneName: 
+    zoneFloor: {fileID: 0}
+    enterPoint: {fileID: 0}
+    maxVillagers: 0
+    villagerCount: 0
 --- !u!195 &-5436639637694714247
 NavMeshAgent:
   m_ObjectHideFlags: 0

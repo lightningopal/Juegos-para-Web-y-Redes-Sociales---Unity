@@ -269,7 +269,7 @@ MonoBehaviour:
   thisAgent: {fileID: 2557029410346978614}
   playerLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   effectPrefab: {fileID: 4965944560750203928, guid: d3f6f0e2887d1ef46a2a4a6712fc4147,
     type: 3}
   QUIT_STEAL_ICON_RANGE: 10

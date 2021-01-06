@@ -39,13 +39,7 @@ public class GlobalVars : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
 
-    /// <summary>
-    /// Método Start, que se llama antes del primer frame
-    /// </summary>
-    void Start()
-    {
         ReadOptions();
     }
     #endregion

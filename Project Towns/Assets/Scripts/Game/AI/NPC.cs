@@ -8,54 +8,65 @@ public class NPC : MonoBehaviour
 {
     #region Variables
     [Header("Parámetros")]
-    [Tooltip("Distancia para mostrar información al marshall")]
+    [Tooltip("Distancia para mostrar información al marshall si es víctima o testigo")]
     [SerializeField]
     protected float marshallInfoRange = 3.0f;
-
-    [Header("Información sobre el NPC")]
-    [Tooltip("Booleano que indica si es testigo")]
-    //[HideInInspector]
-    public bool isWitness = false;
-    [Tooltip("Booleano que indica si es víctima")]
-    ////[HideInInspector]
-    public bool isVictim = false;
-    [Tooltip("Booleano que indica si ha dado información")]
-    //[HideInInspector]
-    public bool hasGivenInformation = false;
-    [Tooltip("Booleano que indica si ha sido llamado por el marshall")]
-    //[HideInInspector]
-    public bool hasBeenCalledByMarshall = false;
-
-    [Header("Zonas")]
-    [Tooltip("Zona actual")]
-    //[HideInInspector]
-    public Zone actualZone = null;
-    [Tooltip("Zona destino")]
-    //[HideInInspector]
-    public Zone destinationZone = null;
-    [Tooltip("Distancia mínima para llegar al destino")]
+    [Tooltip("Distancia con la que comprobamos que ha llegado al destino")]
     public float MINIMUM_DESTINY_DISTANCE = 0.5f;
-    [Tooltip("Tiempo para cambiar de zona")]
-    //[HideInInspector]
-    public float timeToNextZone = 0.0f;
     [Tooltip("Tiempo que se lleva en una zona")]
     public float timeToChangeZone = 30.0f;
-
-    [Header("Velocidades")]
-    [Tooltip("Probabilidad de que el aldeano vaya corriendo hacia la zona elegida")]
-    public float SPEED_RUN_PROBABILITY = 30.0f;
     [Tooltip("Velocidad del NPC andando")]
     public float WALKING_SPEED = 2.0f;
     [Tooltip("Velocidad del NPC corriendo")]
     public float RUNNING_SPEED = 4.0f;
-
-    [Header("Movimiento en zona")]
-    [Tooltip("Radio del wander")]
+    [Tooltip("Radio del NPC para merodear a su alrededor")]
     public float WANDER_RADIUS = 2.0f;
 
+    [Header("Información sobre el NPC")]
+    [Tooltip("Booleano que indica si es testigo")]
+    [HideInInspector]
+    public bool isWitness = false;
+    [Tooltip("Booleano que indica si es víctima")]
+    [HideInInspector]
+    public bool isVictim = false;
+    [Tooltip("Booleano que indica si ha dado información")]
+    [HideInInspector]
+    public bool hasGivenInformation = false;
+    [Tooltip("Booleano que indica si ha sido llamado por el marshall")]
+    [HideInInspector]
+    public bool hasBeenCalledByMarshall = false;
+    
+    [Header("Zonas")]
+    [Tooltip("Zona actual")]
+    [HideInInspector]
+    public Zone actualZone = null;
+    [Tooltip("Zona destino")]
+    [HideInInspector]
+    public Zone destinationZone = null;
+    [Tooltip("Tiempo para cambiar de zona")]
+    [HideInInspector]
+    public float timeToNextZone = 0.0f;
+
+    [Header("Velocidades")]
+    [Tooltip("Probabilidad de que el NPC vaya corriendo hacia la zona elegida")]
+    [HideInInspector]
+    public float SPEED_RUN_PROBABILITY = 30.0f; // Modificable por dificultad
+
+    [Header("Físicas NavMesh")]
+    [Tooltip("Velocidad angular")]
+    [SerializeField]
+    private float navMesh_angularSpeed = 5000.0f;
+    [Tooltip("Aceleración")]
+    [SerializeField]
+    private float navMesh_acceleration = 12.0f;
+    [Tooltip("Distancia para detenerse")]
+    [SerializeField]
+    private float navMesh_stoppingDistance = 0.2f;
+    [Tooltip("Auto Freno (?)")]
+    [SerializeField]
+    private bool navMesh_autoBraking = false;
+
     [Header("Objetos")]
-    [Tooltip("Items del NPC")]
-    public NPCItems items;
     [Tooltip("Ojos del NPC")]
     [SerializeField]
     protected GameObject[] eyes = new GameObject[3];
@@ -68,21 +79,21 @@ public class NPC : MonoBehaviour
     [Tooltip("Padre del objeto del cuello del NPC")]
     [SerializeField]
     protected GameObject neckItemParent = null;
-
-    [Header("Referencias a otros personajes")]
-    [Tooltip("Referencia al jugador")]
-    protected Transform playerTransform;
+    [Tooltip("Items del NPC")]
+    [HideInInspector]
+    public NPCItems items;
 
     [Header("Otros")]
     [Tooltip("GameObject que contiene la información")]
     [SerializeField]
     protected InformationObject informationGameObject = null;
+    [Tooltip("Referencia al jugador")]
+    protected Transform playerTransform;
     [Tooltip("Agente NavMesh")]
     public NavMeshAgent thisAgent;
     [Tooltip("Animator")]
     [SerializeField]
     protected Animator thisAnimator = null;
-
     [Tooltip("Árbol de comportamiento")]
     protected Node topNode;
     #endregion
@@ -98,6 +109,13 @@ public class NPC : MonoBehaviour
 
         // Crear Árbol
         CreateBehaviourTree();
+
+        // Valores NavMesh
+        thisAgent.speed = WALKING_SPEED;
+        thisAgent.angularSpeed = navMesh_angularSpeed;
+        thisAgent.acceleration = navMesh_acceleration;
+        thisAgent.stoppingDistance = navMesh_stoppingDistance;
+        thisAgent.autoBraking = navMesh_autoBraking;
     }
 
     /// <summary>
