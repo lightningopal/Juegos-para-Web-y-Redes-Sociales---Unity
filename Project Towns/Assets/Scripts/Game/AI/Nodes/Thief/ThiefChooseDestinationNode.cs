@@ -52,9 +52,17 @@ public class ThiefChooseDestinationNoe : Node
         int randomSpeedProbability = Random.Range(0, 100);
         
         if (randomSpeedProbability < thief.SPEED_RUN_PROBABILITY)
+        {
             thief.thisAgent.speed = thief.RUNNING_SPEED;
+            thief.isRunning = true;
+            thief.thisAnimator.SetTrigger("run");
+        }
         else
+        {
             thief.thisAgent.speed = thief.WALKING_SPEED;
+            thief.isRunning = false;
+            thief.thisAnimator.SetTrigger("walk");
+        }
 
         // Si tenía víctima, ya no jeje
         if (thief.victim != null)

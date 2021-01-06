@@ -40,10 +40,16 @@ public class VillagerChooseDestinationNode : Node
         int randomSpeedProbability = Random.Range(0, 100);
         
         if (randomSpeedProbability < villager.SPEED_RUN_PROBABILITY)
+        {
             villager.thisAgent.speed = villager.RUNNING_SPEED;
-        else
+            villager.isRunning = true;
+            villager.thisAnimator.SetTrigger("run");
+        }else
+        {
             villager.thisAgent.speed = villager.WALKING_SPEED;
-
+            villager.isRunning = false;
+            villager.thisAnimator.SetTrigger("walk");
+        }
         // Devolvemos SUCCESS
         _nodeState = NodeState.SUCCESS;
         return _nodeState;

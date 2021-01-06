@@ -13,6 +13,14 @@ public class MoveToDestinationNode : Node
         //Debug.Log("MoveToDestinationNode");
         if (!npc.thisAgent.hasPath)
             npc.thisAgent.SetDestination(npc.destinationZone.enterPoint.position);
+        if (npc.isRunning)
+        {
+            npc.thisAnimator.SetTrigger("run");
+        }
+        else
+        {
+            npc.thisAnimator.SetTrigger("walk");
+        }
 
         // Return SUCCESS
         _nodeState = NodeState.SUCCESS;

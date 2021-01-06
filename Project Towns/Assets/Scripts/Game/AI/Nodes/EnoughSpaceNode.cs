@@ -3,10 +3,12 @@ using UnityEngine.AI;
 public class EnoughSpaceNode : Node
 {
     private NPC npc;
+    private Animator npcAnimator;
 
     public EnoughSpaceNode(NPC npc_)
     {
         this.npc = npc_;
+        npcAnimator = npc.GetComponent<Animator>();
     }
 
     public override NodeState Evaluate()
@@ -25,6 +27,8 @@ public class EnoughSpaceNode : Node
 
             // Establecer la velocidad
             npc.thisAgent.speed = npc.WALKING_SPEED;
+            npc.isRunning = false;
+            npcAnimator.SetTrigger("walk");
 
             // Se establece la máscara de zona
             npc.thisAgent.areaMask = (int)Mathf.Pow(2, NavMesh.GetAreaFromName("Zone"));

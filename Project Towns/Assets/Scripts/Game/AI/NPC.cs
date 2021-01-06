@@ -19,9 +19,12 @@ public class NPC : MonoBehaviour
     public float WALKING_SPEED = 2.0f;
     [Tooltip("Velocidad del NPC corriendo")]
     public float RUNNING_SPEED = 4.0f;
+    [Tooltip("Booleano que indica si está o estaba corriendo o andando")]
+    [HideInInspector]
+    public bool isRunning = false;
     [Tooltip("Radio del NPC para merodear a su alrededor")]
     public float WANDER_RADIUS = 2.0f;
-
+    
     [Header("Información sobre el NPC")]
     [Tooltip("Booleano que indica si es testigo")]
     [HideInInspector]
@@ -96,7 +99,7 @@ public class NPC : MonoBehaviour
     public NavMeshAgent thisAgent;
     [Tooltip("Animator")]
     [SerializeField]
-    protected Animator thisAnimator = null;
+    public Animator thisAnimator = null;
     [Tooltip("Árbol de comportamiento")]
     protected Node topNode;
     #endregion

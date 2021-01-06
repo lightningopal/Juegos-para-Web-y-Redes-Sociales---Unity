@@ -23,6 +23,14 @@ public class WanderNode : Node
             Vector3 newDestination = new Vector3(npcPosition.x + randomXChange, npcPosition.y, npcPosition.z + randomZChange);
             npc.thisAgent.SetDestination(newDestination);
         }
+        if (npc.isRunning)
+        {
+            npc.thisAnimator.SetTrigger("run");
+        }
+        else
+        {
+            npc.thisAnimator.SetTrigger("walk");
+        }
 
         // Return SUCCESS
         _nodeState = NodeState.SUCCESS;
