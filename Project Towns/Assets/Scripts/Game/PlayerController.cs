@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Agente NavMesh")]
     [SerializeField]
     private NavMeshAgent thisAgent = null;
+    private Vector3 destination = new Vector3();
+    [Tooltip("Animator")]
+    [SerializeField]
+    private Animator thisAnimator = null;
     [Tooltip("LayerMask del propio Player")]
     [SerializeField]
     private LayerMask playerLayerMask = new LayerMask();
@@ -73,6 +77,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Update()
     {
+        //Vector3 destination = new Vector3 (0.0f,0.0f,0.0f);
         // Si el jugador hace click con el ratón
         if (Input.GetMouseButtonDown(0))
         {
@@ -89,7 +94,10 @@ public class PlayerController : MonoBehaviour
                 //Debug.Log("You selected the: " + hit.transform.name);
 
                 // Va hacia allí
-                thisAgent.SetDestination(hit.point);
+                destination = hit.point;
+                thisAgent.SetDestination(destination);
+                if (!thisAnimator.GetCurrentAnimatorStateInfo(0).IsName("Marshallow_Run"))
+                    thisAnimator.SetTrigger("run");
 
                 // Si es un aldeano
                 if (hit.transform.CompareTag("Villager"))
@@ -159,6 +167,13 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+        // Si llega al destino, cambia de animación
+        if (Vector3.Distance(destination, transform.position) <= 1.0f)
+        {
+            if (!thisAnimator.GetCurrentAnimatorStateInfo(0).IsName("Marshallow_Idle"))
+                thisAnimator.SetTrigger("idle");
+        }
+        
 
         // Si está lo suficientemente cerca del NPC que ha llamado, se para
         if (calledNPC != null)
@@ -166,7 +181,10 @@ public class PlayerController : MonoBehaviour
             if (Vector3.Distance(this.transform.position, calledNPC.transform.position) < DETENTION_RANGE)
             {
                 if (thisAgent.hasPath)
+                {
                     thisAgent.ResetPath();
+                    thisAnimator.SetTrigger("idle");
+                }
             }
         }
 
