@@ -16,4 +16,10 @@ MonoBehaviour:
   villagers: 30
   catchAttempts: 3
   thiefRobberies: 8
-  clothings: 8
+  victimSafeProbability: 50
+  victimVeracityProbability: 50
+  witnessSafeProbability: 50
+  witnessVeracityProbability: 50
+  VILLAGER_SPEED_RUN_PROBABILITY: 30
+  timeBetweenSteals: 30
+  THIEF_SPEED_RUN_PROBABILITY: 100
