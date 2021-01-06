@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194123831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3, y: 1.3, z: 0}
-  m_LocalScale: {x: -0.3, y: 0.3, z: 1}
+  m_LocalPosition: {x: -2, y: 1.5, z: 0}
+  m_LocalScale: {x: -0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 7548251864118045036}
   - {fileID: 1035234837052939156}
@@ -107,8 +107,8 @@ MonoBehaviour:
     itemSprite: {fileID: 0}
   item2Sprite: {fileID: 280034100367081627}
   doubtfulInformation: 0
-  item1PositionWhenOnly: 0
-  item1PositionWhenTwo: 1.2
+  item1PositionWhenOnly: -1.4
+  item1PositionWhenTwo: 0.6
   backgroundImage: {fileID: 194123834}
   backgroundsOneItem:
   - {fileID: 21300000, guid: af8c2087ffe435744b297c84c712bd40, type: 3}
@@ -426,8 +426,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   marshallInfoRange: 5
+  MINIMUM_DESTINY_DISTANCE: 0.5
+  timeToChangeZone: 10
+  WALKING_SPEED: 2
+  RUNNING_SPEED: 4
+  WANDER_RADIUS: 8
   isWitness: 0
+  isVictim: 0
   hasGivenInformation: 0
+  hasBeenCalledByMarshall: 0
   actualZone:
     zoneName: 
     zoneFloor: {fileID: 0}
@@ -440,13 +447,19 @@ MonoBehaviour:
     enterPoint: {fileID: 0}
     maxVillagers: 0
     villagerCount: 0
-  MINIMUM_DESTINY_DISTANCE: 0.5
   timeToNextZone: 0
-  timeToChangeZone: 10
   SPEED_RUN_PROBABILITY: 30
-  WALKING_SPEED: 2
-  RUNNING_SPEED: 4
-  WANDER_RADIUS: 8
+  navMesh_angularSpeed: 5000
+  navMesh_acceleration: 12
+  navMesh_stoppingDistance: 0.2
+  navMesh_autoBraking: 0
+  eyes:
+  - {fileID: 6224262975423233134}
+  - {fileID: 7372401971376107549}
+  - {fileID: 1907286139672284749}
+  hatParent: {fileID: 6915081382592247979}
+  hornsParent: {fileID: 8711029858104181261}
+  neckItemParent: {fileID: 7272823912924605116}
   items:
     villagerColor:
       itemName: 
@@ -470,13 +483,6 @@ MonoBehaviour:
       itemName: 
       itemGameObject: {fileID: 0}
       itemSprite: {fileID: 0}
-  eyes:
-  - {fileID: 6224262975423233134}
-  - {fileID: 7372401971376107549}
-  - {fileID: 1907286139672284749}
-  hatParent: {fileID: 6915081382592247979}
-  hornsParent: {fileID: 8711029858104181261}
-  neckItemParent: {fileID: 7272823912924605116}
   informationGameObject: {fileID: 194123833}
   thisAgent: {fileID: -5436639637694714247}
   thisAnimator: {fileID: 3868801097337146386}
@@ -486,7 +492,6 @@ MonoBehaviour:
   witnessVeracityProbability: 50
   visionDistance: 7
   visionAngle: 120
-  isVictim: 0
 --- !u!195 &-5436639637694714247
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -630,8 +635,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4685593945789239087}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.38, y: 1.2, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 194123832}
   m_RootOrder: 0
@@ -680,7 +685,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.95, y: 1.88}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -1179,8 +1184,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8026446586898308501}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.38, y: -1.2, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 194123832}
   m_RootOrder: 1
@@ -1229,7 +1234,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.88, y: 1.88}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
