@@ -27,6 +27,9 @@ public class ChooseVictimNode : Node
         // Se establece la velocidad de robo
         thief.thisAgent.speed = thief.STEALING_SPEED;
 
+        // Se establece su zona previa
+        thief.previousZone = thief.actualZone;
+
         // Se establecen sus zonas a null
         thief.actualZone.villagerCount--;
         thief.actualZone = null;

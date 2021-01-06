@@ -9,32 +9,39 @@ public class Thief : NPC
 {
     #region Variables
     [Header("Probabilidades")]
-    [Tooltip("Probabilidad de que se haga pasar por víctima")]
-    public int fakeVictimProbability = 50;
+    [Tooltip("Probabilidad de que se haga pasar por testigo")]
+    [HideInInspector]
+    public int fakeWitnessProbability = 50;
 
     [Header("Tiempos")]
     [Tooltip("Tiempo para el siguiente robo")]
+    [HideInInspector]
     public float timeNextSteal = 0.0f;
     [Tooltip("Tiempo entre robos (segundos)")]
-    //[HideInInspector]
-    public float timeBetweenSteals = 60.0f;
+    [HideInInspector]
+    public float timeBetweenSteals = 30.0f; // Modificable por dificultad
 
-    [Header("Parámetros")]
+    [Header("Parámetros LADRÓN")]
     [Tooltip("Distancia para detectar al marshall")]
     [SerializeField]
-    protected float marshallDetectRange = 15.0f;
+    private float marshallDetectRange = 25.0f;
     [Tooltip("Velocidad de movimiento al robar")]
     public float STEALING_SPEED = 10.0f;
-
-    [Header("Robos")]
-    [Tooltip("Distancia mínima para robar")]
-    public float MINIMUM_STEAL_DISTANCE = 0.5f;
+    [Tooltip("Distancia mínima para robar, es decir, para asegurar que está al lado de la víctima")]
+    public float MINIMUM_STEAL_DISTANCE = 2f;
     [Tooltip("Rango para saber si hay aldeanos cerca")]
     public float CLOSE_VILLAGERS_RANGE = 30f;
+
+    [Header("Robos")]
     [Tooltip("Referencia a la víctima")]
+    [HideInInspector]
     public Villager victim = null;
     [Tooltip("Aldeanos cerca")]
+    [HideInInspector]
     public List<Villager> villagersInRange = new List<Villager>();
+    [Tooltip("Zona previa")]
+    [HideInInspector]
+    public Zone previousZone = null;
     #endregion
 
     #region MétodosUnity
@@ -45,6 +52,10 @@ public class Thief : NPC
     {
         // Inicializar NPC
         base.Start();
+
+        // Obtener parámetros
+        timeBetweenSteals = GameManager.instance.difficulty.timeBetweenSteals;
+        SPEED_RUN_PROBABILITY = GameManager.instance.difficulty.THIEF_SPEED_RUN_PROBABILITY;
 
         // Calcular destino más cercano
         float distanceToNearestZone = float.PositiveInfinity;
@@ -97,6 +108,9 @@ public class Thief : NPC
 
         // Establecer tiempo para cambiar de zona
         timeToNextZone = Time.time + timeToChangeZone;
+
+        // Establecertiempo para robar
+        timeNextSteal = Time.time + timeBetweenSteals;
     }
     #endregion
 
@@ -113,7 +127,7 @@ public class Thief : NPC
         EnoughSpaceNode enoughSpaceNode = new EnoughSpaceNode(this);
         Sequence sequence4 = new Sequence(new List<Node>() { enoughSpaceNode, wanderNode});
 
-        ChooseDestinationNode chooseDestinationNode = new ChooseDestinationNode(this);
+        ThiefChooseDestinationNoe chooseDestinationNode = new ThiefChooseDestinationNoe(this);
         Selector selector2 = new Selector(new List<Node>() { sequence4, chooseDestinationNode });
 
         InDestinationNode inDestinationNode = new InDestinationNode(this, MINIMUM_DESTINY_DISTANCE);

@@ -13,7 +13,7 @@ public class ChooseIfWitnessNode : Node
         _nodeState = NodeState.FAILURE;
 
         int randomWitnessNumber = Random.Range(0, 100);
-        if (randomWitnessNumber < thief.fakeVictimProbability)
+        if (randomWitnessNumber < thief.fakeWitnessProbability)
         {
             _nodeState = NodeState.SUCCESS;
             thief.isWitness = true;

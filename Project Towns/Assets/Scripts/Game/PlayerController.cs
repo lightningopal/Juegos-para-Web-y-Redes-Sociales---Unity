@@ -19,15 +19,33 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Efecto movimiento")]
     [SerializeField]
     private ParticleSystem effectPrefab = null;
+    [Tooltip("Instancia del efecto")]
     private ParticleSystem effectInstance = null;
 
     [Header("Rangos")]
     [Tooltip("Rango para llegar al robo")]
     [SerializeField]
     private float QUIT_STEAL_ICON_RANGE = 10.0f;
-    [Tooltip("Rango para detenerse cuando está cerca del NPC")]
+    [Tooltip("Rango para detenerse cuando está cerca del NPC que ha llamado")]
     [SerializeField]
     private float DETENTION_RANGE = 2.0f;
+
+    [Header("Físicas NavMesh")]
+    [Tooltip("Velocidad de Marshallow")]
+    [SerializeField]
+    private float navMesh_speed = 8.0f;
+    [Tooltip("Velocidad angular")]
+    [SerializeField]
+    private float navMesh_angularSpeed = 5000.0f;
+    [Tooltip("Aceleración")]
+    [SerializeField]
+    private float navMesh_acceleration = 12.0f;
+    [Tooltip("Distancia para detenerse")]
+    [SerializeField]
+    private float navMesh_stoppingDistance = 0.2f;
+    [Tooltip("Auto Freno (?)")]
+    [SerializeField]
+    private bool navMesh_autoBraking = false;
 
     [Header("Detención")]
     [Tooltip("NPC en detención")]
@@ -37,6 +55,19 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region MétodosUnity
+    /// <summary>
+    /// Método Start, que se llama antes del primer frame
+    /// </summary>
+    void Start()
+    {
+        // Valores NavMesh
+        thisAgent.speed = navMesh_speed;
+        thisAgent.angularSpeed = navMesh_angularSpeed;
+        thisAgent.acceleration = navMesh_acceleration;
+        thisAgent.stoppingDistance = navMesh_stoppingDistance;
+        thisAgent.autoBraking = navMesh_autoBraking;
+    }
+
     /// <summary>
     /// Método Update, que se llama cada frame
     /// </summary>

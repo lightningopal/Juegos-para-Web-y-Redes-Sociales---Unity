@@ -9,16 +9,20 @@ public class Villager : NPC
 {
     #region Variables
     [Header("Probabilidades")]
-    [Tooltip("Probabilidad de que ambos datos sean seguros siendo víctima")]
-    public int victimSafeProbability = 50;
-    [Tooltip("Probabilidad de que ambos datos sean veraces siendo víctima")]
-    public int victimVeracityProbability = 50;
-    [Tooltip("Probabilidad de que el dato sea seguro siendo testigo")]
-    public int witnessSafeProbability = 50;
-    [Tooltip("Probabilidad de que el dato sea veraz siendo testigo")]
-    public int witnessVeracityProbability = 50;
+    [Tooltip("Probabilidad de que ambos datos sean seguros siendo víctima (2 verdad SIN ?)")]
+    [HideInInspector]
+    public float victimSafeProbability = 50; // Modificable por dificultad
+    [Tooltip("Probabilidad de que ambos datos sean veraces siendo víctima (2 verdad CON ?)")]
+    [HideInInspector]
+    public float victimVeracityProbability = 50; // Modificable por dificultad
+    [Tooltip("Probabilidad de que el dato sea seguro siendo testigo (1 verdad SIN ?)")]
+    [HideInInspector]
+    public float witnessSafeProbability = 50; // Modificable por dificultad
+    [Tooltip("Probabilidad de que el dato sea veraz siendo testigo (1 verdad CON ?)")]
+    [HideInInspector]
+    public float witnessVeracityProbability = 50; // Modificable por dificultad
 
-    [Header("Parámetros")]
+    [Header("Parámetros ALDEANO")]
     [Tooltip("Distancia de visión (cono)")]
     [SerializeField]
     private float visionDistance = 0;
@@ -42,6 +46,13 @@ public class Villager : NPC
 
         // Referencia al ladrón
         thief = FindObjectOfType<Thief>();
+
+        // Obtener parámetros
+        victimSafeProbability = GameManager.instance.difficulty.victimSafeProbability;
+        victimVeracityProbability = GameManager.instance.difficulty.victimVeracityProbability;
+        witnessSafeProbability = GameManager.instance.difficulty.witnessSafeProbability;
+        witnessVeracityProbability = GameManager.instance.difficulty.witnessVeracityProbability;
+        SPEED_RUN_PROBABILITY = GameManager.instance.difficulty.VILLAGER_SPEED_RUN_PROBABILITY;
 
         // Calcular destino más cercano
         float distanceToNearestZone = float.PositiveInfinity;
@@ -130,7 +141,7 @@ public class Villager : NPC
         EnoughSpaceNode enoughSpaceNode = new EnoughSpaceNode(this);
         Sequence sequence6 = new Sequence(new List<Node>() { enoughSpaceNode, wanderNode });
 
-        ChooseDestinationNode chooseDestinationNode = new ChooseDestinationNode(this);
+        VillagerChooseDestinationNode chooseDestinationNode = new VillagerChooseDestinationNode(this);
         Selector selector3 = new Selector(new List<Node>() { sequence6, chooseDestinationNode });
 
         InDestinationNode inDestinationNode = new InDestinationNode(this, MINIMUM_DESTINY_DISTANCE);
