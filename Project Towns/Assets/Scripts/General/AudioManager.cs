@@ -28,7 +28,7 @@ public class AudioManager : MonoBehaviour
             instance = this;
 
             // Se impide que se destruya al cargar
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
         else
         {

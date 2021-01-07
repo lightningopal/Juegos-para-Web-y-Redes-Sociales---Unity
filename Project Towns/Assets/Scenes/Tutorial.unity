@@ -40891,6 +40891,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1360057240}
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: PressButton
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1686548781}
+        m_MethodName: SaveOptions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1056315374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46276,6 +46298,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5578cbb20bd929e468928ea3467a6420, type: 3}
+--- !u!114 &1360057240 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4771846093718049639, guid: 5578cbb20bd929e468928ea3467a6420,
+    type: 3}
+  m_PrefabInstance: {fileID: 1360057239}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecdbff3f24c012e4080bfaf5e092baba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1368689186
 GameObject:
   m_ObjectHideFlags: 0

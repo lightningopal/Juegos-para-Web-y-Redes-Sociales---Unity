@@ -172,7 +172,7 @@ public class TutorialGameManager : MonoBehaviour
     /// </summary>
     public void UpdateRobberiesTranslate()
     {
-        if (TutorialUIManager.instance != null)
+        if (TutorialUIManager.instance != null && easyDifficulty != null)
             TutorialUIManager.instance.UpdateRobberiesText(thiefRobberies, easyDifficulty.thiefRobberies);
     }
     #endregion
