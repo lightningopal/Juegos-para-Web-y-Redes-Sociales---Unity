@@ -239,6 +239,11 @@ public class NPC : MonoBehaviour
             {
                 Destroy(infoVFX);
             }
+
+            //Efecto de sonido
+            AudioManager.instance.PlaySound("GiveInfo");
+
+
             informationGameObject.gameObject.SetActive(true);
             hasGivenInformation = true;
         }

@@ -217,6 +217,9 @@ public class PlayerController : MonoBehaviour
         {
             // Efecto
             GameObject nervousVFX = Instantiate(GameManager.instance.nervousVFX, calledNPC.transform);
+
+            //Efecto de sonido
+            AudioManager.instance.PlaySound("Nervous");
             
             GameManager.instance.HideDetentionButton();
             GameManager.instance.EndGameAsWin();
@@ -226,6 +229,10 @@ public class PlayerController : MonoBehaviour
         {
             // Efecto
             GameObject angerVFX = Instantiate(GameManager.instance.angerVFX, calledNPC.transform);
+
+            //Efecto de sonido
+            AudioManager.instance.PlaySound("Anger");
+
             // Se destruye cuando acaba el efecto
             ParticleSystem partS = angerVFX.GetComponent<ParticleSystem>();
             float totalDuration = partS.main.duration + partS.main.startLifetime.constant;
