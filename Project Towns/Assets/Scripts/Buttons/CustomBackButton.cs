@@ -5,7 +5,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Clase CustomBackButton, que gestiona el botón de ir hacia atrás
 /// </summary>
-public class CustomBackButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class CustomBackButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler
 {
     #region Variables
     [Header("Referencias")]
@@ -28,6 +28,16 @@ public class CustomBackButton : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     public void OnPointerDown(PointerEventData eventData)
     {
         buttonImage.color = new Color(buttonImage.color.r * clickAlpha, buttonImage.color.g * clickAlpha, buttonImage.color.b * clickAlpha);
+
+    }
+
+    /// <summary>
+    /// Método OnPointerEnter, para cuando el ratón pasa sobre el botón
+    /// </summary>
+    /// <param name="eventData">Datos del puntero</param>
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        AudioManager.instance.PlaySound("OverButton");
     }
 
     /// <summary>

@@ -70,6 +70,8 @@ public class CustomMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExi
         mouseOnButton = true;
 
         secondImage.SetActive(true);
+
+        AudioManager.instance.PlaySound("OverButton");
     }
 
     /// <summary>
