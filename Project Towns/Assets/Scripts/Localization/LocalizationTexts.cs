@@ -50,6 +50,13 @@ public class LocalizationTexts : MonoBehaviour
             GameManager.instance.UpdateRobberiesTranslate();
         }
 
+        // Si es el tutorial
+        if (SceneManager.GetActiveScene().name.Equals("Tutorial"))
+        {
+            TutorialGameManager.instance.UpdateRobberiesTranslate();
+            //TutorialManager.instance.UpdateTutorialTranslate();
+        }
+
         // Si es el menú principal
         if (SceneManager.GetActiveScene().name.Equals("MainMenu"))
         {

@@ -200,6 +200,7 @@ public class OptionsManager : MonoBehaviour
     public void SaveOptions()
     {
         WriteOptions();
+        Debug.Log("musicVolume: " + musicVolume);
     }
 
     /// <summary>

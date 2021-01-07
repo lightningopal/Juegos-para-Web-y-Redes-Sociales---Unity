@@ -22,9 +22,9 @@ public class TutorialManager : MonoBehaviour
     private GameObject[] heartsUI = new GameObject[5];
 
     [Tooltip("Evento actual")]
-    private int actualEvent = 0;
+    public int actualEvent = 0;
     [Tooltip("Texto actual")]
-    private int actualText = 0;
+    public int actualText = 0;
 
     [Tooltip("Texto del tutorial")]
     [SerializeField]
@@ -73,6 +73,17 @@ public class TutorialManager : MonoBehaviour
         {
 
         }*/
+    }
+
+    /// <summary>
+    /// Método UpdateTutorialTranslate, que actualiza el texto correspondiente al tutorial
+    /// </summary>
+    public void UpdateTutorialTranslate()
+    {
+        string textSt = LocalizationSystem.GetLocalizedValue("TUTORIAL_TEXT_" + actualText);
+        textSt.Replace("\\n", "\n");
+        Debug.Log(textSt);
+        tutorialText.text = textSt;
     }
     #endregion
 }
