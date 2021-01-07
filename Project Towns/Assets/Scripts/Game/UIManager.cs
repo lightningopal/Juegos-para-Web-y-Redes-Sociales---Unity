@@ -45,6 +45,9 @@ public class UIManager : MonoBehaviour
     [Tooltip("Texto del tiempo")]
     [SerializeField]
     private TextMeshProUGUI timeText = null;
+    [Tooltip("Contenedor para los VFX")]
+    [SerializeField]
+    private GameObject endGameVFX;
 
     [Header("Robos")]
     [Tooltip("Objeto padre de los robos")]
@@ -142,7 +145,7 @@ public class UIManager : MonoBehaviour
             marshallowImage.sprite = winMarshallowSprite;
 
             // Efecto de victoria
-            GameObject victoryVFX = Instantiate(GameManager.instance.victoryVFX, marshallowImage.transform.parent.transform);
+            GameObject victoryVFX = Instantiate(GameManager.instance.victoryVFX, endGameVFX.transform);
 
             // Texto del tiempo
             int seconds = (int)(totalTime % 60);
@@ -161,7 +164,7 @@ public class UIManager : MonoBehaviour
             marshallowImage.sprite = loseMarshallowSprite;
 
             // Efecto de derrota
-            GameObject defeatVFX = Instantiate(GameManager.instance.defeatVFX, marshallowImage.transform.parent.transform);
+            GameObject defeatVFX = Instantiate(GameManager.instance.defeatVFX, endGameVFX.transform);
 
             // Texto del tiempo
             timeText.gameObject.SetActive(false);
