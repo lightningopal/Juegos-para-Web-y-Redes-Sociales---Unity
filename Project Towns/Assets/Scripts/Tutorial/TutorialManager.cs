@@ -11,7 +11,7 @@ public class TutorialManager : MonoBehaviour
     public static TutorialManager instance;
 
     [Tooltip("Booleano que indica si el jugador puede jugar")]
-    public bool playerCanPlay = true;
+    public bool playerCanPlay = false;
 
     [Tooltip("GameObjects de las flechas de rotación de la cámara")]
     [SerializeField]
@@ -54,7 +54,7 @@ public class TutorialManager : MonoBehaviour
     /// </summary>
     void Start()
     {
-        //tutorialText.text = LocalizationSystem.GetLocalizedValue("TUTORIAL_TEXT_" + actualText);
+        //UpdateTutorialTranslate();
     }
     #endregion
 
@@ -62,7 +62,7 @@ public class TutorialManager : MonoBehaviour
     public void ShowNextText()
     {
         actualText++;
-        tutorialText.text = LocalizationSystem.GetLocalizedValue("TUTORIAL_TEXT_" + actualText);
+        UpdateTutorialTranslate();
     }
 
     public void ShowNextEvent()
@@ -81,8 +81,7 @@ public class TutorialManager : MonoBehaviour
     public void UpdateTutorialTranslate()
     {
         string textSt = LocalizationSystem.GetLocalizedValue("TUTORIAL_TEXT_" + actualText);
-        textSt.Replace("\\n", "\n");
-        Debug.Log(textSt);
+        textSt = textSt.Replace("\\n", "\n");
         tutorialText.text = textSt;
     }
     #endregion
