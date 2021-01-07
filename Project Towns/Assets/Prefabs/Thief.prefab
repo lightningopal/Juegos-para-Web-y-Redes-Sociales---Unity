@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 194123832}
   - component: {fileID: 194123834}
   - component: {fileID: 194123833}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Information
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4360582390156470744}
   - component: {fileID: 1664392046689817396}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Item 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,11 +465,13 @@ MonoBehaviour:
   timeToChangeZone: 10
   WALKING_SPEED: 2
   RUNNING_SPEED: 4
+  isRunning: 0
   WANDER_RADIUS: 8
   isWitness: 0
   isVictim: 0
   hasGivenInformation: 0
   hasBeenCalledByMarshall: 0
+  infoVFX: {fileID: 0}
   actualZone:
     zoneName: 
     zoneFloor: {fileID: 0}

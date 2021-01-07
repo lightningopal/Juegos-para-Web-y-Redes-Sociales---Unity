@@ -94,7 +94,8 @@ public class NPC : MonoBehaviour
     [SerializeField]
     protected InformationObject informationGameObject = null;
     [Tooltip("Referencia al jugador")]
-    protected Transform playerTransform;
+    [HideInInspector]
+    public Transform playerTransform;
     [Tooltip("Agente NavMesh")]
     public NavMeshAgent thisAgent;
     [Tooltip("Animator")]
@@ -131,6 +132,10 @@ public class NPC : MonoBehaviour
     {
         // Ejecutar el árbol de decisión
         topNode.Evaluate();
+        if (hasBeenCalledByMarshall)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(playerTransform.position - transform.position), 10);
+        }
     }
     #endregion
 
