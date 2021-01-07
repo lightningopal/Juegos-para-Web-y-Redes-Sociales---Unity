@@ -2,25 +2,21 @@
 using UnityEngine;
 
 /// <summary>
-/// Clase GameManager, que controla la partida
+/// Clase TutorialGameManager, que controla la partida del tutorial
 /// </summary>
-public class GameManager : MonoBehaviour
+public class TutorialGameManager : MonoBehaviour
 {
     #region Variables
     [Tooltip("Singleton")]
-    public static GameManager instance;
-
-    [Header("Parámetros de la partida")]
-    [Tooltip("Índice de la dificultad elegida")]
-    public int difficulty_index = 0;
-    [Tooltip("Dificultad elegida")]
-    [HideInInspector]
-    public Difficulty difficulty = null;
+    public static TutorialGameManager instance;
 
     [Header("Zonas")]
     [Tooltip("Lista de zonas")]
     [SerializeField]
     public List<Zone> zones = new List<Zone>();
+
+    [Tooltip("Dificultad del tutorial - Fácil")]
+    private Difficulty easyDifficulty;
 
     [Header("Aldeanos")]
     [Tooltip("Objeto padre de los aldeanos")]
@@ -56,9 +52,6 @@ public class GameManager : MonoBehaviour
     private int attemptsCount;
     [Tooltip("Robos")]
     public List<Robbery> robberies = new List<Robbery>();
-
-    // Flotantes para el tiempo que se ha tardado
-    private float startGameTime, endGameTime;
 
     [Header("Parámetros generales")]
     [Tooltip("Partida en pausa")]
@@ -99,44 +92,30 @@ public class GameManager : MonoBehaviour
     /// </summary>
     void Start()
     {
-        // Obtener la dificultad elegida
-        difficulty_index = GlobalVars.instance.difficulty;
-        string difficultyName = "";
+        // Dificultad fácil
+        easyDifficulty = Resources.Load<Difficulty>("Difficulties/Difficulty_0_Easy");
 
-        switch (difficulty_index)
-        {
-            case 0:
-                difficultyName = "Easy";
-                break;
-            case 1:
-                difficultyName = "Medium";
-                break;
-            case 2:
-                difficultyName = "Hard";
-                break;
-        }
-
-        difficulty = Resources.Load<Difficulty>("Difficulties/Difficulty_" + difficulty_index + "_" + difficultyName);
-
-        // Asignar valores de la dificultad
+        // Asignar valores de los robos
         thiefRobberies = 0;
-        attemptsCount = difficulty.catchAttempts;
+        attemptsCount = easyDifficulty.catchAttempts;
 
         // Actualizar UI
         // Textos
-        UIManager.instance.UpdateRobberiesText(thiefRobberies, difficulty.thiefRobberies);
+        UIManager.instance.UpdateRobberiesText(thiefRobberies, easyDifficulty.thiefRobberies);
 
         // Intentos
-        UIManager.instance.InitializeAttempts(difficulty);
-
-        // Spawnear Aldeanos
-        SpawnVillagers();
+        UIManager.instance.InitializeAttempts(easyDifficulty);
 
         // Despausa la partida (si estuviera en pausa)
         ResumeGame();
+    }
 
-        // Calcula el tiempo de inicio
-        startGameTime = Time.time;
+    /// <summary>
+    /// Método Update, que se llama cada frame
+    /// </summary>
+    void Update()
+    {
+
     }
     #endregion
 
@@ -170,7 +149,7 @@ public class GameManager : MonoBehaviour
         updatedVillagerPoints.Remove(randomPoint);
 
         /// Generar aldeanos
-        for (int i = 0; i < (difficulty.villagers - 1); i++)
+        for (int i = 0; i < (easyDifficulty.villagers - 1); i++)
         {
             // Obtener datos aleatorios
             randomNumber = Random.Range(0, updatedVillagerPoints.Count);
@@ -217,7 +196,7 @@ public class GameManager : MonoBehaviour
         {
             // Comprobar si es igual que otro que ya existe
             villagerInListItems = villagerInList.items;
-            
+
             if (thisVillagerItems.ToString().Equals(villagerInListItems.ToString()))
                 return true;
         }
@@ -230,8 +209,8 @@ public class GameManager : MonoBehaviour
     public void AddRobbery()
     {
         thiefRobberies++;
-        UIManager.instance.UpdateRobberiesText(thiefRobberies, difficulty.thiefRobberies);
-        if (thiefRobberies == difficulty.thiefRobberies)
+        UIManager.instance.UpdateRobberiesText(thiefRobberies, easyDifficulty.thiefRobberies);
+        if (thiefRobberies == easyDifficulty.thiefRobberies)
             EndGameAsLose();
     }
 
@@ -282,11 +261,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void EndGameAsWin()
     {
-        // Calculamos el tiempo final
-        endGameTime = Time.time;
-
         // Actualizar UI por victoria
-        UIManager.instance.UpdateEndGameScreen(true, endGameTime - startGameTime);
+        //UIManager.instance.UpdateEndGameScreen(true, endGameTime - startGameTime);
 
         // Acabar la partida
         Invoke("EndGame", endTimeWait);
@@ -323,8 +299,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void UpdateRobberiesTranslate()
     {
-        if (UIManager.instance != null && difficulty != null)
-            UIManager.instance.UpdateRobberiesText(thiefRobberies, difficulty.thiefRobberies);
+        if (UIManager.instance != null && easyDifficulty != null)
+            UIManager.instance.UpdateRobberiesText(thiefRobberies, easyDifficulty.thiefRobberies);
     }
     #endregion
 }

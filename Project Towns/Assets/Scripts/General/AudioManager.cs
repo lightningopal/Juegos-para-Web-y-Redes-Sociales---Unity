@@ -39,7 +39,7 @@ public class AudioManager : MonoBehaviour
         // Se establece la información de cada audio
         foreach (Audio a in music)
         {
-            a.source = gameObject.AddComponent<AudioSource>(); ;
+            a.source = gameObject.AddComponent<AudioSource>();
             a.source.clip = a.clip;
 
             a.source.volume = a.volume;
@@ -49,7 +49,7 @@ public class AudioManager : MonoBehaviour
 
         foreach (Audio a in sounds)
         {
-            a.source = gameObject.AddComponent<AudioSource>(); ;
+            a.source = gameObject.AddComponent<AudioSource>();
             a.source.clip = a.clip;
 
             a.source.volume = a.volume;
@@ -101,6 +101,7 @@ public class AudioManager : MonoBehaviour
                 Debug.LogWarning("Sound: " + name + " not found!");
                 return;
             }
+
             if (action == "play")
                 a.source.Play();
             else if (action == "stop")

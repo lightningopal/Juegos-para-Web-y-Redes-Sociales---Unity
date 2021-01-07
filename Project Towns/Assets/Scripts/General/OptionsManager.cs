@@ -122,7 +122,7 @@ public class OptionsManager : MonoBehaviour
         GlobalVars.instance.musicVolume = musicVolume;
         foreach (Audio a in AudioManager.instance.music)
         {
-            a.source.volume = musicVolume;
+            a.source.volume = musicVolume * a.volume;
         }
     }
 
@@ -136,7 +136,7 @@ public class OptionsManager : MonoBehaviour
         GlobalVars.instance.fxVolume = fxVolume;
         foreach (Audio a in AudioManager.instance.sounds)
         {
-            a.source.volume = fxVolume;
+            a.source.volume = fxVolume * a.volume;
         }
     }
 

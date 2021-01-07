@@ -61,6 +61,8 @@ public class CustomButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         buttonText.rectTransform.Rotate(new Vector3(0, 0, -1), rotationAngle);
 
         mouseOnButton = true;
+
+        AudioManager.instance.PlaySound("OverButton");
     }
 
     /// <summary>

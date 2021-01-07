@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialManager : MonoBehaviour
+public class TutorialUIManager : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
