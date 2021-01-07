@@ -16,32 +16,34 @@
 
 ## **1. Introducción**
 
-Documento de diseño del videojuego Marshallow: Pilferage in YolkTown. Videojuego 3D desarrollado en Unity para navegadores web. A continuación, explicaremos todas las características y elementos del juego. 
+Documento de diseño del videojuego *Marshallow: Pilferage in YolkTown*. Videojuego 3D desarrollado en *Unity* para navegadores web. A continuación, explicaremos todas las características y elementos del juego. 
 
 ### **1.1. Título del juego**
 
-Marshallow: Pilferage in YolkTown. 
+*Marshallow: Pilferage in YolkTown*. Como pequeña justificación sobre el título, cabe decir que *Marhsallow* es un juego de palabras entre *marshall* (una figura de la ley que está por encima del sheriff) y *marshmallow* (un dulce típico de EEUU más bien conocido en nuestro país como malvavisco o nube), esto es debido a que el protagonista es un personaje con forma de nube y ejerce como *marshall*. Por otra parte, *pilferage* significa hurto, dado que en el juego hay un ladrón que se dedica a robar a los aldeanos del pueblo en el que se sitúa nuestro juego. Y finalmente, *YolkTown* traducido literalmente al español es Pueblo Yema, ya que los aldeanos tienen forma de ovoide. 
 
 ### **1.2. Concepto del juego**
 
+*Marshallow: Pilferage in YolkTown* es un juego 3D para un jugador de puzles e investigación ambientado en un pueblo en fiestas. Entre todos los aldeanos de este pueblo se encuentra un ladrón, tu deber como *marshall*, deberá ser encontrarle y detenerle. Para ello deberás hablar con los aldeanos que han sido víctimas o testigos de un robo, ellos te darán detalles sobre la apariencia del ladrón. Pero cuidado, deberás fijarte bien en los aldeanos, porque algunos te darán pistas dudosas y, además, comparten accesorios y características.  
 
 ### **1.3. Historia introductoria**
 
+Como todos los años, el pueblo *YolkTown* celebra sus fiestas de otoño. Durante estos días todos sus habitantes salen a la calle a disfrutar y divertirse luciendo sus originales accesorios. Desafortunadamente, alguien se está dedicando a sabotear la festividad robando a la gente. Será el deber de *Marshallow*, el agente de la ley del pueblo, encontrar al ladrón con ayuda de los aldeanos para así, garantizar la seguridad de estos. 
 
 ### **1.4. Características principales**
 
-  * **Re-jugable:** 
-  * **Entretenido:**  
-  * **Responsive:** 
-  * **Familiar o grupal:** 
+  * **Re-jugable:** todas las partidas son diferentes, ya que los aldeanos siempre cambian de características y sus acciones (moverse, dar información, interactuar con el ladrón) varían según avanza la partida.
+  * **Entretenido:**  el juego presenta una situación en la que tienes que recorrer un pueblo buscando características, detalles y aldeanos con los que interactuar. Esto ofrece una experiencia que pretende mantener la atención y entretener al jugador. 
+  * **Responsive:** al ser un juego que se ejecuta en navegador, lo hemos implementado de tal forma que se adapte independientemente de la resolución del dispositivo en el que se encuentre. 
+  * **Familiar o grupal:** aunque es un juego para un jugador, cuenta con la opción de resolver la partida con ayuda de otras personas desde el mismo dispositivo, es decir, varios ojos pueden ayudar a resolver el misterio de forma más sencilla.
 
 ### **1.5. Género**
 
-**Puzles-Investigación:**  
+**Puzles-Investigación:**  durante una partida de *Marshallow: Pilferage in YolkTown* el jugador debe reunir las pistas proporcionadas por los aldeanos y contrastarlas con su propia información, para de esta forma resolver el puzle de descubrir la verdadera identidad del ladrón.  
 
 ### **1.6. Antecedentes**
 
-
+Para el ambiente, el movimiento y el estilo general del juego hemos tomado como referentes juegos como: *Animal Crossing, Captain Toad Tressure Tracker* y *Mario 3D World. 
 
 ### **1.7. Propósito y público objetivo**
 

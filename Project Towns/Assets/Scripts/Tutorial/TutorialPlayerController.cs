@@ -82,6 +82,10 @@ public class TutorialPlayerController : MonoBehaviour
     /// </summary>
     void Update()
     {
+        // Si el juego está en pausa, no realizamos cálculos
+        if (TutorialGameManager.instance.gamePaused)
+            return;
+
         // Si el jugador hace click con el ratón
         if (Input.GetMouseButtonDown(0))
         {
