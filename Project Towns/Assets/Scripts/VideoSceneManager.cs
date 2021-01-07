@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using System.IO;
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Clase VideoSceneManager, que controla la escena del vídeo del logo
@@ -20,6 +22,8 @@ public class VideoSceneManager : MonoBehaviour
     void Start()
     {
         // Asignamos el delegado al evento
+        videoPlayer.url = Path.Combine(Application.streamingAssetsPath, "LogoAnimation.mp4");
+        videoPlayer.Play();
         videoPlayer.loopPointReached += ChangeToMainMenu;
     }
 
@@ -29,7 +33,8 @@ public class VideoSceneManager : MonoBehaviour
     /// <param name="vp">VideoPlayer vp</param>
     private void ChangeToMainMenu(VideoPlayer vp)
     {
-        levelLoader.LoadScene(0);
+        SceneManager.LoadScene("MainMenu");
+        //levelLoader.LoadScene(0);
     }
 
 }
