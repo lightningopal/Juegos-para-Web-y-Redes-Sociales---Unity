@@ -8,6 +8,9 @@ using TMPro;
 public class MenuManager : MonoBehaviour
 {
     #region Variables
+    [Tooltip("Singleton")]
+    public static MenuManager instance;
+
     [Header("Créditos")]
     [Tooltip("Imágenes del paralaje")]
     [SerializeField]
@@ -40,6 +43,23 @@ public class MenuManager : MonoBehaviour
 
     #region MétodosUnity
     /// <summary>
+    /// Método Awake, que se ejecuta cuando carga el script
+    /// </summary>
+    void Awake()
+    {
+        // Se instancia a si misma
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
+    /// <summary>
     /// Método Start, que se llama antes del primer frame
     /// </summary>
     void Start()
@@ -55,16 +75,7 @@ public class MenuManager : MonoBehaviour
         creditsTextPosition = creditsText.localPosition;
 
         // Texto inicio
-        if (Application.isMobilePlatform)
-        {
-            iconImage.sprite = iconSprites[1];
-            startText.text = LocalizationSystem.GetLocalizedValue("START_MOBILE");
-        }
-        else
-        {
-            iconImage.sprite = iconSprites[0];
-            startText.text = LocalizationSystem.GetLocalizedValue("START_DESKTOP");
-        }
+        UpdateStartTranslate();
     }
 
     /// <summary>
@@ -96,6 +107,23 @@ public class MenuManager : MonoBehaviour
     public void StartCredits()
     {
         creditsText.localPosition = creditsTextPosition;
+    }
+
+    /// <summary>
+    /// Método UpdateStartTranslate, que actualiza traducido el texto del inicio
+    /// </summary>
+    public void UpdateStartTranslate()
+    {
+        if (Application.isMobilePlatform)
+        {
+            iconImage.sprite = iconSprites[1];
+            startText.text = LocalizationSystem.GetLocalizedValue("START_MOBILE");
+        }
+        else
+        {
+            iconImage.sprite = iconSprites[0];
+            startText.text = LocalizationSystem.GetLocalizedValue("START_DESKTOP");
+        }
     }
     #endregion
 }

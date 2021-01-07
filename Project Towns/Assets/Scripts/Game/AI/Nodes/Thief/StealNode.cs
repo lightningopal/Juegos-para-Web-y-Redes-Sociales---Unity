@@ -19,9 +19,6 @@ public class StealNode : Node
             villager.CheckSawRobbery();
         }
 
-        // Calcula items falsos
-        thief.CalculateFakeItem();
-
         // Resetea el tiempo para el siguiente robo
         thief.timeNextSteal = Time.time + thief.timeBetweenSteals;
 

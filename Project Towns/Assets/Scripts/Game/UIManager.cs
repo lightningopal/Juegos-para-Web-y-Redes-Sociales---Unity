@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI timeText = null;
     [Tooltip("Contenedor para los VFX")]
     [SerializeField]
-    private GameObject endGameVFX;
+    private GameObject endGameVFX = null;
 
     [Header("Robos")]
     [Tooltip("Objeto padre de los robos")]
