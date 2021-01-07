@@ -141,6 +141,9 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region MétodosClase
+    /// <summary>
+    /// Método SpawnVillagers, que instancia al ladrón y a los aldeanos en la partida
+    /// </summary>
     public void SpawnVillagers()
     {
         List<Transform> updatedVillagerPoints = new List<Transform>(villagerPoints);
@@ -225,7 +228,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Método AddRobbery, que resta un robo al ladrón
+    /// Método AddRobbery, que añade un robo al ladrón
     /// </summary>
     public void AddRobbery()
     {
