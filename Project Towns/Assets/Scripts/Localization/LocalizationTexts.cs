@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -45,9 +44,16 @@ public class LocalizationTexts : MonoBehaviour
             localizedText.UpdateText();
         }
 
+        // Si es un nivel
         if (SceneManager.GetActiveScene().name.Contains("Level"))
         {
             GameManager.instance.UpdateRobberiesTranslate();
+        }
+
+        // Si es el menú principal
+        if (SceneManager.GetActiveScene().name.Equals("MainMenu"))
+        {
+            MenuManager.instance.UpdateStartTranslate();
         }
     }
     #endregion

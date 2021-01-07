@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -71,6 +70,9 @@ public class GameManager : MonoBehaviour
     [Tooltip("Botón de detención")]
     [SerializeField]
     private CustomDetentionButton detentionButton = null;
+    [Tooltip("Tiempo entre acabar y la pantalla final")]
+    [SerializeField]
+    private float endTimeWait = 2.0f;
 
     #endregion
 
@@ -295,7 +297,7 @@ public class GameManager : MonoBehaviour
         UIManager.instance.UpdateEndGameScreen(true, endGameTime - startGameTime);
 
         // Acabar la partida
-        EndGame();
+        Invoke("EndGame", endTimeWait);
     }
 
     /// <summary>
@@ -307,7 +309,7 @@ public class GameManager : MonoBehaviour
         UIManager.instance.UpdateEndGameScreen(false, 0);
 
         // Acabar la partida
-        EndGame();
+        Invoke("EndGame", endTimeWait);
     }
 
     /// <summary>

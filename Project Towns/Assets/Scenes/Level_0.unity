@@ -5394,7 +5394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 0}
-  padding: 10
+  padding: 7
   rectTransform: {fileID: 240121348}
   canvasRT: {fileID: 378263452}
   mainCamera: {fileID: 963194227}
@@ -32961,6 +32961,7 @@ MonoBehaviour:
   gamePaused: 0
   levelLoader: {fileID: 378263453}
   detentionButton: {fileID: 240121352}
+  endTimeWait: 2
 --- !u!4 &575320327
 Transform:
   m_ObjectHideFlags: 0

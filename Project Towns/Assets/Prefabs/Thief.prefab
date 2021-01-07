@@ -489,7 +489,7 @@ MonoBehaviour:
   navMesh_angularSpeed: 5000
   navMesh_acceleration: 12
   navMesh_stoppingDistance: 0.2
-  navMesh_autoBraking: 0
+  navMesh_autoBraking: 1
   eyes:
   - {fileID: 6224262975423233134}
   - {fileID: 7372401971376107549}
@@ -521,6 +521,7 @@ MonoBehaviour:
       itemGameObject: {fileID: 0}
       itemSprite: {fileID: 0}
   informationGameObject: {fileID: 194123833}
+  playerTransform: {fileID: 0}
   thisAgent: {fileID: -5436639637694714247}
   thisAnimator: {fileID: 3868801097337146386}
   fakeWitnessProbability: 50
