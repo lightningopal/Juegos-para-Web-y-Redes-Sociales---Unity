@@ -83,6 +83,7 @@ public class TutorialGameManager : MonoBehaviour
         // Actualizar UI
         // Textos
         TutorialUIManager.instance.UpdateRobberiesText(thiefRobberies, easyDifficulty.thiefRobberies);
+        TutorialManager.instance.UpdateTutorialTranslate();
 
         // Despausa la partida (si estuviera en pausa)
         ResumeGame();
@@ -171,8 +172,8 @@ public class TutorialGameManager : MonoBehaviour
     /// </summary>
     public void UpdateRobberiesTranslate()
     {
-        if (UIManager.instance != null && easyDifficulty != null)
-            UIManager.instance.UpdateRobberiesText(thiefRobberies, easyDifficulty.thiefRobberies);
+        if (TutorialUIManager.instance != null && easyDifficulty != null)
+            TutorialUIManager.instance.UpdateRobberiesText(thiefRobberies, easyDifficulty.thiefRobberies);
     }
     #endregion
 }

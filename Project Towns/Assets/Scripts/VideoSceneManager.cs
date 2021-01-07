@@ -9,9 +9,9 @@ using UnityEngine.SceneManagement;
 public class VideoSceneManager : MonoBehaviour
 {
     [Header("Referencias")]
-    [Tooltip("Referencia al level loader")]
+    /*[Tooltip("Referencia al level loader")]
     [SerializeField]
-    private LevelLoader levelLoader = null;
+    private LevelLoader levelLoader = null;*/
     [Tooltip("Referencia al video player")]
     [SerializeField]
     private VideoPlayer videoPlayer = null;

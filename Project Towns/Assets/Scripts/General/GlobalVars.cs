@@ -58,12 +58,12 @@ public class GlobalVars : MonoBehaviour
 
         foreach (Audio a in AudioManager.instance.music)
         {
-            a.source.volume = musicVolume;
+            a.source.volume = musicVolume * a.volume;
         }
 
         foreach (Audio a in AudioManager.instance.sounds)
         {
-            a.source.volume = fxVolume;
+            a.source.volume = fxVolume * a.volume;
         }
 
         LocalizationSystem.language = LocalizationSystem.GetLanguageByIndex(languageIndex);
