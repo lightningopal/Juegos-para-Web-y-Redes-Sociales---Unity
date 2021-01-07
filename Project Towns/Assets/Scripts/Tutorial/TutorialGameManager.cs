@@ -10,31 +10,12 @@ public class TutorialGameManager : MonoBehaviour
     [Tooltip("Singleton")]
     public static TutorialGameManager instance;
 
-    [Header("Zonas")]
-    [Tooltip("Lista de zonas")]
-    [SerializeField]
-    public List<Zone> zones = new List<Zone>();
-
     [Tooltip("Dificultad del tutorial - Fácil")]
     private Difficulty easyDifficulty;
 
     [Header("Aldeanos")]
-    [Tooltip("Objeto padre de los aldeanos")]
-    [SerializeField]
-    private GameObject villagersParent = null;
-    [Tooltip("Prefab del aldeano")]
-    [SerializeField]
-    private GameObject villagerPrefab = null;
-    [Tooltip("Prefab del ladrón")]
-    [SerializeField]
-    private GameObject thiefPrefab = null;
-    [Tooltip("Lista de putos de spawn aldeanos")]
-    [SerializeField]
-    private List<Transform> villagerPoints = new List<Transform>();
     [Tooltip("Lista de aldeanos")]
     public List<Villager> villagers = new List<Villager>();
-    [Tooltip("Ladrón")]
-    private Thief thief = null;
 
     [Header("VFX")]
     public GameObject victimVFX = null;
@@ -50,10 +31,10 @@ public class TutorialGameManager : MonoBehaviour
     private int thiefRobberies;
     [Tooltip("Contador de intentos")]
     private int attemptsCount;
+
+    [Header("Otros")]
     [Tooltip("Robos")]
     public List<Robbery> robberies = new List<Robbery>();
-
-    [Header("Parámetros generales")]
     [Tooltip("Partida en pausa")]
     [HideInInspector]
     public bool gamePaused = false;
@@ -101,117 +82,22 @@ public class TutorialGameManager : MonoBehaviour
 
         // Actualizar UI
         // Textos
-        UIManager.instance.UpdateRobberiesText(thiefRobberies, easyDifficulty.thiefRobberies);
-
-        // Intentos
-        UIManager.instance.InitializeAttempts(easyDifficulty);
+        TutorialUIManager.instance.UpdateRobberiesText(thiefRobberies, easyDifficulty.thiefRobberies);
 
         // Despausa la partida (si estuviera en pausa)
         ResumeGame();
     }
-
-    /// <summary>
-    /// Método Update, que se llama cada frame
-    /// </summary>
-    void Update()
-    {
-
-    }
     #endregion
 
     #region MétodosClase
-    public void SpawnVillagers()
-    {
-        List<Transform> updatedVillagerPoints = new List<Transform>(villagerPoints);
-
-        /// Generar Ladrón
-        // Obtener datos aleatorios
-        int randomNumber = Random.Range(0, updatedVillagerPoints.Count);
-        Transform randomPoint = updatedVillagerPoints[randomNumber];
-        Quaternion randomRotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
-
-        // Instanciar objeto
-        GameObject thiefGameObject = Instantiate(thiefPrefab, randomPoint.position, randomRotation, villagersParent.transform);
-
-        // Obtener componente Villager
-        Thief newThief = thiefGameObject.GetComponent<Thief>();
-
-        // Se aleatoriza
-        newThief.RandomizeNPC();
-
-        // Instanciamos sus objetos
-        newThief.PutItems();
-
-        // Asignar a la referencia
-        thief = newThief;
-
-        // Borrar posición de la lista
-        updatedVillagerPoints.Remove(randomPoint);
-
-        /// Generar aldeanos
-        for (int i = 0; i < (easyDifficulty.villagers - 1); i++)
-        {
-            // Obtener datos aleatorios
-            randomNumber = Random.Range(0, updatedVillagerPoints.Count);
-            randomPoint = updatedVillagerPoints[randomNumber];
-            randomRotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
-
-            // Instanciar objeto
-            GameObject villagerGameObject = Instantiate(villagerPrefab, randomPoint.position, randomRotation, villagersParent.transform);
-
-            // Obtener componente Villager
-            Villager newVillager = villagerGameObject.GetComponent<Villager>();
-
-            // Aleatorizamos el aldeano y comprobamos si ya existe uno igual
-            do
-            {
-                newVillager.RandomizeNPC();
-            } while (CheckDuplicateVillager(newVillager));
-
-            // Instanciamos sus objetos
-            newVillager.PutItems();
-
-            // Añadimos al aldeano a la lista
-            villagers.Add(newVillager);
-
-            // Borrar posición de la lista
-            updatedVillagerPoints.Remove(randomPoint);
-        }
-    }
 
     /// <summary>
-    /// Método CheckDuplicateVillager, que comprueba si ya hay un aldeano exactamente igual
-    /// </summary>
-    public bool CheckDuplicateVillager(Villager thisVillager)
-    {
-        NPCItems thisVillagerItems = thisVillager.items;
-        NPCItems villagerInListItems;
-
-        // Comprobar si es igual que el ladrón
-        villagerInListItems = thief.items;
-        if (thisVillagerItems.ToString().Equals(villagerInListItems.ToString()))
-            return true;
-
-        foreach (Villager villagerInList in villagers)
-        {
-            // Comprobar si es igual que otro que ya existe
-            villagerInListItems = villagerInList.items;
-
-            if (thisVillagerItems.ToString().Equals(villagerInListItems.ToString()))
-                return true;
-        }
-        return false;
-    }
-
-    /// <summary>
-    /// Método AddRobbery, que resta un robo al ladrón
+    /// Método AddRobbery, que añade un robo al ladrón
     /// </summary>
     public void AddRobbery()
     {
         thiefRobberies++;
-        UIManager.instance.UpdateRobberiesText(thiefRobberies, easyDifficulty.thiefRobberies);
-        if (thiefRobberies == easyDifficulty.thiefRobberies)
-            EndGameAsLose();
+        TutorialUIManager.instance.UpdateRobberiesText(thiefRobberies, easyDifficulty.thiefRobberies);
     }
 
     /// <summary>
@@ -220,9 +106,7 @@ public class TutorialGameManager : MonoBehaviour
     public void AddAttempt()
     {
         attemptsCount--;
-        UIManager.instance.UpdateAttempts(attemptsCount);
-        if (attemptsCount == 0)
-            EndGameAsLose();
+        TutorialUIManager.instance.UpdateAttempts(attemptsCount);
     }
 
     public void ShowDetentionButton(Transform targetTransform_)
@@ -262,19 +146,7 @@ public class TutorialGameManager : MonoBehaviour
     public void EndGameAsWin()
     {
         // Actualizar UI por victoria
-        //UIManager.instance.UpdateEndGameScreen(true, endGameTime - startGameTime);
-
-        // Acabar la partida
-        Invoke("EndGame", endTimeWait);
-    }
-
-    /// <summary>
-    /// Método EndGameAsLose, que acaba la partida como derrota
-    /// </summary>
-    public void EndGameAsLose()
-    {
-        // Actualizar UI por derrota
-        UIManager.instance.UpdateEndGameScreen(false, 0);
+        TutorialUIManager.instance.UpdateEndGameScreen();
 
         // Acabar la partida
         Invoke("EndGame", endTimeWait);
