@@ -5689,91 +5689,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 4771846093718049639, guid: 5578cbb20bd929e468928ea3467a6420,
-        type: 3}
-      propertyPath: sounds.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771846093718049639, guid: 5578cbb20bd929e468928ea3467a6420,
-        type: 3}
-      propertyPath: sounds.Array.data[2].name
-      value: Nervous
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771846093718049639, guid: 5578cbb20bd929e468928ea3467a6420,
-        type: 3}
-      propertyPath: sounds.Array.data[2].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 320983aa41797604290c7c9aaf2c42ee, type: 3}
-    - target: {fileID: 4771846093718049639, guid: 5578cbb20bd929e468928ea3467a6420,
-        type: 3}
-      propertyPath: sounds.Array.data[2].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771846093718049639, guid: 5578cbb20bd929e468928ea3467a6420,
-        type: 3}
-      propertyPath: sounds.Array.data[2].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771846093718049639, guid: 5578cbb20bd929e468928ea3467a6420,
-        type: 3}
-      propertyPath: sounds.Array.data[3].name
-      value: Anger
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771846093718049639, guid: 5578cbb20bd929e468928ea3467a6420,
-        type: 3}
-      propertyPath: sounds.Array.data[3].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 7534a25e25766f04fbd16f32f7032217, type: 3}
-    - target: {fileID: 4771846093718049639, guid: 5578cbb20bd929e468928ea3467a6420,
-        type: 3}
-      propertyPath: sounds.Array.data[3].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771846093718049639, guid: 5578cbb20bd929e468928ea3467a6420,
-        type: 3}
-      propertyPath: sounds.Array.data[3].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771846093718049639, guid: 5578cbb20bd929e468928ea3467a6420,
-        type: 3}
-      propertyPath: sounds.Array.data[4].name
-      value: GiveInfo
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771846093718049639, guid: 5578cbb20bd929e468928ea3467a6420,
-        type: 3}
-      propertyPath: sounds.Array.data[4].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: fc4cea173bed4ab489b18abe953b613f, type: 3}
-    - target: {fileID: 4771846093718049639, guid: 5578cbb20bd929e468928ea3467a6420,
-        type: 3}
-      propertyPath: sounds.Array.data[4].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771846093718049639, guid: 5578cbb20bd929e468928ea3467a6420,
-        type: 3}
-      propertyPath: sounds.Array.data[4].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771846093718049639, guid: 5578cbb20bd929e468928ea3467a6420,
-        type: 3}
-      propertyPath: sounds.Array.data[5].name
-      value: GiveInfo
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771846093718049639, guid: 5578cbb20bd929e468928ea3467a6420,
-        type: 3}
-      propertyPath: sounds.Array.data[5].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: fc4cea173bed4ab489b18abe953b613f, type: 3}
-    - target: {fileID: 4771846093718049639, guid: 5578cbb20bd929e468928ea3467a6420,
-        type: 3}
-      propertyPath: sounds.Array.data[5].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4771846093718049639, guid: 5578cbb20bd929e468928ea3467a6420,
-        type: 3}
-      propertyPath: sounds.Array.data[5].pitch
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5578cbb20bd929e468928ea3467a6420, type: 3}
 --- !u!1 &252666508
@@ -46416,7 +46331,7 @@ RectTransform:
   m_Father: {fileID: 913111963}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.016, y: 0.7}
+  m_AnchorMin: {x: 0.16, y: 0.7}
   m_AnchorMax: {x: 0.82, y: 0.9}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}

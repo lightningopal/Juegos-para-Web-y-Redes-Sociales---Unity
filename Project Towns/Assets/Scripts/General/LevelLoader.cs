@@ -95,31 +95,7 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Activa o desactiva el círculo para las transiciones
-    /// </summary>
-    /// <param name="useCircle"></param>
-    public void UseCircle(bool useCircle)
-    {
-        this.useCircle = useCircle;
-        if (this.useCircle)
-        {
-            for (int i = 0; i < numLayers; i++)
-            {
-                animator.SetLayerWeight(i, 0);
-            }
-
-            circle.SetActive(true);
-        }
-        else
-        {
-            for (int i = 0; i < numLayers; i++)
-            {
-                animator.SetLayerWeight(i, 1);
-            }
-            circle.SetActive(false);
-        }
-    }
+    
     /// <summary>
     /// Método que recibe el id del canvas a cambiar,
     /// dentro de la lista de canvas posibles.
@@ -139,10 +115,44 @@ public class LevelLoader : MonoBehaviour
     {
         if (!changeScene)
         {
+            if (useCircle)
+            {
+                // Efecto de sonido
+                AudioManager.instance.PlaySound("CircleEnter");
+            }
             currentCanvas.SetActive(false);
             currentCanvas = canvasToLoad;
             canvasToLoad.SetActive(true);
             animator.SetTrigger("Enter");
+        }
+    }
+
+    /// <summary>
+    /// Activa o desactiva el círculo para las transiciones
+    /// </summary>
+    /// <param name="useCircle"></param>
+    public void UseCircle(bool useCircle)
+    {
+        this.useCircle = useCircle;
+        if (this.useCircle)
+        {
+            // Efecto de sonido
+            AudioManager.instance.PlaySound("CircleLeave");
+
+            for (int i = 0; i < numLayers; i++)
+            {
+                animator.SetLayerWeight(i, 0);
+            }
+
+            circle.SetActive(true);
+        }
+        else
+        {
+            for (int i = 0; i < numLayers; i++)
+            {
+                animator.SetLayerWeight(i, 1);
+            }
+            circle.SetActive(false);
         }
     }
 

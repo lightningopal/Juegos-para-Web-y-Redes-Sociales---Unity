@@ -57,3 +57,39 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Nervous
+    clip: {fileID: 8300000, guid: 320983aa41797604290c7c9aaf2c42ee, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Anger
+    clip: {fileID: 8300000, guid: 7534a25e25766f04fbd16f32f7032217, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GiveInfo
+    clip: {fileID: 8300000, guid: fc4cea173bed4ab489b18abe953b613f, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GiveInfo
+    clip: {fileID: 8300000, guid: fc4cea173bed4ab489b18abe953b613f, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: CircleEnter
+    clip: {fileID: 8300000, guid: 13954b53d7d1f3a4cb9ab88ef2a216e7, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: CircleLeave
+    clip: {fileID: 8300000, guid: 3f925afdac7ac514a8924a8a0542e6e6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
