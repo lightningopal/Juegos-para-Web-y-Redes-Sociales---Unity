@@ -10,14 +10,25 @@ public class TutorialManager : MonoBehaviour
     [Tooltip("Singleton")]
     public static TutorialManager instance;
 
+    [Tooltip("Booleano que indica si el jugador puede jugar")]
+    public bool playerCanPlay = true;
+
     [Tooltip("GameObjects de las flechas de rotación de la cámara")]
     [SerializeField]
     private GameObject[] cameraArrows = new GameObject[2];
 
+    [Tooltip("GameObjects de los intentos")]
+    [SerializeField]
+    private GameObject[] heartsUI = new GameObject[5];
+
+    [Tooltip("Evento actual")]
     private int actualEvent = 0;
+    [Tooltip("Texto actual")]
     private int actualText = 0;
 
-    private TextMeshProUGUI tutorialText;
+    [Tooltip("Texto del tutorial")]
+    [SerializeField]
+    private TextMeshProUGUI tutorialText = null;
     #endregion
 
     #region MétodosUnity
@@ -43,7 +54,7 @@ public class TutorialManager : MonoBehaviour
     /// </summary>
     void Start()
     {
-        tutorialText.text = LocalizationSystem.GetLocalizedValue("TUTORIAL_TEXT_" + actualText);
+        //tutorialText.text = LocalizationSystem.GetLocalizedValue("TUTORIAL_TEXT_" + actualText);
     }
     #endregion
 

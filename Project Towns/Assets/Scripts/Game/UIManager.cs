@@ -75,18 +75,6 @@ public class UIManager : MonoBehaviour
             return;
         }
     }
-
-    /// <summary>
-    /// Método Update, que se llama cada frame
-    /// </summary>
-    void Update()
-    {
-        /*foreach (Robbery robbery in GameManager.instance.robberies)
-        {
-            // Colocar en el sitio correcto del canvas con rotacion
-            Vector3.Distance(player);
-        }*/
-    }
     #endregion
 
     #region MétodosClase

@@ -4,14 +4,15 @@ using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
 /// <summary>
-/// Clase PlayerController, que controla el movimiento del jugador
+/// Clase TutorialPlayerController, que controla el movimiento del jugador en el tutorial
 /// </summary>
-public class PlayerController : MonoBehaviour
+public class TutorialPlayerController : MonoBehaviour
 {
     #region Variables
     [Tooltip("Agente NavMesh")]
     [SerializeField]
     private NavMeshAgent thisAgent = null;
+    [Tooltip("Destino")]
     private Vector3 destination = new Vector3();
     [Tooltip("Animator")]
     [SerializeField]
@@ -49,13 +50,17 @@ public class PlayerController : MonoBehaviour
     private float navMesh_stoppingDistance = 0.2f;
     [Tooltip("Auto Freno (?)")]
     [SerializeField]
-    private bool navMesh_autoBraking = false;
+    private bool navMesh_autoBraking = true;
 
     [Header("Detención")]
     [Tooltip("NPC en detención")]
     private NPC calledNPC = null;
     [Tooltip("Booleano que indica si el NPC a detener es el ladrón")]
     private bool calledNPCIsThief = false;
+
+    [Header("Tutorial")]
+    [SerializeField]
+    private TutorialManager tutorialManager = null;
     #endregion
 
     #region MétodosUnity
@@ -80,99 +85,109 @@ public class PlayerController : MonoBehaviour
         // Si el jugador hace click con el ratón
         if (Input.GetMouseButtonDown(0))
         {
-            // Si está el ratón sobre la UI, no se lanza Raycast
-            if (IsPointerOverUIObject())
-                return;
-
-            // En caso contrario, se lanza el Raycast
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, 100.0f, ~playerLayerMask)) 
+            // Si puede jugar
+            if (tutorialManager.playerCanPlay)
             {
-                // Comprueba con qué ha chocado el raycast
-                //Debug.Log("You selected the: " + hit.transform.name);
+                // Si está el ratón sobre la UI, no se lanza Raycast
+                if (IsPointerOverUIObject())
+                    return;
 
-                // Va hacia allí
-                destination = hit.point;
-                thisAgent.SetDestination(destination);
-                if (!thisAnimator.GetCurrentAnimatorStateInfo(0).IsName("Marshallow_Run"))
-                    thisAnimator.SetTrigger("run");
-
-                // Si es un aldeano
-                if (hit.transform.CompareTag("Villager"))
+                // En caso contrario, se lanza el Raycast
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out hit, 100.0f, ~playerLayerMask))
                 {
+                    // Comprueba con qué ha chocado el raycast
+                    //Debug.Log("You selected the: " + hit.transform.name);
 
-                    // Si ya tenia uno, lo quitamos
-                    if (calledNPC != null)
-                    {
-                        calledNPC.hasBeenCalledByMarshall = false;
-                        calledNPC = null;
-                    }
+                    // Va hacia allí
+                    destination = hit.point;
+                    thisAgent.SetDestination(destination);
+                    if (!thisAnimator.GetCurrentAnimatorStateInfo(0).IsName("Marshallow_Run"))
+                        thisAnimator.SetTrigger("run");
 
-                    calledNPCIsThief = false;
-                    calledNPC = hit.transform.gameObject.GetComponent<Villager>();
-                    calledNPC.hasBeenCalledByMarshall = true;
-                    GameManager.instance.ShowDetentionButton(calledNPC.transform);
+                    // Si es un aldeano
+                    if (hit.transform.CompareTag("Villager"))
+                    {
 
-                    // Efecto de sorpresa
-                    GameObject surpriseVFX = Instantiate(GameManager.instance.surpriseVFX, calledNPC.transform);
-                    ParticleSystem partS = surpriseVFX.GetComponent<ParticleSystem>();
-                    float totalDuration = partS.main.duration + partS.main.startLifetime.constant;
-                    Destroy(surpriseVFX, totalDuration);
-                }
-                // Si es el ladrón
-                else if (hit.transform.CompareTag("Thief"))
-                {
-                    // Si ya tenia uno, lo quitamos
-                    if (calledNPC != null)
-                    {
-                        calledNPC.hasBeenCalledByMarshall = false;
-                        calledNPC = null;
-                    }
+                        // Si ya tenia uno, lo quitamos
+                        if (calledNPC != null)
+                        {
+                            calledNPC.hasBeenCalledByMarshall = false;
+                            calledNPC = null;
+                        }
 
-                    calledNPCIsThief = true;
-                    calledNPC = hit.transform.gameObject.GetComponent<Thief>();
-                    calledNPC.hasBeenCalledByMarshall = true;
-                    GameManager.instance.ShowDetentionButton(calledNPC.transform);
-                    
-                    // Efecto de sorpresa
-                    GameObject surpriseVFX = Instantiate(GameManager.instance.surpriseVFX, calledNPC.transform);
-                    ParticleSystem partS = surpriseVFX.GetComponent<ParticleSystem>();
-                    float totalDuration = partS.main.duration + partS.main.startLifetime.constant;
-                    Destroy(surpriseVFX, totalDuration);
-                }
-                // Si es territorio transitable, mueve al agente a esa posición
-                else if(hit.transform.CompareTag("Walkable") || hit.transform.CompareTag("Zone"))
-                {
-                    // Si había llamado a un NPC, lo deja ir
-                    if (calledNPC != null)
-                    {
-                        calledNPC.hasBeenCalledByMarshall = false;
-                        calledNPC = null;
-                        GameManager.instance.HideDetentionButton();
+                        calledNPCIsThief = false;
+                        calledNPC = hit.transform.gameObject.GetComponent<Villager>();
+                        calledNPC.hasBeenCalledByMarshall = true;
+                        GameManager.instance.ShowDetentionButton(calledNPC.transform);
+
+                        // Efecto de sorpresa
+                        GameObject surpriseVFX = Instantiate(GameManager.instance.surpriseVFX, calledNPC.transform);
+                        ParticleSystem partS = surpriseVFX.GetComponent<ParticleSystem>();
+                        float totalDuration = partS.main.duration + partS.main.startLifetime.constant;
+                        Destroy(surpriseVFX, totalDuration);
                     }
-                    
-                    // Se instancia el efecto
-                    if (effectInstance == null)
+                    // Si es el ladrón
+                    else if (hit.transform.CompareTag("Thief"))
                     {
-                        effectInstance = Instantiate(effectPrefab, hit.point + new Vector3(0, 0.1f, 0), new Quaternion());
+                        // Si ya tenia uno, lo quitamos
+                        if (calledNPC != null)
+                        {
+                            calledNPC.hasBeenCalledByMarshall = false;
+                            calledNPC = null;
+                        }
+
+                        calledNPCIsThief = true;
+                        calledNPC = hit.transform.gameObject.GetComponent<Thief>();
+                        calledNPC.hasBeenCalledByMarshall = true;
+                        GameManager.instance.ShowDetentionButton(calledNPC.transform);
+
+                        // Efecto de sorpresa
+                        GameObject surpriseVFX = Instantiate(GameManager.instance.surpriseVFX, calledNPC.transform);
+                        ParticleSystem partS = surpriseVFX.GetComponent<ParticleSystem>();
+                        float totalDuration = partS.main.duration + partS.main.startLifetime.constant;
+                        Destroy(surpriseVFX, totalDuration);
                     }
-                    else
+                    // Si es territorio transitable, mueve al agente a esa posición
+                    else if (hit.transform.CompareTag("Walkable") || hit.transform.CompareTag("Zone"))
                     {
-                        effectInstance.Clear();
-                        effectInstance.gameObject.transform.position = hit.point + new Vector3(0, 0.1f, 0);
-                        effectInstance.Play();
+                        // Si había llamado a un NPC, lo deja ir
+                        if (calledNPC != null)
+                        {
+                            calledNPC.hasBeenCalledByMarshall = false;
+                            calledNPC = null;
+                            GameManager.instance.HideDetentionButton();
+                        }
+
+                        // Se instancia el efecto
+                        if (effectInstance == null)
+                        {
+                            effectInstance = Instantiate(effectPrefab, hit.point + new Vector3(0, 0.1f, 0), new Quaternion());
+                        }
+                        else
+                        {
+                            effectInstance.Clear();
+                            effectInstance.gameObject.transform.position = hit.point + new Vector3(0, 0.1f, 0);
+                            effectInstance.Play();
+                        }
                     }
                 }
             }
+            // Si no puede jugar, y queda texto, lo cambia
+            else
+            {
+                tutorialManager.ShowNextText();
+            }
         }
+
         // Si llega al destino, cambia de animación
         if (Vector3.Distance(destination, transform.position) <= 1.0f)
         {
             if (!thisAnimator.GetCurrentAnimatorStateInfo(0).IsName("Marshallow_Idle"))
                 thisAnimator.SetTrigger("idle");
         }
-        
+
 
         // Si está lo suficientemente cerca del NPC que ha llamado, se para
         if (calledNPC != null)
@@ -189,7 +204,7 @@ public class PlayerController : MonoBehaviour
 
         // Si está lo suficientemente cerca de un robo, lo desactiva
         List<Robbery> closeRobberies = new List<Robbery>();
-        foreach (Robbery r in GameManager.instance.robberies)
+        foreach (Robbery r in TutorialGameManager.instance.robberies)
         {
             if (Vector3.Distance(this.transform.position, r.robberyPosition) < QUIT_STEAL_ICON_RANGE)
             {
@@ -197,12 +212,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        foreach(Robbery r in closeRobberies)
+        foreach (Robbery r in closeRobberies)
         {
             UIManager.instance.HideRobberyIcon(r);
         }
 
-        
     }
     #endregion
 
@@ -217,7 +231,7 @@ public class PlayerController : MonoBehaviour
         {
             // Efecto
             GameObject nervousVFX = Instantiate(GameManager.instance.nervousVFX, calledNPC.transform);
-            
+
             GameManager.instance.HideDetentionButton();
             GameManager.instance.EndGameAsWin();
         }
