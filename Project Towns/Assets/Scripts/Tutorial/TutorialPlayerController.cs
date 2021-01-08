@@ -82,6 +82,10 @@ public class TutorialPlayerController : MonoBehaviour
     /// </summary>
     void Update()
     {
+        // Si la partida ha acabado, no realizamos cálculos
+        if (TutorialGameManager.instance.gameOver)
+            return;
+
         // Si el juego está en pausa, no realizamos cálculos
         if (TutorialGameManager.instance.gamePaused)
             return;

@@ -77,6 +77,14 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Update()
     {
+        // Si la partida ha acabado, no hace nada
+        if (GameManager.instance.gameOver)
+            return;
+
+        // Si el juego está en pausa, no realizamos cálculos
+        if (GameManager.instance.gamePaused)
+            return;
+
         // Si el jugador hace click con el ratón
         if (Input.GetMouseButtonDown(0))
         {

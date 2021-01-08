@@ -64,15 +64,21 @@ public class GameManager : MonoBehaviour
     [Tooltip("Partida en pausa")]
     [HideInInspector]
     public bool gamePaused = false;
+    [Tooltip("Partida acabada")]
+    [HideInInspector]
+    public bool gameOver = false;
+    [Tooltip("Tiempo entre acabar y la pantalla final")]
+    [SerializeField]
+    private float endTimeWait = 2.0f;
+
+    [Header("Otros")]
     [Tooltip("Level Loader")]
     [SerializeField]
     private LevelLoader levelLoader = null;
     [Tooltip("Botón de detención")]
     [SerializeField]
     private CustomDetentionButton detentionButton = null;
-    [Tooltip("Tiempo entre acabar y la pantalla final")]
-    [SerializeField]
-    private float endTimeWait = 2.0f;
+    
 
     #endregion
 
@@ -134,6 +140,9 @@ public class GameManager : MonoBehaviour
 
         // Despausa la partida (si estuviera en pausa)
         ResumeGame();
+
+        // Establecemos el gameOver como false
+        gameOver = false;
 
         // Calcula el tiempo de inicio
         startGameTime = Time.time;
@@ -291,6 +300,9 @@ public class GameManager : MonoBehaviour
         // Actualizar UI por victoria
         UIManager.instance.UpdateEndGameScreen(true, endGameTime - startGameTime);
 
+        // Establecemos el gameOver como true
+        gameOver = true;
+
         // Acabar la partida
         Invoke("EndGame", endTimeWait);
     }
@@ -302,6 +314,9 @@ public class GameManager : MonoBehaviour
     {
         // Actualizar UI por derrota
         UIManager.instance.UpdateEndGameScreen(false, 0);
+
+        // Establecemos el gameOver como true
+        gameOver = true;
 
         // Acabar la partida
         Invoke("EndGame", endTimeWait);

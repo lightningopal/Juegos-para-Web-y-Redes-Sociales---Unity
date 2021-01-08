@@ -38,16 +38,20 @@ public class TutorialGameManager : MonoBehaviour
     [Tooltip("Partida en pausa")]
     [HideInInspector]
     public bool gamePaused = false;
+    [Tooltip("Partida finalizada")]
+    [HideInInspector]
+    public bool gameOver = false;
+    [Tooltip("Tiempo entre acabar y la pantalla final")]
+    [SerializeField]
+    private float endTimeWait = 2.0f;
+
+    [Header("Otros")]
     [Tooltip("Level Loader")]
     [SerializeField]
     private LevelLoader levelLoader = null;
     [Tooltip("Botón de detención")]
     [SerializeField]
     private CustomDetentionButton detentionButton = null;
-    [Tooltip("Tiempo entre acabar y la pantalla final")]
-    [SerializeField]
-    private float endTimeWait = 2.0f;
-
     #endregion
 
     #region MétodosUnity
@@ -87,6 +91,9 @@ public class TutorialGameManager : MonoBehaviour
 
         // Despausa la partida (si estuviera en pausa)
         ResumeGame();
+
+        // Establecemos el gameOver a false
+        gameOver = false;
     }
     #endregion
 
@@ -148,6 +155,9 @@ public class TutorialGameManager : MonoBehaviour
     {
         // Actualizar UI por victoria
         TutorialUIManager.instance.UpdateEndGameScreen();
+
+        // Establecemos el gameOver a true
+        gameOver = true;
 
         // Acabar la partida
         Invoke("EndGame", endTimeWait);
