@@ -2653,7 +2653,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 575320326}
         m_MethodName: ResumeGame
         m_Mode: 1
         m_Arguments:
@@ -3369,7 +3369,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 575320326}
         m_MethodName: PauseGame
         m_Mode: 1
         m_Arguments:
@@ -5917,7 +5917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &318559828
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5989,7 +5989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &320932177
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7165,6 +7165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a96f8f6eb4d9b694c982f914de9293d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingBar: {fileID: 0}
+  loadingBarSlider: {fileID: 0}
   circle: {fileID: 1203067741}
   useCircle: 1
   bars: {fileID: 27839939}
@@ -31256,9 +31258,10 @@ MonoBehaviour:
     type: 3}
   robberies: []
   gamePaused: 0
+  gameOver: 0
+  endTimeWait: 2
   levelLoader: {fileID: 378263453}
   detentionButton: {fileID: 240121352}
-  endTimeWait: 2
 --- !u!4 &575320327
 Transform:
   m_ObjectHideFlags: 0
@@ -33554,7 +33557,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &712085559
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35029,7 +35032,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &823487432
 RectTransform:
   m_ObjectHideFlags: 0
@@ -42210,7 +42213,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1154405002
 RectTransform:
   m_ObjectHideFlags: 0
@@ -48513,18 +48516,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCanPlay: 0
-  cameraArrows:
-  - {fileID: 360296473}
-  - {fileID: 1122978428}
+  cameraButtons: {fileID: 320932176}
   heartsUI:
   - {fileID: 318559827}
   - {fileID: 1154405001}
   - {fileID: 712085558}
   - {fileID: 823487431}
   - {fileID: 1902564569}
+  marshugusGameObject: {fileID: 382195088}
+  tutorialText: {fileID: 1069417206}
   actualEvent: 0
   actualText: 0
-  tutorialText: {fileID: 1069417206}
+  textsUntilEvent: 000000000400000004000000060000000600000007000000080000000b0000000d000000140000001c0000002400000027000000280000002f000000
+  activatedEvents: 000000000000000000000000000000
+  event1Moves: 0
 --- !u!4 &1516947647
 Transform:
   m_ObjectHideFlags: 0
@@ -55171,7 +55176,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1902564570
 RectTransform:
   m_ObjectHideFlags: 0

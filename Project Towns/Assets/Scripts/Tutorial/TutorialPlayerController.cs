@@ -160,6 +160,20 @@ public class TutorialPlayerController : MonoBehaviour
                     // Si es territorio transitable, mueve al agente a esa posición
                     else if (hit.transform.CompareTag("Walkable") || hit.transform.CompareTag("Zone"))
                     {
+                        /// Tutorial
+                        /// Evento 1
+                        // Si no ha completado el evento 1, se añade un paso
+                        if (!TutorialManager.instance.activatedEvents[1])
+                        {
+                            TutorialManager.instance.event1Moves++;
+                            // Si ha dado tres pasos, se completa el evento 1
+                            if (TutorialManager.instance.event1Moves >= 3)
+                            {
+                                TutorialManager.instance.activatedEvents[1] = true;
+                                TutorialManager.instance.GoToNextStep();
+                            }
+                        }
+
                         // Si había llamado a un NPC, lo deja ir
                         if (calledNPC != null)
                         {
@@ -185,7 +199,7 @@ public class TutorialPlayerController : MonoBehaviour
             // Si no puede jugar, y queda texto, lo cambia
             else
             {
-                tutorialManager.ShowNextText();
+                tutorialManager.GoToNextStep();
             }
         }
 
