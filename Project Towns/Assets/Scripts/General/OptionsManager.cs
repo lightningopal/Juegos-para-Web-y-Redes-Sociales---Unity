@@ -28,21 +28,15 @@ public class OptionsManager : MonoBehaviour
     private float fxVolume;
 
     [Header("Gráficos")]
-    [Tooltip("URP PostProcess Volume")]
-    [SerializeField]
-    private Volume postProcessVolume = null;
-
-    #region VolumeComponents
-    // Ajustes de color
-    private ColorAdjustments colorAdjustments;
-    #endregion
-
     [Tooltip("Slider brillo")]
     [SerializeField]
     private Slider brightnessSlider = null;
+    [Tooltip("Imagen del brillo")]
+    [SerializeField]
+    private Image brightnessImage = null;
 
     // Nivel brillo
-    private float brightnessLvl;
+    private float brightnessLvl = 1.0f;
 
     // Idioma
     [Header("Idioma")]
@@ -95,9 +89,11 @@ public class OptionsManager : MonoBehaviour
         musicSlider.value = musicVolume;
         fxSlider.value = fxVolume;
 
-        // Obtener componentes de post proceso
-        postProcessVolume.profile.TryGet<ColorAdjustments>(out colorAdjustments);
-        colorAdjustments.postExposure.value = brightnessLvl;
+        // Brillo
+        if (brightnessLvl > 0.5)
+            brightnessImage.color = new Vector4(1.0f, 1.0f, 1.0f, brightnessLvl - 0.5f);
+        else
+            brightnessImage.color = new Vector4(0.0f, 0.0f, 0.0f, 0.5f - brightnessLvl);
 
         brightnessSlider.value = brightnessLvl;
 
@@ -149,7 +145,10 @@ public class OptionsManager : MonoBehaviour
         brightnessLvl = brightness;
         GlobalVars.instance.brightnessLvl = brightnessLvl;
 
-        colorAdjustments.postExposure.value = brightnessLvl;
+        if (brightness > 0.5)
+            brightnessImage.color = new Vector4(1.0f, 1.0f, 1.0f, brightness - 0.5f);
+        else
+            brightnessImage.color = new Vector4(0.0f, 0.0f, 0.0f, 0.5f - brightness);
     }
 
     /// <summary>

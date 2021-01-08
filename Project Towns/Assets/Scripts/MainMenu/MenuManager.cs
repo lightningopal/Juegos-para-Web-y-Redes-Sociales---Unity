@@ -17,7 +17,10 @@ public class MenuManager : MonoBehaviour
     private RectTransform[] parallaxImages = new RectTransform[4];
     [Tooltip("Imagen del texto de los créditos")]
     [SerializeField]
-    private RectTransform creditsText = null;
+    private Image creditsTextImage = null;
+    [Tooltip("Sprites traducidos del texto de los créditos")]
+    [SerializeField]
+    private Sprite[] translatedCreditsSprites = new Sprite[2];
     [Tooltip("Velocidad de los créditos")]
     [SerializeField]
     private float creditsSpeed = 2.0f;
@@ -72,7 +75,7 @@ public class MenuManager : MonoBehaviour
         }
         //AudioManager.instance.ManageAudio("MainTheme", "music", "play");
 
-        creditsTextPosition = creditsText.localPosition;
+        creditsTextPosition = creditsTextImage.rectTransform.localPosition;
 
         // Texto inicio
         UpdateStartTranslate();
@@ -96,7 +99,11 @@ public class MenuManager : MonoBehaviour
         }
 
         // Mover los créditos
-        creditsText.localPosition = new Vector3(creditsText.localPosition.x, creditsText.localPosition.y + (creditsSpeed * Time.deltaTime), 0);
+        if (creditsTextImage.rectTransform.localPosition.y < 2500)
+            creditsTextImage.rectTransform.localPosition = new Vector3(
+                creditsTextImage.rectTransform.localPosition.x,
+                creditsTextImage.rectTransform.localPosition.y + (creditsSpeed * Time.deltaTime), 0);
+            
     }
     #endregion
 
@@ -106,7 +113,20 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     public void StartCredits()
     {
-        creditsText.localPosition = creditsTextPosition;
+        switch (LocalizationSystem.language)
+        {
+            case LocalizationSystem.Language.English:
+                creditsTextImage.sprite = translatedCreditsSprites[0];
+                break;
+            case LocalizationSystem.Language.Spanish:
+                creditsTextImage.sprite = translatedCreditsSprites[1];
+                break;
+            default:
+                creditsTextImage.sprite = translatedCreditsSprites[0];
+                break;
+        }
+
+        creditsTextImage.rectTransform.localPosition = creditsTextPosition;
     }
 
     /// <summary>
