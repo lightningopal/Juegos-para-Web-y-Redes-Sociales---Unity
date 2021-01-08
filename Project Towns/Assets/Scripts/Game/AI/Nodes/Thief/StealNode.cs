@@ -25,6 +25,9 @@ public class StealNode : Node
         // Añadimos un robo a la partida
         GameManager.instance.AddRobbery();
 
+        //Efecto de sonido
+        AudioManager.instance.PlaySound("TheftFound");
+
         // Mostramos el robo en la UI
         UIManager.instance.ShowRobberyIcon(thief.victim.transform.position);
 
