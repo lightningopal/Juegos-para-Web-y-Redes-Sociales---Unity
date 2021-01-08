@@ -425,8 +425,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3831c9818999d1246ac9a38c74edff25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  marshallInfoRange: 5
-  MINIMUM_DESTINY_DISTANCE: 0.5
+  marshallInfoRange: 7
+  MINIMUM_DESTINY_DISTANCE: 10
   timeToChangeZone: 10
   WALKING_SPEED: 2
   RUNNING_SPEED: 4
@@ -493,8 +493,8 @@ MonoBehaviour:
   victimVeracityProbability: 50
   witnessSafeProbability: 50
   witnessVeracityProbability: 50
-  visionDistance: 7
-  visionAngle: 120
+  visionDistance: 15
+  visionAngle: 180
 --- !u!195 &-5436639637694714247
 NavMeshAgent:
   m_ObjectHideFlags: 0

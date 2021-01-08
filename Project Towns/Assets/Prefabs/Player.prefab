@@ -273,11 +273,11 @@ MonoBehaviour:
     m_Bits: 512
   effectPrefab: {fileID: 4965944560750203928, guid: d3f6f0e2887d1ef46a2a4a6712fc4147,
     type: 3}
-  QUIT_STEAL_ICON_RANGE: 10
-  DETENTION_RANGE: 2
+  QUIT_STEAL_ICON_RANGE: 20
+  DETENTION_RANGE: 4
   navMesh_speed: 8
-  navMesh_angularSpeed: 5000
-  navMesh_acceleration: 12
+  navMesh_angularSpeed: 10000
+  navMesh_acceleration: 24
   navMesh_stoppingDistance: 0.2
   navMesh_autoBraking: 1
 --- !u!195 &2557029410346978614
