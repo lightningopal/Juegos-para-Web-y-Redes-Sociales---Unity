@@ -8,6 +8,7 @@ TagManager:
   - Villager
   - Zone
   - Thief
+  - Forge
   layers:
   - Default
   - TransparentFX

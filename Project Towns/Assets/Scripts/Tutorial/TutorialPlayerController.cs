@@ -93,8 +93,8 @@ public class TutorialPlayerController : MonoBehaviour
         // Si el jugador hace click con el ratón
         if (Input.GetMouseButtonDown(0))
         {
-            // Si puede jugar
-            if (tutorialManager.playerCanPlay)
+            // Si puede moverse
+            if (tutorialManager.playerCanMove)
             {
                 // Si está el ratón sobre la UI, no se lanza Raycast
                 if (IsPointerOverUIObject())
@@ -196,10 +196,12 @@ public class TutorialPlayerController : MonoBehaviour
                     }
                 }
             }
-            // Si no puede jugar, y queda texto, lo cambia
+            // Si no puede moverse
             else
             {
-                tutorialManager.GoToNextStep();
+                // Si no puede usar la UI
+                if (!TutorialManager.instance.playerCanUseUI)
+                    tutorialManager.GoToNextStep();
             }
         }
 
@@ -239,6 +241,22 @@ public class TutorialPlayerController : MonoBehaviour
             UIManager.instance.HideRobberyIcon(r);
         }
 
+    }
+
+    /// <summary>
+    /// Método OnTriggerEnter, que comprueba si el jugador ha entrado en un trigger
+    /// </summary>
+    /// <param name="other">Trigger en el que entra</param>
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Forge"))
+        {
+            if (!TutorialManager.instance.activatedEvents[6])
+            {
+                TutorialManager.instance.activatedEvents[6] = true;
+                TutorialManager.instance.GoToNextStep();
+            }
+        }
     }
     #endregion
 

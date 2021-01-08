@@ -10,8 +10,10 @@ public class TutorialManager : MonoBehaviour
     [Tooltip("Singleton")]
     public static TutorialManager instance;
 
-    [Tooltip("Booleano que indica si el jugador puede jugar")]
-    public bool playerCanPlay = false;
+    [Tooltip("Booleano que indica si el jugador puede moverse")]
+    public bool playerCanMove = false;
+    [Tooltip("Booleano que indica si el jugador puede usar la UI")]
+    public bool playerCanUseUI = false;
 
     [Header("GameObjects y Referencias")]
     [Tooltip("GameObject de las flechas de rotación de la cámara")]
@@ -26,6 +28,9 @@ public class TutorialManager : MonoBehaviour
     [Tooltip("Texto del tutorial")]
     [SerializeField]
     private TextMeshProUGUI tutorialText = null;
+    [Tooltip("Prefab de un robo")]
+    [SerializeField]
+    private GameObject robberyPrefab = null;
 
     [Header("Variables")]
     [Tooltip("Evento actual")]
@@ -35,8 +40,8 @@ public class TutorialManager : MonoBehaviour
 
     [Header("Eventos")]
     [Tooltip("Textos antes del evento")]
-    [HideInInspector]
-    public int[] textsUntilEvent = { 0, 4, 4, 5, 6, 6, 7, 7, 8, 11, 13, 19, 20, 28, 36, 39, 40, 47};
+    //[HideInInspector]
+    private int[] textsUntilEvent = { 0, 4, 4, 5, 6, 6, 7, 7, 8, 11, 13, 19, 20, 28, 36, 39, 40, 47};
     //[HideInInspector]
     [Tooltip("Eventos activados")]
     public bool[] activatedEvents = new bool[18];
@@ -44,6 +49,10 @@ public class TutorialManager : MonoBehaviour
     [Header("Variables de eventos")]
     [Tooltip("Contador de pasos del evento 1")]
     public int event1Moves = 0;
+    [Tooltip("Booleano que indica que ha movido la cámara en sentido antihorario")]
+    public bool event4Antihorary = false;
+    [Tooltip("Booleano que indica que ha movido la cámara en sentido horario")]
+    public bool event4Horary = false;
     #endregion
 
     #region MétodosUnity
@@ -105,24 +114,29 @@ public class TutorialManager : MonoBehaviour
                 Event1();
                 break;
             case 2:
+                activatedEvents[2] = true;
                 Event2();
                 break;
             case 3:
+                activatedEvents[3] = true;
                 Event3();
                 break;
             case 4:
                 Event4();
                 break;
             case 5:
+                activatedEvents[5] = true;
                 Event5();
                 break;
             case 6:
                 Event6();
                 break;
             case 7:
+                activatedEvents[7] = true;
                 Event7();
                 break;
             case 8:
+                activatedEvents[8] = true;
                 Event8();
                 break;
             case 9:
@@ -165,8 +179,8 @@ public class TutorialManager : MonoBehaviour
         marshugusGameObject.SetActive(false);
         tutorialText.gameObject.SetActive(false);
 
-        // Dejamos al jugador que juegue
-        playerCanPlay = true;
+        // Dejamos al jugador que se mueva
+        playerCanMove = true;
     }
 
     /// <summary>
@@ -178,8 +192,8 @@ public class TutorialManager : MonoBehaviour
         marshugusGameObject.SetActive(true);
         tutorialText.gameObject.SetActive(true);
 
-        // Impedimos al jugador que juegue
-        playerCanPlay = false;
+        // Impedimos al jugador que se mueva
+        playerCanMove = false;
 
         // Mostramos siguiente paso
         GoToNextStep();
@@ -201,7 +215,8 @@ public class TutorialManager : MonoBehaviour
     /// </summary>
     public void Event4()
     {
-
+        // Cambiamos la variable playerCanUseUI a true
+        playerCanUseUI = true;
     }
 
     /// <summary>
@@ -209,7 +224,11 @@ public class TutorialManager : MonoBehaviour
     /// </summary>
     public void Event5()
     {
+        // Cambiamos la variable playerCanUseUI a false
+        playerCanUseUI = false;
 
+        // Mostramos siguiente paso
+        GoToNextStep();
     }
 
     /// <summary>
@@ -217,7 +236,12 @@ public class TutorialManager : MonoBehaviour
     /// </summary>
     public void Event6()
     {
+        // Ocultamos el texto del tutorial
+        marshugusGameObject.SetActive(false);
+        tutorialText.gameObject.SetActive(false);
 
+        // Dejamos al jugador que se mueva
+        playerCanMove = true;
     }
 
     /// <summary>
@@ -225,7 +249,15 @@ public class TutorialManager : MonoBehaviour
     /// </summary>
     public void Event7()
     {
+        // Mostramos el texto del tutorial
+        marshugusGameObject.SetActive(true);
+        tutorialText.gameObject.SetActive(true);
 
+        // Impedimos al jugador que se mueva
+        playerCanMove = false;
+
+        // Mostramos siguiente paso
+        GoToNextStep();
     }
 
     /// <summary>
@@ -233,7 +265,9 @@ public class TutorialManager : MonoBehaviour
     /// </summary>
     public void Event8()
     {
-
+        // Creamos un robo en el ayuntamiento
+        /*Robbery townHallRobbery = new Robbery();
+        townHallRobbery.robberyPosition =*/
     }
 
     /// <summary>
@@ -308,6 +342,32 @@ public class TutorialManager : MonoBehaviour
 
     }
     #endregion
+
+    /// <summary>
+    /// Método buttonAntihoraryTrue, que indica que se ha girado la cámara en sentido antihorario
+    /// </summary>
+    public void buttonAntihoraryTrue()
+    {
+        event4Antihorary = true;
+        if (event4Horary && !activatedEvents[4])
+        {
+            activatedEvents[4] = true;
+            GoToNextStep();
+        }
+    }
+
+    /// <summary>
+    /// Método buttonHoraryTrue, que indica que se ha girado la cámara en sentido antihorario
+    /// </summary>
+    public void buttonHoraryTrue()
+    {
+        event4Horary = true;
+        if (event4Antihorary && !activatedEvents[4])
+        {
+            activatedEvents[4] = true;
+            GoToNextStep();
+        }
+    }
 
     /// <summary>
     /// Método UpdateTutorialTranslate, que actualiza el texto correspondiente al tutorial
