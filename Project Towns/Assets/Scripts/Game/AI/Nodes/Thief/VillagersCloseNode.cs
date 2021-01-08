@@ -14,10 +14,11 @@ public class VillagersCloseNode : Node
         _nodeState = NodeState.FAILURE;
         List<Villager> villagersInRange = new List<Villager>();
 
-        // Por cada aldeano, se calcula si está en rango
+        // Por cada aldeano, se calcula si está en rango y si no es víctima
         foreach (Villager villager in GameManager.instance.villagers)
         {
-            if (Vector3.Distance(thief.transform.position, villager.transform.position) < thief.CLOSE_VILLAGERS_RANGE)
+            if (Vector3.Distance(thief.transform.position, villager.transform.position) < thief.CLOSE_VILLAGERS_RANGE
+                && !villager.isVictim)
             {
                 villagersInRange.Add(villager);
                 _nodeState = NodeState.SUCCESS;
