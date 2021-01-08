@@ -56,6 +56,7 @@ public class Thief : NPC
         // Obtener parámetros
         timeBetweenSteals = GameManager.instance.difficulty.timeBetweenSteals;
         SPEED_RUN_PROBABILITY = GameManager.instance.difficulty.THIEF_SPEED_RUN_PROBABILITY;
+        fakeWitnessProbability = GameManager.instance.difficulty.fakeWitnessProbability;
 
         // Calcular destino más cercano
         float distanceToNearestZone = float.PositiveInfinity;

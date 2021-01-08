@@ -44,5 +44,8 @@ public class Difficulty : ScriptableObject
     [Tooltip("Probabilidad DEL LADRÓN de correr hacia su destino")]
     [Range(0.0f, 100.0f)]
     public float THIEF_SPEED_RUN_PROBABILITY = 100.0f;
+    [Tooltip("Probabilidad de que se haga pasar por testigo")]
+    [Range(0.0f, 100.0f)]
+    public int fakeWitnessProbability = 50;
     #endregion
 }

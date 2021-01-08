@@ -13,7 +13,14 @@ MonoBehaviour:
   m_Name: Difficulty_2_Hard
   m_EditorClassIdentifier: 
   difficultyIndex: 2
-  villagers: 60
+  villagers: 50
   catchAttempts: 1
   thiefRobberies: 5
-  clothings: 12
+  victimSafeProbability: 30
+  victimVeracityProbability: 35
+  witnessSafeProbability: 20
+  witnessVeracityProbability: 30
+  VILLAGER_SPEED_RUN_PROBABILITY: 50
+  timeBetweenSteals: 15
+  THIEF_SPEED_RUN_PROBABILITY: 50
+  fakeWitnessProbability: 5
