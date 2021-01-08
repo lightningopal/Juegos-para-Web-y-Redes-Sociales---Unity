@@ -460,8 +460,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c31b3999dfa1c448e7defce7870d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  marshallInfoRange: 5
-  MINIMUM_DESTINY_DISTANCE: 0.5
+  marshallInfoRange: 7
+  MINIMUM_DESTINY_DISTANCE: 10
   timeToChangeZone: 10
   WALKING_SPEED: 2
   RUNNING_SPEED: 4
@@ -527,7 +527,7 @@ MonoBehaviour:
   fakeWitnessProbability: 50
   timeNextSteal: 0
   timeBetweenSteals: 60
-  marshallDetectRange: 20
+  marshallDetectRange: 40
   STEALING_SPEED: 10
   MINIMUM_STEAL_DISTANCE: 2
   CLOSE_VILLAGERS_RANGE: 10
