@@ -25,7 +25,8 @@ public class Main_VFXs : MonoBehaviour
     /// </summary>
     void Update()
     {
-        this.transform.rotation = camRig.transform.rotation;
+        if (camRig != null)
+            this.transform.rotation = camRig.transform.rotation;
     }
     #endregion
 

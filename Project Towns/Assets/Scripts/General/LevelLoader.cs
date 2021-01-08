@@ -11,7 +11,13 @@ public class LevelLoader : MonoBehaviour
 
     private bool changeScene = false;
 
-    AsyncOperation loader;
+    private AsyncOperation loader = null;
+
+    [Tooltip("Barra de carga")]
+    [SerializeField]
+    private GameObject loadingBar = null;
+    [SerializeField]
+    private Slider loadingBarSlider = null;
 
     [Tooltip("Círculo de transición")]
     [SerializeField]
@@ -90,8 +96,20 @@ public class LevelLoader : MonoBehaviour
         if (changeScene)
         {
             loader = SceneManager.LoadSceneAsync(sceneToLoad);
+            loadingBar.SetActive(true);
+            StartCoroutine(LoadingBar());
             //loader.allowSceneActivation = true;
             //SceneManager.LoadScene(sceneToLoad);
+        }
+    }
+
+    IEnumerator LoadingBar()
+    {
+        while (!loader.isDone)
+        {
+            float progress = Mathf.Clamp01(loader.progress / 0.9f);
+            loadingBarSlider.value = progress;
+            yield return null;
         }
     }
 
