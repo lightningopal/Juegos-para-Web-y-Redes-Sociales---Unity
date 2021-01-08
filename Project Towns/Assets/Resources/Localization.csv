@@ -35,57 +35,57 @@ START_MOBILE;TAP TO START;PULSA PARA COMENZAR
 ARREST_TEXT;ARREST;ARRESTAR
 TUTORIAL_TEXT_0;Well well, it was time for you to appear dear grandson.\nIf you are going to replace me as the Marshall, Who better than me to help you?;Bueno bueno, ya era hora de que aparecieras querido nieto.\nSi vas a sustituirme como Marshall, ¿quién mejor que yo para ayudarte?
 TUTORIAL_TEXT_1;YolkTown is a wonderful town, as it people is.\nThey won't give you many troubles in the whole year;YolkTown es un pueblo maravilloso, como su gente.\nNo te darán muchos problemas en todo el año.
-TUTORIAL_TEXT_2;;
-TUTORIAL_TEXT_3;;
-TUTORIAL_TEXT_4;;
-TUTORIAL_TEXT_5;;
-TUTORIAL_TEXT_6;;
-TUTORIAL_TEXT_7;;
-TUTORIAL_TEXT_8;;
-TUTORIAL_TEXT_9;;
-TUTORIAL_TEXT_10;;
-TUTORIAL_TEXT_11;;
-TUTORIAL_TEXT_12;;
-TUTORIAL_TEXT_13;;
-TUTORIAL_TEXT_14;;
-TUTORIAL_TEXT_15;;
-TUTORIAL_TEXT_16;;
-TUTORIAL_TEXT_17;;
-TUTORIAL_TEXT_18;;
-TUTORIAL_TEXT_19;;
-TUTORIAL_TEXT_20;;
-TUTORIAL_TEXT_21;;
-TUTORIAL_TEXT_22;;
-TUTORIAL_TEXT_23;;
-TUTORIAL_TEXT_24;;
-TUTORIAL_TEXT_25;;
-TUTORIAL_TEXT_26;;
-TUTORIAL_TEXT_27;;
-TUTORIAL_TEXT_28;;
-TUTORIAL_TEXT_29;;
-TUTORIAL_TEXT_30;;
-TUTORIAL_TEXT_31;;
-TUTORIAL_TEXT_32;;
-TUTORIAL_TEXT_33;;
-TUTORIAL_TEXT_34;;
-TUTORIAL_TEXT_35;;
-TUTORIAL_TEXT_36;;
-TUTORIAL_TEXT_37;;
-TUTORIAL_TEXT_38;;
-TUTORIAL_TEXT_39;;
-TUTORIAL_TEXT_40;;
-TUTORIAL_TEXT_41;;
-TUTORIAL_TEXT_42;;
-TUTORIAL_TEXT_43;;
-TUTORIAL_TEXT_44;;
-TUTORIAL_TEXT_45;;
-TUTORIAL_TEXT_46;;
-TUTORIAL_TEXT_47;;
-TUTORIAL_TEXT_48;;
-TUTORIAL_TEXT_49;;
-TUTORIAL_TEXT_50;;
-TUTORIAL_TEXT_51;;
-TUTORIAL_TEXT_52;;
-TUTORIAL_TEXT_53;;
-TUTORIAL_TEXT_54;;
-TUTORIAL_TEXT_55;;
+TUTORIAL_TEXT_2;;Pero me temo que son las fiestas del pueblo.\nY eso significa más alboroto y más robos.
+TUTORIAL_TEXT_3;;Pero para eso estás tú, Marshallow.
+TUTORIAL_TEXT_4;;Bien, lo primero de todo es saber cómo moverse.\nVamos, prueba a pulsar en cualquier superficie.
+TUTORIAL_TEXT_5;;¡De lujo! Que bien se te da esto.
+TUTORIAL_TEXT_6;;Bien, ¿ves esos botones a los lados de la pantalla?\nPrueba a pulsarlos. No te cortes.
+TUTORIAL_TEXT_7;;¡Madre mía! Esto se te da de maravilla.\nTe espero en la forja.
+TUTORIAL_TEXT_8;;Ahora sí que eres todo un profesional.\nRecuerdo mis primeros días, era temporada de lluv…
+TUTORIAL_TEXT_9;;Espera un momento… ¡Pero bueno!\nSe ha producido un robo en el ayuntamiento.
+TUTORIAL_TEXT_10;;¿Ves esa flecha amarilla con exclamaciones?\nTe está indicando el punto exacto del robo.
+TUTORIAL_TEXT_11;;¡Adelante! Dirígete hacia allí.
+TUTORIAL_TEXT_12;;¡Maldita sea! El ladrón se ha dado a la fuga…\nPero mira, la víctima ha conseguido ver algo.
+TUTORIAL_TEXT_13;;Vaya, según parece el ladrón es azul y tiene dos ojos.\nBueno, no es mucho, pero es mejor que nada.
+TUTORIAL_TEXT_14;;¿Has visto a este aldeano?\nDice que ha presenciado el robo.
+TUTORIAL_TEXT_15;;El ladrón también lleva un gorro de fiesta, interesante.\nBueno, como has podido comprobar, solo te ha dado un dato.
+TUTORIAL_TEXT_16;;Eso es porque es un testigo, no la víctima del robo.\nLas víctimas tienen exclamaciones encima de su cabeza.
+TUTORIAL_TEXT_17;;Los testigos tienen interrogaciones.\nAdemás siguen moviéndose tras presenciar el robo.
+TUTORIAL_TEXT_18;;A diferencia de las víctimas, que se quedan esperándote.
+TUTORIAL_TEXT_19;;Ten los dos ojos abiertos, podrías volver a cruzarte con más testigos.\nDicho esto, ¡al lío! Hay un ladrón que atra…
+TUTORIAL_TEXT_20;;¿!Será posible!? Otro robo, esta vez en el parque.\nVenga, ¡a por él!
+TUTORIAL_TEXT_21;;Vaya, que mala suerte.\nEl ladrón ha vuelto a escapar.
+TUTORIAL_TEXT_22;;Y por si fuera poco, la víctima no está segura de lo que ha visto.\nLo sé por el interrogante del bocadillo, ¿ves?
+TUTORIAL_TEXT_23;;Eso quiere decir que, de los dos datos, uno es cierto y el otro dudoso.
+TUTORIAL_TEXT_24;;Puede ser que el ladrón tenga cuernos de reno.\nPero también puede ser que lleve una pajarita.
+TUTORIAL_TEXT_25;;Desgraciadamente no sabemos cuál de ellos es el dudoso.\nNi si nos podemos fiar de dicho dato, ¡podría ser falso!
+TUTORIAL_TEXT_26;;Pero no culpes al aldeano. Pobrecito, no ha podido verlo bien…\nBueno, recapitulemos. Por ahora sabemos lo siguiente:
+TUTORIAL_TEXT_27;;El ladrón es azul, tiene dos ojos y lleva un gorro de fiesta.\nTambién sabemos que tiene cuernos de reno y/o una pajarita.
+TUTORIAL_TEXT_28;;Hmmm, no sé si tenemos suficiente información…
+TUTORIAL_TEXT_29;;¡Qué suerte! Este aldeano dice que ha visto el robo.\nY nos confirma que el ladrón lleva pajarita.
+TUTORIAL_TEXT_30;;¡Genial! Ahora sí que podemos dar con él.
+TUTORIAL_TEXT_31;;Por cierto, ¡casi se me olvida!\nLleva mucho cuidado, el ladrón puede hacerse pasar por testigo.
+TUTORIAL_TEXT_32;;La buena noticia es que siempre te dará un dato dudoso.\nNo sabrás si ese único dato es cierto o no.
+TUTORIAL_TEXT_33;;¿Recuerdas? El que tiene un interrogante en el bocadillo.
+TUTORIAL_TEXT_34;;Por tanto, si un testigo te da información dudosa y se parece al ladrón, échale un ojo, ¡podría ser él!
+TUTORIAL_TEXT_35;;Aunque te aconsejo que no te arriesgues demasiado.\nNo querrás equivocarte en tu primer día de trabajo.
+TUTORIAL_TEXT_36;;Bueno basta de cháchara, dirígete a la plaza.\nEs muy probable que el ladrón esté ahí. ¡A por él!
+TUTORIAL_TEXT_37;;Eh, ¡ahí está el ladrón!\n¿O es ese otro?
+TUTORIAL_TEXT_38;;Diantres, los dos encajan con la descripción…\nBueno, vamos a fiarnos de la información de la última víctima.
+TUTORIAL_TEXT_39;;Ha dicho que podría tener cuernos de reno, veamos si es cierto.\nAdelante, pulsa en el aldeano con cuernos de reno.
+TUTORIAL_TEXT_40;;¿Ves el botón de arrestar? Venga, púlsalo.
+TUTORIAL_TEXT_41;;Me he equivocado, ¡qué embarazoso!\nLo siento nieto mío, ha sido mi culpa…
+TUTORIAL_TEXT_42;;Ya que estamos voy a aprovechar para contarte otra cosa.\nNo sé si te habrás dado cuenta, pero tienes un límite de intentos.
+TUTORIAL_TEXT_43;;Mira en la esquina inferior izquierda, ¿ves los corazones?\nBien, como hemos fallado esta vez, has perdido un intento.
+TUTORIAL_TEXT_44;;¡Pero no temas! Aún nos quedan dos.\nY sabemos que es prácticamente seguro que el ladrón sea el otro aldeano.
+TUTORIAL_TEXT_45;;Por cierto, encima de los corazones hay más información.\nEso te indica el número de robos permitidos antes de perder la partida.
+TUTORIAL_TEXT_46;;No te despistes y tenlo en cuenta, ¡es muy importante!
+TUTORIAL_TEXT_47;;Venga, ¡ahora pulsa en el otro aldeano y arréstalo!
+TUTORIAL_TEXT_48;;¡¡Sí, señor!! Lo has conseguido Marshallow, buen trabajo.
+TUTORIAL_TEXT_49;;Estoy muy orgulloso de ti querido nieto.\nHas dado con el ladrón y hemos salvado YolkTown por hoy.
+TUTORIAL_TEXT_50;;Yo me voy a ir yendo, se está haciendo tarde y mañana tengo bingo.
+TUTORIAL_TEXT_51;;Pero antes de irme unos últimos consejos:
+TUTORIAL_TEXT_52;;Recuerda que siempre puedes pausar el juego.
+TUTORIAL_TEXT_53;;Cuando estés en partida, pulsa el botón de la esquina superior izquierda si así lo deseas.
+TUTORIAL_TEXT_54;;Desde ahí puedes volver al menú o cambiar las opciones.\n¡Qué práctico es pausar el juego!, ¿verdad?
+TUTORIAL_TEXT_55;;Bueno, ahora sí Marshallow. Me despido.\n¡Mucha suerte en tu nuevo trabajo! ¡Hasta luego!
