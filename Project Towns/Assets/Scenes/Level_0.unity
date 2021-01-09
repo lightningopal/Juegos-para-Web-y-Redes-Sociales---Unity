@@ -5837,16 +5837,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 4771846093718049639, guid: 5578cbb20bd929e468928ea3467a6420,
-        type: 3}
-      propertyPath: sounds.Array.data[4].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 7d5f7d8e58a488841802711c073dc0c2, type: 3}
-    - target: {fileID: 4771846093718049639, guid: 5578cbb20bd929e468928ea3467a6420,
-        type: 3}
-      propertyPath: sounds.Array.data[4].name
-      value: TheftFound
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5578cbb20bd929e468928ea3467a6420, type: 3}
 --- !u!1 &252666508

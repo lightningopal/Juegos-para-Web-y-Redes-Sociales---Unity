@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4771846093718049638}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -43,7 +43,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecdbff3f24c012e4080bfaf5e092baba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music: []
+  music:
+  - name: MenuMusic
+    clip: {fileID: 8300000, guid: d9f39d53d2054764996815a8b8c8c88a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: CreditsMusic
+    clip: {fileID: 8300000, guid: a62478162c6b7a24ab0a8036c52c01b6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: InGameMusic
+    clip: {fileID: 8300000, guid: 73727d2e45f57064a9a519e79b17f67c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: WinMusic
+    clip: {fileID: 8300000, guid: 0720583cbfbf0cc4e915f91305744ac1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: LoseMusic
+    clip: {fileID: 8300000, guid: c817485e74ac4f847b72d876acaa9cb3, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
   sounds:
   - name: PressButton
     clip: {fileID: 8300000, guid: 8035e4a356adc954f9d3bab64141547b, type: 3}
@@ -69,8 +99,8 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: GiveInfo
-    clip: {fileID: 8300000, guid: fc4cea173bed4ab489b18abe953b613f, type: 3}
+  - name: TheftFound
+    clip: {fileID: 8300000, guid: 7d5f7d8e58a488841802711c073dc0c2, type: 3}
     volume: 1
     pitch: 1
     loop: 0
@@ -89,6 +119,18 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: CircleLeave
     clip: {fileID: 8300000, guid: 3f925afdac7ac514a8924a8a0542e6e6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: WinSound
+    clip: {fileID: 8300000, guid: 7fafc7de8288a724ea4afa35cb3a3a0b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: LoseSound
+    clip: {fileID: 8300000, guid: c98e3969f89300d45a7d33aa9a216adc, type: 3}
     volume: 1
     pitch: 1
     loop: 0

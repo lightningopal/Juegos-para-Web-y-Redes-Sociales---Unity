@@ -330,7 +330,9 @@ public class TutorialPlayerController : MonoBehaviour
 
             // Efecto
             GameObject nervousVFX = Instantiate(TutorialGameManager.instance.nervousVFX, calledScriptedVillager.transform);
-
+            // Efecto de sonido
+            AudioManager.instance.PlaySound("Nervous");
+            
             TutorialGameManager.instance.HideDetentionButton();
             TutorialGameManager.instance.EndGameAsWin();
         }

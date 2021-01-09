@@ -73,7 +73,7 @@ public class MenuManager : MonoBehaviour
             AudioManager.instance.ManageAudio(a.name, "music", "stop");
             AudioManager.instance.ManageAudio(a.name, "music", "unpause");
         }
-        //AudioManager.instance.ManageAudio("MainTheme", "music", "play");
+        AudioManager.instance.ManageAudio("MenuMusic", "music", "play");
 
         creditsTextPosition = creditsTextImage.rectTransform.localPosition;
 

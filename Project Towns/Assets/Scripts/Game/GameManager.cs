@@ -105,6 +105,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     void Start()
     {
+
+        // Iniciamos la música
+        AudioManager.instance.ManageAudio("InGameMusic", "music", "play");
+
         // Obtener la dificultad elegida
         difficulty_index = GlobalVars.instance.difficulty;
         string difficultyName = "";
@@ -278,6 +282,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         gamePaused = true;
+        AudioManager.instance.SetVolume("InGameMusic", "music", 0.3f);
     }
 
     /// <summary>
@@ -287,6 +292,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         gamePaused = false;
+        AudioManager.instance.SetVolume("InGameMusic", "music", 1.0f);
     }
 
     /// <summary>
@@ -305,6 +311,10 @@ public class GameManager : MonoBehaviour
 
         // Acabar la partida
         Invoke("EndGame", endTimeWait);
+
+        // Sonido y música de perder
+        Invoke("PlayWinSound", endTimeWait + 0.5f);
+        
     }
 
     /// <summary>
@@ -320,6 +330,10 @@ public class GameManager : MonoBehaviour
 
         // Acabar la partida
         Invoke("EndGame", endTimeWait);
+
+        // Sonido y música de perder
+        Invoke("PlayLoseSound", endTimeWait + 0.5f);
+        
     }
 
     /// <summary>
@@ -328,12 +342,51 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         // Se pausa la partida
-        PauseGame();
-
+        //PauseGame();
+        gamePaused = true;
+        AudioManager.instance.ManageAudio("InGameMusic", "music", "stop");
         // Mostrar pantalla final
         levelLoader.LoadCanvas(3);
         levelLoader.UseCircle(true);
         levelLoader.ShowBars(true);
+    }
+
+    /// <summary>
+    /// Suena el efecto de sonido de victoria
+    /// </summary>
+    public void PlayWinSound()
+    {
+        AudioManager.instance.ManageAudio("WinSound", "sound", "play");
+        Invoke("PlayWinMusic", 3);
+    }
+
+    /// <summary>
+    /// Suena el efecto de sonido de derrota
+    /// </summary>
+    public void PlayLoseSound()
+    {
+        AudioManager.instance.ManageAudio("LoseSound", "sound", "play");
+        Invoke("PlayLoseMusic", 6);
+    }
+
+    /// <summary>
+    /// Suena la música de victoria
+    /// </summary>
+    public void PlayWinMusic()
+    {
+        AudioManager.instance.ManageAudio("WinMusic", "music", "play");
+        //PauseGame();
+        Time.timeScale = 0;
+    }
+
+    /// <summary>
+    /// Suena la música de derrota
+    /// </summary>
+    public void PlayLoseMusic()
+    {
+        AudioManager.instance.ManageAudio("LoseMusic", "music", "play");
+        //PauseGame();
+        Time.timeScale = 0;
     }
 
     /// <summary>

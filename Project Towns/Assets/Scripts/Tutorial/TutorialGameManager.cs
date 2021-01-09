@@ -161,6 +161,9 @@ public class TutorialGameManager : MonoBehaviour
 
         // Acabar la partida
         Invoke("EndGame", endTimeWait);
+
+        // Sonido y música de perder
+        Invoke("PlayWinSound", endTimeWait + 0.5f);
     }
 
     /// <summary>
@@ -169,12 +172,31 @@ public class TutorialGameManager : MonoBehaviour
     public void EndGame()
     {
         // Se pausa la partida
-        PauseGame();
+        //PauseGame();
+        gamePaused = true;
 
         // Mostrar pantalla final
         levelLoader.LoadCanvas(3);
         levelLoader.UseCircle(true);
         levelLoader.ShowBars(true);
+    }
+
+    /// <summary>
+    /// Suena el efecto de sonido de victoria
+    /// </summary>
+    public void PlayWinSound()
+    {
+        AudioManager.instance.ManageAudio("WinSound", "sound", "play");
+        Invoke("PlayWinMusic", 3);
+    }
+
+    /// <summary>
+    /// Suena la música de victoria
+    /// </summary>
+    public void PlayWinMusic()
+    {
+        AudioManager.instance.ManageAudio("WinMusic", "music", "play");
+        Time.timeScale = 0;
     }
 
     /// <summary>

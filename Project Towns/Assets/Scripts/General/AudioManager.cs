@@ -113,6 +113,74 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Método SetVolume, que ajusta el Volumen de un audio
+    /// </summary>
+    /// <param name="name">Nombre del audio</param>
+    /// <param name="type">Tipo de audio (música o sonido)</param>
+    /// <param name="vol">Valor del volumen</param>
+    public void SetVolume(string name, string type, float vol)
+    {
+        if (type == "music")
+        {
+            Audio a = Array.Find(music, sound => sound.name == name);
+            if (a == null)
+            {
+                Debug.LogWarning("Sound: " + name + " not found!");
+                return;
+            }
+            a.volume = vol;
+            a.volume = Mathf.Clamp01(a.volume);
+            a.source.volume = GlobalVars.instance.musicVolume * a.volume;
+        }
+        else if (type == "sound")
+        {
+
+            Audio a = Array.Find(sounds, sound => sound.name == name);
+            if (a == null)
+            {
+                Debug.LogWarning("Sound: " + name + " not found!");
+                return;
+            }
+            a.volume = vol;
+            a.volume = Mathf.Clamp01(a.volume);
+            a.source.volume = GlobalVars.instance.fxVolume * a.volume;
+        }
+    }
+
+    /// <summary>
+    /// Método SetPitch, que ajusta el Tono de un audio
+    /// </summary>
+    /// <param name="name">Nombre del audio</param>
+    /// <param name="type">Tipo de audio (música o sonido)</param>
+    /// <param name="pitch">Valor del Tono</param>
+    public void SetPitch(string name, string type, float pitch)
+    {
+        if (type == "music")
+        {
+            Audio a = Array.Find(music, sound => sound.name == name);
+            if (a == null)
+            {
+                Debug.LogWarning("Sound: " + name + " not found!");
+                return;
+            }
+            a.pitch = pitch;
+            a.pitch = Mathf.Clamp(a.pitch, 0.1f, 3.0f);
+        }
+        else if (type == "sound")
+        {
+
+            Audio a = Array.Find(sounds, sound => sound.name == name);
+            if (a == null)
+            {
+                Debug.LogWarning("Sound: " + name + " not found!");
+                return;
+            }
+            a.pitch = pitch;
+            a.pitch = Mathf.Clamp(a.pitch, 0.1f, 3.0f);
+        }
+    }
+
     #region MétodosUnitarios
     #region Music
     /// <summary>
