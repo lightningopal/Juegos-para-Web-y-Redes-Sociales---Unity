@@ -9,6 +9,9 @@ TagManager:
   - Zone
   - Thief
   - Forge
+  - ScriptedVillager
+  - ScriptedThief
+  - Square
   layers:
   - Default
   - TransparentFX

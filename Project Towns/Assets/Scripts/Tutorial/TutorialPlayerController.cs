@@ -54,9 +54,9 @@ public class TutorialPlayerController : MonoBehaviour
 
     [Header("Detención")]
     [Tooltip("NPC en detención")]
-    private NPC calledNPC = null;
+    private ScriptedVillager calledScriptedVillager = null;
     [Tooltip("Booleano que indica si el NPC a detener es el ladrón")]
-    private bool calledNPCIsThief = false;
+    private bool calledScriptedVillagerIsThief = false;
 
     [Header("Tutorial")]
     [SerializeField]
@@ -82,20 +82,26 @@ public class TutorialPlayerController : MonoBehaviour
     /// </summary>
     void Update()
     {
-        // Si la partida ha acabado, no realizamos cálculos
-        if (TutorialGameManager.instance.gameOver)
-            return;
-
-        // Si el juego está en pausa, no realizamos cálculos
-        if (TutorialGameManager.instance.gamePaused)
+        // Si el jugador tiene que esperar, no realizamos cálculos
+        if (tutorialManager.playerHasToWait)
             return;
 
         // Si el jugador hace click con el ratón
         if (Input.GetMouseButtonDown(0))
         {
             // Si puede moverse
-            if (tutorialManager.playerCanMove)
+            if (tutorialManager.playerCanMove &&
+                !tutorialManager.event22MustArrestHornsVillager &&
+                !tutorialManager.event26MustArrestThief)
             {
+                // Si el juego está en pausa, no realizamos cálculos
+                if (TutorialGameManager.instance.gamePaused)
+                    return;
+
+                // Si la partida ha acabado, no realizamos cálculos
+                if (TutorialGameManager.instance.gameOver)
+                    return;
+
                 // Si está el ratón sobre la UI, no se lanza Raycast
                 if (IsPointerOverUIObject())
                     return;
@@ -105,9 +111,6 @@ public class TutorialPlayerController : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit, 100.0f, ~playerLayerMask))
                 {
-                    // Comprueba con qué ha chocado el raycast
-                    //Debug.Log("You selected the: " + hit.transform.name);
-
                     // Va hacia allí
                     destination = hit.point;
                     thisAgent.SetDestination(destination);
@@ -115,47 +118,79 @@ public class TutorialPlayerController : MonoBehaviour
                         thisAnimator.SetTrigger("run");
 
                     // Si es un aldeano
-                    if (hit.transform.CompareTag("Villager"))
+                    if (hit.transform.CompareTag("ScriptedVillager"))
                     {
-
-                        // Si ya tenia uno, lo quitamos
-                        if (calledNPC != null)
+                        // Eventos tutorial
+                        if (!tutorialManager.event25MustClickThief &&
+                            !tutorialManager.event26MustArrestThief)
                         {
-                            calledNPC.hasBeenCalledByMarshall = false;
-                            calledNPC = null;
+                            if (tutorialManager.actualEvent == 20 &&
+                                !tutorialManager.activatedEvents[20])
+                            {
+                                // Si ya tenia uno, lo quitamos
+                                if (calledScriptedVillager != null)
+                                {
+                                    calledScriptedVillager.hasBeenCalledByMarshall = false;
+                                    calledScriptedVillager = null;
+                                }
+
+                                calledScriptedVillagerIsThief = false;
+                                calledScriptedVillager = hit.transform.gameObject.GetComponent<ScriptedVillager>();
+                                calledScriptedVillager.hasBeenCalledByMarshall = true;
+
+                                // Si es el aldeano 4 y estamos en el evento adecuado
+                                if (calledScriptedVillager.tutorialID == 4)
+                                {
+                                    // Activamos el evento y llamamos al siguiente
+                                    tutorialManager.activatedEvents[20] = true;
+                                    tutorialManager.GoToNextStep();
+
+                                    TutorialGameManager.instance.ShowDetentionButton(calledScriptedVillager.transform);
+
+                                    // Efecto de sorpresa
+                                    GameObject surpriseVFX = Instantiate(TutorialGameManager.instance.surpriseVFX, calledScriptedVillager.transform);
+                                    ParticleSystem partS = surpriseVFX.GetComponent<ParticleSystem>();
+                                    float totalDuration = partS.main.duration + partS.main.startLifetime.constant;
+                                    Destroy(surpriseVFX, totalDuration);
+                                }
+                            }
                         }
-
-                        calledNPCIsThief = false;
-                        calledNPC = hit.transform.gameObject.GetComponent<Villager>();
-                        calledNPC.hasBeenCalledByMarshall = true;
-                        GameManager.instance.ShowDetentionButton(calledNPC.transform);
-
-                        // Efecto de sorpresa
-                        GameObject surpriseVFX = Instantiate(GameManager.instance.surpriseVFX, calledNPC.transform);
-                        ParticleSystem partS = surpriseVFX.GetComponent<ParticleSystem>();
-                        float totalDuration = partS.main.duration + partS.main.startLifetime.constant;
-                        Destroy(surpriseVFX, totalDuration);
                     }
                     // Si es el ladrón
-                    else if (hit.transform.CompareTag("Thief"))
+                    else if (hit.transform.CompareTag("ScriptedThief"))
                     {
-                        // Si ya tenia uno, lo quitamos
-                        if (calledNPC != null)
+                        // Eventos tutorial
+                        if (!tutorialManager.event20MustClickHornsVillager &&
+                            !tutorialManager.event22MustArrestHornsVillager)
                         {
-                            calledNPC.hasBeenCalledByMarshall = false;
-                            calledNPC = null;
+                            // Si ya tenia uno, lo quitamos
+                            if (calledScriptedVillager != null)
+                            {
+                                calledScriptedVillager.hasBeenCalledByMarshall = false;
+                                calledScriptedVillager = null;
+                            }
+
+                            calledScriptedVillagerIsThief = true;
+                            calledScriptedVillager = hit.transform.gameObject.GetComponent<ScriptedVillager>();
+                            calledScriptedVillager.hasBeenCalledByMarshall = true;
+
+                            // Si es el aldeano 4 y estamos en el evento adecuado
+                            if (tutorialManager.actualEvent == 25 &&
+                                !tutorialManager.activatedEvents[25])
+                            {
+                                // Activamos el evento y llamamos al siguiente
+                                tutorialManager.activatedEvents[25] = true;
+                                tutorialManager.GoToNextStep();
+
+                                TutorialGameManager.instance.ShowDetentionButton(calledScriptedVillager.transform);
+
+                                // Efecto de sorpresa
+                                GameObject surpriseVFX = Instantiate(TutorialGameManager.instance.surpriseVFX, calledScriptedVillager.transform);
+                                ParticleSystem partS = surpriseVFX.GetComponent<ParticleSystem>();
+                                float totalDuration = partS.main.duration + partS.main.startLifetime.constant;
+                                Destroy(surpriseVFX, totalDuration);
+                            }
                         }
-
-                        calledNPCIsThief = true;
-                        calledNPC = hit.transform.gameObject.GetComponent<Thief>();
-                        calledNPC.hasBeenCalledByMarshall = true;
-                        GameManager.instance.ShowDetentionButton(calledNPC.transform);
-
-                        // Efecto de sorpresa
-                        GameObject surpriseVFX = Instantiate(GameManager.instance.surpriseVFX, calledNPC.transform);
-                        ParticleSystem partS = surpriseVFX.GetComponent<ParticleSystem>();
-                        float totalDuration = partS.main.duration + partS.main.startLifetime.constant;
-                        Destroy(surpriseVFX, totalDuration);
                     }
                     // Si es territorio transitable, mueve al agente a esa posición
                     else if (hit.transform.CompareTag("Walkable") || hit.transform.CompareTag("Zone"))
@@ -163,22 +198,26 @@ public class TutorialPlayerController : MonoBehaviour
                         /// Tutorial
                         /// Evento 1
                         // Si no ha completado el evento 1, se añade un paso
-                        if (!TutorialManager.instance.activatedEvents[1])
+                        if (!tutorialManager.activatedEvents[1])
                         {
-                            TutorialManager.instance.event1Moves++;
+                            tutorialManager.event1Moves++;
                             // Si ha dado tres pasos, se completa el evento 1
-                            if (TutorialManager.instance.event1Moves >= 3)
+                            if (tutorialManager.event1Moves >= 3)
                             {
-                                TutorialManager.instance.activatedEvents[1] = true;
-                                TutorialManager.instance.GoToNextStep();
+                                tutorialManager.activatedEvents[1] = true;
+                                tutorialManager.GoToNextStep();
                             }
                         }
 
                         // Si había llamado a un NPC, lo deja ir
-                        if (calledNPC != null)
+                        if (calledScriptedVillager != null &&
+                            !tutorialManager.event20MustClickHornsVillager &&
+                            !tutorialManager.event22MustArrestHornsVillager &&
+                            !tutorialManager.event25MustClickThief &&
+                            !tutorialManager.event26MustArrestThief)
                         {
-                            calledNPC.hasBeenCalledByMarshall = false;
-                            calledNPC = null;
+                            calledScriptedVillager.hasBeenCalledByMarshall = false;
+                            calledScriptedVillager = null;
                             GameManager.instance.HideDetentionButton();
                         }
 
@@ -196,11 +235,12 @@ public class TutorialPlayerController : MonoBehaviour
                     }
                 }
             }
-            // Si no puede moverse
-            else
+            // Si no puede moverse y no tiene que arrestar
+            else if (!tutorialManager.event22MustArrestHornsVillager &&
+                !tutorialManager.event26MustArrestThief)
             {
                 // Si no puede usar la UI
-                if (!TutorialManager.instance.playerCanUseUI)
+                if (!tutorialManager.playerCanUseUI && !tutorialManager.event29CanReturnToMenu)
                     tutorialManager.GoToNextStep();
             }
         }
@@ -214,9 +254,9 @@ public class TutorialPlayerController : MonoBehaviour
 
 
         // Si está lo suficientemente cerca del NPC que ha llamado, se para
-        if (calledNPC != null)
+        if (calledScriptedVillager != null)
         {
-            if (Vector3.Distance(this.transform.position, calledNPC.transform.position) < DETENTION_RANGE)
+            if (Vector3.Distance(this.transform.position, calledScriptedVillager.transform.position) < DETENTION_RANGE)
             {
                 if (thisAgent.hasPath)
                 {
@@ -238,7 +278,7 @@ public class TutorialPlayerController : MonoBehaviour
 
         foreach (Robbery r in closeRobberies)
         {
-            UIManager.instance.HideRobberyIcon(r);
+            TutorialUIManager.instance.HideRobberyIcon(r);
         }
 
     }
@@ -251,10 +291,21 @@ public class TutorialPlayerController : MonoBehaviour
     {
         if (other.CompareTag("Forge"))
         {
-            if (!TutorialManager.instance.activatedEvents[6])
+            if (tutorialManager.actualEvent == 6 &&
+                !tutorialManager.activatedEvents[6])
             {
-                TutorialManager.instance.activatedEvents[6] = true;
-                TutorialManager.instance.GoToNextStep();
+                tutorialManager.activatedEvents[6] = true;
+                tutorialManager.GoToNextStep();
+            }
+        }
+
+        if (other.CompareTag("Square"))
+        {
+            if (tutorialManager.actualEvent == 18 &&
+                !tutorialManager.activatedEvents[18])
+            {
+                tutorialManager.activatedEvents[18] = true;
+                tutorialManager.GoToNextStep();
             }
         }
     }
@@ -267,28 +318,44 @@ public class TutorialPlayerController : MonoBehaviour
     public void Detention()
     {
         // Si acertó
-        if (calledNPCIsThief)
+        if (calledScriptedVillagerIsThief)
         {
-            // Efecto
-            GameObject nervousVFX = Instantiate(GameManager.instance.nervousVFX, calledNPC.transform);
+            // Tutorial
+            if (tutorialManager.actualEvent == 26 &&
+                !tutorialManager.activatedEvents[26])
+            {
+                tutorialManager.activatedEvents[26] = true;
+                tutorialManager.GoToNextStep();
+            }
 
-            GameManager.instance.HideDetentionButton();
-            GameManager.instance.EndGameAsWin();
+            // Efecto
+            GameObject nervousVFX = Instantiate(TutorialGameManager.instance.nervousVFX, calledScriptedVillager.transform);
+
+            TutorialGameManager.instance.HideDetentionButton();
+            TutorialGameManager.instance.EndGameAsWin();
         }
         // Si falló
         else
         {
+            // Tutorial
+            if (tutorialManager.actualEvent == 22 &&
+                !tutorialManager.activatedEvents[22])
+            {
+                tutorialManager.activatedEvents[22] = true;
+                tutorialManager.GoToNextStep();
+            }
+
             // Efecto
-            GameObject angerVFX = Instantiate(GameManager.instance.angerVFX, calledNPC.transform);
+            GameObject angerVFX = Instantiate(TutorialGameManager.instance.angerVFX, calledScriptedVillager.transform);
             // Se destruye cuando acaba el efecto
             ParticleSystem partS = angerVFX.GetComponent<ParticleSystem>();
             float totalDuration = partS.main.duration + partS.main.startLifetime.constant;
             Destroy(angerVFX, totalDuration);
 
-            calledNPC.hasBeenCalledByMarshall = false;
-            calledNPC = null;
-            GameManager.instance.HideDetentionButton();
-            GameManager.instance.AddAttempt();
+            calledScriptedVillager.hasBeenCalledByMarshall = false;
+            calledScriptedVillager = null;
+            TutorialGameManager.instance.HideDetentionButton();
+            TutorialGameManager.instance.AddAttempt();
         }
     }
 

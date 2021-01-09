@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Robbery : MonoBehaviour
 {
@@ -28,7 +29,11 @@ public class Robbery : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        playerTransform = FindObjectOfType<PlayerController>().transform;
+        if (SceneManager.GetActiveScene().name.Contains("Level"))
+            playerTransform = FindObjectOfType<PlayerController>().transform;
+        else if (SceneManager.GetActiveScene().name.Equals("Tutorial"))
+            playerTransform = FindObjectOfType<TutorialPlayerController>().transform;
+
         mainCamera = Camera.main;
         canvasRT = this.transform.parent.gameObject.transform.parent.gameObject.transform.parent.gameObject.GetComponent<RectTransform>();
         paddingX = canvasRT.sizeDelta.x / padding;

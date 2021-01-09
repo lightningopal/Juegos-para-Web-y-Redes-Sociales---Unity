@@ -88,7 +88,7 @@ public class TutorialUIManager : MonoBehaviour
         endGameText.text = LocalizationSystem.GetLocalizedValue("ENDGAME_WIN");
 
         // Efecto de victoria
-        GameObject victoryVFX = Instantiate(GameManager.instance.victoryVFX, endGameVFX.transform);
+        GameObject victoryVFX = Instantiate(TutorialGameManager.instance.victoryVFX, endGameVFX.transform);
     }
 
     public void ShowRobberyIcon(Vector3 location)
@@ -97,13 +97,13 @@ public class TutorialUIManager : MonoBehaviour
         Robbery newRobbery = robberyGameObject.GetComponent<Robbery>();
         newRobbery.robberyPosition = location;
         newRobbery.robberyRectTransform.anchoredPosition = new Vector2(100000, 100000);
-        GameManager.instance.robberies.Add(newRobbery);
+        TutorialGameManager.instance.robberies.Add(newRobbery);
     }
 
     public void HideRobberyIcon(Robbery robbery)
     {
         // Borramos el robo de la lista de robos
-        GameManager.instance.robberies.Remove(robbery);
+        TutorialGameManager.instance.robberies.Remove(robbery);
 
         // Eliminamos el GameObject del robo
         Destroy(robbery.gameObject);

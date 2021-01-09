@@ -39,7 +39,7 @@ TUTORIAL_TEXT_2;However, I'm afraid it's the town's festivities.\nAnd that means
 TUTORIAL_TEXT_3;That's why you are here, Marshallow.;Pero para eso estás tú, Marshallow.
 TUTORIAL_TEXT_4;Well, first of all is to know how to move.\nCome on, try taping on any surface.;Bien, lo primero de todo es saber cómo moverse.\nVamos, prueba a pulsar en cualquier superficie.
 TUTORIAL_TEXT_5;Great! You are good at this.;¡De lujo! Que bien se te da esto.
-TUTORIAL_TEXT_6;Good, see those buttons at the sides of the screen?\n Try pressing them. Don't be shy.;Bien, ¿ves esos botones a los lados de la pantalla?\nPrueba a pulsarlos. No te cortes.
+TUTORIAL_TEXT_6;Good, see those buttons at the sides of the screen?\nTry pressing them. Don't be shy.;Bien, ¿ves esos botones a los lados de la pantalla?\nPrueba a pulsarlos. No te cortes.
 TUTORIAL_TEXT_7;My goodness! You are wonderful at this.\nI will wait for you at the forge.;¡Madre mía! Esto se te da de maravilla.\nTe espero en la forja.
 TUTORIAL_TEXT_8;Now you are a true professional.\nI remember my first days, it was rainy seas…;Ahora sí que eres todo un profesional.\nRecuerdo mis primeros días, era temporada de lluv…
 TUTORIAL_TEXT_9;Wait a minute… Oh my!\nThere has been a robbery at the town hall.;Espera un momento… ¡Pero bueno!\nSe ha producido un robo en el ayuntamiento.
@@ -82,11 +82,9 @@ TUTORIAL_TEXT_45;By the way, above the hearts there is more information.\nThat t
 TUTORIAL_TEXT_46;Don't get distracted and keep it in mind, It's very important!;No te despistes y tenlo en cuenta, ¡es muy importante!
 TUTORIAL_TEXT_47;Come on, now click on the other villager and arrest him!;Venga, ¡ahora pulsa en el otro aldeano y arréstalo!
 TUTORIAL_TEXT_48;Yes! You've got it Marshallow, good job!;¡¡Sí, señor!! Lo has conseguido Marshallow, buen trabajo.
-TUTORIAL_TEXT_49;I am very proud of you dear grandson. \nYou have found the thief and we have saved YolkTown for today.;Estoy muy orgulloso de ti querido nieto.\nHas dado con el ladrón y hemos salvado YolkTown por hoy.
+TUTORIAL_TEXT_49;I am very proud of you dear grandson.\nYou have found the thief and we have saved YolkTown for today.;Estoy muy orgulloso de ti querido nieto.\nHas dado con el ladrón y hemos salvado YolkTown por hoy.
 TUTORIAL_TEXT_50;I'm going to leave, it's getting late and tomorrow I have bingo.;Yo me voy a ir yendo, se está haciendo tarde y mañana tengo bingo.
 TUTORIAL_TEXT_51;But before I go, a few final words of advice.;Pero antes de irme, unos últimos consejos:
 TUTORIAL_TEXT_52;Remember that you can always pause the game.;Recuerda que siempre puedes pausar el juego.
 TUTORIAL_TEXT_53;From there you can return to the main menu or modify the options.\nHow convenient it is to pause the game, isn't it?;Desde ahí puedes volver al menú o cambiar las opciones.\n¡Qué práctico es pausar el juego!, ¿verdad?
 TUTORIAL_TEXT_54;Well, now for real, Marshallow. I'm going now.\nGood luck on your new job! See you soon!;Bueno, ahora sí Marshallow. Me despido.\n¡Mucha suerte en tu nuevo trabajo! ¡Hasta luego!
-;;
-;;

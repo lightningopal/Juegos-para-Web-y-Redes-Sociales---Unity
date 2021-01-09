@@ -15,7 +15,7 @@ public class TutorialGameManager : MonoBehaviour
 
     [Header("Aldeanos")]
     [Tooltip("Lista de aldeanos")]
-    public List<Villager> villagers = new List<Villager>();
+    public List<ScriptedVillager> villagers = new List<ScriptedVillager>();
 
     [Header("VFX")]
     public GameObject victimVFX = null;
