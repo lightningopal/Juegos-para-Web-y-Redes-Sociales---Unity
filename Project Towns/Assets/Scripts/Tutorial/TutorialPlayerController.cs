@@ -349,6 +349,7 @@ public class TutorialPlayerController : MonoBehaviour
 
             // Efecto
             GameObject angerVFX = Instantiate(TutorialGameManager.instance.angerVFX, calledScriptedVillager.transform);
+            AudioManager.instance.PlaySound("Anger");
             // Se destruye cuando acaba el efecto
             ParticleSystem partS = angerVFX.GetComponent<ParticleSystem>();
             float totalDuration = partS.main.duration + partS.main.startLifetime.constant;

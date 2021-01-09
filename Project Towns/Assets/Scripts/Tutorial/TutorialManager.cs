@@ -436,6 +436,8 @@ public class TutorialManager : MonoBehaviour
         /// Creamos un robo donde la víctima
         TutorialUIManager.instance.ShowRobberyIcon(villagerGameObject.transform.position);
         TutorialGameManager.instance.AddRobbery();
+        //Efecto de sonido
+        AudioManager.instance.PlaySound("TheftFound");
 
         // Mostramos siguiente paso
         GoToNextStep();
@@ -567,6 +569,8 @@ public class TutorialManager : MonoBehaviour
         /// Creamos un robo donde la víctima
         TutorialUIManager.instance.ShowRobberyIcon(villagerGameObject.transform.position);
         TutorialGameManager.instance.AddRobbery();
+        //Efecto de sonido
+        AudioManager.instance.PlaySound("TheftFound");
 
         // Mostramos siguiente paso
         GoToNextStep();
