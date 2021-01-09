@@ -125,13 +125,13 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: WinSound
     clip: {fileID: 8300000, guid: 7fafc7de8288a724ea4afa35cb3a3a0b, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: LoseSound
     clip: {fileID: 8300000, guid: c98e3969f89300d45a7d33aa9a216adc, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     loop: 0
     source: {fileID: 0}

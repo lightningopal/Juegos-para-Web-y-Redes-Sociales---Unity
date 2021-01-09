@@ -231,6 +231,16 @@ PrefabInstance:
       propertyPath: playerLayerMask.m_Bits
       value: 512
       objectReference: {fileID: 0}
+    - target: {fileID: 2557029410346978609, guid: d11666bfb6628664c99c50373eb17af6,
+        type: 3}
+      propertyPath: m_Raycaster
+      value: 
+      objectReference: {fileID: 378263449}
+    - target: {fileID: 2557029410346978609, guid: d11666bfb6628664c99c50373eb17af6,
+        type: 3}
+      propertyPath: m_EventSystem
+      value: 
+      objectReference: {fileID: 1279748542}
     - target: {fileID: 2663560106692061912, guid: d11666bfb6628664c99c50373eb17af6,
         type: 3}
       propertyPath: m_LocalPosition.x

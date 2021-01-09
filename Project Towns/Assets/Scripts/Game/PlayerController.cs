@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 /// <summary>
 /// Clase PlayerController, que controla el movimiento del jugador
@@ -56,6 +57,16 @@ public class PlayerController : MonoBehaviour
     private NPC calledNPC = null;
     [Tooltip("Booleano que indica si el NPC a detener es el ladrón")]
     private bool calledNPCIsThief = false;
+
+    [Header("Graphic Raycaster")]
+    [Tooltip("Graphic Raycaster")]
+    [SerializeField]
+    private GraphicRaycaster m_Raycaster = null;
+    [Tooltip("EventSystem")]
+    [SerializeField]
+    private EventSystem m_EventSystem = null;
+    [Tooltip("PointerEventData")]
+    private PointerEventData m_PointerEventData = null;
     #endregion
 
     #region MétodosUnity
@@ -259,11 +270,18 @@ public class PlayerController : MonoBehaviour
     /// <returns>Booleano que indica si el ratón está sobre la UI</returns>
     private bool IsPointerOverUIObject()
     {
-        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        //Set up the new Pointer Event
+        m_PointerEventData = new PointerEventData(m_EventSystem);
+        //Set the Pointer Event Position to that of the mouse position
+        m_PointerEventData.position = Input.mousePosition;
+
+        //Create a list of Raycast Results
         List<RaycastResult> results = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-        return results.Count > 0;
+
+        //Raycast using the Graphics Raycaster and mouse click position
+        m_Raycaster.Raycast(m_PointerEventData, results);
+
+        return (results.Count > 0);
     }
     #endregion
 }
