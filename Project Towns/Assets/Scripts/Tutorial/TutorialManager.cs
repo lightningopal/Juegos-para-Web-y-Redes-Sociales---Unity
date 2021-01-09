@@ -138,7 +138,7 @@ public class TutorialManager : MonoBehaviour
         Quaternion randomRotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
 
         // Lo instanciamos
-        GameObject thiefGameObject = Instantiate(scriptedVillagerPrefab, new Vector3(-9.2f, 4.65f, -3f), randomRotation, villagersParent.transform); ;
+        GameObject thiefGameObject = Instantiate(scriptedVillagerPrefab, new Vector3(-11.5f, 4.65f, -4.2f), randomRotation, villagersParent.transform); ;
 
         // Obtener componente ScriptedVillager
         scriptedThief = thiefGameObject.GetComponent<ScriptedVillager>();
@@ -372,10 +372,10 @@ public class TutorialManager : MonoBehaviour
         // Establecemos un "robo" que hace de flecha para la forja
         GameObject robberyGameObject = Instantiate(robberyPrefab, robberiesParent.transform);
         Robbery newRobbery = robberyGameObject.GetComponent<Robbery>();
-        newRobbery.robberyPosition = new Vector3(12.66f, 11.76f, 30.85f);
+        newRobbery.robberyPosition = new Vector3(12.66f, 7.85f, 30.85f);
         newRobbery.robberyRectTransform.anchoredPosition = new Vector2(100000, 100000);
         newRobbery.robberyIconImage.sprite = arrowSprite;
-        robberyGameObject.transform.localScale = new Vector3(2, 2, 1);
+        robberyGameObject.transform.localScale = new Vector3(1.5f, 1.5f, 1);
         TutorialGameManager.instance.robberies.Add(newRobbery);
     }
 
@@ -673,13 +673,22 @@ public class TutorialManager : MonoBehaviour
         // Dejamos al jugador que se mueva
         playerCanMove = true;
 
+        // Establecemos un "robo" que hace de flecha para la plaza
+        GameObject robberyGameObject = Instantiate(robberyPrefab, robberiesParent.transform);
+        Robbery newRobbery = robberyGameObject.GetComponent<Robbery>();
+        newRobbery.robberyPosition = new Vector3(-13.25f, 4.75f, -8f);
+        newRobbery.robberyRectTransform.anchoredPosition = new Vector2(100000, 100000);
+        newRobbery.robberyIconImage.sprite = arrowSprite;
+        robberyGameObject.transform.localScale = new Vector3(1.5f, 1.5f, 1);
+        TutorialGameManager.instance.robberies.Add(newRobbery);
+
         /// Instanciamos aldeano aleatorio y movemos ladrón
         /// Aldeano aleatorio
         // Obtener datos aleatorios
         Quaternion randomRotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
 
         // La instanciamos
-        GameObject villagerGameObject = Instantiate(scriptedVillagerPrefab, new Vector3(-18f, 4.65f, -12.2f), randomRotation, villagersParent.transform); ;
+        GameObject villagerGameObject = Instantiate(scriptedVillagerPrefab, new Vector3(-14.95f, 4.65f, -12f), randomRotation, villagersParent.transform); ;
 
         // Obtener componente ScriptedVillager
         ScriptedVillager fifthScriptedVillager = villagerGameObject.GetComponent<ScriptedVillager>();

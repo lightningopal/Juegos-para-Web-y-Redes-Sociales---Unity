@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 /// <summary>
 /// Clase TutorialPlayerController, que controla el movimiento del jugador en el tutorial
@@ -61,6 +62,16 @@ public class TutorialPlayerController : MonoBehaviour
     [Header("Tutorial")]
     [SerializeField]
     private TutorialManager tutorialManager = null;
+
+    [Header("Graphic Raycaster")]
+    [Tooltip("Graphic Raycaster")]
+    [SerializeField]
+    private GraphicRaycaster m_Raycaster = null;
+    [Tooltip("EventSystem")]
+    [SerializeField]
+    private EventSystem m_EventSystem = null;
+    [Tooltip("PointerEventData")]
+    private PointerEventData m_PointerEventData = null;
     #endregion
 
     #region MétodosUnity
@@ -239,9 +250,32 @@ public class TutorialPlayerController : MonoBehaviour
             else if (!tutorialManager.event22MustArrestHornsVillager &&
                 !tutorialManager.event26MustArrestThief)
             {
-                // Si no puede usar la UI
+                // Si no puede usar la UI y no puede volver al menú
                 if (!tutorialManager.playerCanUseUI && !tutorialManager.event29CanReturnToMenu)
-                    tutorialManager.GoToNextStep();
+                {
+                    // Comprobamos sobre qué objetos está la UI
+                    List<RaycastResult> results = PointerOverUIElements();
+
+                    // Si hay resultados
+                    if (results.Count > 0)
+                    {
+                        // Si está el ratón sobre ciertos elementos de la UI, no se va al siguiente paso
+                        foreach (RaycastResult rr in results)
+                        {
+                            if (rr.gameObject.name.Equals("Button_Pause") ||
+                                rr.gameObject.name.Equals("Button_Antihorary") ||
+                                rr.gameObject.name.Equals("Button_Antihorary") ||
+                                rr.gameObject.name.Equals("Button_Resume"))
+                                return;
+                        }
+
+                        // Si no, hace el siguiente paso
+                        tutorialManager.GoToNextStep();
+                    }
+                    // Si no, hace el siguiente paso
+                    else
+                        tutorialManager.GoToNextStep();
+                }
             }
         }
 
@@ -251,7 +285,6 @@ public class TutorialPlayerController : MonoBehaviour
             if (!thisAnimator.GetCurrentAnimatorStateInfo(0).IsName("Marshallow_Idle"))
                 thisAnimator.SetTrigger("idle");
         }
-
 
         // Si está lo suficientemente cerca del NPC que ha llamado, se para
         if (calledScriptedVillager != null)
@@ -368,11 +401,38 @@ public class TutorialPlayerController : MonoBehaviour
     /// <returns>Booleano que indica si el ratón está sobre la UI</returns>
     private bool IsPointerOverUIObject()
     {
-        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        //Set up the new Pointer Event
+        m_PointerEventData = new PointerEventData(m_EventSystem);
+        //Set the Pointer Event Position to that of the mouse position
+        m_PointerEventData.position = Input.mousePosition;
+
+        //Create a list of Raycast Results
         List<RaycastResult> results = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-        return results.Count > 0;
+
+        //Raycast using the Graphics Raycaster and mouse click position
+        m_Raycaster.Raycast(m_PointerEventData, results);
+
+        return (results.Count > 0);
+    }
+
+    /// <summary>
+    /// Método PointerOverUIElements, que devuelve una lista con los elementos de la UI sobre los que está el puntero
+    /// </summary>
+    /// <returns>Elementos de la UI sobre los que está el puntero</returns>
+    public List<RaycastResult> PointerOverUIElements()
+    {
+        //Set up the new Pointer Event
+        m_PointerEventData = new PointerEventData(m_EventSystem);
+        //Set the Pointer Event Position to that of the mouse position
+        m_PointerEventData.position = Input.mousePosition;
+
+        //Create a list of Raycast Results
+        List<RaycastResult> results = new List<RaycastResult>();
+
+        //Raycast using the Graphics Raycaster and mouse click position
+        m_Raycaster.Raycast(m_PointerEventData, results);
+
+        return results;
     }
     #endregion
 }
