@@ -2196,7 +2196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2784314, g: 0.003921569, b: 0.1882353, a: 1}
+  m_Color: {r: 0.011764706, g: 0, b: 0.3764706, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -33375,9 +33375,10 @@ MonoBehaviour:
     type: 3}
   robberies: []
   gamePaused: 0
+  gameOver: 0
+  endTimeWait: 2
   levelLoader: {fileID: 378263453}
   detentionButton: {fileID: 240121352}
-  endTimeWait: 2
 --- !u!4 &575320327
 Transform:
   m_ObjectHideFlags: 0
@@ -43900,7 +43901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2784314, g: 0.003921569, b: 0.1882353, a: 1}
+  m_Color: {r: 0.011764706, g: 0, b: 0.3764706, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -56594,17 +56595,17 @@ PrefabInstance:
     - target: {fileID: 4911716109727595472, guid: f43f7670416c9494d8b52208e7defd42,
         type: 3}
       propertyPath: normalColor.r
-      value: 0.2784314
+      value: 0.011764706
       objectReference: {fileID: 0}
     - target: {fileID: 4911716109727595472, guid: f43f7670416c9494d8b52208e7defd42,
         type: 3}
       propertyPath: normalColor.g
-      value: 0.003921569
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4911716109727595472, guid: f43f7670416c9494d8b52208e7defd42,
         type: 3}
       propertyPath: normalColor.b
-      value: 0.1882353
+      value: 0.3764706
       objectReference: {fileID: 0}
     - target: {fileID: 4911716109727595472, guid: f43f7670416c9494d8b52208e7defd42,
         type: 3}
@@ -63126,7 +63127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2784314, g: 0.003921569, b: 0.1882353, a: 1}
+  m_Color: {r: 0.011764706, g: 0, b: 0.3764706, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:

@@ -46,3 +46,19 @@ MonoBehaviour:
   musicSlider: {fileID: 0}
   fxSlider: {fileID: 0}
   brightnessSlider: {fileID: 0}
+  brightnessImage: {fileID: 0}
+  languageSelectedBackground: {fileID: 0}
+  backgroundPositions:
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  textImageGameObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  optionsTexts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  levelLoader: {fileID: 0}
+  normalColor: {r: 0.011764706, g: 0, b: 0.3764706, a: 1}
+  highlightedColor: {r: 255, g: 255, b: 255, a: 1}

@@ -41,7 +41,7 @@ TUTORIAL_TEXT_4;Well, first of all is to know how to move.\nCome on, try taping 
 TUTORIAL_TEXT_5;Great! You are good at this.;¡De lujo! Que bien se te da esto.
 TUTORIAL_TEXT_6;Good, see those buttons at the sides of the screen?\nTry pressing them. Don't be shy.;Bien, ¿ves esos botones a los lados de la pantalla?\nPrueba a pulsarlos. No te cortes.
 TUTORIAL_TEXT_7;My goodness! You are wonderful at this.\nI will wait for you at the forge.;¡Madre mía! Esto se te da de maravilla.\nTe espero en la forja.
-TUTORIAL_TEXT_8;Now you are a true professional.\nI remember my first days, it was rainy seas…;Ahora sí que eres todo un profesional.\nRecuerdo mis primeros días, era temporada de lluv…
+TUTORIAL_TEXT_8;Now you are a true professional.\nI remember my first days, it was rainy seaso…;Ahora sí que eres todo un profesional.\nRecuerdo mis primeros días, era temporada de lluv…
 TUTORIAL_TEXT_9;Wait a minute… Oh my!\nThere has been a robbery at the town hall.;Espera un momento… ¡Pero bueno!\nSe ha producido un robo en el ayuntamiento.
 TUTORIAL_TEXT_10;See that yellow arrow with exclamation marks?\nIt's showing you the location of the robbery.;¿Ves esa flecha amarilla con exclamaciones?\nTe está indicando el punto exacto del robo.
 TUTORIAL_TEXT_11;Go ahead! Let's see what happened.;¡Adelante! Dirígete hacia allí.
@@ -57,8 +57,8 @@ TUTORIAL_TEXT_20;How can this be!? Another  theft, this time at the park.\nCome 
 TUTORIAL_TEXT_21;Wow, that's bat luck.\nThe thief has escaped again.;Vaya, que mala suerte.\nEl ladrón ha vuelto a escapar.
 TUTORIAL_TEXT_22;And if that's not enough, the victim is not sure about what he/she saw.\nI know it due to the question mark on the word bubble.;Y por si fuera poco, la víctima no está segura de lo que ha visto.\nLo sé por el interrogante del bocadillo, ¿ves?
 TUTORIAL_TEXT_23;This means that, out of the two data, one is true and the other is dubious.;Eso quiere decir que, de los dos datos, uno es cierto y el otro dudoso.
-TUTORIAL_TEXT_24;May be the thief has raindeer antlers.\nAnd maybe he/she also wears a bow tie.;Puede ser que el ladrón tenga cuernos de reno.\nPero también puede ser que lleve una pajarita.
-TUTORIAL_TEXT_25;Unfortunately we don't know which of them is the dubious one.\nNor f we can trust that data, it might not be true!;Desgraciadamente no sabemos cuál de ellos es el dudoso.\nNi si nos podemos fiar de dicho dato, ¡podría ser falso!
+TUTORIAL_TEXT_24;Maybe the thief has raindeer antlers.\nAnd maybe he/she also wears a bow tie.;Puede ser que el ladrón tenga cuernos de reno.\nPero también puede ser que lleve una pajarita.
+TUTORIAL_TEXT_25;Unfortunately we don't know which of them is the dubious one.\nNor if we can trust that data, it might not be true!;Desgraciadamente no sabemos cuál de ellos es el dudoso.\nNi si nos podemos fiar de dicho dato, ¡podría ser falso!
 TUTORIAL_TEXT_26;But don't blame it on the villager. Poor thing, he didn't get a good lok at it…\nWell, let's recap. For now we know the following:;Pero no culpes al aldeano. Pobrecito, no ha podido verlo bien…\nBueno, recapitulemos. Por ahora sabemos lo siguiente:
 TUTORIAL_TEXT_27;The thief is blue in color, has two eyes and wears a party hat.\nWe also know he/she has raindeer antlers and/or a bow tie.;El ladrón es azul, tiene dos ojos y lleva un gorro de fiesta.\nTambién sabemos que tiene cuernos de reno y/o una pajarita.
 TUTORIAL_TEXT_28;Hmmm, I'm not sure if we have enough information…;Hmmm, no sé si tenemos suficiente información…
