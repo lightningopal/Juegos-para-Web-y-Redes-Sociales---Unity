@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.IO;
 using UnityEngine.Video;
-using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Clase VideoSceneManager, que controla la escena del vídeo del logo
@@ -28,12 +27,23 @@ public class VideoSceneManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Método Update, que se llama cada frame
+    /// </summary>
+    void Update()
+    {
+        // Si el jugador hace click con el ratón
+        if (Input.GetMouseButtonDown(0))
+        {
+            ChangeToMainMenu(videoPlayer);
+        }
+    }
+
+    /// <summary>
     /// Método ChangeToMainMenu, que cambia al menú principal cuando acaba el vídeo
     /// </summary>
     /// <param name="vp">VideoPlayer vp</param>
     private void ChangeToMainMenu(VideoPlayer vp)
     {
-        //SceneManager.LoadScene("MainMenu");
         levelLoader.LoadScene(0);
         levelLoader.UseCircle(true);
     }
