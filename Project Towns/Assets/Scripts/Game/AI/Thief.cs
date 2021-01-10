@@ -134,7 +134,7 @@ public class Thief : NPC
         // Sexta rama
         MoveToDestinationNode moveToDestinationNode = new MoveToDestinationNode(this);
 
-        WanderNode wanderNode = new WanderNode(this);
+        WanderNode wanderNode = new WanderNode(this, this.stillTime);
         EnoughSpaceNode enoughSpaceNode = new EnoughSpaceNode(this);
         Sequence sequence4 = new Sequence(new List<Node>() { enoughSpaceNode, wanderNode});
 

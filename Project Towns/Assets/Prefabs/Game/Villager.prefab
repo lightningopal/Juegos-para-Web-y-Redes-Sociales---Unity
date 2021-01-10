@@ -428,6 +428,7 @@ MonoBehaviour:
   marshallInfoRange: 7
   MINIMUM_DESTINY_DISTANCE: 10
   timeToChangeZone: 10
+  stillTime: 2.5
   WALKING_SPEED: 2
   RUNNING_SPEED: 4
   isRunning: 0

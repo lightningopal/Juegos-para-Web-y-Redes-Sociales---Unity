@@ -4,32 +4,54 @@ public class WanderNode : Node
 {
     private NPC npc;
 
-    public WanderNode(NPC npc_)
+    private float stillTime = 1.0f;
+    private float nextChange = 0.0f;
+    private bool isMoving = true;
+    private Vector3 newDestination;
+
+    public WanderNode(NPC npc_, float stillTime_)
     {
         this.npc = npc_;
+        this.stillTime = stillTime_;
     }
 
     public override NodeState Evaluate()
     {
         //Debug.Log("WanderNode");
-        // Si ha llegado al punto deseado, cambia de dirección
-        if (npc.thisAgent.remainingDistance <= npc.MINIMUM_DESTINY_DISTANCE)
+        if (isMoving)
         {
-            // Se cambia la dirección
-            Vector3 npcPosition = npc.transform.position;
-            float randomXChange = Random.Range(-npc.WANDER_RADIUS, npc.WANDER_RADIUS);
-            float randomZChange = Random.Range(-npc.WANDER_RADIUS, npc.WANDER_RADIUS);
-
-            Vector3 newDestination = new Vector3(npcPosition.x + randomXChange, npcPosition.y, npcPosition.z + randomZChange);
-            npc.thisAgent.SetDestination(newDestination);
-        }
-        if (npc.isRunning)
-        {
-            npc.thisAnimator.SetTrigger("run");
+            // Si ha llegado al punto deseado, se queda quieto
+            if (npc.thisAgent.remainingDistance <= 0.5f)
+            {
+                isMoving = false;
+                nextChange = Time.time + stillTime;
+            }
+            if (npc.isRunning)
+            {
+                npc.thisAnimator.SetTrigger("run");
+            }
+            else
+            {
+                npc.thisAnimator.SetTrigger("walk");
+            }
         }
         else
         {
-            npc.thisAnimator.SetTrigger("walk");
+            if (npc.thisAgent.hasPath)
+                npc.thisAgent.ResetPath();
+            npc.thisAnimator.SetTrigger("idle");
+            // Se comprueba el tiempo para volver a moverse
+            if (Time.time >= nextChange)
+            {
+                isMoving = true;
+                // Se cambia la dirección
+                Vector3 npcPosition = npc.transform.position;
+                float randomXChange = Random.Range(-npc.WANDER_RADIUS, npc.WANDER_RADIUS);
+                float randomZChange = Random.Range(-npc.WANDER_RADIUS, npc.WANDER_RADIUS);
+
+                newDestination = new Vector3(npcPosition.x + randomXChange, npcPosition.y, npcPosition.z + randomZChange);
+                npc.thisAgent.SetDestination(newDestination);
+            }
         }
 
         // Return SUCCESS

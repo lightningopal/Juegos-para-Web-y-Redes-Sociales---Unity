@@ -15,6 +15,8 @@ public class NPC : MonoBehaviour
     public float MINIMUM_DESTINY_DISTANCE = 0.5f;
     [Tooltip("Tiempo que se lleva en una zona")]
     public float timeToChangeZone = 30.0f;
+    [Tooltip("Tiempo que se queda quieto al hacer wander cada vez que llega a su destino")]
+    public float stillTime = 2.5f;
     [Tooltip("Velocidad del NPC andando")]
     public float WALKING_SPEED = 2.0f;
     [Tooltip("Velocidad del NPC corriendo")]
