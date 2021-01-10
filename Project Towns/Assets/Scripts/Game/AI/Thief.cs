@@ -83,6 +83,8 @@ public class Thief : NPC
                 actualZone.villagerCount++;
                 destinationZone = null;
                 thisAgent.speed = WALKING_SPEED;
+                isRunning = false;
+                thisAnimator.SetTrigger("walk");
                 thisAgent.areaMask = (int)Mathf.Pow(2, NavMesh.GetAreaFromName("Zone"));
             }
         }
@@ -102,9 +104,17 @@ public class Thief : NPC
             int randomSpeedProbability = Random.Range(0, 100);
 
             if (randomSpeedProbability < SPEED_RUN_PROBABILITY)
+            {
                 thisAgent.speed = RUNNING_SPEED;
+                isRunning = true;
+                thisAnimator.SetTrigger("run");
+            }
             else
+            {
                 thisAgent.speed = WALKING_SPEED;
+                isRunning = false;
+                thisAnimator.SetTrigger("walk");
+            }       
         }
 
         // Establecer tiempo para cambiar de zona
