@@ -14,6 +14,7 @@ public class VideoSceneManager : MonoBehaviour
     [Tooltip("Referencia al video player")]
     [SerializeField]
     private VideoPlayer videoPlayer = null;
+    private bool isLoading = false;
 
     /// <summary>
     /// Método Start, que se llama antes del primer frame
@@ -34,7 +35,11 @@ public class VideoSceneManager : MonoBehaviour
         // Si el jugador hace click con el ratón
         if (Input.GetMouseButtonDown(0))
         {
-            ChangeToMainMenu(videoPlayer);
+            if (!isLoading)
+            {
+                videoPlayer.Pause();
+                ChangeToMainMenu(videoPlayer);
+            }
         }
     }
 
@@ -44,6 +49,7 @@ public class VideoSceneManager : MonoBehaviour
     /// <param name="vp">VideoPlayer vp</param>
     private void ChangeToMainMenu(VideoPlayer vp)
     {
+        isLoading = true;
         levelLoader.LoadScene(0);
         levelLoader.UseCircle(true);
     }
