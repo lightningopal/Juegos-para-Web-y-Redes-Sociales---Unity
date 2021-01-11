@@ -528,10 +528,10 @@ MonoBehaviour:
   fakeWitnessProbability: 50
   timeNextSteal: 0
   timeBetweenSteals: 60
-  marshallDetectRange: 40
+  marshallDetectRange: 25
   STEALING_SPEED: 10
   MINIMUM_STEAL_DISTANCE: 2
-  CLOSE_VILLAGERS_RANGE: 10
+  CLOSE_VILLAGERS_RANGE: 15
   victim: {fileID: 0}
   villagersInRange: []
   previousZone:

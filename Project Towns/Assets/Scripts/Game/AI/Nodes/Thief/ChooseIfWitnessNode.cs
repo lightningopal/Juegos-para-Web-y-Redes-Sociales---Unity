@@ -19,7 +19,9 @@ public class ChooseIfWitnessNode : Node
             thief.isWitness = true;
             thief.CalculateFakeItem();
         }
-            
+        else
+            thief.isWitness = false;
+
         return _nodeState;
     }
 }

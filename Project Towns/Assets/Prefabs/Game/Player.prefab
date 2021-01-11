@@ -280,6 +280,8 @@ MonoBehaviour:
   navMesh_acceleration: 24
   navMesh_stoppingDistance: 0.2
   navMesh_autoBraking: 1
+  m_Raycaster: {fileID: 0}
+  m_EventSystem: {fileID: 0}
 --- !u!195 &2557029410346978614
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -292,7 +294,7 @@ NavMeshAgent:
   m_Radius: 0.5
   m_Speed: 8
   m_Acceleration: 12
-  avoidancePriority: 50
+  avoidancePriority: 99
   m_AngularSpeed: 5000
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1

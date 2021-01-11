@@ -20,7 +20,7 @@ public class Robbery : MonoBehaviour
     private RectTransform canvasRT;
     [Tooltip("Separación del borde")]
     [SerializeField]
-    private float padding = 60.0f;
+    private float padding = 15.0f;
     private float paddingX;
     private float paddingY;
 

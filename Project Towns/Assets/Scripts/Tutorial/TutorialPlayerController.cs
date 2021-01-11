@@ -27,6 +27,8 @@ public class TutorialPlayerController : MonoBehaviour
     private ParticleSystem effectPrefab = null;
     [Tooltip("Instancia del efecto")]
     private ParticleSystem effectInstance = null;
+    [Tooltip("Booleano que indica si tiene el ratón pulsado")]
+    private bool hasMouseOnClick = false;
 
     [Header("Rangos")]
     [Tooltip("Rango para llegar al robo")]
@@ -97,9 +99,13 @@ public class TutorialPlayerController : MonoBehaviour
         if (tutorialManager.playerHasToWait)
             return;
 
+        #region OneClick
         // Si el jugador hace click con el ratón
         if (Input.GetMouseButtonDown(0))
         {
+            // Establecemos que ha pulsado el ratón
+            hasMouseOnClick = true;
+
             // Si puede moverse
             if (tutorialManager.playerCanMove &&
                 !tutorialManager.event22MustArrestHornsVillager &&
@@ -278,6 +284,50 @@ public class TutorialPlayerController : MonoBehaviour
                 }
             }
         }
+        #endregion
+
+        // Si levanta el ratón, no está haciendo click
+        if (Input.GetMouseButtonUp(0))
+            hasMouseOnClick = false;
+
+        #region Click Contínuo
+        // Si el jugador hace click con el ratón
+        if (Input.GetMouseButton(0))
+        {
+            // Si puede moverse
+            if (tutorialManager.playerCanMove &&
+                !tutorialManager.event22MustArrestHornsVillager &&
+                !tutorialManager.event26MustArrestThief)
+            {
+                // Si el juego está en pausa, no realizamos cálculos
+                if (TutorialGameManager.instance.gamePaused)
+                    return;
+
+                // Si la partida ha acabado, no realizamos cálculos
+                if (TutorialGameManager.instance.gameOver)
+                    return;
+
+                // Si está el ratón sobre la UI, no se lanza Raycast
+                if (!hasMouseOnClick && IsPointerOverUIObject())
+                    return;
+
+                // En caso contrario, se lanza el Raycast
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out hit, 100.0f, ~playerLayerMask))
+                {
+                    // Comprueba con qué ha chocado el raycast
+                    //Debug.Log("You selected the: " + hit.transform.name);
+
+                    // Va hacia allí
+                    destination = hit.point;
+                    thisAgent.SetDestination(destination);
+                    if (!thisAnimator.GetCurrentAnimatorStateInfo(0).IsName("Marshallow_Run"))
+                        thisAnimator.SetTrigger("run");
+                }
+            }
+        }
+        #endregion
 
         // Si llega al destino, cambia de animación
         if (Vector3.Distance(destination, transform.position) <= 1.0f)
