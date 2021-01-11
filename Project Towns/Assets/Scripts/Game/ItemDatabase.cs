@@ -25,6 +25,8 @@ public class ItemDatabase : MonoBehaviour
     [Header("Otros")]
     [Tooltip("Objetos de no tener objeto")]
     public List<Item> noItems = new List<Item>(); 
+    [Tooltip("Emojis")]
+    public List<Item> emojis = new List<Item>();
     #endregion
 
     #region MétodosUnity

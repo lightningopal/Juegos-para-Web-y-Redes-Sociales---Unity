@@ -26,7 +26,7 @@ public class NPC : MonoBehaviour
     public bool isRunning = false;
     [Tooltip("Radio del NPC para merodear a su alrededor")]
     public float WANDER_RADIUS = 2.0f;
-    
+
     [Header("Información sobre el NPC")]
     [Tooltip("Booleano que indica si es testigo")]
     [HideInInspector]
@@ -95,6 +95,9 @@ public class NPC : MonoBehaviour
     [Tooltip("GameObject que contiene la información")]
     [SerializeField]
     protected InformationObject informationGameObject = null;
+    [Tooltip("GameObject que contiene los emoticonos")]
+    [SerializeField]
+    protected InformationObject emojiGameObject = null;
     [Tooltip("Referencia al jugador")]
     [HideInInspector]
     public Transform playerTransform;
@@ -210,7 +213,7 @@ public class NPC : MonoBehaviour
         if (items.hatItem != null)
             if (items.hatItem.itemName != ItemDatabase.instance.noItems[0].itemName)
                 Instantiate(items.hatItem.itemGameObject, hatParent.transform);
-                
+
 
         if (items.hornItem != null)
             if (items.hornItem.itemName != ItemDatabase.instance.noItems[1].itemName)
@@ -236,6 +239,9 @@ public class NPC : MonoBehaviour
     {
         if (!informationGameObject.gameObject.activeSelf)
         {
+            // Se oculta el bocadillo de estado, en caso de que estuviese activo
+            HideEmoji();
+
             // Se destruye el efecto que avisa al jugador
             if (infoVFX != null)
             {
@@ -262,6 +268,36 @@ public class NPC : MonoBehaviour
             informationGameObject.gameObject.SetActive(false);
             isWitness = false;
             isVictim = false;
+        }
+    }
+
+    /// <summary>
+    /// Método ShowEmoji, que se llama mientras el aldeano ejecuta el Wander
+    /// y muestra el bocadillo de estado del aldeano
+    /// </summary>
+    public void ShowEmoji()
+    {
+        // Comprobamos si no está dando información
+        if (!informationGameObject.gameObject.activeSelf)
+        {
+            if (!emojiGameObject.gameObject.activeSelf)
+            {
+                // Se elige un número entre 0 y 3 al azar para mostrar el emoji
+                int emoji = Random.Range(0, 4);
+                emojiGameObject.item1Sprite.sprite = ItemDatabase.instance.emojis[emoji].itemSprite;
+                emojiGameObject.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Método HideEmoji, que oculta el bocadillo de estado del aldeano
+    /// </summary>
+    public void HideEmoji()
+    {
+        if (emojiGameObject.gameObject.activeSelf)
+        {
+            emojiGameObject.gameObject.SetActive(false);
         }
     }
     #endregion
