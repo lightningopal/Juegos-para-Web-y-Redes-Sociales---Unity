@@ -15,11 +15,12 @@ MonoBehaviour:
   difficultyIndex: 0
   villagers: 20
   catchAttempts: 3
-  thiefRobberies: 8
+  thiefRobberies: 6
   victimSafeProbability: 70
   victimVeracityProbability: 80
   witnessSafeProbability: 50
   witnessVeracityProbability: 70
   VILLAGER_SPEED_RUN_PROBABILITY: 20
-  timeBetweenSteals: 30
+  timeBetweenSteals: 20
   THIEF_SPEED_RUN_PROBABILITY: 100
+  fakeWitnessProbability: 50

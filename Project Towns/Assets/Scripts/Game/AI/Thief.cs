@@ -121,7 +121,19 @@ public class Thief : NPC
         timeToNextZone = Time.time + timeToChangeZone;
 
         // Establecertiempo para robar
-        timeNextSteal = Time.time + timeBetweenSteals;
+        timeNextSteal = Time.time + (timeBetweenSteals / 2);
+    }
+
+    /// <summary>
+    /// Método OnDrawGizmosSelected, que dibuja gizmos en la escena al seleccionar el personaje
+    /// </summary>
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, marshallDetectRange);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, CLOSE_VILLAGERS_RANGE);
     }
     #endregion
 

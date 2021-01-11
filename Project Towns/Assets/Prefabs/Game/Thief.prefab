@@ -531,7 +531,7 @@ MonoBehaviour:
   marshallDetectRange: 25
   STEALING_SPEED: 10
   MINIMUM_STEAL_DISTANCE: 2
-  CLOSE_VILLAGERS_RANGE: 15
+  CLOSE_VILLAGERS_RANGE: 16
   victim: {fileID: 0}
   villagersInRange: []
   previousZone:
