@@ -35255,6 +35255,19 @@ MonoBehaviour:
   - itemName: NoNeckItem
     itemGameObject: {fileID: 0}
     itemSprite: {fileID: 21300000, guid: 7773851e147fc4b4b8fb1dfd240bf87c, type: 3}
+  emojis:
+  - itemName: DoubtIcon
+    itemGameObject: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: 2a5ecc9b22d8f794196bbea3d96f98a2, type: 3}
+  - itemName: HappyIcon
+    itemGameObject: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: 4c2cffbb52e54e741814ab427a54009c, type: 3}
+  - itemName: PartyIcon
+    itemGameObject: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: f554cd914dc0e1341915701b8c83572b, type: 3}
+  - itemName: SleepIcon
+    itemGameObject: {fileID: 0}
+    itemSprite: {fileID: 21300000, guid: c63d069d1bfe74747b5dc2b9b29e7452, type: 3}
 --- !u!4 &662612288
 Transform:
   m_ObjectHideFlags: 0

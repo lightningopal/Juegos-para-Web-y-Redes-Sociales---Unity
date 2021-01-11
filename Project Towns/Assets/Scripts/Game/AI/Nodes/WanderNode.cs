@@ -25,6 +25,14 @@ public class WanderNode : Node
             {
                 isMoving = false;
                 nextChange = Time.time + stillTime;
+                // Si no es víctima ni testigo, muestra el bocadillo de emoticono al quedarse quieto
+                if (!npc.isWitness && !npc.isVictim)
+                {
+                    if (Random.value <= 0.3f)
+                    {
+                        npc.ShowEmoji();
+                    }
+                }
             }
             if (npc.isRunning)
             {
@@ -43,6 +51,9 @@ public class WanderNode : Node
             // Se comprueba el tiempo para volver a moverse
             if (Time.time >= nextChange)
             {
+                // Al volver a moverse, esconde el bocadillo de emoticono, si lo tiene activo
+                npc.HideEmoji();
+
                 isMoving = true;
                 // Se cambia la dirección
                 Vector3 npcPosition = npc.transform.position;
