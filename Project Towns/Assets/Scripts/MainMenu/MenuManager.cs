@@ -61,7 +61,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     private Button invisibleButton = null;
 
-    private int mobileTapped = -1;
+    public int mobileTapped = -1;
     #endregion
 
     #region MétodosUnity
@@ -165,52 +165,81 @@ public class MenuManager : MonoBehaviour
             startText.text = LocalizationSystem.GetLocalizedValue("START_DESKTOP");
         }
     }
-    
+
+    /// <summary>
+    /// Método SelectMode, que selecciona el modo en el menú principal
+    /// </summary>
+    /// <param name="mode">Modo elegido</param>
     public void SelectMode(int mode)
     {
-        /*if (!Application.isMobilePlatform)
+        // Si es escritorio
+        if (!Application.isMobilePlatform)
         {
-            optionsManager.StartGameWithDifficulty(difficulty);
-        }
-        else
-        {*/
-        // Si ya ha hecho tap
-        if (mobileTapped == mode)
-        {
-            invisibleButton.Select();
-            if (mobileTapped == 0)
+            if (mode == 0)
             {
                 levelLoader.LoadCanvas(4);
                 levelLoader.UseCircle(false);
             }
-            else if (mobileTapped == 1)
+            else if (mode == 1)
             {
                 levelLoader.LoadScene(2);
                 levelLoader.UseCircle(true);
             }
-            mobileTapped = -1;
         }
-        // Si no
+        // Si es móvil
         else
         {
-            mobileTapped = mode;
-
-            for (int i = 0; i < menuButtonsTapText.Length; i++)
+            // Si ya ha hecho tap
+            if (mobileTapped == mode)
             {
-                if (i == mode)
+                if (mobileTapped == 0)
                 {
-                    menuButtonsTapText[i].gameObject.SetActive(true);
-                    menuButtons[i].Select();
-                    menuCustomButtons[i].isSelected = true;
+                    menuCustomButtons[0].wasClicked = true;
+                    levelLoader.LoadCanvas(4);
+                    levelLoader.UseCircle(false);
+                }
+                else if (mobileTapped == 1)
+                {
+                    menuCustomButtons[1].wasClicked = true;
+                    levelLoader.LoadScene(2);
+                    levelLoader.UseCircle(true);
+                }
+                invisibleButton.Select();
+                mobileTapped = -1;
+            }
+            // Si no
+            else
+            {
+                mobileTapped = mode;
+
+                for (int i = 0; i < menuButtonsTapText.Length; i++)
+                {
+                    if (i == mode)
+                    {
+                        menuButtonsTapText[i].gameObject.SetActive(true);
+                        menuButtons[i].Select();
+                        menuCustomButtons[i].isSelected = true;
+                    }
                 }
             }
         }
-        //}
     }
 
+    /// <summary>
+    /// Método ResetMobileTap
+    /// </summary>
     public void ResetMobileTap()
     {
         mobileTapped = -1;
+    }
+
+    /// <summary>
+    /// Método ResetMobileClicked
+    /// </summary>
+    public void ResetMobileClicked()
+    {
+        menuCustomButtons[0].wasClicked = false;
+        menuCustomButtons[1].wasClicked = false;
     }
     #endregion
 }

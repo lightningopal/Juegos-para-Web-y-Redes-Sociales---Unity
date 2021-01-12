@@ -54,6 +54,9 @@ public class CustomMenuButton : Selectable, IPointerEnterHandler, IPointerExitHa
     [Tooltip("Booleano que indica si está seleccionado")]
     [HideInInspector]
     public bool isSelected = false;
+    [Tooltip("Booleano que indica si fue clicado las 2 veces")]
+    [HideInInspector]
+    public bool wasClicked = false;
 
     #endregion
 
@@ -93,7 +96,7 @@ public class CustomMenuButton : Selectable, IPointerEnterHandler, IPointerExitHa
     {
         base.OnPointerExit(eventData);
 
-        if (!isClicked && !isSelected)
+        if (!isClicked && !isSelected && !wasClicked)
         {
             buttonText.color = normalColor;
 
@@ -143,6 +146,8 @@ public class CustomMenuButton : Selectable, IPointerEnterHandler, IPointerExitHa
             buttonText.rectTransform.Rotate(new Vector3(0, 0, 1), -rotationTextAngle);
 
             secondImage.SetActive(false);
+
+            EventSystem.current.SetSelectedGameObject(null);
         }
         isClicked = false;
     }
@@ -167,14 +172,15 @@ public class CustomMenuButton : Selectable, IPointerEnterHandler, IPointerExitHa
             buttonText.rectTransform.Rotate(new Vector3(0, 0, -1), rotationTextAngle);
 
             secondImage.SetActive(false);
+
+            MenuManager.instance.ResetMobileTap();
         }
 
-        //if (Application.isMobilePlatform)
-        //{
-        isSelected = false;
-        tapAgainText.gameObject.SetActive(false);
-        //}
-
+        if (Application.isMobilePlatform)
+        {
+            isSelected = false;
+            tapAgainText.gameObject.SetActive(false);
+        }
     }
     #endregion
 }

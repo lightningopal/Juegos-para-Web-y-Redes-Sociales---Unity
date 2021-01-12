@@ -3542,6 +3542,7 @@ MonoBehaviour:
   normalColor: {r: 0.011764706, g: 0, b: 0.3764706, a: 1}
   highlightedColor: {r: 1, g: 1, b: 1, a: 1}
   isSelected: 0
+  wasClicked: 0
 --- !u!114 &608982428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3678,8 +3679,8 @@ RectTransform:
   m_Father: {fileID: 608982426}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.4, y: 0.2}
-  m_AnchorMax: {x: 0.72, y: 0.4}
+  m_AnchorMin: {x: 0.4, y: 0.23}
+  m_AnchorMax: {x: 0.72, y: 0.43}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3718,7 +3719,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: TAP AGAIN
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ac4b321f3063d064594c32f4ba0c0d1a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 25caccdb1f63bd94b8329892135a3100, type: 2}
   m_sharedMaterial: {fileID: -3848220882934864582, guid: ac4b321f3063d064594c32f4ba0c0d1a,
     type: 2}
   m_fontSharedMaterials: []
@@ -3783,7 +3784,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &642914926
@@ -5462,6 +5463,7 @@ MonoBehaviour:
   normalColor: {r: 0.011764706, g: 0, b: 0.3764706, a: 1}
   highlightedColor: {r: 1, g: 1, b: 1, a: 1}
   isSelected: 0
+  wasClicked: 0
 --- !u!1 &944157857
 GameObject:
   m_ObjectHideFlags: 0
@@ -7340,8 +7342,8 @@ RectTransform:
   m_Father: {fileID: 926245933}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.2, y: 0.15}
-  m_AnchorMax: {x: 0.72, y: 0.35}
+  m_AnchorMin: {x: 0.2, y: 0.18}
+  m_AnchorMax: {x: 0.72, y: 0.38}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7380,7 +7382,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: TAP AGAIN
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ac4b321f3063d064594c32f4ba0c0d1a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 25caccdb1f63bd94b8329892135a3100, type: 2}
   m_sharedMaterial: {fileID: -3848220882934864582, guid: ac4b321f3063d064594c32f4ba0c0d1a,
     type: 2}
   m_fontSharedMaterials: []
@@ -7445,7 +7447,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1232843710
@@ -7584,6 +7586,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: PressButton
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1859788401}
+        m_MethodName: ResetMobileClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1237321786
@@ -10230,6 +10243,7 @@ MonoBehaviour:
   - {fileID: 1232843709}
   - {fileID: 642914925}
   invisibleButton: {fileID: 1070726327}
+  mobileTapped: -1
 --- !u!4 &1859788402
 Transform:
   m_ObjectHideFlags: 0

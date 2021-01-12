@@ -115,7 +115,7 @@ public class CustomDifficultyButton : Selectable, IPointerEnterHandler, IPointer
 
         buttonImage.color = new Color(buttonImage.color.r / clickAlpha, buttonImage.color.g / clickAlpha, buttonImage.color.b / clickAlpha);
         
-        if (!mouseOnButton && !isSelected)
+        if (!mouseOnButton)
         {
             buttonText.color = normalColor;
 
