@@ -33,11 +33,11 @@ TIME;TIME;TIEMPO
 START_DESKTOP;CLICK TO START;HAZ CLIC PARA COMENZAR
 START_MOBILE;TAP TO START;PULSA PARA COMENZAR
 ARREST_TEXT;ARREST;ARRESTAR
-TUTORIAL_TEXT_0;Well well, it was time for you to appear dear grandson.\nIf you are going to replace me as the Marshall, Who better than me to help you?;Bueno bueno, ya era hora de que aparecieras querido nieto.\nSi vas a sustituirme como Marshall, ¿quién mejor que yo para ayudarte?
-TUTORIAL_TEXT_1;YolkTown is a wonderful town, as it people is.\nThey won't give you many troubles in the whole year.;YolkTown es un pueblo maravilloso, como su gente.\nNo te darán muchos problemas en todo el año.
+TUTORIAL_TEXT_0;Well well, it was abiut time for you to appear dear grandson.\nIf you are going to replace me as the Marshall, Who better than me to help you?;Bueno bueno, ya era hora de que aparecieras querido nieto.\nSi vas a sustituirme como Marshall, ¿quién mejor que yo para ayudarte?
+TUTORIAL_TEXT_1;YolkTown is as wonderful as its people.\nThey won't give you any trouble.;YolkTown es un pueblo maravilloso, como su gente.\nNo te darán muchos problemas en todo el año.
 TUTORIAL_TEXT_2;However, I'm afraid it's the town's festivities.\nAnd that means more fuss and theft.;Pero me temo que son las fiestas del pueblo.\nY eso significa más alboroto y más robos.
 TUTORIAL_TEXT_3;That's why you are here, Marshallow.;Pero para eso estás tú, Marshallow.
-TUTORIAL_TEXT_4;Well, first of all is to know how to move.\nCome on, try taping on any surface.;Bien, lo primero de todo es saber cómo moverse.\nVamos, prueba a pulsar en cualquier superficie.
+TUTORIAL_TEXT_4;Well, first of all, you need to learn how to move.\nCome on, try tapping on any surface.;Bien, lo primero de todo es saber cómo moverse.\nVamos, prueba a pulsar en cualquier superficie.
 TUTORIAL_TEXT_5;Great! You are good at this.;¡De lujo! Que bien se te da esto.
 TUTORIAL_TEXT_6;Good, see those buttons at the sides of the screen?\nTry pressing them. Don't be shy.;Bien, ¿ves esos botones a los lados de la pantalla?\nPrueba a pulsarlos. No te cortes.
 TUTORIAL_TEXT_7;My goodness! You are wonderful at this.\nI will wait for you at the forge.;¡Madre mía! Esto se te da de maravilla.\nTe espero en la forja.
@@ -46,28 +46,28 @@ TUTORIAL_TEXT_9;Wait a minute… Oh my!\nThere has been a robbery at the town ha
 TUTORIAL_TEXT_10;See that yellow arrow with exclamation marks?\nIt's showing you the location of the robbery.;¿Ves esa flecha amarilla con exclamaciones?\nTe está indicando el punto exacto del robo.
 TUTORIAL_TEXT_11;Go ahead! Let's see what happened.;¡Adelante! Dirígete hacia allí.
 TUTORIAL_TEXT_12;Damn it! The thief is on the run…\nBut look, the victim has some information.;¡Maldita sea! El ladrón se ha dado a la fuga…\nPero mira, la víctima ha conseguido ver algo.
-TUTORIAL_TEXT_13;Well, it seems like the thief is blue in color and has two eyes.\nWell, it's not much, but it's better than anything.;Vaya, según parece el ladrón es azul y tiene dos ojos.\nBueno, no es mucho, pero es mejor que nada.
+TUTORIAL_TEXT_13;Well, it seems like the thief is blue in color and has two eyes.\nIt's not much, but we have something to start with.;Vaya, según parece el ladrón es azul y tiene dos ojos.\nBueno, no es mucho, pero es mejor que nada.
 TUTORIAL_TEXT_14;Have you seen that villager?\nHe says he witnessed the robbery.;¿Has visto a este aldeano?\nDice que ha presenciado el robo.
 TUTORIAL_TEXT_15;The thief also wears a party hat, interesting.\nWell, as you can see, he has only given you one piece of information.;El ladrón también lleva un gorro de fiesta, interesante.\nBueno, como has podido comprobar, solo te ha dado un dato.
 TUTORIAL_TEXT_16;That's because he is a witness, not the robbery victim.\nVictims have exclamation marks over their heads.;Eso es porque es un testigo, no la víctima del robo.\nLas víctimas tienen exclamaciones encima de su cabeza.
-TUTORIAL_TEXT_17;Witnesses have question marks.\nIn adition, they keep on moving after witnessing the theft.;Los testigos tienen interrogaciones.\nAdemás siguen moviéndose tras presenciar el robo.
+TUTORIAL_TEXT_17;While witnesses have question marks.\nIn adition, they keep on moving after witnessing the theft.;Los testigos tienen interrogaciones.\nAdemás siguen moviéndose tras presenciar el robo.
 TUTORIAL_TEXT_18;Unlike the victims, who wait for you\nin the area of the crime.;A diferencia de las víctimas, que se quedan esperándote.
 TUTORIAL_TEXT_19;Keep your eyes open, you might see more witnesses.\nWith that said, let's get to work! We have a thie…;Ten los dos ojos abiertos, podrías volver a cruzarte con más testigos.\nDicho esto, ¡al lío! Hay un ladrón que atra…
 TUTORIAL_TEXT_20;How can this be!? Another  theft, this time at the park.\nCome on, let's go get him!;¿!Será posible!? Otro robo, esta vez en el parque.\nVenga, ¡a por él!
 TUTORIAL_TEXT_21;Wow, that's bad luck.\nThe thief has escaped again.;Vaya, que mala suerte.\nEl ladrón ha vuelto a escapar.
-TUTORIAL_TEXT_22;And if that's not enough, the victim is not sure about what he/she saw.\nI know it due to the question mark on the word bubble.;Y por si fuera poco, la víctima no está segura de lo que ha visto.\nLo sé por el interrogante del bocadillo, ¿ves?
+TUTORIAL_TEXT_22;And if that's not enough, the victim is not sure about what he saw.\nI know it due to the question mark on the word bubble.;Y por si fuera poco, la víctima no está segura de lo que ha visto.\nLo sé por el interrogante del bocadillo, ¿ves?
 TUTORIAL_TEXT_23;This means that, out of the two data, one is true and the other is dubious.;Eso quiere decir que, de los dos datos, uno es cierto y el otro dudoso.
-TUTORIAL_TEXT_24;Maybe the thief has raindeer antlers.\nAnd maybe he/she also wears a bow tie.;Puede ser que el ladrón tenga cuernos de reno.\nPero también puede ser que lleve una pajarita.
+TUTORIAL_TEXT_24;Maybe the thief has raindeer antlers.\nAnd maybe he also wears a bow tie.;Puede ser que el ladrón tenga cuernos de reno.\nPero también puede ser que lleve una pajarita.
 TUTORIAL_TEXT_25;Unfortunately we don't know which of them is the dubious one.\nNor if we can trust that data, it might not be true!;Desgraciadamente no sabemos cuál de ellos es el dudoso.\nNi si nos podemos fiar de dicho dato, ¡podría ser falso!
 TUTORIAL_TEXT_26;But don't blame it on the villager. Poor thing, he didn't get a good lok at it…\nWell, let's recap. For now we know the following:;Pero no culpes al aldeano. Pobrecito, no ha podido verlo bien…\nBueno, recapitulemos. Por ahora sabemos lo siguiente:
-TUTORIAL_TEXT_27;The thief is blue in color, has two eyes and wears a party hat.\nWe also know he/she has raindeer antlers and/or a bow tie.;El ladrón es azul, tiene dos ojos y lleva un gorro de fiesta.\nTambién sabemos que tiene cuernos de reno y/o una pajarita.
+TUTORIAL_TEXT_27;The thief is blue in color, has two eyes and wears a party hat.\nWe also know he has raindeer antlers and/or a bow tie.;El ladrón es azul, tiene dos ojos y lleva un gorro de fiesta.\nTambién sabemos que tiene cuernos de reno y/o una pajarita.
 TUTORIAL_TEXT_28;Hmmm, I'm not sure if we have enough information…;Hmmm, no sé si tenemos suficiente información…
-TUTORIAL_TEXT_29;Lucky! This villager says he/she witnessed the robbery.\nAnd tells us that is wearing a bow tie.;¡Qué suerte! Este aldeano dice que ha visto el robo.\nY nos confirma que el ladrón lleva pajarita.
-TUTORIAL_TEXT_30;Great! Now we can really find him/her.;¡Genial! Ahora sí que podemos dar con él.
+TUTORIAL_TEXT_29;Lucky! This villager says he witnessed the robbery.\nAnd tells us that is wearing a bow tie.;¡Qué suerte! Este aldeano dice que ha visto el robo.\nY nos confirma que el ladrón lleva pajarita.
+TUTORIAL_TEXT_30;Great! Now we can really find him.;¡Genial! Ahora sí que podemos dar con él.
 TUTORIAL_TEXT_31;By the way, I almost forget!\nBe careful, the thief might present himself as a witness.;Por cierto, ¡casi se me olvida!\nLleva mucho cuidado, el ladrón puede hacerse pasar por testigo.
-TUTORIAL_TEXT_32;Good news is that he/she will always provide a dubious fact.\nYou wont know if that one fact is true or not.;La buena noticia es que siempre te dará un dato dudoso.\nNo sabrás si ese único dato es cierto o no.
+TUTORIAL_TEXT_32;Good news is that he will always provide a dubious fact.\nYou wont know if that one fact is true or not.;La buena noticia es que siempre te dará un dato dudoso.\nNo sabrás si ese único dato es cierto o no.
 TUTORIAL_TEXT_33;Remember? The one with the question mark on the word bubble.;¿Recuerdas? El que tiene un interrogante en el bocadillo.
-TUTORIAL_TEXT_34;Therefore, if a witness gives you dubious information and looks like the thief, keep an eye on him, it might be him!;Por tanto, si un testigo te da información dudosa y se parece al ladrón, échale un ojo, ¡podría ser él!
+TUTORIAL_TEXT_34;Therefore, if a witness gives you dubious information and looks like the thief, keep an eye on him!;Por tanto, si un testigo te da información dudosa y se parece al ladrón, échale un ojo, ¡podría ser él!
 TUTORIAL_TEXT_35;Although I advise you not to take too many risks.\nYou don't want to make a mistake on your first day of work.;Aunque te aconsejo que no te arriesgues demasiado.\nNo querrás equivocarte en tu primer día de trabajo.
 TUTORIAL_TEXT_36;Okay, enough talk, head to the square.\nIt's very likely that the thief is there. Go after him!;Bueno basta de cháchara, dirígete a la plaza.\nEs muy probable que el ladrón esté ahí. ¡A por él!
 TUTORIAL_TEXT_37;Ey, there's the thief!\nOr is it that other one?;Eh, ¡ahí está el ladrón!\n¿O es ese otro?
@@ -78,14 +78,14 @@ TUTORIAL_TEXT_41;I made a mistake, how embarrassing!\nI'm sorry my grandson, it 
 TUTORIAL_TEXT_42;I'll take this opportunity to tell you something else.\nI don't know if you've noticed, but you have an attempt limit.;Ya que estamos voy a aprovechar para contarte otra cosa.\nNo sé si te habrás dado cuenta, pero tienes un límite de intentos.
 TUTORIAL_TEXT_43;Look in the lower left corner, Do you see the hearts?\nWell, since we failed this time, you lost an attempt.;Mira en la esquina inferior izquierda, ¿ves los corazones?\nBien, como hemos fallado esta vez, has perdido un intento.
 TUTORIAL_TEXT_44;But don't be afraid! We still have two left.\nAnd we know that the thief is almost certainly the other villager.;¡Pero no temas! Aún nos quedan dos.\nY sabemos que es prácticamente seguro que el ladrón sea el otro aldeano.
-TUTORIAL_TEXT_45;By the way, above the hearts there is more information.\nThat tells you how many thefts are allowed before you lose.;Por cierto, encima de los corazones hay más información.\nEso te indica el número de robos permitidos antes de perder la partida.
+TUTORIAL_TEXT_45;By the way, above the hearts there is more information.\nIt tells you how many thefts are allowed before you lose.;Por cierto, encima de los corazones hay más información.\nEso te indica el número de robos permitidos antes de perder la partida.
 TUTORIAL_TEXT_46;Don't get distracted and keep it in mind, It's very important!;No te despistes y tenlo en cuenta, ¡es muy importante!
 TUTORIAL_TEXT_47;Come on, now click on the other villager and arrest him!;Venga, ¡ahora pulsa en el otro aldeano y arréstalo!
 TUTORIAL_TEXT_48;Yes! You've got it Marshallow, good job!;¡¡Sí, señor!! Lo has conseguido Marshallow, buen trabajo.
-TUTORIAL_TEXT_49;I am very proud of you dear grandson.\nYou have found the thief and we have saved YolkTown for today.;Estoy muy orgulloso de ti querido nieto.\nHas dado con el ladrón y hemos salvado YolkTown por hoy.
-TUTORIAL_TEXT_50;I'm going to leave, it's getting late and tomorrow I have bingo.;Yo me voy a ir yendo, se está haciendo tarde y mañana tengo bingo.
+TUTORIAL_TEXT_49;I am very proud of you dear grandson.\nYou have found the thief and we have saved YolkTown today.;Estoy muy orgulloso de ti querido nieto.\nHas dado con el ladrón y hemos salvado YolkTown por hoy.
+TUTORIAL_TEXT_50;I'm going to leave, it's getting late and tomorrow I have some bingo games to play.;Yo me voy a ir yendo, se está haciendo tarde y mañana tengo bingo.
 TUTORIAL_TEXT_51;But before I go, a few final words of advice.;Pero antes de irme, unos últimos consejos:
 TUTORIAL_TEXT_52;Remember that you can always pause the game.;Recuerda que siempre puedes pausar el juego.
 TUTORIAL_TEXT_53;From there you can return to the main menu or modify the options.\nHow convenient it is to pause the game, isn't it?;Desde ahí puedes volver al menú o cambiar las opciones.\n¡Qué práctico es pausar el juego!, ¿verdad?
-TUTORIAL_TEXT_54;Well, now for real, Marshallow. I'm going now.\nGood luck on your new job! See you soon!;Bueno, ahora sí Marshallow. Me despido.\n¡Mucha suerte en tu nuevo trabajo! ¡Hasta luego!
+TUTORIAL_TEXT_54;Well, now for real, Marshallow. I'm going.\nGood luck on your new job! See you soon!;Bueno, ahora sí Marshallow. Me despido.\n¡Mucha suerte en tu nuevo trabajo! ¡Hasta luego!
 TAP_AGAIN;TAP AGAIN;TOCA DE NUEVO
