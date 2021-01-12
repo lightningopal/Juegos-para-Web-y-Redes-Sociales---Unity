@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4718,10 +4718,10 @@ RectTransform:
   m_Father: {fileID: 959424238}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: -245}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0.22, y: 0.07643748}
+  m_AnchorMax: {x: 0.8056369, y: 0.1561247}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &824617691
 MonoBehaviour:
@@ -4744,7 +4744,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: TAP AGAIN
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ac4b321f3063d064594c32f4ba0c0d1a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 25caccdb1f63bd94b8329892135a3100, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6375,10 +6375,10 @@ RectTransform:
   m_Father: {fileID: 944157858}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: -245}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0.22, y: 0.07643748}
+  m_AnchorMax: {x: 0.8056369, y: 0.1561247}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1085634093
 MonoBehaviour:
@@ -6401,7 +6401,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: TAP AGAIN
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ac4b321f3063d064594c32f4ba0c0d1a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 25caccdb1f63bd94b8329892135a3100, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -8569,10 +8569,10 @@ RectTransform:
   m_Father: {fileID: 682409081}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: -245}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0.22, y: 0.07643748}
+  m_AnchorMax: {x: 0.8056369, y: 0.1561247}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1472718036
 MonoBehaviour:
@@ -8595,7 +8595,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: TAP AGAIN
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ac4b321f3063d064594c32f4ba0c0d1a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 25caccdb1f63bd94b8329892135a3100, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
