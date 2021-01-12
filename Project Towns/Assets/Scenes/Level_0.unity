@@ -35759,7 +35759,8 @@ MonoBehaviour:
   m_text: TAP AGAIN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ac4b321f3063d064594c32f4ba0c0d1a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -3848220882934864582, guid: ac4b321f3063d064594c32f4ba0c0d1a,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -35783,7 +35784,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 30.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -35861,10 +35862,10 @@ RectTransform:
   m_Father: {fileID: 1297876239}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: -245}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0.22, y: 0.07643748}
+  m_AnchorMax: {x: 0.8056369, y: 0.15612471}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &701249955
 GameObject:
@@ -44677,7 +44678,8 @@ MonoBehaviour:
   m_text: TAP AGAIN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ac4b321f3063d064594c32f4ba0c0d1a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -3848220882934864582, guid: ac4b321f3063d064594c32f4ba0c0d1a,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -44701,7 +44703,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 30.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -44779,10 +44781,10 @@ RectTransform:
   m_Father: {fileID: 2034088229}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: -245}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0.22, y: 0.07643748}
+  m_AnchorMax: {x: 0.8056369, y: 0.1561247}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1073909734
 GameObject:
@@ -56450,7 +56452,8 @@ MonoBehaviour:
   m_text: TAP AGAIN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ac4b321f3063d064594c32f4ba0c0d1a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -3848220882934864582, guid: ac4b321f3063d064594c32f4ba0c0d1a,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -56474,7 +56477,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 30.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -56552,10 +56555,10 @@ RectTransform:
   m_Father: {fileID: 76338456}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: -245}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0.22, y: 0.07643748}
+  m_AnchorMax: {x: 0.8056369, y: 0.1561247}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1685167741
 GameObject:
