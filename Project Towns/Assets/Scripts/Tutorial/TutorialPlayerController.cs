@@ -170,6 +170,15 @@ public class TutorialPlayerController : MonoBehaviour
                                     float totalDuration = partS.main.duration + partS.main.startLifetime.constant;
                                     Destroy(surpriseVFX, totalDuration);
                                 }
+                                // Si no es el aldeano 4 y estamos en el evento adecuado
+                                else
+                                {
+                                    if (calledScriptedVillager != null)
+                                    {
+                                        calledScriptedVillager.hasBeenCalledByMarshall = false;
+                                        calledScriptedVillager = null;
+                                    }
+                                }
                             }
                         }
                     }

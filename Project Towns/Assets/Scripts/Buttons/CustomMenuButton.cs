@@ -6,7 +6,7 @@ using TMPro;
 /// <summary>
 /// Clase CustomMenuButton, que gestiona botones de forma personalizada
 /// </summary>
-public class CustomMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
+public class CustomMenuButton : Selectable, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
     #region Variables
     [Header("Referencias")]
@@ -19,6 +19,9 @@ public class CustomMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExi
     [Tooltip("GameObject de la segunda imagen del botón")]
     [SerializeField]
     private GameObject secondImage = null;
+    [Tooltip("Texto del tap again")]
+    [SerializeField]
+    private TextMeshProUGUI tapAgainText = null;
 
     [Header("Parámetros")]
     [Tooltip("Offset horizontal")]
@@ -48,6 +51,9 @@ public class CustomMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExi
     // Variables de control
     private bool isClicked = false;
     private bool mouseOnButton = false;
+    [Tooltip("Booleano que indica si está seleccionado")]
+    [HideInInspector]
+    public bool isSelected = false;
 
     #endregion
 
@@ -56,20 +62,25 @@ public class CustomMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExi
     /// Método OnPointerEnter, para cuando el ratón pasa sobre el botón
     /// </summary>
     /// <param name="eventData">Datos del puntero</param>
-    public void OnPointerEnter(PointerEventData eventData)
+    public override void OnPointerEnter(PointerEventData eventData)
     {
-        buttonText.color = highlightedColor;
+        base.OnPointerEnter(eventData);
 
-        buttonImage.rectTransform.localPosition = new Vector3(buttonImage.rectTransform.localPosition.x + horizontalOffset, buttonImage.rectTransform.localPosition.y + verticalOffset, 0);
-        buttonImage.rectTransform.Rotate(new Vector3(0, 0, 1), rotationAngle);
+        if (!isSelected)
+        {
+            buttonText.color = highlightedColor;
 
-        buttonText.rectTransform.localPosition = new Vector3(buttonText.rectTransform.localPosition.x - horizontalOffset, buttonText.rectTransform.localPosition.y - verticalOffset, 0);
-        buttonText.rectTransform.Rotate(new Vector3(0, 0, -1), rotationAngle);
-        buttonText.rectTransform.Rotate(new Vector3(0, 0, 1), rotationTextAngle);
+            buttonImage.rectTransform.localPosition = new Vector3(buttonImage.rectTransform.localPosition.x + horizontalOffset, buttonImage.rectTransform.localPosition.y + verticalOffset, 0);
+            buttonImage.rectTransform.Rotate(new Vector3(0, 0, 1), rotationAngle);
 
-        mouseOnButton = true;
+            buttonText.rectTransform.localPosition = new Vector3(buttonText.rectTransform.localPosition.x - horizontalOffset, buttonText.rectTransform.localPosition.y - verticalOffset, 0);
+            buttonText.rectTransform.Rotate(new Vector3(0, 0, -1), rotationAngle);
+            buttonText.rectTransform.Rotate(new Vector3(0, 0, 1), rotationTextAngle);
 
-        secondImage.SetActive(true);
+            mouseOnButton = true;
+
+            secondImage.SetActive(true);
+        }
 
         AudioManager.instance.PlaySound("OverButton");
     }
@@ -78,9 +89,11 @@ public class CustomMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExi
     /// Método OnPointerExit, para cuando el ratón sale del botón
     /// </summary>
     /// <param name="eventData">Datos del puntero</param>
-    public void OnPointerExit(PointerEventData eventData)
+    public override void OnPointerExit(PointerEventData eventData)
     {
-        if (!isClicked)
+        base.OnPointerExit(eventData);
+
+        if (!isClicked && !isSelected)
         {
             buttonText.color = normalColor;
 
@@ -100,8 +113,10 @@ public class CustomMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExi
     /// Método OnPointerDown, para cuando se hace click en el botón
     /// </summary>
     /// <param name="eventData">Datos del puntero</param>
-    public void OnPointerDown(PointerEventData eventData)
+    public override void OnPointerDown(PointerEventData eventData)
     {
+        base.OnPointerDown(eventData);
+
         buttonImage.color = new Color(buttonImage.color.r * clickAlpha, buttonImage.color.g * clickAlpha, buttonImage.color.b * clickAlpha);
         isClicked = true;
     }
@@ -110,11 +125,13 @@ public class CustomMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExi
     /// Método OnPointerUp, para cuando se deja de hacer click en el botón
     /// </summary>
     /// <param name="eventData">Datos del puntero</param>
-    public void OnPointerUp(PointerEventData eventData)
+    public override void OnPointerUp(PointerEventData eventData)
     {
+        base.OnPointerUp(eventData);
+
         buttonImage.color = new Color(buttonImage.color.r / clickAlpha, buttonImage.color.g / clickAlpha, buttonImage.color.b / clickAlpha);
 
-        if (!mouseOnButton)
+        if (!mouseOnButton && !isSelected)
         {
             buttonText.color = normalColor;
 
@@ -128,6 +145,36 @@ public class CustomMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExi
             secondImage.SetActive(false);
         }
         isClicked = false;
+    }
+
+    /// <summary>
+    /// Método OnDeselect, que se llama cuando se deja de seleccionar el objeto
+    /// </summary>
+    /// <param name="eventData"></param>
+    public override void OnDeselect(BaseEventData eventData)
+    {
+        base.OnDeselect(eventData);
+
+        if (isSelected)
+        {
+            buttonText.color = normalColor;
+
+            buttonImage.rectTransform.localPosition = new Vector3(buttonImage.rectTransform.localPosition.x - horizontalOffset, buttonImage.rectTransform.localPosition.y - verticalOffset, 0);
+            buttonImage.rectTransform.Rotate(new Vector3(0, 0, -1), rotationAngle);
+
+            buttonText.rectTransform.localPosition = new Vector3(buttonText.rectTransform.localPosition.x + horizontalOffset, buttonText.rectTransform.localPosition.y + verticalOffset, 0);
+            buttonText.rectTransform.Rotate(new Vector3(0, 0, 1), rotationAngle);
+            buttonText.rectTransform.Rotate(new Vector3(0, 0, -1), rotationTextAngle);
+
+            secondImage.SetActive(false);
+        }
+
+        //if (Application.isMobilePlatform)
+        //{
+        isSelected = false;
+        tapAgainText.gameObject.SetActive(false);
+        //}
+
     }
     #endregion
 }

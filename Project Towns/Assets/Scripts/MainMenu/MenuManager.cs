@@ -42,6 +42,26 @@ public class MenuManager : MonoBehaviour
     public Image iconImage;
     [Tooltip("Sprites del icono")]
     public Sprite[] iconSprites = new Sprite[2];
+
+    [Header("Tap to continue")]
+    [Tooltip("Level Loader")]
+    [SerializeField]
+    private LevelLoader levelLoader = null;
+
+    [Tooltip("Botones")]
+    [SerializeField]
+    private Button[] menuButtons = new Button[2];
+    [Tooltip("Botones del menú")]
+    [SerializeField]
+    private CustomMenuButton[] menuCustomButtons = new CustomMenuButton[2];
+    [Tooltip("Textos de tap again")]
+    [SerializeField]
+    private TextMeshProUGUI[] menuButtonsTapText = new TextMeshProUGUI[2];
+    [Tooltip("Botón invisible")]
+    [SerializeField]
+    private Button invisibleButton = null;
+
+    private int mobileTapped = -1;
     #endregion
 
     #region MétodosUnity
@@ -144,6 +164,53 @@ public class MenuManager : MonoBehaviour
             iconImage.sprite = iconSprites[0];
             startText.text = LocalizationSystem.GetLocalizedValue("START_DESKTOP");
         }
+    }
+    
+    public void SelectMode(int mode)
+    {
+        /*if (!Application.isMobilePlatform)
+        {
+            optionsManager.StartGameWithDifficulty(difficulty);
+        }
+        else
+        {*/
+        // Si ya ha hecho tap
+        if (mobileTapped == mode)
+        {
+            invisibleButton.Select();
+            if (mobileTapped == 0)
+            {
+                levelLoader.LoadCanvas(4);
+                levelLoader.UseCircle(false);
+            }
+            else if (mobileTapped == 1)
+            {
+                levelLoader.LoadScene(2);
+                levelLoader.UseCircle(true);
+            }
+            mobileTapped = -1;
+        }
+        // Si no
+        else
+        {
+            mobileTapped = mode;
+
+            for (int i = 0; i < menuButtonsTapText.Length; i++)
+            {
+                if (i == mode)
+                {
+                    menuButtonsTapText[i].gameObject.SetActive(true);
+                    menuButtons[i].Select();
+                    menuCustomButtons[i].isSelected = true;
+                }
+            }
+        }
+        //}
+    }
+
+    public void ResetMobileTap()
+    {
+        mobileTapped = -1;
     }
     #endregion
 }
