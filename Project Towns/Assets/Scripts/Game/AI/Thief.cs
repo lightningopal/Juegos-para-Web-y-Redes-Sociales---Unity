@@ -369,5 +369,16 @@ public class Thief : NPC
                 break;
         }
     }
+
+    /// <summary>
+    /// Método DestroyWitnessSigns
+    /// </summary>
+    public void DestroyWitnessSigns()
+    {
+        if (infoVFX != null)
+        {
+            Destroy(infoVFX);
+        }
+    }
     #endregion
 }

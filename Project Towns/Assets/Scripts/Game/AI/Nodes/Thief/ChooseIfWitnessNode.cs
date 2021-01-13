@@ -20,7 +20,10 @@ public class ChooseIfWitnessNode : Node
             thief.CalculateFakeItem();
         }
         else
+        {
             thief.isWitness = false;
+            thief.DestroyWitnessSigns();
+        }
 
         return _nodeState;
     }
