@@ -45,7 +45,7 @@ Como todos los años, el pueblo *YolkTown* celebra sus fiestas de otoño. Durant
 
 ### **1.6. Antecedentes**
 
-Para el ambiente, el movimiento y el estilo general del juego hemos tomado como referentes juegos como: *Animal Crossing, Captain Toad Tressure Tracker* y *Mario 3D World. 
+Para el ambiente, el movimiento y el estilo general del juego hemos tomado como referentes juegos como: *Animal Crossing, Captain Toad Tressure Tracker* y *Mario 3D World*. 
 
 **Fig 2**
 
