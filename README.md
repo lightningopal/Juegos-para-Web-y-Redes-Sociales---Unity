@@ -47,7 +47,7 @@ Como todos los años, el pueblo *YolkTown* celebra sus fiestas de otoño. Durant
 
 Para el ambiente, el movimiento y el estilo general del juego hemos tomado como referentes juegos como: *Animal Crossing, Captain Toad Tressure Tracker* y *Mario 3D World*. 
 
-**Fig 2**
+![Figura 2](./GDD_Images/2.PNG)
 
 ### **1.7. Propósito y público objetivo**
 
@@ -97,7 +97,7 @@ Contamos con único modo de juego el cual consiste en lo siguiente:
 
 El jugador comienza la partida en un pueblo con seis zonas principales por el que pasean y merodean PNJs de aspecto similar, pero con accesorios y cualidades características. Pasado un tiempo uno de los PNJs se dedicará a robar al resto, al ocurrir un robo, aparecerá en pantalla una señal que indica en qué dirección se ha producido el robo. El jugador deberá dirigirse hacia el PNJ que ha sido robado (el cual se encontrará parado en el sitio con una exclamación) y al acercarse a este, le indicará mediante un bocadillo qué características cree que tiene el ladrón. Además, si algún otro PNJ ha sido testigo del robo, estará recorriendo su camino (con una interrogación sobre él) y el jugador también podrá acercarse a ellos para obtener información sobre el ladrón. Una vez el jugador crea que tiene suficientes pistas y encuentre al PNJ que crea que es el ladrón, se podrá acercar a él para detenerle. Si la acusación es correcta, el jugador habrá ganado la partida, si no es correcta perderá una vida y en el caso de que pierda todas las vidas o que el ladrón haya realizado “X” robos (el número máximo depende del nivel de dificultad) perderá la partida. 
 
-**Fig 3**
+![Figura 3](./GDD_Images/3.PNG)
 
 Aunque este es el único modo de juego, cuenta con los siguientes niveles de dificultad con las siguientes características principales: 
 
@@ -160,7 +160,7 @@ Los aldeanos cuentan con cinco tipos de estados distintos:
  
 Cuando el usuario se aleja del aldeano (sale del radio de interacción) este vuelve a su comportamiento normal de viandante. 
 
-**Fig4**
+![Figura 4](./GDD_Images/4.PNG)
 
   **4. Testigo "?":** se produce cuando el aldeano observa cómo sucede un robo (dentro de su área de visión), el aldeano seguirá deambulando por el pueblo, pero indica con un *bark* en forma de interrogación que ha presenciado el hurto. Al acercarse el jugador al testigo (es decir, se encuentra dentro del radio de interacción del aldeano), este se queda quieto y le proporciona información de la misma forma que la víctima, pero con un pequeño cambio. El testigo proporciona únicamente **un** dato y decide si:
   * Facilitar información 100% fiable (un 50%, 35% o 20% (dependiendo del nivel, fácil, medio y difícil respectivamente) de las veces). El testigo habrá visto nítidamente una característica del ladrón. 
@@ -168,7 +168,7 @@ Cuando el usuario se aleja del aldeano (sale del radio de interacción) este vue
 
 Cuando el usuario se aleja del aldeano (sale del radio de interacción), este vuelve a su comportamiento normal de viandante. En caso de que un aldeano en estado de Testigo presencie un nuevo robo, perderá su información del robo anterior. 
 
-**Fig5**
+![Figura 5](./GDD_Images/5.PNG)
 
   **5. Arresto:** cuando el jugador selecciona un aldeano cualquiera (hace clic/*tap* sobre él), el aldeano se queda quieto en el sitio y mira a *Marshallow*. Además, aparecerá un botón sobre la cabeza del aldeano que le dará la opción al jugador de arrestarle si este quisiera. Si se selecciona otro aldeano, o pulsa en un sitio para moverse, el aldeano seleccionado en primera instancia continúa su camino y el botón desaparece.
   
@@ -193,83 +193,75 @@ El ladrón cuenta con cuatro tipos de estados distintos:
 
 A continuación, mostramos las especificaciones sobre cómo se organizarán los menús y la interfaz de las diferentes pantallas de juego que conforman *Marshallow: Pilferage in Yolktown*. En cada apartado aparecerán dos versiones de la pantalla en cuestión (tanto en el caso de los *concepts* como en el de las versiones finales), siendo la segunda la versión final de la primera, pero mostrando cómo serían las interacciones y/o con especificaciones de las animaciones de la IU (esto último solo en los *concepts*). Para entender estas animaciones contamos con una leyenda (aunque se indique implícitamente en dicha leyenda, cabe decir que los elementos rojos indican movimientos de la interfaz y los azules del fondo): 
 
-**Fig6**
+![Figura 6](./GDD_Images/6.PNG)
 
 Finalmente, comentar que algunas de las propuestas que aparecen en los *concepts* se acabaron descartando en la versión final como se puede comprobar. 
 
 ### **3.1. Diagrama de flujo**
 
-**Fig7**
+![Figura 7](./GDD_Images/7.PNG)
 
 ### **3.2. Introducción logo**
 
-**Fig8**
+![Figura 8](./GDD_Images/8.PNG)
 
 ### **3.3. Título**
 
-**Fig9**
-**Fig10**
+![Figuras 9 y 10](./GDD_Images/9_10.PNG)
 
 ### **3.4. Menú principal**
 
-**Fig11**
-**Fig12**
-**Fig13**
-**Fig14**
+![Figura 11](./GDD_Images/11.PNG)
+![Figuras 12 y 13](./GDD_Images/12_13.PNG)
+![Figura 14](./GDD_Images/14.PNG)
 
 ### **3.5. Opciones**
 
-**Fig15**
-**Fig16**
+![Figuras 15 y 16](./GDD_Images/15_16.PNG)
 
 ### **3.6. Créditos**
 
-**Fig17**
-**Fig18**
+![Figura 17](./GDD_Images/17.PNG)
+![Figura 18](./GDD_Images/18.PNG)
 
 ### **3.7. Elección de dificultad**
 
-**Fig19**
-**Fig20**
-**Fig21**
+![Figuras 19 y 20](./GDD_Images/19_20.PNG)
+![Figura 21](./GDD_Images/27.PNG)
 
 ### **3.8. Durante la partida**
 
-**Fig22**
-**Fig23**
+![Figuras 22 y 23](./GDD_Images/22_23.PNG)
 
 ### **3.9. Interacciones durante la partida**
 
-**Fig24**
-**Fig25**
+![Figuras 24 y 25](./GDD_Images/24_25.PNG)
 
 ### **3.10. Pantalla de final de partida**
 
-**Fig26**
-**Fig27**
-**Fig28**
-**Fig29**
+![Figura 26](./GDD_Images/26.PNG)
+![Figuras 27 y 28](./GDD_Images/27_28.PNG)
+![Figura 29](./GDD_Images/29.PNG)
 
 ### **3.11. Pausa**
 
-**Fig30**
-**Fig31**
+![Figuras 30 y 31](./GDD_Images/30_31.PNG)
 
 ### **3.12. Tutorial**
 
-**Fig32**
-**Fig33**
+![Figura 32](./GDD_Images/32.PNG)
+![Figura 33](./GDD_Images/33.PNG)
 
 ### **3.13. Contextualización**
 
-**Fig34**
-**Fig35**
+![Figura 34](./GDD_Images/34.PNG)
+![Figura 34](./GDD_Images/35.PNG)
 
 ### **3.14. Interacción aldeanos**
 
 Como apartado extra de la interfaz, cabe nombrar los emoticonos que aparecen encima de los aldeanos cuando estos merodean por las zonas. Esto se añadió para darle más credibilidad a la inteligencia artificial, ya que su función es indicar el "estado de ánimo" de los aldeanos. A continuación, se muestran los iconos que aparecen: 
 
-**Fig36**
+![Figura 36](./GDD_Images/36.PNG)
 
 ## **4. Arte**
 
@@ -279,9 +271,8 @@ Nuestro juego cuenta con dos personajes distintos: *Marshallow* (el personaje pr
 
 #### **4.1.1. Referencias/inspiración**
 
-**Fig37**
-**Fig38**
-**Fig39**
+![Figuras 37 y 38](./GDD_Images/37_38.PNG)
+![Figura 39](./GDD_Images/39.PNG)
 
 Como se puede observar todos los personajes que tomamos de referencia cuentan con las características ya comentadas y establecen una idea general que transmite una apariencia adorable. Esta idea es la que queríamos conseguir con nuestros propios personajes. 
 
@@ -293,76 +284,72 @@ Tomando las referencias vistas anteriormente, se ha querido crear un diseño par
 
 En primer lugar, se trabajaron las formas, la complexión del cuerpo y los detalles de la piel: 
 
-**Fig40**
-**Fig41**
+![Figura 40](./GDD_Images/40.png)
+![Figura 41](./GDD_Images/41.png)
 
 Tras escoger la forma de ovoide, se decidió la cara que tendrían los aldeanos:
 
-**Fig42**
+![Figura 42](./GDD_Images/42.png)
 
 Más tarde, se sometieron a votación tres propuestas finales tanto de la cara (figura 43) como del cuerpo (figura 44) del aldeano: 
 
-**Fig43**
-**Fig44**
+![Figuras 43 y 44](./GDD_Images/43_44.png)
 
 Finalmente, se decidieron cinco colores para los habitantes de *Yolktown*, que además de contar con una importante carga artística, también están directamente relacionados con la jugabilidad, ya que recordemos que una de las características que se tendrán en cuenta para identificar al ladrón es el color de su cuerpo: 
 
-**Fig45**
+![Figura 45](./GDD_Images/45.png)
 
 Dos ilustraciones del resultado final del desarrollo del personaje:
 
-**Fig46**
+![Figura 46](./GDD_Images/46.png)
 
 **PERSONAJE PRINCIPAL, MARSHALLOW:**
 
 En este caso, tal y como su nombre indica, no existían tantas dudas a la hora de crear una forma para el cuerpo, ya que todo giraría entorno a las nubes o malvaviscos: 
 
-**Fig47**
+![Figura 47](./GDD_Images/47.png)
 
 Seguidamente, se trabajaron las posibles caras de nuestro *marshal*: 
 
-**Fig48**
+![Figura 48](./GDD_Images/48.png)
 
 Tras todo el proceso de elección se realizó una votación final para las formas (figura 49) y las caras (figura 50): 
 
-**Fig49**
-**Fig50**
+![Figuras 49 y 50](./GDD_Images/49_50.png)
 
 Finalmente, tras varias pruebas entre las cuales se encuentran las de la figura 51, se decidió que el color de Marshallow sería el de la figura 52: 
 
-**Fig51**
-**Fig52**
+![Figuras 51 y 52](./GDD_Images/51_52.png)
 
 Ilustración del resultado final del desarrollo del protagonista: 
 
-**Fig53**
+![Figura 53](./GDD_Images/53.png)
 
 **PERSONAJE EXTRA:**
 
 A mitad del desarrollo del juego se decidió introducir un personaje encargado de dirigir al usuario en el tutorial. Este sería el abuelo del protagonista y a su vez el antiguo *marshal*, *Marshugus*, y su papel dentro del juego consistiría en enseñar a su nieto a cómo ser un marshal. La siguiente figura muestra una ilustración de dicho personaje: 
 
-**Fig54**
+![Figura 54](./GDD_Images/54.png)
 
 **ACCESORIOS:**
 
 Finalmente se crearon un total de 10 accesorios para los aldeanos, sin contar el número de ojos y colores posibles. A continuación, se muestran artes conceptuales dichos accesorios y características: 
 
-**Fig55**
+![Figura 55](./GDD_Images/55.png)
 
 Seguidamente se muestran ilustraciones de todos los accesorios y atributos, las cuales se añadieron al juego como *assets* para cuando el aldeano dé las pistas sobre el ladrón: 
 
-**Fig56**
+![Figura 56](./GDD_Images/56.png)
 
 Estas tres últimas ilustraciones se utilizan para indicar (de izquierda a derecha) que el ladrón no porta accesorio de cuello, cuernos o accesorio de cabeza: 
 
-**Fig57**
+![Figura 57](./GDD_Images/57.png)
 
 #### **4.1.3. Turnarounds**
 
 En este apartado se muestran los dos *turnarounds* que se realizaron para los aldeanos y *Marshallow* para su posterior modelado: 
 
-**Fig58**
-**Fig59**
+![Figuras 58 y 59](./GDD_Images/58_59.png)
 
 #### **4.1.4. Modelos**
 
@@ -371,17 +358,15 @@ En este apartado se muestran los dos *turnarounds* que se realizaron para los al
 
 A continuación, se muestran los modelos usados en el juego. Entre ellos encontramos al personaje jugable, *Marshallow*, y a uno de los aldeanos. 
 
-**Fig60**
+![Figura 60](./GDD_Images/60.png)
 
 Podemos observar también la malla usada, siendo esta *low poly* para no usar demasiada memoria ya que se trata de un juego para web y dispositivos móviles.
 
-**Fig61**
+![Figura 61](./GDD_Images/61.png)
 
 **OBJETOS:**
 
-**Fig62**
-**Fig63**
-**Fig64**
+![Figuras 62, 63 y 64](./GDD_Images/62_63_64.png)
 
 ### **4.2. Escenarios**
 
@@ -396,7 +381,7 @@ Para mantener el estilo general del juego, sencillo pero llamativo, queremos que
 
 Como se ha comentado anteriormente el estilo del modelado será suave y sencillo. Nos ha sido de gran inspiración el trabajo del artista *Gustavo Henrique*:
 
-**Fig65**
+![Figura 65](./GDD_Images/65.png)
 
 Además, comentar que también nos ha servido de inspiración para definir la estructura del pueblo de forma escalonada, destacando diferentes alturas. 
 
@@ -404,32 +389,28 @@ Además, comentar que también nos ha servido de inspiración para definir la es
 
 Para transmitir un ambiente agradable hemos elegido los tonos cálidos y luminosos. Para obtenerlos hemos situado el pueblo sobre la estación de otoño (árboles rojos, naranjas...) y sobre la hora que el sol comienza a ponerse, proyectando largas sombras, pero una luz de ambiente anaranjada. En general abundan los tonos naranjas, rojos, rosas y verdes amarillentos. Estas son algunas de nuestras principales referencias de este entorno: 
 
-**Fig66**
-**Fig67**
+![Figuras 66 y 67](./GDD_Images/66_67.png)
 
 #### **4.2.2. Concepts**
 
 Primero hemos realizado un esquema general de las distintas zonas que conforman el pueblo con sus respectivas alturas. A continuación, hicimos un plano un poco más realista con respecto al tamaño y la situación de las zonas y pasillos: 
 
-**Fig68**
+![Figura 68](./GDD_Images/68.png)
 
 Antes de pasar a realizar el modelado en detalle del escenario, hemos realizado un paso previo de *blocking* en *Unity* para tener situados los elementos principales y fijadas aproximadamente las alturas de las zonas y los edificios. A continuación, se muestran distintas vistas de este proceso: 
 
-**Fig69**
+![Figura 69](./GDD_Images/69.png)
 
 #### **4.2.3. Modelos**
 
 En este apartado mostramos el resultado final del escenario en *Blender*:
 
-**Fig70**
-**Fig71**
-**Fig72**
+![Figura 70](./GDD_Images/70.png)
+![Figuras 71 y 72](./GDD_Images/71_72.png)
 
 **ZONAS:**
 
-**Fig73**
-**Fig74**
-**Fig75**
+![Figuras 73, 74 y 75](./GDD_Images/73_74_75.png)
 
 #### **4.2.4. Iluminación**
 
@@ -443,35 +424,32 @@ Para el desarrollo de los efectos especiales que aparecen durante el juego, hemo
 
 Nuestra principal fuente de inspiración para llevar a cabo el diseño de los efectos ha sido el juego *Animal Crossing* debido a su estilo sencillo y agradable. 
 
-**Fig76**
+![Figura 76](./GDD_Images/76.png)
 
 #### **4.3.2. Concepts**
 
 A continuación, se muestran los *concepts* realizados para los diferentes efectos que aparecen en el juego. 
 
-**Fig77**
-**Fig78**
+![Figuras 77 y 78](./GDD_Images/77_78.png)
 
 #### **4.3.3. Texturas**
 
 Para la implementación de los efectos, se ha usado una única textura, de esta forma se ahorra en el uso de materiales dentro del juego y se mejora el rendimiento ligeramente. Este sería el resultado final de la textura generada 
 
-**Fig79**
+![Figura 79](./GDD_Images/79.jpg)
 
 #### **4.3.4. Resultado final**
 
 Por último, se muestran unas imágenes con el resultado final de los efectos especiales. 
 
-**Fig80**
-**Fig81**
-**Fig82**
-**Fig83**
+![Figuras 80 y 81](./GDD_Images/80_81.jpg)
+![Figuras 82 y 83](./GDD_Images/82_83.jpg)
 
 ### **4.4. Interfaz**
 
 Para llevar a cabo el diseño de la interfaz hemos querido obtener un resultado divertido con un toque infantil, acorde con el estilo del juego. Para ello hemos usado colores claros y coloridos además de formas redondeadas y con un tamaño relativamente grande para que se vean muy bien. También hemos elegido un par de fuentes (gratuitas) con grosor y bien definidas para que se lean perfectamente. Comentar que hemos intentado usar la menor cantidad de texto posible para que todo sea lo más visual posible. Por último, decir que, nuestra mayor inspiración ha sido el videojuego *Mario 3D World*: 
 
-**Fig84**
+![Figura 84](./GDD_Images/84.jpg)
 
 **El resultado final de los elementos de la interfaz se encuentra recopilado en el apartado 3 de este documento.**
 
@@ -533,41 +511,37 @@ A continuación, adjuntamos unas imágenes que **NO** se incluyen en esta versi�
 
 Al iniciar el juego el jugador puede entrar con su cuenta premium o jugar como invitado (versión gratuita). Si elige jugar como invitado le aparecerá la imagen de la figura 86, y si no quiere obtener la versión premium simplemente podrá minimizar la imagen con el botón "*NAH... MAYBE LATER*". 
 
-**Fig85**
-**Fig86**
-**Fig87**
+![Figura 85](./GDD_Images/85.jpg)
+![Figuras 86 y 87](./GDD_Images/85_87.jpg)
 
 Las siguientes capturas muestran cómo sería el juego si se tuviese la versión *premium*. Las nuevas opciones con las que contamos son: en la esquina inferior izquierda el usuario con su icono, nombre y nivel, y el modo *online*. En la esquina superior derecha el "armario" donde se puede cambiar el aspecto del personaje principal y a su derecha la tienda donde comprar los accesorios y los iconos. 
 
-**Fig88**
+![Figura 88](./GDD_Images/88.jpg)
 
 Al seleccionar el nombre de usuario de la esquina inferior izquierda aparece una pantalla con el perfil del usuario, en ella se podrá cambiar el nombre, ver las estadísticas del jugador y cambiar el icono de jugador. En el caso de seleccionar la opción de cambiar icono, hay una galería con los iconos que el jugador tiene desbloqueados para que pueda cambiarlo (figura 90). 
 
-**Fig89**
-**Fig90**
+![Figura 89](./GDD_Images/89.jpg)
+![Figura 90](./GDD_Images/90.jpg)
 
 Como se ha podido observar anteriormente el jugador cuenta con un nivel, este nivel aumenta según se juegan partidas, y cuando llega a "X" nivel clave se ofrece una recompensa (accesorios, iconos, aspectos y mapas). Las siguientes imágenes son las que aparecen cuando vuelves al menú principal tras haber alcanzado un nivel clave: 
 
-**Fig91**
+![Figura 91](./GDD_Images/91.jpg)
 
 Los aspectos conseguidos para *Marshallow* se guardan y se pueden equipar en la pantalla del “armario” cuyo icono (una camiseta) aparecía en la esquina superior derecha de la figura 88.  
 
-**Fig92**
+![Figura 92](./GDD_Images/92.jpg)
 
 Los mapas y los accesorios obtenidos se podrán usar en el modo personalizado. Antes de empezar la partida podremos elegir si jugar una partida normal (como la de la versión gratuita) o jugar una partida personalizada donde podremos modificar las opciones mostradas en la figura 94. Aparte, también se podrán elegir los accesorios que llevarán los aldeanos durante la partida (figura 95).
 
-**Fig93**
-**Fig94**
-**Fig95**
+![Figuras 93, 94 y 95](./GDD_Images/93_94_95.jpg)
 
 En el menú principal también tenemos la opción de jugar *online* cooperativamente con otro jugador. Al pulsar el icono de la bola del mundo nos aparece este mensaje emergente que nos da la opción de "invitar a otro jugador a tú pueblo" (*host*) o de "jugar en el pueblo de otro jugador" (*guest*). 
 
-**Fig96**
-**Fig97**
+![Figuras 96 y 97](./GDD_Images/96_97.jpg)
 
 Finalmente tenemos la tienda. Cómo se puede ver en la siguiente imagen, aparecen artículos cómo accesorios o iconos, los cuales varían cada 24 horas. Encima de cada artículo hemos indicado el tiempo que les queda en tienda para que sean sustituidos por otros. Además, también se puede ver un artículo especial del evento de Halloween que indica que le quedan 3 días en la tienda. Como hemos comentado anteriormente, este artículo es limitado, cuando acaben esos tres días ya no se podrá obtener.  
 
-**Fig98**
+![Figura 98](./GDD_Images/98.jpg)
 
 ### **5.2. Tablas de productos y precios**
 
@@ -588,7 +562,7 @@ Finalmente tenemos la tienda. Cómo se puede ver en la siguiente imagen, aparece
 
 ### **5.3. Modelo de lienzo o canvas**
 
-**Fig99**
+![Figura 99](./GDD_Images/99.jpg)
 
 ## **6. Planificación y costes**
 
@@ -604,7 +578,7 @@ El equipo de desarrollo está formado por 5 personas:
 
 ### **6.2. Estimación temporal del desarollo**
 
-**Fig100**
+![Figura 100](./GDD_Images/100.jpg)
 
 | | **Porcentaje sobre el total de tiempo desarrollado** |
 | :---------: | :---------: | 
@@ -660,7 +634,7 @@ Recompensas:
 * 1.000€ o más: traje de aire completo de Marshallow y de un aldeano para hacer cosplay. 
 * 3.000€ o más: acceso gratis a todos los objetos de la tienda durante un año desde la salida del videojuego. 
 
-**Fig101**
+![Figura 101](./GDD_Images/101.jpg)
 
 **TIENDA DE LA PÁGINA WEB**
 
@@ -680,7 +654,7 @@ Estos son alguno de los productos relacionados con nuestros proyectos que estar�
 
 A continuación, nos gustaría aportar un adelanto de cómo se vería implementado esta tienda en nuestra página web: 
 
-**Fig102**
+![Figura 102](./GDD_Images/102.jpg)
 
 #### **6.3.3. Fuerza de trabajo**
 
@@ -872,20 +846,16 @@ Medias: 21 respuestas
 * Niveles de dificultad: 3 
 * Música: 4.23 
 
-**Fig103**
-**Fig104**
-**Fig105**
-**Fig106**
-**Fig107**
-**Fig108**
-**Fig109**
-**Fig110**
-**Fig111**
-**Fig112**
-**Fig113**
-**Fig114**
-**Fig115**
-**Fig116**
+![Figuras 103 y 104](./GDD_Images/103_104.jpg)
+![Figuras 105 y 106](./GDD_Images/105_106.jpg)
+![Figura 107](./GDD_Images/107.jpg)
+![Figura 108](./GDD_Images/108.jpg)
+![Figuras 109 y 110](./GDD_Images/109_110.jpg)
+![Figura 111](./GDD_Images/111.jpg)
+![Figura 112](./GDD_Images/112.jpg)
+![Figura 113](./GDD_Images/113.jpg)
+![Figura 114](./GDD_Images/114.jpg)
+![Figuras 115 y 116](./GDD_Images/115_116.jpg)
 
 A continuación, adjuntamos el enlace a la encuesta que hemos realizado:
 - *https://forms.gle/sFKzb9hXuZAhSA8Z7* 
