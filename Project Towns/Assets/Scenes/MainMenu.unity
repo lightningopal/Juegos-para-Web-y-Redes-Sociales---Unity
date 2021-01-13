@@ -3533,7 +3533,6 @@ MonoBehaviour:
   buttonText: {fileID: 1401859892}
   buttonImage: {fileID: 608982429}
   secondImage: {fileID: 1941824681}
-  tapAgainText: {fileID: 642914925}
   horizontalOffset: 0
   verticalOffset: 0
   rotationAngle: 0
@@ -5454,7 +5453,6 @@ MonoBehaviour:
   buttonText: {fileID: 1130857567}
   buttonImage: {fileID: 926245935}
   secondImage: {fileID: 266566297}
-  tapAgainText: {fileID: 1232843709}
   horizontalOffset: 0
   verticalOffset: 0
   rotationAngle: 0
@@ -6402,7 +6400,8 @@ MonoBehaviour:
   m_text: TAP AGAIN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 25caccdb1f63bd94b8329892135a3100, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -4488038947993794818, guid: 25caccdb1f63bd94b8329892135a3100,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6426,7 +6425,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 30.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10233,16 +10232,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ec2a618bf5fd6594d94bcc923c2dcae9, type: 3}
   - {fileID: 21300000, guid: d839b3d4e60aa6b4eb7a2c53ff007f19, type: 3}
   levelLoader: {fileID: 168623990}
-  menuButtons:
-  - {fileID: 926245934}
-  - {fileID: 608982428}
   menuCustomButtons:
   - {fileID: 926245937}
   - {fileID: 608982427}
-  menuButtonsTapText:
-  - {fileID: 1232843709}
-  - {fileID: 642914925}
-  invisibleButton: {fileID: 1070726327}
   mobileTapped: -1
 --- !u!4 &1859788402
 Transform:

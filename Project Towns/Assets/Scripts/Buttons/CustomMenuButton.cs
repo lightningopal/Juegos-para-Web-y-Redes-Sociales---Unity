@@ -19,9 +19,9 @@ public class CustomMenuButton : Selectable, IPointerEnterHandler, IPointerExitHa
     [Tooltip("GameObject de la segunda imagen del botón")]
     [SerializeField]
     private GameObject secondImage = null;
-    [Tooltip("Texto del tap again")]
+    /*[Tooltip("Texto del tap again")]
     [SerializeField]
-    private TextMeshProUGUI tapAgainText = null;
+    private TextMeshProUGUI tapAgainText = null;*/
 
     [Header("Parámetros")]
     [Tooltip("Offset horizontal")]
@@ -176,11 +176,11 @@ public class CustomMenuButton : Selectable, IPointerEnterHandler, IPointerExitHa
             MenuManager.instance.ResetMobileTap();
         }
 
-        if (!Application.isMobilePlatform)
+        /*if (Application.isMobilePlatform)
         {
             isSelected = false;
             tapAgainText.gameObject.SetActive(false);
-        }
+        }*/
     }
     #endregion
 }

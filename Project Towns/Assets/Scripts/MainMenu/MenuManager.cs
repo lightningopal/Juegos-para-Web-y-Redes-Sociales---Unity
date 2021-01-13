@@ -48,18 +48,18 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     private LevelLoader levelLoader = null;
 
-    [Tooltip("Botones")]
+    /*[Tooltip("Botones")]
     [SerializeField]
-    private Button[] menuButtons = new Button[2];
+    private Button[] menuButtons = new Button[2];*/
     [Tooltip("Botones del menú")]
     [SerializeField]
     private CustomMenuButton[] menuCustomButtons = new CustomMenuButton[2];
-    [Tooltip("Textos de tap again")]
+    /*[Tooltip("Textos de tap again")]
     [SerializeField]
-    private TextMeshProUGUI[] menuButtonsTapText = new TextMeshProUGUI[2];
-    [Tooltip("Botón invisible")]
+    private TextMeshProUGUI[] menuButtonsTapText = new TextMeshProUGUI[2];*/
+    /*[Tooltip("Botón invisible")]
     [SerializeField]
-    private Button invisibleButton = null;
+    private Button invisibleButton = null;*/
 
     public int mobileTapped = -1;
     #endregion
@@ -173,8 +173,8 @@ public class MenuManager : MonoBehaviour
     public void SelectMode(int mode)
     {
         // Si es escritorio
-        if (Application.isMobilePlatform)
-        {
+        /*if (!Application.isMobilePlatform)
+        {*/
             if (mode == 0)
             {
                 levelLoader.LoadCanvas(4);
@@ -185,9 +185,9 @@ public class MenuManager : MonoBehaviour
                 levelLoader.LoadScene(2);
                 levelLoader.UseCircle(true);
             }
-        }
+        //}
         // Si es móvil
-        else
+        /*else
         {
             // Si ya ha hecho tap
             if (mobileTapped == mode)
@@ -222,7 +222,7 @@ public class MenuManager : MonoBehaviour
                     }
                 }
             }
-        }
+        }*/
     }
 
     /// <summary>
