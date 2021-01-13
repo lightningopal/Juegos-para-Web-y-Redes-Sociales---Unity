@@ -119,7 +119,7 @@ public class MenuManager : MonoBehaviour
         }
 
         // Mover los créditos
-        if (creditsTextImage.rectTransform.localPosition.y < 2500)
+        if (creditsTextImage.rectTransform.localPosition.y < 2600)
             creditsTextImage.rectTransform.localPosition = new Vector3(
                 creditsTextImage.rectTransform.localPosition.x,
                 creditsTextImage.rectTransform.localPosition.y + (creditsSpeed * Time.deltaTime), 0);
