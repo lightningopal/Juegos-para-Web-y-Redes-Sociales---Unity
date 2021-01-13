@@ -696,19 +696,216 @@ Nos gustaría comentar ciertos aspectos del juego que no hemos podido añadir pa
 
 **ANIMACIONES DE LA INTERFAZ**
 
+Nos gustaría hacer la interfaz un poco más animada, de manera que algunos elementos tengan movimiento para hacerla más dinámica y divertida. Un ejemplo de esto es en cuanto a los botones del menú principal (jugar y tutorial), que tendrían un pequeño giro bidireccional constante. 
+
+En el apartado "3. Interfaz", se puede encontrar arte conceptual que ilustra varias animaciones planteadas para la interfaz. 
+
+**EFECTOS VISUALES**
+
+A futuro, nos gustaría implementar efectos visuales para terminar de pulir nuestro juego en ese aspecto. En un primer lugar, y como ejemplo de VFX, teníamos pensado introducir un efecto que se visualice cuando el jugador se desplace por el mapa, es decir, un rastro de polvo que el jugador va dejando en el camino. Otro ejemplo de efecto a añadir sería un indicador visual en pantalla que avise de que solo falta un robo para acabar la partida. 
+
+**ANIMACIONES FACIALES**
+
+Para mejorar visualmente nuestro juego queremos dar más personalidad a los aldeanos y se ha pensado en introducir animaciones faciales. Hay ciertos momentos en la partida en los cuales los aldeanos expresan su estado de ánimo mediante un emoticono, sin embargo, al no tener animaciones faciales actualmente, se hace raro para el usuario, que el aldeano diga que se encuentra cansado mientras tiene la expresión de felicidad en la cara. Por esto queríamos desarrollar las animaciones de alegría, tristeza, cansancio y enfado.  
+
+**ANIMACIONES EXTRA**
+
+En cuanto a las animaciones de nuestro juego, nos gustaría implementar animaciones adicionales tales como la animación de un aldeano sorprendido para cuando el *marshal* intenta detenerle, una animación del *marshal* apartando gente para cuando se formen aglomeraciones que corten el camino o una animación de arresto para cuando logras atrapar al ladrón. 
+
+**MODO MULTIJUGADOR (*ONLINE*)**
+
+Se ha planteado la posibilidad de incorporar un modo multijugador en línea, de manera que puedes jugar en las aldeas de tus amigos y que los aldeanos lleven los objetos que ellos tengan desbloqueados. 
+
+El multijugador tendría dos modos de juego: cooperativo, donde ambos jugadores deben colaborar para encontrar al ladrón, y competitivo, donde gana el primer jugador que lo encuentre (donde pueden perder ambos jugadores si no lo encuentran o si se quedan sin intentos). 
+
+Esto implicaría la creación de cuentas de juego, las cuales podrán subir de nivel para desbloquear nuevos objetos, aspectos y escenarios. 
+
+En el apartado "5.1. Modelo de Negocio", se pueden encontrar imágenes que ilustran cómo funcionaría el modo *online*. 
+
+**OBJETOS PERSONALIZADOS**
+
+El usuario puede coleccionar objetos para los aldeanos de manera que antes de comenzar la partida el jugador puede elegir cuáles quiere que aparezcan en su partida. 
+
+Por ejemplo: un jugador puede elegir la gorra de niño, el gorro de fiesta, el sombrero de cazador, los cuernos de alce, la pajarita, la corbata y el collar de flores. De esta manera, la partida se aleatorizaría para que solo salgan esos objetos elegidos.  
+
+En el apartado "5.1. Modelo de Negocio", se pueden encontrar imágenes que ilustran cómo se desbloquean y almacenan estos objetos. 
+
+**PARTIDAS PERSONALIZADAS**
+
+Un nuevo modo de dificultad totalmente personalizado, donde los jugadores puedan modificar parámetros de la partida, como el número de aldeanos, ladrones, robos e intentos, la velocidad del personaje del jugador o las probabilidades de las pistas. 
+
+En el apartado "5.1. Modelo de Negocio", se pueden encontrar imágenes que ilustran las pantallas de personalización de partida. 
+
+**TIENDA**
+
+Los jugadores podrán comprar objetos nuevos para su personaje principal y sus aldeanos. La tienda cambiará sus objetos cada cierto tiempo, de forma rotativa (es decir, un objeto puede salir un día y 3 semanas después de nuevo). 
+
+Además, se harán objetos exclusivos que solamente puedan ser obtenidos durante un período de tiempo, como por ejemplo un sombrero de bruja para la festividad de Halloween o un gorro de Santa Claus en navidades. 
+
+En el apartado "5.1. Modelo de Negocio", se pueden encontrar imágenes que ilustran el aspecto de la tienda. 
+
+**ESTADÍSTICAS**
+
+Una nueva pantalla que añade información sobre las partidas del jugador, que incluiría lo siguiente: 
+
+* Partidas jugadas. 
+* Victorias (con porcentaje respecto a las partidas jugadas). 
+* Ladrones atrapados (no tiene por qué coincidir con las victorias, ya que podría haber más de un ladrón por partida). 
+* Veces que se ha equivocado de aldeano. 
+* Mapa favorito (el más jugado). 
+* Objeto favorito (el más utilizado en sus partidas). 
 
 ## **8. Post-Mortem**
 ### **8.1. ¿Qué ha ido bien en el equipo?**
+
+Esta vez hemos conseguido trabajar de una forma casi óptima haciendo uso de una mejor organización y planificación, sobre todo gracias a haber hecho un mejor uso de las herramientas de *GitHub* y *Trello*. Se nota una gran mejoría respecto al anterior proyecto sin lugar a dudas, y se ha hecho un uso bastante práctico de las reuniones semanales (más largas y utilizadas para organizar y planear) y las *Daily Standups*. Hemos hecho uso de los grupos de trabajo y no nos hemos molestado ni para hablar ni para trabajar, hemos cumplido la mayoría de los plazos propuestos al principio del proyecto o al menos hemos compensado algunas tareas retrasadas adelantando otras, esta vez hemos podido descansar más y no tener sesiones de trabajo tan largas (aunque algunos días no se ha podido evitar) y hemos rendido mucho y cumplido cada uno con su parte del trabajo de la mejor forma posible (aumentando la confianza entre los miembros del equipo respecto al trabajo realizado por cada uno). Esta vez, ha sido más importante que nunca el hecho de habernos marcado límites respecto a la magnitud del proyecto, generándonos así unos objetivos asequibles y obteniendo como resultado un muy buen trabajo reflejado en un juego bien cerrado. 
+
 ### **8.2. ¿Qué ha ido bien individualmente?**
+
+Mario: 
+
+* Solución de problemas en poco tiempo pudiendo así avanzar en el proyecto. 
+* Rapidez implementando VFX, animaciones... 
+* Trabajo óptimo, teniendo en cuenta todo lo planeado. 
+* Apoyo y ayuda constante a todo el equipo en general. 
+
+Sergio: 
+
+* Primera vez enfrentándose a un proyecto 3D con muy buenos resultados en el modelado. 
+* Abierto a propuestas y mejoras. 
+* Rápido con los modelados y los SFX. 
+* No hablar sobre otros temas durante el trabajo. 
+* Mayor interés y participación. 
+
+Mireya: 
+
+* Mejor el tema del descanso. 
+* Facilitar a los programadores al realizar un *blocking* del escenario. 
+* Mejor comunicación. 
+* Cubriendo tareas que quedaban sueltas. 
+* Gran escenario en tiempo reducido. 
+* Buen trabajo con la iluminación, haciendo uso de las técnicas necesarias. 
+
+Samuel: 
+
+* Solución de problemas en poco tiempo pudiendo así avanzar en el proyecto. 
+* Ir sentando las bases de programación para que sea más fácil de implementar a futuro. 
+* Buena organización. 
+* Estar pendiente a la situación del equipo y organizar reuniones de planificación y organización para evitar diversas opiniones respecto al trabajo. 
+* Rápida y completa implementación de la inteligencia artificial de los personajes. 
+
+Enrique: 
+
+* Aportación creativa en sus ámbitos. 
+* Mejor comunicación. 
+* Muy buen trabajo en cuanto a la banda sonora del juego. 
+* Las ilustraciones del juego y las del modelo de negocio son perfectas para el proyecto. 
+* Buena dinámica de trabajo cumpliendo los plazos. 
+* Descubrir nuevas formas de trabajar. 
+
 ### **8.3. ¿Qué podríamos mejorar del equipo?**
+
+El mayor problema que hemos cometido ha sido empezar el proyecto más tarde de lo debido, pero por suerte esto no ha afectado gravemente ni al desarrollo ni al resultado. Por otro lado, deberíamos cuidar tanto la constancia como la duración de las *Daily Standups*, ya que no se han realizado cotidianamente y a veces se trataban temas que alargaban estas más de lo debido. En rasgos generales se ha notado una falta de comunicación en ciertos momentos del desarrollo que, gracias a la metodología de trabajo planteada, se ha podido compensar mediante las reuniones de equipo. También hemos percibido un reparto de trabajo un tanto desigual (sobre todo hacia el final del desarrollo) que se podría haber evitado mediante una mejor planificación inicial, pero se ha sobrellevado gracias a que algunos miembros han ayudado a quien/es más lo necesitaban. Finalmente, cabe decir que la actividad en redes sociales es muy mejorable, a mitad del proyecto hemos empezado a mostrar contenido, pero deberíamos de haber empezado antes, manteniendo constancia y creando comunidad entorno al proyecto. 
+
 ### **8.4. ¿Qué podríamos mejorar a nivel individual?**
+
+Mario:  
+
+* Quedarse demasiado tiempo trabajando en el proyecto. 
+* Desconectar más del proyecto. 
+
+Sergio:  
+
+* Investigación, buscar información de cara a trabajar más eficientemente y elaborar un mejor resultado, como por ejemplo en las animaciones. 
+* Poca iniciativa. 
+* Independencia del resto del equipo para realizar las tareas que le corresponden. 
+
+Mireya: 
+
+* Negatividad puntual de cara al proyecto que puede afectar a otros miembros del equipo. 
+* Mejorar los descansos, estableciendo un horario más constante. 
+* Pedir ayuda más a menudo para evitar quemarse con lo que hace. 
+
+Samuel:  
+
+* Quedarse demasiado tiempo trabajando en el proyecto. 
+* No estar atento a cosas que se dicen o interrumpir sin querer por este motivo. 
+* Poco participativo en cuanto a documentos. 
+
+Enrique:  
+
+* Evitar silenciar el micrófono sin avisar ya que causa problemas de comunicación. 
+* Debería pedir ayuda para no saturarse con el trabajo. 
+* Mejorar los descansos, estableciendo un horario más constante. 
+
 ### **8.5. Flujo de correcciones**
+
+Para monitorizar mejor la duración de las *Daily Standups* en siguientes proyectos, hemos decidido usar temporizadores para así limitar el tiempo que habla cada participante y a su vez se va a establecer qué días y en qué horario se van a hacer dichas reuniones. A su vez, para mejorar la organización, se va a optimizar el uso de *Trello* (devolviendo tareas al *Sprint Backlog* si estás se ven modificadas y dejan de estar completas). Además, hemos decidido crear una lista en dicha aplicación con información y posts relevantes para el proyecto para mejorar la calidad del proyecto. 
+
+Por otro lado, para mejorar el uso de las redes sociales, trataremos de interactuar más con la comunidad desde un primer momento, en lugar de esperar al final del proyecto. 
+
+En cuanto a mejora a nivel personal creemos necesario comentar, al resto del equipo, los problemas personales que afecten al proyecto, manteniendo así la confianza y apoyo que hemos llevado como equipo en este proyecto. 
+
 ### **8.6. Retroalimentación**
+
+Para obtener retroalimentación sobre el juego, hemos realizado una pequeña encuesta con 14 preguntas que engloban los principales aspectos del juego. Además, queremos también comentar algunos de los comentarios que nos han ido dejando en nuestras redes sociales. 
+
+**RESULTADOS DE LA ENCUESTA**
+
+Hemos contactado con 21 personas para que probasen el juego antes de su publicación, de esta forma podíamos arreglar fallos que surgiesen en el último momento y tener en cuenta sus opiniones para futuras actualizaciones. A continuación, enseñamos las medias de todas las respuestas (puntuaciones disponibles para los participantes --> de 1 a 5), los resultados en gráficos y los comentarios extra que nos hayan hecho.  
+
+Medias: 21 respuestas 
+
+* Diversión del usuario: 4.19 
+* Ambientación y temática: 4.71 
+* Claridad del juego CON tutorial: 4.32 
+* Claridad del juego SIN tutorial: 4 
+* Comodidad del control: 3.52 
+* Estilo visual: 4.81 
+* Interfaz: 4.81 
+* Información en pantalla: 4.14 
+* Niveles de dificultad: 3 
+* Música: 4.23 
+
+**Fig103**
+**Fig104**
+**Fig105**
+**Fig106**
+**Fig107**
+**Fig108**
+**Fig109**
+**Fig110**
+**Fig111**
+**Fig112**
+**Fig113**
+**Fig114**
+**Fig115**
+**Fig116**
+
+A continuación, adjuntamos el enlace a la encuesta que hemos realizado:
+- *https://forms.gle/sFKzb9hXuZAhSA8Z7* 
+
+**COMENTARIOS DE REDES SOCIALES:**
+
+* "Cuteeee"
+* "Love this colour palette!" 
+* "That looks great!"
+* "Oiii, qué cuqui!!!" 
+* "Oof I love this"
+* "An eggsquisitely sweet place to play!" 
+* "Se ve cool" 
+* "Luce bien" 
+* "Que pintaza tiene vuestro juego, estaremos muy atentos para cuando lo saquéis probarlo" 
+* "cómo mola la idea del juego!"
 
 ## **9. Referencias**
 
 * Plantilla para el GDD:  
 *https://eldocumentalistaudiovisual.files.wordpress.com/2015/02/gdd.pdf*
+
+
+* Plantilla para el GDD:  
+*https://github.com/lightningopal/Juegos-para-Web-y-Redes-Sociales---Unity*
 
 - Enlace a nuestra página web:  
 *https://lightningopal.github.io/* 
