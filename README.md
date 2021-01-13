@@ -22,7 +22,7 @@ Documento de diseño del videojuego *Marshallow: Pilferage in YolkTown*. Videoju
 
 *Marshallow: Pilferage in YolkTown*. Como pequeña justificación sobre el título, cabe decir que *Marhsallow* es un juego de palabras entre marshal (una figura de la ley que está por encima del sheriff) y *marshmallow* (un dulce típico de EEUU más bien conocido en nuestro país como malvavisco o nube), esto es debido a que el protagonista es un personaje con forma de nube y ejerce como marshal. Por otra parte, *pilferage* significa hurto, dado que en el juego hay un ladrón que se dedica a robar a los aldeanos del pueblo en el que se sitúa nuestro juego. Y finalmente, *YolkTown* traducido literalmente al español es Pueblo Yema, ya que los aldeanos tienen forma de ovoide. 
 
-![Figura 1](./GDD Images/1.png)
+![Figura 1](./GDD_Images/1.png)
 
 ### **1.2. Concepto del juego**
 
