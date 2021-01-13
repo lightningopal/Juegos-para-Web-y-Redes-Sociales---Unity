@@ -149,8 +149,10 @@ Los aldeanos se diferencian entre ellos gracias a una serie de características 
 
 Los aldeanos cuentan con cinco tipos de estados distintos: 
 
-  **1. Viandante:** el aldeano se mueve de un punto clave del poblado (forja, ayuntamiento...) a otro. Al establecer el nuevo punto, determina aleatoriamente si va andando o corriendo. Si la zona que ha elegido ha superado el máximo de aldeanos que puede alojar, elije otra zona y se desplaza hacia ella. No hay problema si durante el trayecto circula por una zona ocupada por el número máximo de aldeanos. 
+  **1. Viandante:** el aldeano se mueve de un punto clave del poblado (forja, ayuntamiento...) a otro. Al establecer el nuevo punto, determina aleatoriamente si va andando o corriendo. Si la zona que ha elegido ha superado el máximo de aldeanos que puede alojar, elije otra zona y se desplaza hacia ella. No hay problema si durante el trayecto circula por una zona ocupada por el número máximo de aldeanos.
+  
   **2. Merodear/Ocio:** al llegar a una zona, durante 10 segundos, el aldeano deambula por ella y expresa aleatoriamente su estado de ánimo mediante emoticonos emergentes.
+  
   **3. Víctima "!":** se produce cuando el aldeano se encuentra en una zona y es robado por el ladrón, el aldeano se queda quieto y aparece un icono sobre su cabeza que indica su estado. Cuando el jugador se acerca a la víctima (es decir, se encuentra dentro del radio de interacción del aldeano), esta le proporciona información referente al ladrón mediante un *bark* en forma de bocadillo con dos iconos (pistas) dentro. La víctima proporciona siempre **dos** datos. Llegados a este punto, el agente decide si facilitar un tipo de información u otro: 
   * Un 70%, 30% o 30% (dependiendo del nivel, fácil, medio y difícil respectivamente) de las veces el aldeano recordará sin problemas las dos características del ladrón que proporcionará al jugador, esto se traduce en que la información será fiable y por tanto las dos pistas serán 100% ciertas. 
 
@@ -178,8 +180,11 @@ El ladrón es un PNJ que rondará la ciudad con un comportamiento y apariencia s
 El ladrón cuenta con cuatro tipos de estados distintos:
 
   **1. Viandante:** realiza el mismo comportamiento de viandante que el resto de los aldeanos. 
+  
   **2. Robar:** si ha pasado cierto tiempo desde el robo anterior (para no llamar la atención) y llega a la zona objetivo, si el jugador no se encuentra cerca y tiene aldeanos en su radio de interacción, escoge de entre todos ellos a uno aleatorio y se dirige rápidamente a robarle. Cuando ha realizado el robo (cancela la acción si el jugador entra en el rango) volverá a al estado deambular andando rápido durante un periodo de tiempo o fingirá ser un testigo. 
+
   **3. Fingir ser textigo:** Una vez ha llevado a cabo un robo, decidirá si pasará a actuar como un **testigo** mientras deambula de una zona a otra. En caso de que actúe como testigo, un *bark* en forma de interrogación aparecerá sobre su cabeza dando a entender al *marshal* que ha presenciado un robo (tal y como lo haría el aldeano en estado de testigo). Si el *marshal* se acerca a él, sucederá lo mismo que sucede cuando el marshal se acerca a un aldeano testigo y este le muestra un *bark* de información dudosa (es decir, el que tiene un interrogante en el bocadillo), la diferencia es que, en el caso del ladrón, esta información tendrá un 100% de probabilidad de ser falsa. La gracia reside en que el jugador no tiene forma de saber esto y simplemente lo confundirá con un testigo normal y corriente. 
+
   **4. Arresto:** realiza el mismo comportamiento de arresto que el resto de los aldeanos. 
 
 **NB:** *Bark* --> Cuando un PNJ anuncia sus intenciones/estado al jugador (ya sea mediante audio o mediante una imagen). 
