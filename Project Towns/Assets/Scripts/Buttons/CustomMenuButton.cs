@@ -176,7 +176,7 @@ public class CustomMenuButton : Selectable, IPointerEnterHandler, IPointerExitHa
             MenuManager.instance.ResetMobileTap();
         }
 
-        if (Application.isMobilePlatform)
+        if (!Application.isMobilePlatform)
         {
             isSelected = false;
             tapAgainText.gameObject.SetActive(false);

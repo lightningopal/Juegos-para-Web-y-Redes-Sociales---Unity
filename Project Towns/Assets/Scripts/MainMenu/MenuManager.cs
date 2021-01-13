@@ -173,7 +173,7 @@ public class MenuManager : MonoBehaviour
     public void SelectMode(int mode)
     {
         // Si es escritorio
-        if (!Application.isMobilePlatform)
+        if (Application.isMobilePlatform)
         {
             if (mode == 0)
             {
