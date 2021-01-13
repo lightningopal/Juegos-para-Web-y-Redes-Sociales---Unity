@@ -265,8 +265,16 @@ public class TutorialPlayerController : MonoBehaviour
             else if (!tutorialManager.event22MustArrestHornsVillager &&
                 !tutorialManager.event26MustArrestThief)
             {
+                // Si el juego está en pausa, no realizamos cálculos
+                if (TutorialGameManager.instance.gamePaused)
+                    return;
+
+                // Si la partida ha acabado, no realizamos cálculos
+                if (TutorialGameManager.instance.gameOver)
+                    return;
+
                 // Si no puede usar la UI y no puede volver al menú
-                if (!tutorialManager.playerCanUseUI && !tutorialManager.event29CanReturnToMenu)
+                if (!tutorialManager.playerCanUseUI && !tutorialManager.event28CanReturnToMenu)
                 {
                     // Comprobamos sobre qué objetos está la UI
                     List<RaycastResult> results = PointerOverUIElements();
@@ -289,7 +297,18 @@ public class TutorialPlayerController : MonoBehaviour
                     }
                     // Si no, hace el siguiente paso
                     else
+                    {
+                        // Si el juego está en pausa, no realizamos cálculos
+                        if (TutorialGameManager.instance.gamePaused)
+                            return;
+
+                        // Si la partida ha acabado, no realizamos cálculos
+                        if (TutorialGameManager.instance.gameOver)
+                            return;
+
                         tutorialManager.GoToNextStep();
+                    }
+
                 }
             }
         }
@@ -424,7 +443,7 @@ public class TutorialPlayerController : MonoBehaviour
             GameObject nervousVFX = Instantiate(TutorialGameManager.instance.nervousVFX, calledScriptedVillager.transform);
             // Efecto de sonido
             AudioManager.instance.PlaySound("Nervous");
-            
+
             TutorialGameManager.instance.HideDetentionButton();
             TutorialGameManager.instance.EndGameAsWin();
         }

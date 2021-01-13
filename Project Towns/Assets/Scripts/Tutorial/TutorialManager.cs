@@ -19,7 +19,7 @@ public class TutorialManager : MonoBehaviour
     public bool playerHasToWait = false;
     [Tooltip("Booleano que indica si el jugador puede volver al menú principal")]
     [HideInInspector]
-    public bool event29CanReturnToMenu = false;
+    public bool event28CanReturnToMenu = false;
 
     [Header("GameObjects y Referencias")]
     [Tooltip("GameObject de las flechas de rotación de la cámara")]
@@ -861,7 +861,7 @@ public class TutorialManager : MonoBehaviour
         tutorialText.gameObject.SetActive(false);
 
         // Permitimos que vuelva al menú principal
-        event29CanReturnToMenu = true;
+        event28CanReturnToMenu = true;
     }
     #endregion
 
@@ -906,7 +906,7 @@ public class TutorialManager : MonoBehaviour
     /// </summary>
     public void ReturnToMenuButton()
     {
-        if (!event29CanReturnToMenu)
+        if (!event28CanReturnToMenu)
             return;
 
         levelLoader.LoadScene(0);
