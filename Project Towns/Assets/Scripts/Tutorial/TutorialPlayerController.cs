@@ -266,11 +266,7 @@ public class TutorialPlayerController : MonoBehaviour
                 !tutorialManager.event26MustArrestThief)
             {
                 // Si el juego está en pausa, no realizamos cálculos
-                if (TutorialGameManager.instance.gamePaused)
-                    return;
-
-                // Si la partida ha acabado, no realizamos cálculos
-                if (TutorialGameManager.instance.gameOver)
+                if (TutorialGameManager.instance.gamePaused && tutorialManager.actualEvent < 27)
                     return;
 
                 // Si no puede usar la UI y no puede volver al menú
@@ -299,11 +295,7 @@ public class TutorialPlayerController : MonoBehaviour
                     else
                     {
                         // Si el juego está en pausa, no realizamos cálculos
-                        if (TutorialGameManager.instance.gamePaused)
-                            return;
-
-                        // Si la partida ha acabado, no realizamos cálculos
-                        if (TutorialGameManager.instance.gameOver)
+                        if (TutorialGameManager.instance.gamePaused && tutorialManager.actualEvent < 27)
                             return;
 
                         tutorialManager.GoToNextStep();

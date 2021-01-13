@@ -41409,7 +41409,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.65
+  m_fontSize: 43.5
   m_fontSizeBase: 54
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -41419,8 +41419,8 @@ MonoBehaviour:
   m_HorizontalAlignment: 8
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 2
-  m_wordSpacing: 4
+  m_characterSpacing: 4
+  m_wordSpacing: 12
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
@@ -48832,7 +48832,7 @@ MonoBehaviour:
   playerCanMove: 0
   playerCanUseUI: 0
   playerHasToWait: 0
-  event29CanReturnToMenu: 0
+  event28CanReturnToMenu: 0
   cameraButtons: {fileID: 320932176}
   heartsUI:
   - {fileID: 318559827}
