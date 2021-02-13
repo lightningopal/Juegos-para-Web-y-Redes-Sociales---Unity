@@ -61,6 +61,10 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     private Button invisibleButton = null;*/
 
+    [Tooltip("GameObject del canvas principal del menú")]
+    [SerializeField]
+    private GameObject mainMenuCanvas = null;
+
     public int mobileTapped = -1;
     #endregion
 
@@ -106,7 +110,17 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     void Update()
     {
-        //Mover el fondo
+        /// Menú principal
+        // Salir del juego
+        if (mainMenuCanvas.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        {
+            AudioManager.instance.PlaySound("PressButton");
+            CloseGame();
+        }
+
+
+        /// Créditos
+        // Mover el fondo
         mousePosX = Input.mousePosition.x;
         mousePosY = Input.mousePosition.y;
 
@@ -240,6 +254,14 @@ public class MenuManager : MonoBehaviour
     {
         menuCustomButtons[0].wasClicked = false;
         menuCustomButtons[1].wasClicked = false;
+    }
+
+    /// <summary>
+    /// Método CloseGame, que cierra el juego
+    /// </summary>
+    public void CloseGame()
+    {
+        Application.Quit();
     }
     #endregion
 }
